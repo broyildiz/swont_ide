@@ -34,6 +34,8 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
+#include "stdlib.h"
+#include "FL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -102,7 +104,7 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
-
+/*
 struct collection
 {
 	int function_number;
@@ -216,7 +218,7 @@ typedef struct
 	int msecs;
 
 }wacht_func;
-
+*/
 
 /* USER CODE END Private defines */
 

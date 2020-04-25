@@ -1,5 +1,6 @@
-FL.c:10:6:FL_uart_decode	16	static
-FL.c:53:5:FL_find_decode_nr	4	static
-FL.c:85:6:FL_find_args	56	static
-FL.c:160:6:FL_convert_args	24	static
-FL.c:169:6:FL_error_handler	4	static
+FL.c:29:6:FL_uart_decode	16	static
+FL.c:81:5:FL_find_decode_nr	4	static
+FL.c:113:6:FL_find_args	56	static
+FL.c:192:6:FL_convert_args	24	static
+FL.c:316:9:FL_find_color	24	static
+FL.c:365:6:FL_error_handler	4	static

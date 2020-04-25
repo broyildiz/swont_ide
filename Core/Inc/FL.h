@@ -13,7 +13,7 @@
 void FL_uart_decode(void);
 int FL_find_decode_nr();
 void FL_find_args(int function_number, int num_args,  int len_function_name);
-void FL_convert_args(char arg_array[], int num_chars, int function_number, int num_args, int stored_args);
+void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args);
 uint8_t FL_find_color(char color[]);
 void FL_error_handler();
 
@@ -23,11 +23,15 @@ void FL_error_handler();
 #define LETTERC 'c'
 #define LETTERE 'e'
 #define LETTERF 'f'
+#define LETTERG 'g'
 #define LETTERH 'h'
+#define LETTERI 'i'
 #define LETTERL 'l'
+#define LETTERM 'm'
 #define LETTERR 'r'
 #define LETTERT 't'
 #define LETTERW 'w'
+#define LETTERZ 'z'
 
 #define FUNCTION_NO_RESET		0
 #define BITMAP_FUNCTION_NO 		1
@@ -71,7 +75,7 @@ void FL_error_handler();
 #define	VGA_COL_BROWN 0x01
 #define	VGA_COL_GREY 0x02
 #define	VGA_COL_LITE_BLUE 0x03
-#define	VGA_COL_LITE_BLUE 0x04
+#define	VGA_COL_LITE_CYAN 0x04
 #define	VGA_COL_LITE_GREEN 0x05
 #define	VGA_COL_LITE_MAGENTA 0x06
 #define	VGA_COL_LITE_RED 0x07
@@ -85,21 +89,7 @@ void FL_error_handler();
 //#define	VGA_COL_WHITE 0xFF
 //#define	VGA_COL_BLACK 0x00
 
-struct collection
-{
-	int function_number;
-	bitmap_func bitmap;
-	cirkel_func cirkel;
-	clearscherm_func clearscherm;
-	execute_func execute;
-	figuur_func figuur;
-	herhaal_func herhaal;
-	lijn_func lijn;
-	rechthoek_func rechthoek;
-	tekst_func tekst;
-	toren_func toren;
-	wacht_func wacht;
-}command;
+
 
 typedef struct
 {
@@ -137,7 +127,7 @@ typedef struct
 	uint16_t x4;
 	uint16_t y4;
 	uint16_t x5;
-	uint16_t y6;
+	uint16_t y5;
 	int kleur;
 }figuur_func;
 
@@ -196,5 +186,21 @@ typedef struct
 	int msecs;
 
 }wacht_func;
+
+struct collection
+{
+	int function_number;
+	bitmap_func bitmap;
+	cirkel_func cirkel;
+	clearscherm_func clearscherm;
+	execute_func execute;
+	figuur_func figuur;
+	herhaal_func herhaal;
+	lijn_func lijn;
+	rechthoek_func rechthoek;
+	tekst_func tekst;
+	toren_func toren;
+	wacht_func wacht;
+}command;
 
 #endif /* INC_FL_H_ */
