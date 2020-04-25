@@ -7,15 +7,44 @@
 
 #include "FL.h"
 
+/**
+  * @brief  Sets the priority grouping field (preemption priority and subpriority)
+  *         using the required unlock sequence.
+  * @param  PriorityGroup The priority grouping bits length.
+  *         This parameter can be one of the following values:
+  *         @arg NVIC_PRIORITYGROUP_0: 0 bits for preemption priority
+  *                                    4 bits for subpriority
+  *         @arg NVIC_PRIORITYGROUP_1: 1 bits for preemption priority
+  *                                    3 bits for subpriority
+  *         @arg NVIC_PRIORITYGROUP_2: 2 bits for preemption priority
+  *                                    2 bits for subpriority
+  *         @arg NVIC_PRIORITYGROUP_3: 3 bits for preemption priority
+  *                                    1 bits for subpriority
+  *         @arg NVIC_PRIORITYGROUP_4: 4 bits for preemption priority
+  *                                    0 bits for subpriority
+  * @note   When the NVIC_PriorityGroup_0 is selected, IRQ preemption is no more possible.
+  *         The pending IRQ priority will be managed only by the subpriority.
+  * @retval None
+  */
 void FL_uart_decode()
 {
 	int function_number = FL_find_decode_nr();
 	if(function_number == FUNCTION_NO_RESET)
 		FL_error_handler();
 
+	struct collection command;
+
 	switch(function_number)
 	{
-		case BITMAP_FUNCTION_NO: FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN);
+	/*
+	 * struct aanmaken voor functies
+	 * afhankelijk van de functie het adres vand e struct meegeven
+	 */
+		case BITMAP_FUNCTION_NO: {
+			bitmap_func bitmap;
+			bitmap.function_number = function_number;
+			FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN);
+		}
 		break;
 
 		case CLEARSCHERM_FUNCTION_NO: FL_find_args(function_number, CLEARSCHERM_ARGS, CLEARSCHERM_FUNCTION_NAME_LEN);
@@ -91,7 +120,12 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 		for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 		int arg_character_counter = 0;
 		char stored_args = 0; // Counts how many arguments are stored. is incremented after successfully storing an arg
+		//als er een spatie voor de erste komma zit werkt dit niet
+		//Begin een loop die breekt bijd e eerste komma, de plaats waar die breekt stop je in i
 		int i = len_function_name; // Start at the first comma
+
+
+
 
 		while(i <= input.msglen)
 		{
@@ -101,7 +135,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 				if(stored_args != 0) // Dit is niet de eerste komma dus
 				{
 					// convert the stored string()
-					FL_convert_args(string_container, arg_character_counter, function_number, num_args, stored_args);
+					FL_convert_args(&BITMAP ,string_container, arg_character_counter, function_number, num_args, stored_args);
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 					arg_character_counter = 0;
@@ -161,11 +195,13 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 
 void FL_convert_args(char arg_array[], int num_chars, int function_number, int num_args, int stored_args)
 {
+	//WIP
+	/*
 	switch(function_number)
 	{
 		case BITMAP_FUNCTION_NO:
 		{
-
+			*p = &struct
 		}break;
 		case CIRKEL_FUNCTION_NO:
 		{
@@ -209,7 +245,7 @@ void FL_convert_args(char arg_array[], int num_chars, int function_number, int n
 		}break;
 
 	}
-
+	exe
 
 
 
@@ -218,11 +254,14 @@ void FL_convert_args(char arg_array[], int num_chars, int function_number, int n
 //	{
 //		container[temp++] = arg_array[i];
 //	}
+ */
+
 }
 
 uint8_t FL_find_color(int color)
 {
-
+	//WIP
+return 0;
 }
 
 

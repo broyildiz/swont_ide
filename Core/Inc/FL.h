@@ -17,6 +17,8 @@ void FL_convert_args(char arg_array[], int num_chars, int function_number, int n
 uint8_t FL_find_color(char color);
 void FL_error_handler();
 
+#define MAX_LEN_TEKST_STRING 128
+
 #define LETTERB 'b'
 #define LETTERC 'c'
 #define LETTERE 'e'
@@ -84,62 +86,116 @@ void FL_error_handler();
 //#define	VGA_COL_WHITE 0xFF
 //#define	VGA_COL_BLACK 0x00
 
+struct collection
+{
+	int function_number;
+	bitmap_func bitmap;
+	cirkel_func cirkel;
+	clearscherm_func clearscherm;
+	execute_func execute;
+	figuur_func figuur;
+	herhaal_func herhaal;
+	lijn_func lijn;
+	rechthoek_func rechthoek;
+	tekst_func tekst;
+	toren_func toren;
+	wacht_func wacht;
+}command;
 
 typedef struct
 {
-	int function_number;
-
-}bitmap;
+	int nr;
+	uint16_t xlup;
+	uint16_t ylup;
+}bitmap_func;
 
 typedef struct
 {
-	int function_number;
+	uint16_t x;
+	uint16_t y;
+	int radius;
+	int kleur;
+}cirkel_func;
 
-}cirkel;
 typedef struct
 {
-	int function_number;
+	int kleur;
+}clearscherm_func;
 
-}clearscherm;
+typedef struct //misschien moet deze struct gewoon weg
+{
+	int null;
+}execute_func;
+
 typedef struct
 {
-	int function_number;
+	uint16_t x1;
+	uint16_t y1;
+	uint16_t x2;
+	uint16_t y2;
+	uint16_t x3;
+	uint16_t y3;
+	uint16_t x4;
+	uint16_t y4;
+	uint16_t x5;
+	uint16_t y6;
+	int kleur;
+}figuur_func;
 
-}execute;
 typedef struct
 {
-	int function_number;
+	int aantal;
+	int hoevaak;
 
-}figuur;
+}herhaal_func;
+
 typedef struct
 {
-	int function_number;
+	uint16_t x1;
+	uint16_t y1;
+	uint16_t x2;
+	uint16_t y2;
+	int kleur;
+	int dikte;
 
-}herhaal;
+}lijn_func;
+
 typedef struct
 {
-	int function_number;
+	uint16_t xlup;
+	uint16_t ylup;
+	int breedte;
+	int hoogte;
+	int kleur;
+	int gevuld;
 
-}lijn;
+}rechthoek_func;
+
 typedef struct
 {
-	int function_number;
+	uint16_t xlup;
+	uint16_t ylup;
+	char tekst[MAX_LEN_TEKST_STRING];
+	int fontnaam;
+	int fontgrootte;
+	int fontstijl;
 
-}rechthoek;
+}tekst_func;
+
 typedef struct
 {
-	int function_number;
+	uint16_t x1;
+	uint16_t y1;
+	int grootte;
+	int kleur1;
+	int kleur2;
 
-}tekst;
+}toren_func;
+
 typedef struct
 {
-	int function_number;
+	int msecs;
 
-}toren;
-typedef struct
-{
-	int function_number;
-
-}wacht;
+}wacht_func;
 
 #endif /* INC_FL_H_ */
