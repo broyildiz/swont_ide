@@ -1,3 +1,4 @@
+"Core/Src/FL.o"
 "Core/Src/dma.o"
 "Core/Src/gpio.o"
 "Core/Src/main.o"
@@ -7,6 +8,7 @@
 "Core/Src/sysmem.o"
 "Core/Src/system_stm32f4xx.o"
 "Core/Src/tim.o"
+"Core/Src/usart.o"
 "Core/Startup/startup_stm32f407vgtx.o"
 "Core/ub_lib/stm32_ub_vga_screen.o"
 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
@@ -24,3 +26,4 @@
 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"

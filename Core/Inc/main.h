@@ -80,6 +80,29 @@ void Error_Handler(void);
 #define VGA_VSYNC_Pin GPIO_PIN_12
 #define VGA_VSYNC_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+#define BYTE_BUFLEN 1
+#define LINE_BUFLEN 1024
+#define CARRIAGE_RETURN 13 // carriage return char \r
+#define LINE_FEED 		10 // linefeed char \n
+
+#define False 	0x00
+#define True 	0xFF
+
+typedef struct
+{
+	uint8_t byte_buffer_rx[BYTE_BUFLEN];	// Store the rx byte from the USART2
+	uint8_t line_rx_buffer[LINE_BUFLEN];	// Buffer to hold all the bytes from rx USART2
+	int msglen;
+	volatile int char_counter;				// Counter for line_rx_buffer
+	char command_execute_flag;				/* Set = whole function is received, ready for processing \
+											   Reset = still receiving*/
+}input_vars;
+input_vars input;
+
+volatile char container[1024];
+volatile int temp;
+
+
 
 /* USER CODE END Private defines */
 

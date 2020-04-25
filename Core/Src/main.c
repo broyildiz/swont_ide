@@ -22,10 +22,13 @@
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stm32f4xx_hal.h"
+#include "FL.h"
 
 /* USER CODE END Includes */
 
@@ -91,11 +94,21 @@ int main(void)
   MX_DMA_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  // Reset line_rx buffer
+  int i;
+  for(i = 0; i < LINE_BUFLEN; i++)
+	  input.line_rx_buffer[i] = 0;
 
-  /*
-   * Leuke comment
-   */
+  for(i = 0; i < 1024; i++)
+	  container[i] = 0;
+  temp = 0;
+
+  // Reset some stuff
+  input.byte_buffer_rx[0] = 0;
+  input.char_counter = 0;
+  input.command_execute_flag = False;
 
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -104,15 +117,24 @@ int main(void)
   UB_VGA_SetPixel(0,0,0x00);
   UB_VGA_SetPixel(319,0,0x00);
 
+  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
+//  i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /*
-	   * mergemergemergemeerd
-	   */
+	  if(input.command_execute_flag == True)
+	  {
+		  input.command_execute_flag = False;
+//		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
+		  FL_uart_decode();
+	  }
+//	  else UB_VGA_SetPixel(10,10,VGA_COL_RED);
+//	  i = 100000;
+//	  while(i != 0) i--;
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

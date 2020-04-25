@@ -58,6 +58,7 @@
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_tim1_up;
 extern TIM_HandleTypeDef htim2;
+extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern TIM_HandleTypeDef htim1;
 /* USER CODE END EV */
@@ -240,6 +241,46 @@ void TIM2_IRQHandler(void)
       VGA.start_adr += (VGA_DISPLAY_X + 1); // inc after Hsync
   }
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  // Get the recieved character from the USART2 Data Register
+  char uart_char = USART2->DR;
+
+
+  //This way we ignore the '\n' character
+  if(uart_char != LINE_FEED)
+  {
+	 //Check for CR and LF characters
+	 if(uart_char == CARRIAGE_RETURN)
+	 {
+		input.command_execute_flag = True;
+		// Store the message lenght for processing
+		input.msglen = input.char_counter;
+		// Reset the counter for the next line
+		input.char_counter = 0;
+		//Gently exit intterupt
+	 }
+	 else
+	 {
+		input.command_execute_flag = False;
+		input.line_rx_buffer[input.char_counter] = uart_char;
+//		container[temp++] = uart_char;
+		input.char_counter++;
+	 }
+  }
+
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**
