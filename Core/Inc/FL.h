@@ -13,9 +13,9 @@
 void FL_uart_decode(void);
 int FL_find_decode_nr();
 void FL_find_args(int function_number, int num_args,  int len_function_name);
-void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args);
+void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args, int argcounter);
 uint8_t FL_find_color(char color[]);
-void FL_error_handler();
+void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
 

@@ -6,6 +6,7 @@
  */
 
 #include "FL.h"
+#include "string.h"
 
 /**
   * @brief  Sets the priority grouping field (preemption priority and subpriority)
@@ -30,7 +31,7 @@ void FL_uart_decode()
 {
 	int function_number = FL_find_decode_nr();
 	if(function_number == FUNCTION_NO_RESET)
-		FL_error_handler();
+		FL_error_handler("Did not recognise function number, line 34");
 
 //	struct collection command;
 
@@ -73,7 +74,7 @@ void FL_uart_decode()
 		case WACHT_FUNCTION_NO: FL_find_args(function_number, WACHT_ARGS, WACHT_FUNCTION_NAME_LEN);
 		break;
 
-		default : FL_error_handler();
+		default : FL_error_handler("Did not recognise function number, line 77");
 	}
 
 }
@@ -122,6 +123,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 		//als er een spatie voor de erste komma zit werkt dit niet
 		//Begin een loop die breekt bijd e eerste komma, de plaats waar die breekt stop je in i
 		int i = len_function_name; // Start at the first comma
+		int argcounter = 0;
 
 		while(i <= input.msglen)
 		{
@@ -131,7 +133,8 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 				if(stored_args != 0) // Dit is niet de eerste komma dus
 				{
 					// convert the stored string()
-//					FL_convert_args(string_container, arg_character_counter, num_args, stored_args);
+					FL_convert_args(string_container, arg_character_counter, num_args, stored_args, ++argcounter);
+//					FL_convert_args(string_container, arg_character_counter, num_args, arg_num++);
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 					arg_character_counter = 0;
@@ -146,7 +149,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 			else
 			{
 				if(input.line_rx_buffer[i] == ',')
-					FL_error_handler();
+					FL_error_handler("Argument not filled, line 150");
 				else
 				{
 					string_container[arg_character_counter++] = input.line_rx_buffer[i++];
@@ -155,6 +158,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 
 
 		}
+		FL_convert_args(string_container, --arg_character_counter, num_args, stored_args, ++argcounter);
 //		FL_convert_args(string_container, --arg_character_counter, function_number, num_args, stored_args); // Op het einde van de while wordt arg_counter opgehoogd.
 																	//je krijgt, als je dat aan de functie meegeeft, een \0 te zien.
 																	//om die ertui te halen doe je --
@@ -189,9 +193,128 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 	}
 }
 
-void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args)
+void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args, int argcounter)
 {
-///*
+	switch(command.function_number)
+	{
+		case BITMAP_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+				case 1:	command.bitmap.nr = atoi(arg_array); break;
+
+				case 2: command.bitmap.xlup = atoi(arg_array); break;
+
+				case 3: command.bitmap.ylup = atoi(arg_array); break;
+
+//				default: FL_error_handler("Illegal stored_args value, line 209");//Error_Handler();
+			}
+		}break;
+
+		case CIRKEL_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.cirkel.x = atoi(arg_array); break;
+			case 2: command.cirkel.y = atoi(arg_array); break;
+			case 3: command.cirkel.radius = atoi(arg_array); break;
+			case 4: command.cirkel.kleur = FL_find_color(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 221");//Error_Handler();
+			}
+		}break;
+
+		case CLEARSCHERM_FUNCTION_NO: command.clearscherm.kleur = FL_find_color(arg_array); break;
+
+//		case EXECUTE_FUNCTION_NO: // Hoort er misschien niet in
+//		{
+//
+//		}break;
+		case FIGUUR_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.figuur.x1 = atoi(arg_array); break;
+			case 2: command.figuur.y1 = atoi(arg_array); break;
+			case 3: command.figuur.x2 = atoi(arg_array); break;
+			case 4: command.figuur.y2 = atoi(arg_array); break;
+			case 5: command.figuur.x3 = atoi(arg_array); break;
+			case 6: command.figuur.y3 = atoi(arg_array); break;
+			case 7: command.figuur.x4 = atoi(arg_array); break;
+			case 8: command.figuur.y4 = atoi(arg_array); break;
+			case 9: command.figuur.x5 = atoi(arg_array); break;
+			case 10: command.figuur.y5 = atoi(arg_array); break;
+			case 11: command.figuur.kleur = FL_find_color(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 247");
+			}
+		}break;
+
+		case HERHAAL_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.herhaal.aantal = atoi(arg_array); break;
+			case 2: command.herhaal.hoevaak = atoi(arg_array); break;
+//			default: Error_Handler();//FL_error_handler("Illegal stored_args value, line 257");
+			}
+		}break;
+
+		case LIJN_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.lijn.x1 = atoi(arg_array); break;
+			case 2: command.lijn.y1 = atoi(arg_array); break;
+			case 3: command.lijn.x2 = atoi(arg_array); break;
+			case 4: command.lijn.y2 = atoi(arg_array); break;
+			case 5: command.lijn.kleur = FL_find_color(arg_array); break;
+			case 6: command.lijn.dikte = atoi(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 271");
+			}
+		}break;
+		case RECHTHOEK_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.rechthoek.xlup = atoi(arg_array); break;
+			case 2: command.rechthoek.ylup = atoi(arg_array); break;
+			case 3: command.rechthoek.breedte = atoi(arg_array); break;
+			case 4: command.rechthoek.hoogte = atoi(arg_array); break;
+			case 5: command.rechthoek.kleur = FL_find_color(arg_array); break;
+			case 6: command.rechthoek.gevuld = atoi(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 284");
+			}
+		}break;
+
+//		case TEKST_FUNCTION_NO:	//Moet ik op terukomen. Je kan niet zomaar arg array meegeven aan de tekst functie want die is
+//		{	 					//kleiner dan de max aantal karakters in 1 zin
+//			switch(stored_args)
+//			{
+//			case 1: command.tekst.xlup = atoi(arg_array); break;
+//			case 2: command.tekst.ylup = atoi(arg_array); break;
+//			case 3: strcpy(command.tekst.tekst, arg_array); break;
+//			}
+//		}break;
+		case TOREN_FUNCTION_NO:
+		{
+			switch(argcounter)
+			{
+			case 1: command.toren.x1 = atoi(arg_array); break;
+			case 2: command.toren.y1 = atoi(arg_array); break;
+			case 3: command.toren.grootte = atoi(arg_array); break;
+			case 4: command.toren.kleur1 = FL_find_color(arg_array); break;
+			case 5: command.toren.kleur2 = FL_find_color(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 306");
+			}
+		}break;
+
+		case WACHT_FUNCTION_NO: command.wacht.msecs = atoi(arg_array); break;
+
+		default : FL_error_handler("Did not recognise function number, line 312");
+	}
+
+
+
+/*
 	switch(command.function_number)
 	{
 		case BITMAP_FUNCTION_NO:
@@ -204,7 +327,7 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 
 				case 3: command.bitmap.ylup = atoi(arg_array); break;
 
-				default: Error_Handler();
+//				default: FL_error_handler("Illegal stored_args value, line 209");//Error_Handler();
 			}
 		}break;
 
@@ -216,7 +339,7 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 			case 2: command.cirkel.y = atoi(arg_array); break;
 			case 3: command.cirkel.radius = atoi(arg_array); break;
 			case 4: command.cirkel.kleur = FL_find_color(arg_array); break;
-			default: Error_Handler();
+//			default: FL_error_handler("Illegal stored_args value, line 221");//Error_Handler();
 			}
 		}break;
 
@@ -242,7 +365,7 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 			case 10: command.figuur.x5 = atoi(arg_array); break;
 			case 11: command.figuur.y5 = atoi(arg_array); break;
 			case 12: command.figuur.kleur = FL_find_color(arg_array); break;
-			default: FL_error_handler();
+//			default: FL_error_handler("Illegal stored_args value, line 247");
 			}
 		}break;
 
@@ -252,7 +375,7 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 			{
 			case 1: command.herhaal.aantal = atoi(arg_array); break;
 			case 2: command.herhaal.hoevaak = atoi(arg_array); break;
-			default: FL_error_handler();
+//			default: Error_Handler();//FL_error_handler("Illegal stored_args value, line 257");
 			}
 		}break;
 
@@ -266,7 +389,7 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 			case 4: command.lijn.y2 = atoi(arg_array); break;
 			case 5: command.lijn.kleur = FL_find_color(arg_array); break;
 			case 6: command.lijn.dikte = atoi(arg_array); break;
-
+//			default: FL_error_handler("Illegal stored_args value, line 271");
 			}
 		}break;
 		case RECHTHOEK_FUNCTION_NO:
@@ -279,30 +402,39 @@ void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_a
 			case 4: command.rechthoek.hoogte = atoi(arg_array); break;
 			case 5: command.rechthoek.kleur = FL_find_color(arg_array); break;
 			case 6: command.rechthoek.gevuld = atoi(arg_array); break;
-			default: FL_error_handler();
+//			default: FL_error_handler("Illegal stored_args value, line 284");
 			}
 		}break;
 
-		case TEKST_FUNCTION_NO:
+//		case TEKST_FUNCTION_NO:	//Moet ik op terukomen. Je kan niet zomaar arg array meegeven aan de tekst functie want die is
+//		{	 					//kleiner dan de max aantal karakters in 1 zin
+//			switch(stored_args)
+//			{
+//			case 1: command.tekst.xlup = atoi(arg_array); break;
+//			case 2: command.tekst.ylup = atoi(arg_array); break;
+//			case 3: strcpy(command.tekst.tekst, arg_array); break;
+//			}
+//		}break;
+		case TOREN_FUNCTION_NO:
 		{
 			switch(stored_args)
 			{
-
+			case 1: command.toren.x1 = atoi(arg_array); break;
+			case 2: command.toren.y1 = atoi(arg_array); break;
+			case 3: command.toren.grootte = atoi(arg_array); break;
+			case 4: command.toren.kleur1 = FL_find_color(arg_array); break;
+			case 5: command.toren.kleur2 = FL_find_color(arg_array); break;
+//			default: FL_error_handler("Illegal stored_args value, line 306");
 			}
 		}break;
-		case TOREN_FUNCTION_NO:
-		{
 
-		}break;
-		case WACHT_FUNCTION_NO:
-		{
+		case WACHT_FUNCTION_NO: command.wacht.msecs = atoi(arg_array); break;
 
-		}break;
-
+		default : FL_error_handler("Did not recognise function number, line 312");
 	}
 
 
-
+*/
 
 //	int i;
 //	for(i = 0; i < num_chars; i++)
@@ -362,7 +494,7 @@ return ret_val;
 }
 
 
-void FL_error_handler()
+void FL_error_handler(char *pErrorString)
 {
 	while(1);
 }
