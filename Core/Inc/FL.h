@@ -14,7 +14,7 @@ void FL_uart_decode(void);
 int FL_find_decode_nr();
 void FL_find_args(int function_number, int num_args,  int len_function_name);
 void FL_convert_args(char arg_array[], int num_chars, int function_number, int num_args, int stored_args);
-uint8_t FL_find_color(char color);
+uint8_t FL_find_color(char color[]);
 void FL_error_handler();
 
 #define MAX_LEN_TEKST_STRING 128
@@ -67,7 +67,6 @@ void FL_error_handler();
 #define TEKST_FUNCTION_NAME_LEN 		5
 #define TOREN_FUNCTION_NAME_LEN 		5
 #define WACHT_FUNCTION_NAME_LEN 		5
-
 
 #define	VGA_COL_BROWN 0x01
 #define	VGA_COL_GREY 0x02

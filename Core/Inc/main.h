@@ -103,6 +103,120 @@ volatile char container[1024];
 volatile int temp;
 
 
+struct collection
+{
+	int function_number;
+	bitmap_func bitmap;
+	cirkel_func cirkel;
+	clearscherm_func clearscherm;
+	execute_func execute;
+	figuur_func figuur;
+	herhaal_func herhaal;
+	lijn_func lijn;
+	rechthoek_func rechthoek;
+	tekst_func tekst;
+	toren_func toren;
+	wacht_func wacht;
+}command;
+
+struct collection command;
+
+typedef struct
+{
+	int nr;
+	uint16_t xlup;
+	uint16_t ylup;
+}bitmap_func;
+
+typedef struct
+{
+	uint16_t x;
+	uint16_t y;
+	int radius;
+	int kleur;
+}cirkel_func;
+
+typedef struct
+{
+	int kleur;
+}clearscherm_func;
+
+typedef struct //misschien moet deze struct gewoon weg
+{
+	int null;
+}execute_func;
+
+typedef struct
+{
+	uint16_t x1;
+	uint16_t y1;
+	uint16_t x2;
+	uint16_t y2;
+	uint16_t x3;
+	uint16_t y3;
+	uint16_t x4;
+	uint16_t y4;
+	uint16_t x5;
+	uint16_t y6;
+	int kleur;
+}figuur_func;
+
+typedef struct
+{
+	int aantal;
+	int hoevaak;
+
+}herhaal_func;
+
+typedef struct
+{
+	uint16_t x1;
+	uint16_t y1;
+	uint16_t x2;
+	uint16_t y2;
+	int kleur;
+	int dikte;
+
+}lijn_func;
+
+typedef struct
+{
+	uint16_t xlup;
+	uint16_t ylup;
+	int breedte;
+	int hoogte;
+	int kleur;
+	int gevuld;
+
+}rechthoek_func;
+
+typedef struct
+{
+	uint16_t xlup;
+	uint16_t ylup;
+	char tekst[MAX_LEN_TEKST_STRING];
+	int fontnaam;
+	int fontgrootte;
+	int fontstijl;
+
+}tekst_func;
+
+typedef struct
+{
+	uint16_t x1;
+	uint16_t y1;
+	int grootte;
+	int kleur1;
+	int kleur2;
+
+}toren_func;
+
+typedef struct
+{
+	int msecs;
+
+}wacht_func;
+
 
 /* USER CODE END Private defines */
 
