@@ -28,7 +28,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  D:/STM32CubeIDE/workspace_1.1.0/swont_ide/Core/ub_lib/stm32_ub_vga_screen.h \
- ../Core/Inc/dma.h ../Core/Inc/main.h ../Core/Inc/tim.h \
+ ../Core/Inc/FL.h ../Core/Inc/main.h ../Core/Inc/dma.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h ../Core/Inc/FL.h
 
 ../Core/Inc/main.h:
@@ -91,9 +91,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 D:/STM32CubeIDE/workspace_1.1.0/swont_ide/Core/ub_lib/stm32_ub_vga_screen.h:
 
-../Core/Inc/dma.h:
+../Core/Inc/FL.h:
 
 ../Core/Inc/main.h:
+
+../Core/Inc/dma.h:
 
 ../Core/Inc/tim.h:
 

@@ -60,7 +60,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void LL_exec(struct collection *command)
+{
 
+}
 /* USER CODE END 0 */
 
 /**
@@ -118,7 +121,6 @@ int main(void)
   UB_VGA_SetPixel(319,0,0x00);
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
-//  i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -131,9 +133,7 @@ int main(void)
 //		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 		  FL_uart_decode();
 	  }
-//	  else UB_VGA_SetPixel(10,10,VGA_COL_RED);
-//	  i = 100000;
-//	  while(i != 0) i--;
+
 
     /* USER CODE END WHILE */
 
