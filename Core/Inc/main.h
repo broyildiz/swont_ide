@@ -35,7 +35,9 @@ extern "C" {
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
+
 #include "FL.h"
+#include "LL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
