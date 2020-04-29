@@ -165,29 +165,6 @@ void FL_find_args(int function_number, int num_args, int len_function_name)
 																	//je krijgt, als je dat aan de functie meegeeft, een \0 te zien.
 																	//om die ertui te halen doe je --
 
-/*
-		sscanf()
-
-//hmm
-		while(stored_args != num_args)
-		{
-			if(input.line_rx_buffer[i] == ',')
-			{
-				stored_args++;
-				i++;
-				if(input.line_rx_buffer[i] == ' ')
-					i++;
-				else
-				{
-					if(input.line_rx_buffer[i] == ',')
-						FL_error_handler();
-					else
-
-				}
-			}
-		}
-
-*/
 	}
 	else
 	{
