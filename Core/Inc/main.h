@@ -106,7 +106,7 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
-void LL_exec(struct collection *command);
+//void LL_exec(struct collection *command);
 
 /* USER CODE END Private defines */
 

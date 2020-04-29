@@ -28,7 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f4xx_hal.h"
-#include "FL.h"
+//#include "FL.h"
 
 /* USER CODE END Includes */
 
@@ -60,10 +60,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void LL_exec(struct collection *command)
-{
 
-}
 /* USER CODE END 0 */
 
 /**
@@ -100,39 +97,39 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   // Reset line_rx buffer
-  int i;
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
-
-  for(i = 0; i < 1024; i++)
-	  container[i] = 0;
-  temp = 0;
-
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = False;
-
-  UB_VGA_Screen_Init(); // Init VGA-Screen
-
-  UB_VGA_FillScreen(VGA_COL_WHITE);
-  UB_VGA_SetPixel(10,10,10);
-  UB_VGA_SetPixel(0,0,0x00);
-  UB_VGA_SetPixel(319,0,0x00);
-
-  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
+//  int i;
+//  for(i = 0; i < LINE_BUFLEN; i++)
+//	  input.line_rx_buffer[i] = 0;
+//
+//  for(i = 0; i < 1024; i++)
+//	  container[i] = 0;
+//  temp = 0;
+//
+//  // Reset some stuff
+//  input.byte_buffer_rx[0] = 0;
+//  input.char_counter = 0;
+//  input.command_execute_flag = False;
+//
+//  UB_VGA_Screen_Init(); // Init VGA-Screen
+//
+//  UB_VGA_FillScreen(VGA_COL_WHITE);
+//  UB_VGA_SetPixel(10,10,10);
+//  UB_VGA_SetPixel(0,0,0x00);
+//  UB_VGA_SetPixel(319,0,0x00);
+//
+//  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == True)
-	  {
-		  input.command_execute_flag = False;
-//		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  FL_uart_decode();
-	  }
+//	  if(input.command_execute_flag == True)
+//	  {
+//		  input.command_execute_flag = False;
+////		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
+//		  FL_uart_decode();
+//	  }
 
 
     /* USER CODE END WHILE */
