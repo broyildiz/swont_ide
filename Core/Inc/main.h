@@ -35,7 +35,10 @@ extern "C" {
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
+
 #include "FL.h"
+#include "LL.h"
+#include "IOL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -81,6 +84,8 @@ void Error_Handler(void);
 #define VGA_HSYNC_GPIO_Port GPIOB
 #define VGA_VSYNC_Pin GPIO_PIN_12
 #define VGA_VSYNC_GPIO_Port GPIOB
+#define TIMING_GPIO_Pin GPIO_PIN_15
+#define TIMING_GPIO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define BYTE_BUFLEN 1
 #define LINE_BUFLEN 1024
@@ -104,7 +109,7 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
-void LL_exec(struct collection *command);
+//void LL_exec(struct collection *command);
 
 /* USER CODE END Private defines */
 

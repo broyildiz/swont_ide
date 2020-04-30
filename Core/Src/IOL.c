@@ -6,6 +6,32 @@
  */
 #include "IOL.h"
 
+const unsigned char megaman[] = {
+    0B11111111, 0B11000111, 0B11111111, // ##########...###########
+    0B11111111, 0B00000011, 0B11111111, // ########......##########
+	0B11111110, 0B00001001, 0B11111111, // #######.....#..#########
+	0B11111100, 0B00000000, 0B11111111, // ######..........########
+	0B11111100, 0B00000000, 0B01111111, // ######...........#######
+	0B11111000, 0B00000000, 0B01111111, // #####............#######
+	0B11111000, 0B01111001, 0B01111111, // #####....####..#.#######
+	0B11111000, 0B11100101, 0B01111111, // #####...###..#.#.#######
+	0B11111100, 0B11100101, 0B01111111, // ######..###..#.#.#######
+	0B11111000, 0B11111111, 0B01111111, // #####...########.#######
+	0B11100010, 0B01000010, 0B00111111, // ###...#..#....#...######
+	0B11001111, 0B01111101, 0B10011111, // ##..####.#####.##..#####
+	0B11000101, 0B10000001, 0B00011111, // ##...#.##......#...#####
+	0B10000000, 0B11111000, 0B00001111, // #.......#####.......####
+	0B10000000, 0B11111100, 0B00001111, // #.......######......####
+	0B10000000, 0B11111000, 0B00001111, // #.......#####.......####
+	0B10000000, 0B00000000, 0B00001111, // #...................####
+	0B11000100, 0B00000001, 0B00011111, // ##...#.........#...#####
+	0B11111001, 0B00001100, 0B11111111, // #####..#....##..########
+	0B11110001, 0B10001110, 0B01111111, // ####...##...###..#######
+	0B11100000, 0B00100000, 0B00111111, // ###.......#.......######
+	0B10000000, 0B01110000, 0B00001111, // #........###........####
+	0B00000000, 0B01110000, 0B00000111, // .........###.........###
+	0B00000000, 0B01110000, 0B00000111  // .........###.........###
+};
 
 void IOL()
 {
@@ -37,7 +63,7 @@ void IOL()
 //	}
 //}
 
-void IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int x5,int y5, byte color)
+int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
 	  int a,b,c,d;
 	  int array_ox[4] = {x1,x2,x3,x4,x5};
@@ -96,7 +122,7 @@ void IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int 
 	  }
 }
 
-void IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
+int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 {
 	/*
 	* Bron: 	 	http://www.brackeen.com/vga/source/djgpp20/lines.c.html
@@ -112,6 +138,8 @@ void IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	  dyabs=abs(dy);
 	  sdx=sgn(dx);
 	  sdy=sgn(dy);
+//	  FL_DEBUG_FUNC("gekke string");
+
 	  if (dxabs>=dyabs) /* the line is more horizontal than vertical */
 	  {
 	    slope=(float)dy / (float)dx;
@@ -143,7 +171,7 @@ void IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	  }
 }
 
-void IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
+int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
 {
 	int i;
 	int j;
@@ -179,12 +207,12 @@ void IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, i
 	}
 }
 
-void IO_clearscreen(int color)
+int IO_clearscreen(int color)
 {
 	UB_VGA_FillScreen(color);
 }
 
-void drawCircle(int xc, int yc, int x, int y, byte color)
+int drawCircle(int xc, int yc, int x, int y, byte color)
 {
 	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
 	UB_VGA_SetPixel(xc+x, yc+y, color);
@@ -199,7 +227,7 @@ void drawCircle(int xc, int yc, int x, int y, byte color)
 
 // Function for circle-generation
 // using Bresenham's algorithm
-void IO_draw_circle(int xc, int yc, int radius, byte color)
+int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
 	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
     int x = 0, y = radius;
@@ -226,3 +254,80 @@ void IO_draw_circle(int xc, int yc, int radius, byte color)
 //        delay(50);
     }
 }
+
+
+int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
+{
+	//bron: http://www.brackeen.com/vga/bitmaps.html
+	const uint8_t *pbitmap;
+	uint8_t temp;
+	uint8_t bitmask;
+	uint8_t bit;
+	int color;
+	int img_width, img_height;
+	int x, y;
+
+	switch(bmpnr)
+	{
+		case SAD_SMILEY:
+
+			break;
+
+		case HAPPY_SMILEY:
+
+			break;
+
+		case ARROW_UP:
+
+			break;
+
+		case ARROW_RIGHT:
+
+			break;
+
+		case ARROW_DOWN:
+
+			break;
+
+		case ARROW_LEFT:
+
+			break;
+
+		case MEGAMAN:
+			pbitmap = megaman;
+			color = 60;//define?
+			img_width = 3; // define
+			img_height = MEGAMAN_HEIGHT;
+			break;
+
+
+		default: break;
+	}
+
+	for(y=0; y<img_height;y++)
+	  for(x=0; x<img_width;x++)
+	  {
+		 temp = *(pbitmap + (3*y) + x);// dit is een test
+
+		 bitmask = 128;// B1000 0000
+		 for(bit = 0; bit<8; bit++)
+		 {
+			if((temp & bitmask)!=0)
+			{
+			  UB_VGA_SetPixel(xlup + bit + (x*8), ylup,color);
+			}
+			bitmask = bitmask >> 1;
+		 }
+
+	  }
+
+}
+
+
+
+
+
+
+
+
+
