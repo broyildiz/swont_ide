@@ -226,3 +226,80 @@ void IO_draw_circle(int xc, int yc, int radius, byte color)
 //        delay(50);
     }
 }
+
+
+void IO_draw_bitmap(int xlup, int ylup, int bmpnr)
+{
+	//bron: http://www.brackeen.com/vga/bitmaps.html
+	const uint8_t *pbitmap;
+	uint8_t temp;
+	uint8_t bitmask;
+	uint8_t bit;
+	int color;
+	int img_width, img_height;
+	int x, y;
+
+	switch(bmpnr)
+	{
+		case SAD_SMILEY:
+
+			break;
+
+		case HAPPY_SMILEY:
+
+			break;
+
+		case ARROW_UP:
+
+			break;
+
+		case ARROW_RIGHT:
+
+			break;
+
+		case ARROW_DOWN:
+
+			break;
+
+		case ARROW_LEFT:
+
+			break;
+
+		case MEGAMAN:
+			pbitmap = megaman;
+			color = 60;//define?
+			img_width = 3; // define
+			img_height = MEGAMAN_HEIGHT;
+			break;
+
+
+		default: break;
+	}
+
+	for(y=0; y<img_height;y++)
+	  for(x=0; x<img_width;x++)
+	  {
+		 temp = *(pbitmap + (3*y) + x);// dit is een test
+
+		 bitmask = 128;// B1000 0000
+		 for(bit = 0; bit<8; bit++)
+		 {
+			if((temp & bitmask)!=0)
+			{
+			  UB_VGA_SetPixel(xlup + bit + (x*8), ylup,color);
+			}
+			bitmask = bitmask >> 1;
+		 }
+
+	  }
+
+}
+
+
+
+
+
+
+
+
+

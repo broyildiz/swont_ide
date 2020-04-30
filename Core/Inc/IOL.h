@@ -12,6 +12,7 @@ void screen(void);
 
 #include "stdlib.h"
 #include "main.h"
+#include "bitmaps.h"
 //#include "screen.c"
 //#include "images.h"
 
@@ -35,6 +36,19 @@ void IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int 
 
 void FillScreen(uint8_t color);
 void SetPixel(uint8_t xp, uint8_t yp, uint8_t color);
+
+
+enum FUNCTIONS
+{
+	SAD_SMILEY = 0,
+	HAPPY_SMILEY,
+	ARROW_UP,
+	ARROW_RIGHT,
+	ARROW_DOWN,
+	ARROW_LEFT,
+	MEGAMAN
+};
+
 
 //void initButton(void);
 //unsigned char buttonPressed(void);
