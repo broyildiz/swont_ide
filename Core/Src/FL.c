@@ -76,8 +76,10 @@ void FL_uart_decode()
 
 		default : FL_error_handler("Did not recognise function number, line 77");
 	}
-
 	LL_exec(&command);
+//	if(LL_exec(&command) == RET_ERROR) Error_Handler();
+//	char *p = LL_exec(&commands);
+//	Error_Handler(&p)
 
 }
 

@@ -133,6 +133,7 @@ int main(void)
 		  input.command_execute_flag = False;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 		  FL_uart_decode();
+//		  HAL_UART_Transmit(&huart2, msg, size0f(msg), HAL_MAX_DELAY);
 	  }
 
 	  //HELPHELP CHECK OF HET WERKT

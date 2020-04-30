@@ -34,9 +34,9 @@ void LL_exec(struct collection *commands)
 			error = IO_clearscreen(commands->clearscherm.kleur);
 			break;
 
-		case EXECUTE_FUNCTION_NO:
-			error = IO_execute(commands->execute.null);
-			break;
+//		case EXECUTE_FUNCTION_NO:
+//			error = IO_execute(commands->execute.null);
+//			break;
 
 		case FIGUUR_FUNCTION_NO:
 			error = IO_draw_figure(commands->figuur.x1,
@@ -52,10 +52,10 @@ void LL_exec(struct collection *commands)
 									commands->figuur.kleur);
 			break;
 
-		case HERHAAL_FUNCTION_NO :
-			error = IO_repeat_commands(commands->herhaal.aantal,
-										commands->herhaal.hoevaak);
-			break;
+//		case HERHAAL_FUNCTION_NO :
+//			error = IO_repeat_commands(commands->herhaal.aantal,
+//										commands->herhaal.hoevaak);
+//			break;
 
 		case LIJN_FUNCTION_NO :
 			error = IO_draw_line(commands->lijn.x1,
@@ -75,27 +75,27 @@ void LL_exec(struct collection *commands)
 									   commands->rechthoek.gevuld);
 			break;
 
-		case TEKST_FUNCTION_NO :
-			error = IO_draw_text(commands->tekst.xlup,
-								  commands->tekst.ylup,
-								  commands->tekst.kleur,
-								  commands->tekst.tekst,
-								  commands->tekst.fontnaam,
-								  commands->tekst.fontgrootte,
-								  commands->tekst.fontstijl);
-			break;
-
-		case TOREN_FUNCTION_NO:
-			error = IO_draw_tower(commands->toren.x1,
-								   commands->toren.y1,
-								   commands->toren.grootte,
-								   commands->toren.kleur1,
-								   commands->toren.kleur2);
-			break; //nieuw functie
-
-		case WACHT_FUNCTION_NO:
-			error = IO_wait(commands->wacht.msecs);
-			break;
+//		case TEKST_FUNCTION_NO :
+//			error = IO_draw_text(commands->tekst.xlup,
+//								  commands->tekst.ylup,
+//								  commands->tekst.kleur,
+//								  commands->tekst.tekst,
+//								  commands->tekst.fontnaam,
+//								  commands->tekst.fontgrootte,
+//								  commands->tekst.fontstijl);
+//			break;
+//
+//		case TOREN_FUNCTION_NO:
+//			error = IO_draw_tower(commands->toren.x1,
+//								   commands->toren.y1,
+//								   commands->toren.grootte,
+//								   commands->toren.kleur1,
+//								   commands->toren.kleur2);
+//			break; //nieuw functie
+//
+//		case WACHT_FUNCTION_NO:
+//			error = IO_wait(commands->wacht.msecs);
+//			break;
 
 		default: break;
 	}
