@@ -37,7 +37,7 @@ void IOL()
 //	}
 //}
 
-void IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int x5,int y5, byte color)
+int IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int x5,int y5, byte color)
 {
 	  int a,b,c,d;
 	  int array_ox[4] = {x1,x2,x3,x4,x5};
@@ -96,7 +96,7 @@ void IO_draw_figure(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int 
 	  }
 }
 
-void IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
+int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 {
 	/*
 	* Bron: 	 	http://www.brackeen.com/vga/source/djgpp20/lines.c.html
@@ -143,7 +143,7 @@ void IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	  }
 }
 
-void IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
+int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
 {
 	int i;
 	int j;
@@ -179,12 +179,12 @@ void IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, i
 	}
 }
 
-void IO_clearscreen(int color)
+int IO_clearscreen(int color)
 {
 	UB_VGA_FillScreen(color);
 }
 
-void drawCircle(int xc, int yc, int x, int y, byte color)
+int drawCircle(int xc, int yc, int x, int y, byte color)
 {
 	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
 	UB_VGA_SetPixel(xc+x, yc+y, color);
@@ -199,7 +199,7 @@ void drawCircle(int xc, int yc, int x, int y, byte color)
 
 // Function for circle-generation
 // using Bresenham's algorithm
-void IO_draw_circle(int xc, int yc, int radius, byte color)
+int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
 	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
     int x = 0, y = radius;
@@ -228,7 +228,7 @@ void IO_draw_circle(int xc, int yc, int radius, byte color)
 }
 
 
-void IO_draw_bitmap(int xlup, int ylup, int bmpnr)
+int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
 	//bron: http://www.brackeen.com/vga/bitmaps.html
 	const uint8_t *pbitmap;

@@ -19,8 +19,8 @@ void LL_exec(struct collection *commands)
 
 		case BITMAP_FUNCTION_NO:
 			error = IO_draw_bitmap(commands->bitmap.xlup,
-			 						commands->bitmap.ylup,
-									commands->bitmap.nr);
+			 					   commands->bitmap.ylup,
+								   commands->bitmap.nr);
 			break;
 
 		case CIRKEL_FUNCTION_NO:
