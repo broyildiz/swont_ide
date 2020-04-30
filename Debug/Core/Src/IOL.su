@@ -1,0 +1,7 @@
+IOL.c:10:6:IOL	8	static
+IOL.c:40:6:IO_draw_figure	144	static
+IOL.c:99:6:IO_draw_line	72	static
+IOL.c:146:6:IO_draw_rectangle	32	static
+IOL.c:182:6:IO_clearscreen	16	static
+IOL.c:187:6:drawCircle	24	static
+IOL.c:202:6:IO_draw_circle	48	static

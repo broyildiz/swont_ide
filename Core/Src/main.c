@@ -89,7 +89,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  unsigned char msg[] = {0x01};
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -121,6 +121,9 @@ int main(void)
   UB_VGA_SetPixel(319,0,0x00);
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
+  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
+
+  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,9 +132,29 @@ int main(void)
   {
 	  if(input.command_execute_flag == True)
 	  {
+		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
 		  input.command_execute_flag = False;
 //		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  FL_uart_decode();
+
+			for(int i = VGA_DISPLAY_X/4; i >= 0; i--)
+			{
+				IO_draw_circle((VGA_DISPLAY_X/2), (VGA_DISPLAY_Y/2), i, VGA_COL_RED);
+				IO_draw_circle((VGA_DISPLAY_X/2), (VGA_DISPLAY_Y/2), i+1, VGA_COL_BLACK);
+				HAL_Delay(10);
+			}
+			IO_clearscreen(VGA_COL_BLACK);
+
+		//	HAL_Delay(1000);
+			for(int i = 0; i <= VGA_DISPLAY_X/4; i++)
+			{
+				IO_draw_circle((VGA_DISPLAY_X/2), (VGA_DISPLAY_Y/2), i, VGA_COL_RED);
+				IO_draw_circle((VGA_DISPLAY_X/2), (VGA_DISPLAY_Y/2), i-1, VGA_COL_BLACK);
+				HAL_Delay(10);
+			}
+
+//		  FL_uart_decode();
+//		  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
+		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_SET);
 	  }
 
 	  //HELPHELP CHECK OF HET WERKT
