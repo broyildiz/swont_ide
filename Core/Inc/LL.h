@@ -10,19 +10,19 @@ void LL_exec(struct collection *commands);
 
 
 // dit kan weg als alle layers er zijn
-int API_draw_bitmap(uint16_t, uint16_t, int);
-int API_draw_circle(uint16_t, uint16_t, int, int);
-int API_clearscreen(int);
-int API_execute(int);
-int	API_draw_figure(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t,
-					uint16_t, uint16_t, uint16_t, uint16_t, uint16_t,
-					int);
-int	API_repeat_commands(int, int);
-int API_draw_line(uint16_t, uint16_t, uint16_t, uint16_t, int, int);
-int API_draw_rectangle(uint16_t, uint16_t, int, int, int, int);
-int API_draw_text(uint16_t, uint16_t, int, char*, int, int, int);
-int API_draw_tower(uint16_t, uint16_t, int, int, int);
-int API_wait(int);
+//int IO_draw_bitmap(uint16_t, uint16_t, int);
+//int IO_draw_circle(uint16_t, uint16_t, int, int);
+//int IO_clearscreen(int);
+//int IO_execute(int);
+//int	IO_draw_figure(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t,
+//					uint16_t, uint16_t, uint16_t, uint16_t, uint16_t,
+//					int);
+//int	IO_repeat_commands(int, int);
+//int IO_draw_line(uint16_t, uint16_t, uint16_t, uint16_t, int, int);
+//int IO_draw_rectangle(uint16_t, uint16_t, int, int, int, int);
+//int IO_draw_text(uint16_t, uint16_t, int, char*, int, int, int);
+//int IO_draw_tower(uint16_t, uint16_t, int, int, int);
+//int IO_wait(int);
 /************************************************************************/
 
 

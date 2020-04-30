@@ -18,28 +18,28 @@ void LL_exec(struct collection *commands)
 			 break; //nieuwe functie?
 
 		case BITMAP_FUNCTION_NO:
-			error = API_draw_bitmap(commands->bitmap.xlup,
+			error = IO_draw_bitmap(commands->bitmap.xlup,
 			 						commands->bitmap.ylup,
 									commands->bitmap.nr);
 			break;
 
 		case CIRKEL_FUNCTION_NO:
-			error = API_draw_circle(commands->cirkel.x,
+			error = IO_draw_circle(commands->cirkel.x,
 									commands->cirkel.y,
 									commands->cirkel.radius,
 									commands->cirkel.kleur);
 			break;
 
 		case CLEARSCHERM_FUNCTION_NO:
-			error = API_clearscreen(commands->clearscherm.kleur);
+			error = IO_clearscreen(commands->clearscherm.kleur);
 			break;
 
 		case EXECUTE_FUNCTION_NO:
-			error = API_execute(commands->execute.null);
+			error = IO_execute(commands->execute.null);
 			break;
 
 		case FIGUUR_FUNCTION_NO:
-			error = API_draw_figure(commands->figuur.x1,
+			error = IO_draw_figure(commands->figuur.x1,
 									commands->figuur.y1,
 									commands->figuur.x2,
 									commands->figuur.y2,
@@ -53,12 +53,12 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case HERHAAL_FUNCTION_NO :
-			error = API_repeat_commands(commands->herhaal.aantal,
+			error = IO_repeat_commands(commands->herhaal.aantal,
 										commands->herhaal.hoevaak);
 			break;
 
 		case LIJN_FUNCTION_NO :
-			error = API_draw_line(commands->lijn.x1,
+			error = IO_draw_line(commands->lijn.x1,
 								  commands->lijn.y1,
 								  commands->lijn.x2,
 								  commands->lijn.y2,
@@ -67,7 +67,7 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case RECHTHOEK_FUNCTION_NO :
-			error = API_draw_rectangle(commands->rechthoek.xlup,
+			error = IO_draw_rectangle(commands->rechthoek.xlup,
 									   commands->rechthoek.ylup,
 									   commands->rechthoek.breedte,
 									   commands->rechthoek.hoogte,
@@ -76,7 +76,7 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case TEKST_FUNCTION_NO :
-			error = API_draw_text(commands->tekst.xlup,
+			error = IO_draw_text(commands->tekst.xlup,
 								  commands->tekst.ylup,
 								  commands->tekst.kleur,
 								  commands->tekst.tekst,
@@ -86,7 +86,7 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case TOREN_FUNCTION_NO:
-			error = API_draw_tower(commands->toren.x1,
+			error = IO_draw_tower(commands->toren.x1,
 								   commands->toren.y1,
 								   commands->toren.grootte,
 								   commands->toren.kleur1,
@@ -94,7 +94,7 @@ void LL_exec(struct collection *commands)
 			break; //nieuw functie
 
 		case WACHT_FUNCTION_NO:
-			error = API_wait(commands->wacht.msecs);
+			error = IO_wait(commands->wacht.msecs);
 			break;
 
 		default: break;
