@@ -84,6 +84,8 @@ void Error_Handler(void);
 #define VGA_HSYNC_GPIO_Port GPIOB
 #define VGA_VSYNC_Pin GPIO_PIN_12
 #define VGA_VSYNC_GPIO_Port GPIOB
+#define TIMING_GPIO_Pin GPIO_PIN_15
+#define TIMING_GPIO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define BYTE_BUFLEN 1
 #define LINE_BUFLEN 1024
