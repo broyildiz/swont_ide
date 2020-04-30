@@ -164,6 +164,7 @@ typedef struct
 {
 	uint16_t xlup;
 	uint16_t ylup;
+	int kleur;
 	char tekst[MAX_LEN_TEKST_STRING];
 	int fontnaam;
 	int fontgrootte;
@@ -201,6 +202,11 @@ struct collection
 	tekst_func tekst;
 	toren_func toren;
 	wacht_func wacht;
-}command;
+}command; //dit is een global?
+
+//void LL_exec(struct collection *commands);
+
+
+
 
 #endif /* INC_FL_H_ */
