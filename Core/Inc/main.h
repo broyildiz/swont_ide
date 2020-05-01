@@ -109,6 +109,9 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
+void Error_Tx(char *pErrorMessage);
+void Debug_Tx(char *pDebugMessage);
+
 //void LL_exec(struct collection *command);
 
 /* USER CODE END Private defines */

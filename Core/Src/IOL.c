@@ -323,11 +323,3 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 }
 
-
-
-
-
-
-
-
-

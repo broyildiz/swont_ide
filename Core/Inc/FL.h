@@ -13,9 +13,9 @@
 void FL_uart_decode(void);
 int FL_find_decode_nr();
 void FL_find_args(int function_number, int num_args,  int len_function_name);
-void FL_convert_args(char arg_array[], int num_chars, int num_args, int stored_args, int argcounter);
+void FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
-void FL_error_handler(char *pErrorString);
+//void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
 
@@ -47,7 +47,8 @@ void FL_error_handler(char *pErrorString);
 #define WACHT_FUNCTION_NO 		11
 
 #define MAX_NUM_RGS				10
-#define MAX_ARG_LEN				10
+#define MAX_ARG_LEN				128 // was eerst 10
+//#define MAX_TEXT_LEN			64
 #define BITMAP_ARGS				3
 #define CIRKEL_ARGS 			4
 #define CLEARSCHERM_ARGS 		1
@@ -166,7 +167,7 @@ typedef struct
 	uint16_t ylup;
 	int kleur;
 	char tekst[MAX_LEN_TEKST_STRING];
-	int fontnaam;
+	char *fontnaam;
 	int fontgrootte;
 	int fontstijl;
 
