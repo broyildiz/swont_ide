@@ -1,5 +1,5 @@
 #include "LL.h"
-
+#include "string.h"
 /**
   * @brief  Determines which API function should be called based on input.
   * 		Calls error handler in case of error.
@@ -11,19 +11,28 @@
 void LL_exec(struct collection *commands)
 {
 	int error;
+
+//	char msg[] = "kom ik hier?\n";
+//	Error_Tx(msg);
+
+	printf("Entering LL_exec command switch\n");
+
 	switch(commands->function_number)
 	{
 
 		case FUNCTION_NO_RESET:
-			 break; //nieuwe functie?
+			printf("case reset\n");
+			break; //nieuwe functie?
 
 		case BITMAP_FUNCTION_NO:
+			printf("case bitmap\n");
 			error = IO_draw_bitmap(commands->bitmap.xlup,
 			 					   commands->bitmap.ylup,
 								   commands->bitmap.nr);
 			break;
 
 		case CIRKEL_FUNCTION_NO:
+			printf("case circle\n");
 			error = IO_draw_circle(commands->cirkel.x,
 									commands->cirkel.y,
 									commands->cirkel.radius,
@@ -31,6 +40,7 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case CLEARSCHERM_FUNCTION_NO:
+			printf("case clearscreen\n");
 			error = IO_clearscreen(commands->clearscherm.kleur);
 			break;
 
@@ -39,6 +49,7 @@ void LL_exec(struct collection *commands)
 //			break;
 
 		case FIGUUR_FUNCTION_NO:
+			printf("case figure\n");
 			error = IO_draw_figure(commands->figuur.x1,
 									commands->figuur.y1,
 									commands->figuur.x2,
@@ -58,6 +69,7 @@ void LL_exec(struct collection *commands)
 //			break;
 
 		case LIJN_FUNCTION_NO :
+			printf("case line\n");
 			error = IO_draw_line(commands->lijn.x1,
 								  commands->lijn.y1,
 								  commands->lijn.x2,
@@ -67,6 +79,7 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case RECHTHOEK_FUNCTION_NO :
+			printf("case rectangle\n");
 			error = IO_draw_rectangle(commands->rechthoek.xlup,
 									   commands->rechthoek.ylup,
 									   commands->rechthoek.breedte,
@@ -76,13 +89,14 @@ void LL_exec(struct collection *commands)
 			break;
 
 		case TEKST_FUNCTION_NO :
-//			error = IO_draw_text(commands->tekst.xlup,
-//								  commands->tekst.ylup,
-//								  commands->tekst.kleur,
-//								  commands->tekst.tekst,
-//								  commands->tekst.fontnaam,
-//								  commands->tekst.fontgrootte,
-//								  commands->tekst.fontstijl);
+			printf("case text\n");
+			error = IO_draw_text(commands->tekst.xlup,
+								  commands->tekst.ylup,
+								  commands->tekst.kleur,
+								  commands->tekst.tekst,
+								  commands->tekst.fontnaam,
+								  commands->tekst.fontgrootte,
+								  commands->tekst.fontstijl);
 			break;
 //
 //		case TOREN_FUNCTION_NO:

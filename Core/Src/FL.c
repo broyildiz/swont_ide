@@ -17,13 +17,15 @@ void FL_uart_decode()
 {
 	int function_number = FL_find_decode_nr(); // Get the function number
 	if(function_number == FUNCTION_NO_RESET) // If no function is recognized
-		Error_Tx("Did not recognise function number, line 34");
+		Error_Tx("Did not recognise function number, line 34\n");
 
 	command.function_number = function_number; // Store the function number in the struct
 
 	/*
 	 * This switch passes the right arguments to the FL_find_args function based on the function number
 	 */
+//	Debug_Tx("functie:%d",function_number);
+	printf("function = %d\n",function_number);
 	switch(function_number)
 	{
 		case BITMAP_FUNCTION_NO: FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN);
@@ -56,14 +58,14 @@ void FL_uart_decode()
 		case WACHT_FUNCTION_NO: FL_find_args(function_number, WACHT_ARGS, WACHT_FUNCTION_NAME_LEN);
 		break;
 
-		default : Error_Tx("Did not recognise function number, line 77");
+		default : Error_Tx("Did not recognise function number, line 77\n");
 	}
 
 	/*
 	 * Let the Logic Layer know that it can start to execute the command
 	 * It should not be called if there was an error in the previous switch case
 	 */
-	Error_Tx("hmm");
+	Error_Tx("Before calling LL_exec\n");
 	LL_exec(&command);
 
 }

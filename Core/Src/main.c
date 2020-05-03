@@ -86,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  unsigned char msg[] = {0x01};
+  uint8_t msg[] = "Starting VGA...\n";
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -120,7 +120,8 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
 
-  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
+//  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/3, VGA_COL_BLACK);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -188,17 +189,19 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Error_Tx(char *pErrorMessage)
+void Error_Tx(uint8_t  *pErrorMessage)
 {
-	HAL_UART_Transmit(&huart2, pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+//	HAL_UART_Transmit(&huart2, pErrorMessage, 20, HAL_MAX_DELAY);
 }
 
-void Debug_Tx(char *pDebugMessage)
+void Debug_Tx(uint8_t *pDebugMessage)
 {
 	/*
 	 * ifdef DEBUG
 	 * uart TX
 	 */
+	HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 /* USER CODE END 4 */
 

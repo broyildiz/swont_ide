@@ -10,9 +10,8 @@
 
 void screen(void);
 
-#include "stdlib.h"
 #include "main.h"
-#include "bitmaps.h"
+
 //#include "screen.c"
 //#include "images.h"
 
@@ -34,9 +33,9 @@ int IO_draw_circle(int xc, int yc, int radius, byte color);
 int drawCircle(int xc, int yc, int x, int y, byte color);
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color);
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr);
+int IO_draw_text(uint16_t x, uint16_t y, int color, char* text, char *font, int font_size, int font_style);
 
 int FillScreen(uint8_t color);
-
 
 
 enum BITMAPS
@@ -50,6 +49,19 @@ enum BITMAPS
 	MEGAMAN
 };
 
+#define ARIAL         0
+#define ARIAL_NORMAL  0
+#define ARIAL_BOLD    1
+#define ARIAL_ITALIC  2
+
+#define CONSOLAS  		 1
+#define CONSOLAS_NORMAL  0
+#define CONSOLAS_BOLD  	 1
+#define CONSOLAS_ITALIC  2
+
+#define LARGE_FONT	2
+#define SMALL_FONT  1
+#define ASCII_OFFSET 32
 
 //void initButton(void);
 //unsigned char buttonPressed(void);

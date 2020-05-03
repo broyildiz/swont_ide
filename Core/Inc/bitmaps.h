@@ -8,6 +8,15 @@
 #ifndef INC_BITMAPS_H_
 #define INC_BITMAPS_H_
 
+#include "main.h"
+
+
+
+extern const unsigned char megaman[];
+extern const unsigned char megaman_2[];
+#define MEGAMAN_WIDTH  21
+#define MEGAMAN_HEIGHT  24
+
 /**
  * Made with Marlin Bitmap Converter
  * https://marlinfw.org/tools/u8glib/converter.html
@@ -17,8 +26,7 @@
 
 #pragma once
 
-#define MEGAMAN_WIDTH  21
-#define MEGAMAN_HEIGHT  24
+
 
 
 
