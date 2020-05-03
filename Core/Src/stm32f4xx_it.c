@@ -253,7 +253,6 @@ void USART2_IRQHandler(void)
   // Get the recieved character from the USART2 Data Register
   char uart_char = USART2->DR;
 
-
   //This way we ignore the '\n' character
   if(uart_char != LINE_FEED)
   {
@@ -261,17 +260,29 @@ void USART2_IRQHandler(void)
 	 if(uart_char == CARRIAGE_RETURN)
 	 {
 		input.command_execute_flag = True;
+
 		// Store the message length for processing
-		input.msglen = input.char_counter;
+		rb[rb_vars.write_counter].msglen = input.char_counter;
+
+		//Increment to the next space in the rb so that the next command can be stored
+		rb_vars.write_counter++;
+
+		//Increment the amount of elements stored in the ring buffer
+		rb_vars.buffer_lengt++;
+
 		// Reset the counter for the next line
 		input.char_counter = 0;
+
 		//Gently exit interrupt
 	 }
 	 else
 	 {
 		input.command_execute_flag = False;
-		input.line_rx_buffer[input.char_counter] = uart_char;
-//		container[temp++] = uart_char;
+
+		//Store the received char in the right buffer in the ring buffer
+		rb[rb_vars.write_counter].line_rx_buffer[input.char_counter] = uart_char;
+
+		// Could also be worked into the previous command as a post increment
 		input.char_counter++;
 	 }
   }

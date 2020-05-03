@@ -37,8 +37,8 @@ extern "C" {
 #include "stdlib.h"
 
 #include "FL.h"
-#include "LL.h"
-#include "IOL.h"
+//#include "LL.h"
+//#include "IOL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -88,29 +88,55 @@ void Error_Handler(void);
 #define TIMING_GPIO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define BYTE_BUFLEN 1
-#define LINE_BUFLEN 1024
+#define LINE_BUFLEN 128
 #define CARRIAGE_RETURN 13 // carriage return char \r
 #define LINE_FEED 		10 // linefeed char \n
 
 #define False 	0x00
 #define True 	0xFF
 
+#define RING_BUFFER_SIZE 32
+
+// Struct to group together the USART2 IRQ variables
 typedef struct
 {
 	uint8_t byte_buffer_rx[BYTE_BUFLEN];	// Store the rx byte from the USART2
-	uint8_t line_rx_buffer[LINE_BUFLEN];	// Buffer to hold all the bytes from rx USART2
-	int msglen;
 	volatile int char_counter;				// Counter for line_rx_buffer
 	char command_execute_flag;				/* Set = whole function is received, ready for processing \
 											   Reset = still receiving*/
 }input_vars;
 input_vars input;
 
+
+
+// Struct that groups the ring buffer indexes, counters, variables
+typedef struct
+{
+	volatile unsigned int write_counter; 	// Keeps track of position to write into the rb (ring buffer) Used in it.c
+	unsigned int read_counter;				// Keeps track of newest element written into the rb. Used throughout the FL
+	volatile unsigned int buffer_lengt;		// Keeps track of the number of stored commands
+}rb_t;
+rb_t rb_vars;
+
+
+
+// Struct to make the ringbuffer out of
+struct input_t
+{
+	uint8_t line_rx_buffer[LINE_BUFLEN];	// Buffer to hold all the bytes from rx USART2
+	uint16_t msglen;
+};
+typedef struct input_t rx_cmd;
+rx_cmd rb[RING_BUFFER_SIZE];
+
 volatile char container[1024];
 volatile int temp;
 
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
+
+int global_debug = False;
+void global_debug_check();
 
 //void LL_exec(struct collection *command);
 

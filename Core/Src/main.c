@@ -86,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  unsigned char msg[] = {0x01};
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -97,18 +97,8 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   // Reset line_rx buffer
-  int i;
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
 
-  for(i = 0; i < 1024; i++)
-	  container[i] = 0;
-  temp = 0;
-
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = False;
+  FL_Init();
 
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -118,9 +108,15 @@ int main(void)
   UB_VGA_SetPixel(319,0,0x00);
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
-  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
 
-  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
+
+
+//  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
+
+//  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
+   int diff = 0;
+   int diffContainer[30] = {0};
+   int tmp = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,14 +125,43 @@ int main(void)
   {
 	  if(input.command_execute_flag == True)
 	  {
-		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
-		  input.command_execute_flag = False;
-		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  FL_uart_decode();
+		global_debug_check();
+		Debug_Tx("Going to decode, main.c line 123\n");
+
+		diff = rb_vars.write_counter - rb_vars.read_counter;
+		diffContainer[tmp++] = diff;
+//		Error_Tx("Write counter:\t"); Error_Tx((char)rb_vars.write_counter);Error_Tx("\n");
+//		Error_Tx("Read counter:\t"); Error_Tx((char)rb_vars.read_counter);Error_Tx("\n");
+//		Error_Tx("Diff:\t"); Error_Tx((char)diff);Error_Tx("\n");
+
+		if(diff != 1)
+		{
+			Debug_Tx("Diff != 0\n");
+			Debug_Tx("Entering the while loop...\n");
+			while(rb_vars.read_counter < diff)
+			{
+				Debug_Tx("Going to Decode...\n");
+				FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+				Debug_Tx("Done decoding, back in main.c\n");
+				rb_vars.read_counter++;
+			}
+		}
+		else {
+			Debug_Tx("Diff == 1\n");
+			Debug_Tx("Going to Decode...\n");
+			FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+			rb_vars.read_counter++;
+			Debug_Tx("Done decoding, back in main.c\n");
+		}
+		Debug_Tx("Resetting the execute flag\n");
+		input.command_execute_flag = False;
+
+		UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
+//		  FL_uart_decode();
 //		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
 	  }
 
-	  //HELPHELP CHECK OF HET WERKT
+
 
     /* USER CODE END WHILE */
 
@@ -190,15 +215,23 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void Error_Tx(char *pErrorMessage)
 {
-	HAL_UART_Transmit(&huart2, pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+//	unsigned char hmm[128];
+//	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
 void Debug_Tx(char *pDebugMessage)
 {
-	/*
-	 * ifdef DEBUG
-	 * uart TX
-	 */
+	if(global_debug)
+		HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+}
+
+void global_debug_check()
+{
+	if(	(rb[rb_vars.read_counter].line_rx_buffer[0] == 'g') &&
+		(rb[rb_vars.read_counter].line_rx_buffer[1] == 'l') &&
+		(rb[rb_vars.read_counter].line_rx_buffer[2] == 'o'))
+		global_debug = !global_debug;
 }
 /* USER CODE END 4 */
 
