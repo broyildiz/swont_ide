@@ -168,10 +168,10 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 	//The Text function needs to be decoded differently
 	if(function_number != TEKST_FUNCTION_NO)
 	{
-
+		Debug_Tx("It is not the text function\n");
 		while(i <= msglen)
 		{
-			Debug_Tx("It is not the text function\n");
+
 			if(line_rx_buffer[i] == ',')
 			{
 
@@ -272,6 +272,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
   */
 void FL_convert_args(char arg_array[], int argcounter)
 {
+	Debug_Tx("Entered the FL_convert_args function\n");
 	switch(command.function_number)
 	{
 		case BITMAP_FUNCTION_NO:
@@ -393,7 +394,7 @@ void FL_convert_args(char arg_array[], int argcounter)
 		default : Error_Tx("Did not recognise function number, line 312");
 	}
 
-
+	Debug_Tx("Exiting the FL_convert_args function\n");
 //	int i;
 //	for(i = 0; i < num_chars; i++)
 //		container[temp++] = arg_array[i];

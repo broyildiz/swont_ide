@@ -115,8 +115,9 @@ int main(void)
 
 //  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
    int diff = 0;
-   int diffContainer[30] = {0};
-   int tmp = 0;
+//   int diffContainer[30] = {0};
+//   int tmp = 0;
+   global_debug = False;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,7 +130,7 @@ int main(void)
 		Debug_Tx("Going to decode, main.c line 123\n");
 
 		diff = rb_vars.write_counter - rb_vars.read_counter;
-		diffContainer[tmp++] = diff;
+//		diffContainer[tmp++]pDebugMessage = diff;
 //		Error_Tx("Write counter:\t"); Error_Tx((char)rb_vars.write_counter);Error_Tx("\n");
 //		Error_Tx("Read counter:\t"); Error_Tx((char)rb_vars.read_counter);Error_Tx("\n");
 //		Error_Tx("Diff:\t"); Error_Tx((char)diff);Error_Tx("\n");
@@ -223,7 +224,7 @@ void Error_Tx(char *pErrorMessage)
 void Debug_Tx(char *pDebugMessage)
 {
 	if(global_debug)
-		HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+		HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 
 void global_debug_check()
@@ -231,7 +232,10 @@ void global_debug_check()
 	if(	(rb[rb_vars.read_counter].line_rx_buffer[0] == 'g') &&
 		(rb[rb_vars.read_counter].line_rx_buffer[1] == 'l') &&
 		(rb[rb_vars.read_counter].line_rx_buffer[2] == 'o'))
+	{
 		global_debug = !global_debug;
+		Debug_Tx("Toggling Debugging\n");
+	}
 }
 /* USER CODE END 4 */
 

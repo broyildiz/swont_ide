@@ -35,7 +35,7 @@ extern "C" {
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
-
+#include "string.h"
 #include "FL.h"
 //#include "LL.h"
 //#include "IOL.h"
@@ -129,13 +129,13 @@ struct input_t
 typedef struct input_t rx_cmd;
 rx_cmd rb[RING_BUFFER_SIZE];
 
-volatile char container[1024];
-volatile int temp;
+char container[1024];
+int temp;
 
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
 
-int global_debug = False;
+int global_debug;
 void global_debug_check();
 
 //void LL_exec(struct collection *command);
