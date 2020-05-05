@@ -2,6 +2,10 @@
 
 
 
+
+
+#include "consolas_fonts.h"
+
 /*
 **  Font data for Consolas normal, italic and bold in both small and large size
 */

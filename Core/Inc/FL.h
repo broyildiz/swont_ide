@@ -18,6 +18,7 @@ uint8_t FL_find_color(char color[]);
 //void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
+#define MAX_LEN_FONTNAME 30
 
 #define LETTERB 'b'
 #define LETTERC 'c'
@@ -167,7 +168,7 @@ typedef struct
 	uint16_t ylup;
 	int kleur;
 	char tekst[MAX_LEN_TEKST_STRING];
-	char *fontnaam;
+	char fontnaam[MAX_LEN_FONTNAME];
 	int fontgrootte;
 	int fontstijl;
 

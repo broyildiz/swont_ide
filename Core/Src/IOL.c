@@ -309,7 +309,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 
 
-int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
+int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, int font_size, int font_style)
 {
 
 	const uint8_t *pfont;
@@ -348,7 +348,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 						{
 							pfont = arial_11ptBitmaps;
 							pdescript = arial_11ptDescriptors;
-							symbol_height = ARIAL_11_HEIGHT;
+							symbol_height = ARIAL_LARGE_HEIGHT;
 						}
 						break;
 					case ARIAL_BOLD:
