@@ -63,6 +63,12 @@ enum BITMAPS
 #define SMALL_FONT  1
 #define ASCII_OFFSET 32
 
+#define BYTE_SIZE 8
+#define BITMASK 128
+#define ARRAY_DIMENSION 2
+#define CHAR_START_OFFSET 1
+
+
 //void initButton(void);
 //unsigned char buttonPressed(void);
 

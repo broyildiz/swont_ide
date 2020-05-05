@@ -1636,7 +1636,7 @@ const uint8_t arial_11ptBitmaps[] =
 };
 
 // Character descriptors for Arial 11pt
-// { [Char width in bits], [Offset into arial_11ptCharBitmaps in bytes] } [95][2]
+// { [Char width in bits], [Offset into arial_11ptCharBitmaps in bytes] }
 const uint16_t arial_11ptDescriptors[95][2] =
 {
 	{2, 0}, 		//
@@ -1736,15 +1736,7 @@ const uint16_t arial_11ptDescriptors[95][2] =
 	{8, 1695}, 		// ~
 };
 
-//// Font information for Arial 11pt
-//const uint8_t arial_11ptFontInfo =
-//{
-//	2, //  Character height
-//	' ', //  Start character
-//	'~', //  End character
-//	arial_11ptDescriptors, //  Character descriptor array
-//	arial_11ptBitmaps, //  Character bitmap array
-//};
+
 
 
 

@@ -428,12 +428,12 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 		{
 
 			symbol_nr = (*(text+i)) - ASCII_OFFSET;//determines which symbol from the font library should be selected
-			symbol_width_pixels = *(pdescript + symbol_nr*2); // retrieves the symbol width
-			symbol_start = *(pdescript + symbol_nr*2+1); // retrieves the starting elecment in the font bitmap
+			symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); // retrieves the symbol width
+			symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); // retrieves the starting elecment in the font bitmap
 
 
-			symbol_width =  symbol_width_pixels/8;//defines vervangen 8
-			if (symbol_width_pixels % 8 != 0) //voor het aantal bytes
+			symbol_width =  symbol_width_pixels/BYTE_SIZE;//defines vervangen 8
+			if (symbol_width_pixels % BYTE_SIZE != 0) //voor het aantal bytes
 				symbol_width++;
 
 //			printf("text = %d, \n", *(text+i));
@@ -466,8 +466,8 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 //						printf("pfont = %d \t",symbol_start + y + x);
 //					}
 
-					bitmask = 0x80;// B1000 0000
-					for(bit = 0; bit<8; bit++) //check per byte
+					bitmask = BITMASK ;// B1000 0000
+					for(bit = 0; bit<BYTE_SIZE; bit++) //check per byte
 					{
 
 						if((temp & bitmask)!=0)
@@ -483,7 +483,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 
 
 
-							UB_VGA_SetPixel(xlup + bit + x*8 , ylup + y, 255);
+							UB_VGA_SetPixel(xlup + bit + x*BYTE_SIZE , ylup + y, 255);
 
 
 
@@ -523,6 +523,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 
 
 		printf("finished text \n");
+		return 0;
 }
 
 

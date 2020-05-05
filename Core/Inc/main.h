@@ -44,6 +44,7 @@ extern "C" {
 
 #include "bitmaps.h"
 #include "arial_fonts.h"
+#include "consolas_fonts.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
