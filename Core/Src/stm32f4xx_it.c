@@ -261,11 +261,11 @@ void USART2_IRQHandler(void)
 	 if(uart_char == CARRIAGE_RETURN)
 	 {
 		input.command_execute_flag = True;
-		// Store the message lenght for processing
+		// Store the message length for processing
 		input.msglen = input.char_counter;
 		// Reset the counter for the next line
 		input.char_counter = 0;
-		//Gently exit intterupt
+		//Gently exit interrupt
 	 }
 	 else
 	 {

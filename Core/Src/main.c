@@ -134,7 +134,7 @@ int main(void)
 		  input.command_execute_flag = False;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 		  FL_uart_decode();
-//		  HAL_UART_Transmit(&huart2, msg, size0f(msg), HAL_MAX_DELAY);
+//		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
 	  }
 
 	  //HELPHELP CHECK OF HET WERKT
@@ -189,7 +189,18 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void Error_Tx(char *pErrorMessage)
+{
+	HAL_UART_Transmit(&huart2, pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+}
 
+void Debug_Tx(char *pDebugMessage)
+{
+	/*
+	 * ifdef DEBUG
+	 * uart TX
+	 */
+}
 /* USER CODE END 4 */
 
 /**

@@ -275,6 +275,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 }
 
+<<<<<<< HEAD
 void IOL_error_handler(char *pErrorString)
 {
 	while(1);
@@ -286,3 +287,5 @@ void IOL_error_handler(char *pErrorString)
 
 
 
+=======
+>>>>>>> master

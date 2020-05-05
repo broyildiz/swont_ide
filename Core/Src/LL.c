@@ -75,7 +75,7 @@ void LL_exec(struct collection *commands)
 									   commands->rechthoek.gevuld);
 			break;
 
-//		case TEKST_FUNCTION_NO :
+		case TEKST_FUNCTION_NO :
 //			error = IO_draw_text(commands->tekst.xlup,
 //								  commands->tekst.ylup,
 //								  commands->tekst.kleur,
@@ -83,7 +83,7 @@ void LL_exec(struct collection *commands)
 //								  commands->tekst.fontnaam,
 //								  commands->tekst.fontgrootte,
 //								  commands->tekst.fontstijl);
-//			break;
+			break;
 //
 //		case TOREN_FUNCTION_NO:
 //			error = IO_draw_tower(commands->toren.x1,
