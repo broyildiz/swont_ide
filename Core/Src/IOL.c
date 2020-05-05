@@ -4,6 +4,18 @@
  *  Created on: 26 apr. 2020
  *      Author: kelly
  */
+/**
+  ******************************************************************************
+  * @file           : IOL.c
+  * @brief          : I/O Layer
+  ******************************************************************************
+  * @attention
+  *
+  *
+  ******************************************************************************
+  */
+/* Private includes ----------------------------------------------------
+ */
 #include "IOL.h"
 
 const unsigned char megaman[] = {
@@ -45,84 +57,21 @@ void IOL()
 	}
 }
 
-//void IO_bitmap(int nr, int x, int y)
-//{
-//
-//	switch (nr)
-//	​{
-//	    case 0:
-//	      // statements
-//	      break;
-//
-//	    case 1:
-//	      // statements
-//	      break;
-//
-//	    default:
-//	      // default statements
-//	}
-//}
-
+/**
+  * @brief  This function is for drawing a figure
+  * @retval None
+  */
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
-	  int a,b,c,d;
-	  int array_ox[4] = {x1,x2,x3,x4,x5};
-	  int array_oy[4] = {y1,y2,y3,y4,y5};
-	  int array_nx[3] = {x2,x3,x4,x5};
-	  int array_ny[3] = {y2,y3,y4,y5};
-	  int dx,dy,sdx,sdy,px,py,dxabs,dyabs,i,j;
-	  float slope;
-	  for(a = 0; a<4; a++)
-	  {
-		  for(b = 0; b<4; b++)
-		  {
-			  for(c = 0; c<3; c++)
-			  {
-				  for(d = 0; d<3; d++)
-				  {
-
-	  dx=array_nx[c]-array_ox[a];      /* the horizontal distance of the line */
-	  dy=array_ny[d]-array_oy[b];      /* the vertical distance of the line */
-	  dxabs=abs(dx);
-	  dyabs=abs(dy);
-	  sdx=sgn(dx);
-	  sdy=sgn(dy);
-	  if (dxabs>=dyabs) /* the line is more horizontal than vertical */
-	  {
-	    slope=(float)dy / (float)dx;
-
-	    for(i=0;i!=dx;i+=sdx)
-	    {
-	    	px=i+array_ox[a];
-	    	py=slope*i+array_oy[b];
-	    	for(j = px; j<px; j++)
-	    	{
-	    		UB_VGA_SetPixel(j,py,color);
-	    	}
-	      UB_VGA_SetPixel(px,py,color);
-	    }
-	  }
-	  else /* the line is more vertical than horizontal */
-	  {
-	    slope=(float)dx / (float)dy;
-	    for(i=0;i!=dy;i+=sdy)
-			{
-			  px=slope*i+array_ox[a];
-			  py=i+array_oy[b];
-			  for(j = py; j<py; j++)
-			  {
-				  UB_VGA_SetPixel(px,j,color);
-			  }
-	      UB_VGA_SetPixel(px,py,color);
-	    }
-	  }
-}
-			  }
-		  }
-	  }
+	int thickness = 1;
+	IO_draw_line(x1, y1, x2, y2, color, thickness);
+	IO_draw_line(x2, y2, x3, y3, color, thickness);
+	IO_draw_line(x3, y3, x4, y4, color, thickness);
+	IO_draw_line(x4, y4, x5, y5, color, thickness);
+	IO_draw_line(x5, y5, x1, y1, color, thickness);
 }
 
-int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
+int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color, int thickness)
 {
 	/*
 	* Bron: 	 	http://www.brackeen.com/vga/source/djgpp20/lines.c.html
@@ -171,7 +120,7 @@ int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	  }
 }
 
-int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
+int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int color, int filled)
 {
 	int i;
 	int j;
@@ -189,6 +138,7 @@ int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, in
 
 	if(filled == 0)
 	{
+
 		for(i = y_lup; i<y_lup+height+1; i++)
 		{
 			if(i == y_lup || i == y_lup +height)
@@ -210,6 +160,8 @@ int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, in
 int IO_clearscreen(int color)
 {
 	UB_VGA_FillScreen(color);
+
+	IOL_error_handler("Did not recognise function number, line 34");
 }
 
 int drawCircle(int xc, int yc, int x, int y, byte color)
@@ -323,7 +275,10 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 }
 
-
+void IOL_error_handler(char *pErrorString)
+{
+	while(1);
+}
 
 
 

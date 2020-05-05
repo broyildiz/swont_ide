@@ -120,7 +120,8 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
 
-  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
+  //IO_draw_rectangle(50, 50, 60, 100, VGA_COL_RED,1);
+  IO_draw_figure(100,10, 200,10, 250,50, 150,150, 50,50, VGA_COL_RED);
   /* USER CODE END 2 */
 
   /* Infinite loop */
