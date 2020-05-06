@@ -147,11 +147,11 @@ int main(void)
 			 */
 			while(rb_vars.read_counter <= rb_vars.write_counter-1)
 			{
-				printf("Going to makeup the difference\n");
-				printf("Line to be decoded:\n");
-				printf("\t");
+				Debug_Tx("Going to makeup the difference\n");
+				Debug_Tx("Line to be decoded:\n");
+				Debug_Tx("\t");
 				Debug_String_tx(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
-				printf("\n\n");
+				Debug_Tx("\n\n");
 
 				Debug_Tx("Going to Decode...\n");
 
@@ -162,7 +162,7 @@ int main(void)
 				Debug_Tx("Done decoding, back in main.c\n");
 				rb_vars.read_counter++;
 			}
-			printf("\n\nMade up the difference\n\n");
+			Debug_Tx("\n\nMade up the difference\n\n");
 			// There are no more functions to be decoded
 			waitCheck = False;
 
@@ -242,7 +242,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void Error_Tx(char  *pErrorMessage)
 {
-//	unsigned char hmm[128];
 //	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }

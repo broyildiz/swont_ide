@@ -49,7 +49,7 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 	if(function_number == FUNCTION_NO_RESET) // If no function is recognized
 	{
 		error = FL_INVALID_FUNCTION_NO;
-		Error_Tx("Did not recognize function number, line 52");
+		Debug_Tx("Did not recognize function number, line 52\n");
 		return error;
 
 	}
@@ -104,13 +104,13 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 
 		default : {
 			error = FL_SWITCH_INVALID_FUNCTION_NO;
-			Error_Tx("Did not recognize function number, line 77");
+			Debug_Tx("Did not recognize function number, line 107\n");
 			return error;
 		}
 	}
 
 	if(error) {
-		Error_Tx("One of the FL_find_args functions threw an error!");
+		Debug_Tx("One of the FL_find_args functions threw an error, line 113!\n");
 		return error;
 	}
 
@@ -135,60 +135,60 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 int FL_decode_func_no(uint8_t buffer[])
 {
 	if(buffer[0] == LETTERB) {
-		Error_Tx("\n\t BITMAP_FUNCTION\n\n");
+		Debug_Tx("\n\t BITMAP_FUNCTION\n\n");
 		return BITMAP_FUNCTION_NO;}
 
 	if(buffer[0] == LETTERC)
 	{
 		if(buffer[1] == LETTERL) {
-			Error_Tx("\n\t CLEARSCHERM_FUNCTION\n\n");
+			Debug_Tx("\n\t CLEARSCHERM_FUNCTION\n\n");
 			return CLEARSCHERM_FUNCTION_NO;
 		}
 		else {
-			Error_Tx("\n\t CIRKEL_FUNCTION\n\n");
+			Debug_Tx("\n\t CIRKEL_FUNCTION\n\n");
 			return CIRKEL_FUNCTION_NO;
 		}
 	}
 
 	if(buffer[0] == LETTERE) {
-		Error_Tx("\n\t EXECUTE_FUNCTION\n\n");
+		Debug_Tx("\n\t EXECUTE_FUNCTION\n\n");
 		return EXECUTE_FUNCTION_NO;
 	}
 
 	if(buffer[0] == LETTERF) {
-		Error_Tx("\n\t FIGUUR_FUNCTION\n\n");
+		Debug_Tx("\n\t FIGUUR_FUNCTION\n\n");
 		return FIGUUR_FUNCTION_NO;
 	}
 
 	if(buffer[0] == LETTERH) {
-		Error_Tx("\n\t HERHAAL_FUNCTION\n\n");
+		Debug_Tx("\n\t HERHAAL_FUNCTION\n\n");
 		return HERHAAL_FUNCTION_NO;
 	}
 
 	if(buffer[0] == LETTERL) {
-		Error_Tx("\n\t LIJN_FUNCTION\n\n");
+		Debug_Tx("\n\t LIJN_FUNCTION\n\n");
 		return LIJN_FUNCTION_NO;
 	}
 
 	if(buffer[0] == LETTERR) {
-		Error_Tx("\n\t RECHTHOEK_FUNCTION\n\n");
+		Debug_Tx("\n\t RECHTHOEK_FUNCTION\n\n");
 		return RECHTHOEK_FUNCTION_NO;
 	}
 
 	if(buffer[0] == LETTERT)
 	{
 		if(buffer[1] == LETTERE) {
-			Error_Tx("\n\t TEKST_FUNCTION\n\n");
+			Debug_Tx("\n\t TEKST_FUNCTION\n\n");
 			return TEKST_FUNCTION_NO;
 		}
 		else {
-			Error_Tx("\n\t TOREN_FUNCTION\n\n");
+			Debug_Tx("\n\t TOREN_FUNCTION\n\n");
 			return TOREN_FUNCTION_NO;
 		}
 	}
 
 	if(buffer[0] == LETTERW) {
-		Error_Tx("\n\t WACHT_FUNCTION\n\n");
+		Debug_Tx("\n\t WACHT_FUNCTION\n\n");
 		return WACHT_FUNCTION_NO;
 	}
 
@@ -487,7 +487,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 4: strcpy(command.tekst.tekst, arg_array); break;
 			case 5: strcpy(command.tekst.fontnaam, arg_array); break;
 			case 6: command.tekst.fontgrootte = atoi(arg_array); break;
-			case 7: command.tekst.fontstijl = atoi(arg_array); break;
+			case 7: command.tekst.fontstijl = FL_find_font_style(arg_array); break;
 			}
 		}break;
 		case TOREN_FUNCTION_NO:
@@ -566,6 +566,13 @@ uint8_t FL_find_color(char color[])
 	}
 
 return ret_val;
+}
+
+int FL_find_font_style(char arg_array[])
+{
+	if(arg_array[0] == LETTERN) return NORMAL;
+	if(arg_array[1] == LETTERC) return NORMAL;
+	if(arg_array[2] == LETTERV) return NORMAL;
 }
 
 

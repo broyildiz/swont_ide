@@ -15,6 +15,7 @@ int FL_decode_func_no(uint8_t buffer[]);
 int FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen);
 int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
+int FL_find_font_style(char arg_array[]);
 //void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
@@ -30,8 +31,10 @@ uint8_t FL_find_color(char color[]);
 #define LETTERI 'i'
 #define LETTERL 'l'
 #define LETTERM 'm'
+#define LETTERN 'n'
 #define LETTERR 'r'
 #define LETTERT 't'
+#define LETTERV 'v'
 #define LETTERW 'w'
 #define LETTERZ 'z'
 
@@ -82,6 +85,8 @@ uint8_t FL_find_color(char color[]);
 #define	VGA_COL_LITE_GREEN 0x05
 #define	VGA_COL_LITE_MAGENTA 0x06
 #define	VGA_COL_LITE_RED 0x07
+
+#define CONSOLAS_ITALIC
 
 //#define	VGA_COL_GREEN
 //#define	VGA_COL_CYAAN

@@ -40,7 +40,7 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr);
 int IO_repeat_commands(int aantal, int hoevaak);
 int IO_draw_text(uint16_t x, uint16_t y, int color, char* text, char *font, int font_size, int font_style);
-
+int IO_wait(int msecs);
 int FillScreen(uint8_t color);
 
 
@@ -54,6 +54,10 @@ enum BITMAPS
 	ARROW_LEFT,
 	MEGAMAN
 };
+#define NORMAL 0
+#define ITALIC 1
+#define BOLD 2
+
 
 #define ARIAL         0
 #define ARIAL_NORMAL  0

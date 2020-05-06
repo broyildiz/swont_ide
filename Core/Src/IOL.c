@@ -228,6 +228,12 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
     return error;
 }
 
+int IO_wait(int msecs)
+{
+	HAL_Delay(msecs);
+	return NO_ERROR;
+}
+
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
 	//bron: http://www.brackeen.com/vga/bitmaps.html
