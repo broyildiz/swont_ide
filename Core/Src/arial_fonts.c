@@ -1162,7 +1162,7 @@ const uint8_t arial_8ptBitmaps[] =
 
 /* Character descriptors for Arial 8pt */
 /* { [Char width in bits], [Offset into arial_8ptCharBitmaps in bytes] } */
-const uint16_t arial_8ptDescriptors[] =
+const uint16_t arial_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{1, 10}, 		/* ! */
@@ -2603,7 +2603,7 @@ const uint8_t arial_italic_8ptBitmaps[] =
 
 /* Character descriptors for Arial 8pt italic */
 /* { [Char width in bits], [Offset into arial_italic_8ptCharBitmaps in bytes] } */
-const uint16_t arial_italic_8ptDescriptors[] =
+const uint16_t arial_italic_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{3, 12}, 		/* ! */
@@ -3949,7 +3949,7 @@ const uint8_t arial_bold_8ptBitmaps[] =
 
 /* Character descriptors for Arial 8pt bold */
 /* { [Char width in bits], [Offset into arial_bold_8ptCharBitmaps in bytes] } */
-const uint16_t arial_bold_8ptDescriptors[] =
+const uint16_t arial_bold_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{2, 11}, 		/* ! */
@@ -5680,7 +5680,7 @@ const uint8_t arial_11ptBitmaps[] =
 
 /* Character descriptors for Arial 11pt */
 /* { [Char width in bits], [Offset into arial_11ptCharBitmaps in bytes] } */
-const uint16_t arial_11ptDescriptors[] =
+const uint16_t arial_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{1, 15}, 		/* ! */
@@ -7407,7 +7407,7 @@ const uint8_t arial_italic_11ptBitmaps[] =
 
 /* Character descriptors for Arial 11pt italic */
 /* { [Char width in bits], [Offset into arial_italic_11ptCharBitmaps in bytes] } */
-const uint16_t arial_italic_11ptDescriptors[] =
+const uint16_t arial_italic_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{3, 15}, 		/* ! */
@@ -9228,7 +9228,7 @@ const uint8_t arial_bold_11ptBitmaps[] =
 
 /* Character descriptors for Arial 11pt bold*/
 /* { [Char width in bits], [Offset into arial_bold_11ptBitmaps in bytes] } */
-const uint16_t arial_bold_11ptDescriptors[] =
+const uint16_t arial_bold_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 {
 	{2, 0}, 		/*   */
 	{2, 16}, 		/* ! */

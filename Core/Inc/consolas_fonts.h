@@ -9,6 +9,9 @@
 #define INC_CONSOLAS_FONTS_H_
 #include "main.h"
 
+#define NR_OF_ELEMENTS 2
+#define NR_OF_SYMBOLS 95
+
 /* Small consolas fonts */
 
 #define CONSOLAS_SMALL_HEIGHT 11
@@ -19,9 +22,9 @@ extern const uint8_t consolas_8ptBitmaps[];
 extern const uint8_t consolas_italic_8ptBitmaps[];
 extern const uint8_t consolas_bold_8ptBitmaps[];
 
-extern const uint16_t consolas_8ptDescriptors[];
-extern const uint16_t consolas_italic_8ptDescriptors[];
-extern const uint16_t consolas_bold_8ptDescriptors[];
+extern const uint16_t consolas_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t consolas_italic_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t consolas_bold_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 
 
 /* Large consolas fonts */
@@ -34,9 +37,9 @@ extern const uint8_t consolas_11ptBitmaps[];
 extern const uint8_t consolas_italic_11ptBitmaps[];
 extern const uint8_t consolas_bold_11ptBitmaps[];
 
-extern const uint16_t consolas_11ptDescriptors[];
-extern const uint16_t consolas_italic_11ptDescriptors[];
-extern const uint16_t consolas_bold_11ptDescriptors[];
+extern const uint16_t consolas_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t consolas_italic_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t consolas_bold_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 
 
 

@@ -89,15 +89,13 @@ int LL_exec(struct collection *command)
 	case TEKST_FUNCTION_NO :
 	{
 		Debug_Tx("case text\n");
-		/*
 		error = IO_draw_text(command->tekst.xlup,
-							  command->tekst.ylup,
-							  command->tekst.kleur,
-							  command->tekst.tekst,
-							  command->tekst.fontnaam,
-							  command->tekst.fontgrootte,
-							  command->tekst.fontstijl);
-		*/
+							 command->tekst.ylup,
+							 command->tekst.kleur,
+							 command->tekst.tekst,
+							 command->tekst.fontnaam,
+							 command->tekst.fontgrootte,
+							 command->tekst.fontstijl);
 	}break;
 //
 //		case TOREN_FUNCTION_NO:

@@ -15,6 +15,9 @@
 
 //extern const uint16_t arial_11ptDescriptors[95][2];
 
+#define NR_OF_ELEMENTS 2
+#define NR_OF_SYMBOLS 95
+
 /* Small arial fonts */
 
 #define ARIAL_SMALL_HEIGHT		  10
@@ -25,9 +28,9 @@ extern const uint8_t arial_8ptBitmaps[];
 extern const uint8_t arial_italic_8ptBitmaps[];
 extern const uint8_t arial_bold_8ptBitmaps[];
 
-extern const uint16_t arial_8ptDescriptors[];
-extern const uint16_t arial_italic_8ptDescriptors[];
-extern const uint16_t arial_bold_8ptDescriptors[];
+extern const uint16_t arial_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t arial_italic_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t arial_bold_8ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 
 /* Large arial fonts */
 
@@ -39,9 +42,9 @@ extern const uint8_t arial_11ptBitmaps[];
 extern const uint8_t arial_italic_11ptBitmaps[];
 extern const uint8_t arial_bold_11ptBitmaps[];
 
-extern const uint16_t arial_11ptDescriptors[];
-extern const uint16_t arial_italic_11ptDescriptors[];
-extern const uint16_t arial_bold_11ptDescriptors[];
+extern const uint16_t arial_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t arial_italic_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
+extern const uint16_t arial_bold_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 
 
 
