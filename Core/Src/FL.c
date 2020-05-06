@@ -553,7 +553,7 @@ uint8_t FL_find_color(char color[])
 		case LETTERG: ret_val = VGA_COL_LITE_GREEN; break;
 		case LETTERM: ret_val = VGA_COL_LITE_MAGENTA; break;
 		case LETTERR: ret_val = VGA_COL_LITE_RED; break;
-		default: ret_val = VGA_COL_BLACK;
+//		default: ret_val = VGA_COL_BLACK;
 		}
 	}break;
 
@@ -562,7 +562,7 @@ uint8_t FL_find_color(char color[])
 	case LETTERW: ret_val = VGA_COL_WHITE; break;
 	case LETTERZ: ret_val = VGA_COL_BLACK; break;
 
-	default: ret_val = VGA_COL_BLACK;
+//	default: ret_val = VGA_COL_BLACK;
 	}
 
 return ret_val;
@@ -571,8 +571,8 @@ return ret_val;
 int FL_find_font_style(char arg_array[])
 {
 	if(arg_array[0] == LETTERN) return NORMAL;
-	if(arg_array[1] == LETTERC) return NORMAL;
-	if(arg_array[2] == LETTERV) return NORMAL;
+	if(arg_array[1] == LETTERC) return ITALIC;
+	if(arg_array[2] == LETTERV) return BOLD;
 }
 
 

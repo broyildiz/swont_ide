@@ -159,6 +159,7 @@ int main(void)
 				if(error) Global_Error_handler(error);
 
 				memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
+				memset(&command, 0, sizeof(command));
 				Debug_Tx("Done decoding, back in main.c\n");
 				rb_vars.read_counter++;
 			}
@@ -175,6 +176,7 @@ int main(void)
 			if(error) Global_Error_handler(error);
 
 			memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
+			memset(&command, 0, sizeof(command));
 			rb_vars.read_counter++;
 			Debug_Tx("Done decoding, back in main.c\n");
 

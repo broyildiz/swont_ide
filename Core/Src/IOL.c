@@ -323,6 +323,25 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
+//	printf("In the text function:\n\n");
+//	printf("Xlup:\t%d\n", xlup);
+//	printf("Ylup:\t%d\n", ylup);
+//	printf("Color:\t%d\n", color);
+//	for(int i = 0; i < strlen(text); i++)
+//	{
+//		printf("Text:\t");
+//		printf("%c",text[i]);
+//		printf("\n");
+//	}
+//	for(int i = 0; i < strlen(font); i++)
+//	{
+//		printf("Font:\t");
+//		printf("%c",font[i]);
+//		printf("\n");
+//	}
+//	printf("Font Size:\t%d\n", font_size);
+//	printf("Font Style:\t%d\n", font_style);
+
 
 	const uint8_t  *pfont;
 	const uint16_t *pdescript;
