@@ -19,7 +19,7 @@ extern const uint8_t consolas_8ptBitmaps[];
 extern const uint8_t consolas_italic_8ptBitmaps[];
 extern const uint8_t consolas_bold_8ptBitmaps[];
 
-extern const uint16_t consolas_8ptDescriptors[];
+extern const uint16_t consolas_8ptDescriptors[95][2];
 extern const uint16_t consolas_italic_8ptDescriptors[];
 extern const uint16_t consolas_bold_8ptDescriptors[];
 
@@ -34,7 +34,7 @@ extern const uint8_t consolas_11ptBitmaps[];
 extern const uint8_t consolas_italic_11ptBitmaps[];
 extern const uint8_t consolas_bold_11ptBitmaps[];
 
-extern const uint16_t consolas_11ptDescriptors[];
+extern const uint16_t consolas_11ptDescriptors[95][2];
 extern const uint16_t consolas_italic_11ptDescriptors[];
 extern const uint16_t consolas_bold_11ptDescriptors[];
 
