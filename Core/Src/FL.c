@@ -32,9 +32,10 @@ void FL_Init()
 
 
 /**
-  * @brief  Decodes the received USART2 buffer.
-  * @param  None
-  * @retval None
+  * @brief  Decodes the received buffer.
+  * @param  The buffer containing the message
+  * @param 	The ammounf of characters in the buffer
+  * @retval Error value
   */
 int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 {
@@ -42,80 +43,93 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 	strcpy(container, line_rx_buffer);
 	Debug_Tx(container); Debug_Tx("\n");
 
+	int error = NO_ERROR;
+
 	int function_number = FL_decode_func_no(line_rx_buffer); // Get the function number
 	if(function_number == FUNCTION_NO_RESET) // If no function is recognized
-		Debug_Tx("Did not recognize function number, line 45");
+	{
+		error = FL_INVALID_FUNCTION_NO;
+		Error_Tx("Did not recognize function number, line 52");
+		return error;
+
+	}
 
 	Debug_Tx("Found and storing function number\n");
 	command.function_number = function_number; // Store the function number in the struct
 
 	Debug_Tx("Entering the function number switch case\n");
-	/*
-	 * This switch passes the right arguments to the FL_find_args function based on the function number
-	 */
-//	Debug_Tx("functie:%d",function_number);
+
+	//This switch passes the right arguments to the FL_find_args function based on the function number
 	printf("function = %d\n",function_number);
 	switch(function_number)
 	{
-		case BITMAP_FUNCTION_NO: FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN,
+		case BITMAP_FUNCTION_NO: error = FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case CLEARSCHERM_FUNCTION_NO: FL_find_args(function_number, CLEARSCHERM_ARGS, CLEARSCHERM_FUNCTION_NAME_LEN,
+		case CLEARSCHERM_FUNCTION_NO: error = FL_find_args(function_number, CLEARSCHERM_ARGS, CLEARSCHERM_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case CIRKEL_FUNCTION_NO: FL_find_args(function_number, CIRKEL_ARGS, CIRKEL_FUNCTION_NAME_LEN,
+		case CIRKEL_FUNCTION_NO: error = FL_find_args(function_number, CIRKEL_ARGS, CIRKEL_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
 		case EXECUTE_FUNCTION_NO: //special case: no args, so directly execute
 		break;
 
-		case FIGUUR_FUNCTION_NO: FL_find_args(function_number, FIGUUR_ARGS, FIGUUR_FUNCTION_NAME_LEN,
+		case FIGUUR_FUNCTION_NO: error = FL_find_args(function_number, FIGUUR_ARGS, FIGUUR_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case HERHAAL_FUNCTION_NO: FL_find_args(function_number, HERHAAL_ARGS, HERHAAL_FUNCTION_NAME_LEN,
+		case HERHAAL_FUNCTION_NO: error = FL_find_args(function_number, HERHAAL_ARGS, HERHAAL_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case LIJN_FUNCTION_NO: FL_find_args(function_number, LIJN_ARGS, LIJN_FUNCTION_NAME_LEN,
+		case LIJN_FUNCTION_NO: error = FL_find_args(function_number, LIJN_ARGS, LIJN_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case RECHTHOEK_FUNCTION_NO: FL_find_args(function_number, RECHTHOEK_ARGS, RECHTHOEK_FUNCTION_NAME_LEN,
+		case RECHTHOEK_FUNCTION_NO: error = FL_find_args(function_number, RECHTHOEK_ARGS, RECHTHOEK_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case TEKST_FUNCTION_NO: FL_find_args(function_number, TEKST_ARGS, TEKST_FUNCTION_NAME_LEN,
+		case TEKST_FUNCTION_NO: error = FL_find_args(function_number, TEKST_ARGS, TEKST_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		case WACHT_FUNCTION_NO: FL_find_args(function_number, WACHT_ARGS, WACHT_FUNCTION_NAME_LEN,
+		case WACHT_FUNCTION_NO: error = FL_find_args(function_number, WACHT_ARGS, WACHT_FUNCTION_NAME_LEN,
 												line_rx_buffer, msglen);
 		break;
 
-		default : Error_Tx("Did not recognize function number, line 77");
+		default : {
+			error = FL_SWITCH_INVALID_FUNCTION_NO;
+			Error_Tx("Did not recognize function number, line 77");
+			return error;
+		}
 	}
 
+	if(error) {
+		Error_Tx("One of the FL_find_args functions threw an error!");
+		return error;
+	}
+
+	Debug_Tx("Back in the FL_uart_decode function\n");
+	Debug_Tx("Going into Logic layer\n");
 	/*
 	 * Let the Logic Layer know that it can start to execute the command
 	 * It should not be called if there was an error in the previous switch case
 	 */
-	Debug_Tx("Back in the FL_uart_decode function\n");
-
-	Debug_Tx("Going into Logic layer\n");
-	LL_exec(&command);
+	error = LL_exec(&command);
 
 	Debug_Tx("Back in the FL_uart_decode function\n");
 	Debug_Tx("Exiting FL_uart_decode\n");
-	return 0;
+	return error;
 }
 
 /**
   * @brief  Finds the function number based on the name of the function
-  * @param  None
+  * @param  The array containing the function name in text
   * @retval Function number
   */
 int FL_decode_func_no(uint8_t buffer[])
@@ -184,17 +198,16 @@ int FL_decode_func_no(uint8_t buffer[])
 
 /**
   * @brief  Finds the arguments of the function by looping through the buffer and storing and converting the characters
-  * @param  Function number
-  * 			The function numbers are defined/enumerated in FL.h
+  * @param  The function numbers are defined/enumerated in FL.h
+  *
   * @param	Number of funcion arguments
-  * @param 	Number of characters in the function name
-  * 			This determines the starting point of the parser
+  * @param 	Number of characters in the function name. This determines the starting point of the parser
   * @retval None
   */
-void FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen)
+int FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen)
 {
 	Debug_Tx("Entered the FL_find_args function\n");
-
+	int error = NO_ERROR;
 	/*
 	 * Keep track of how many arguments are found.
 	 * If num_args_counter exceeds num_args throw an error
@@ -228,7 +241,11 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 					Debug_Tx("The argument:\t");
 					Debug_Tx(string_container);
 					Debug_Tx("\n");
-					FL_convert_args(string_container, ++argcounter);
+					error = FL_convert_args(string_container, ++argcounter);
+					if(error){
+						Error_Tx("There was a problem while converting the arguments\n");
+						return error;
+					}
 					num_args_counter++;
 					Debug_Tx("Done with the converting, back in the FL_find_args function\n");
 					// reset string container
@@ -245,7 +262,13 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 			else
 			{
 				if(line_rx_buffer[i] == ',')
+				{
 					Debug_Tx("Argument not filled, line 150");
+					Error_Tx("The argument is not filled");
+					error = FL_EMPTY_ARGUMENT;
+					return error;
+				}
+
 				else
 				{
 					string_container[arg_character_counter++] = line_rx_buffer[i++];
@@ -254,11 +277,21 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 		}
 		Debug_Tx("The last argument to be processed:\t");
 		Debug_Tx(string_container);Debug_Tx("\n");
-		FL_convert_args(string_container, ++argcounter);
-		num_args_counter++;
-		if(num_args_counter > num_args) Error_Tx("Too many arguments");
-		Debug_Tx("Done with converting, exiting FL_find_args\n");
 
+		error = FL_convert_args(string_container, ++argcounter);
+		if(error){
+			Error_Tx("There was a problem while converting the arguments\n");
+			return error;
+		}
+
+		num_args_counter++;
+		if(num_args_counter > num_args) {
+			Error_Tx("Too many arguments");
+			error = FL_TOO_MANY_ARGS;
+			return error;
+		}
+		Debug_Tx("Done with converting, exiting FL_find_args\n");
+		return error;
 
 	}
 
@@ -278,9 +311,13 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 					Debug_Tx("The argument:\t");
 					Debug_Tx(string_container);
 					Debug_Tx("\n");
-//					if(stored_args == 4)
-//						string_container[++arg_character_counter] = ',';
-					FL_convert_args(string_container, ++argcounter);
+					error = FL_convert_args(string_container, ++argcounter);
+					if(error)
+					{
+						Error_Tx("There was a problem while converting the arguments\n");
+						return error;
+					}
+
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 					arg_character_counter = 0;
@@ -293,7 +330,13 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 
 			if(stored_args == 4)
 			{
-				if(line_rx_buffer[i] == ',') Debug_Tx("Argument not filled, line 191");
+				if(line_rx_buffer[i] == ',')
+				{
+					Debug_Tx("Argument not filled, line 335");
+					Error_Tx("The argument is not filled");
+					error = FL_EMPTY_ARGUMENT;
+					return error;
+				}
 				else string_container[arg_character_counter++] = line_rx_buffer[i++];
 
 			}
@@ -302,7 +345,13 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 				if(line_rx_buffer[i] == ' ') i++;
 				else
 				{
-					if(line_rx_buffer[i] == ',') Debug_Tx("Argument not filled, line 150");
+					if(line_rx_buffer[i] == ',')
+					{
+						Debug_Tx("Argument not filled, line 150");
+						Error_Tx("The argument is not filled");
+						error = FL_EMPTY_ARGUMENT;
+						return error;
+					}
 					else string_container[arg_character_counter++] = line_rx_buffer[i++];
 				}
 			}
@@ -310,8 +359,21 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 		}
 		Debug_Tx("The last argument to be processed:\t");
 		Debug_Tx(string_container);Debug_Tx("\n");
-		FL_convert_args(string_container, ++argcounter);
+		error = FL_convert_args(string_container, ++argcounter);
+		if(error){
+			Error_Tx("There was a problem while converting the arguments\n");
+			return error;
+		}
 		Debug_Tx("Done with converting, exiting FL_find_args\n");
+		num_args_counter++;
+		if(num_args_counter > num_args) {
+			Error_Tx("Too many arguments");
+			error = FL_TOO_MANY_ARGS;
+			return error;
+		}
+		Debug_Tx("Done with converting, exiting FL_find_args\n");
+		return error;
+
 	}
 }
 
@@ -321,8 +383,9 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
   * @param	Counter that keeps track of which argument of the function is to be processed
   * @retval None
   */
-void FL_convert_args(char arg_array[], int argcounter)
+int FL_convert_args(char arg_array[], int argcounter)
 {
+	int error = NO_ERROR;
 	Debug_Tx("Entered the FL_convert_args function\n");
 	switch(command.function_number)
 	{
@@ -420,7 +483,7 @@ void FL_convert_args(char arg_array[], int argcounter)
 			{
 			case 1: command.tekst.xlup = atoi(arg_array); break;
 			case 2: command.tekst.ylup = atoi(arg_array); break;
-			case 3: command.tekst.kleur = atoi(arg_array); break;
+			case 3: command.tekst.kleur = FL_find_color(arg_array); break;
 			case 4: strcpy(command.tekst.tekst, arg_array); break;
 			case 5: strcpy(command.tekst.fontnaam, arg_array); break;
 			case 6: command.tekst.fontgrootte = atoi(arg_array); break;
@@ -442,15 +505,17 @@ void FL_convert_args(char arg_array[], int argcounter)
 
 		case WACHT_FUNCTION_NO: command.wacht.msecs = atoi(arg_array); break;
 
-		default : Error_Tx("Did not recognise function number, line 312");
+		default : {
+			Error_Tx("Did not recognize function number, line 312");
+			error = FL_CONVERT_ARGS_INVALID_FUNCTION_NO;
+			return error;
+		}
 	}
 
 	Debug_Tx("Exiting the FL_convert_args function\n");
-//	int i;
-//	for(i = 0; i < num_chars; i++)
-//		container[temp++] = arg_array[i];
-//
+	return error;
 }
+
 /**
   * @brief  Determines the color from a string passed to it
   * 		If the string is "white" this returns 0xFF

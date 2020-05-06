@@ -12,8 +12,8 @@
 void FL_Init();
 int FL_uart_decode(uint8_t line_rx_buffer[], int msglen);
 int FL_decode_func_no(uint8_t buffer[]);
-void FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen);
-void FL_convert_args(char arg_array[], int argcounter);
+int FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen);
+int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
 //void FL_error_handler(char *pErrorString);
 

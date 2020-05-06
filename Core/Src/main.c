@@ -86,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  uint8_t msg[] = "Starting VGA...\n";
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -110,7 +110,8 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   int diff = 0;
-   global_debug = False;
+  global_debug = False;
+  int error = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,9 +131,9 @@ int main(void)
 
 		diff = rb_vars.write_counter - rb_vars.read_counter;
 
-		printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
-		printf("read_counter:\t%d\n", rb_vars.read_counter);
-		printf("diff:\t%d\n\n", diff);
+//		printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
+//		printf("read_counter:\t%d\n", rb_vars.read_counter);
+//		printf("diff:\t%d\n\n", diff);
 
 		// There are functions that were buffered and need to be processed
 		if(diff != 1)
@@ -153,10 +154,12 @@ int main(void)
 				printf("\n\n");
 
 				Debug_Tx("Going to Decode...\n");
-				FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+
+				error = FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+				if(error) Global_Error_handler(error);
+
 				memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
 				Debug_Tx("Done decoding, back in main.c\n");
-				printf("Done decoding\n");
 				rb_vars.read_counter++;
 			}
 			printf("\n\nMade up the difference\n\n");
@@ -167,23 +170,25 @@ int main(void)
 		else {
 			Debug_Tx("Diff == 1\n");
 			Debug_Tx("Going to Decode...\n");
-			FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+
+			error = FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+			if(error) Global_Error_handler(error);
+
 			memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
 			rb_vars.read_counter++;
 			Debug_Tx("Done decoding, back in main.c\n");
-			printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
-			printf("read_counter:\t%d\n", rb_vars.read_counter);
-			printf("diff:\t%d\n\n", diff);
+
+//			printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
+//			printf("read_counter:\t%d\n", rb_vars.read_counter);
+//			printf("diff:\t%d\n\n", diff);
 		}
 		Debug_Tx("Resetting the execute flag\n");
 		input.command_execute_flag = False;
 
 
 		UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-//		  FL_uart_decode();
+
 	  }
-
-
 
     /* USER CODE END WHILE */
 
@@ -240,6 +245,23 @@ void Error_Tx(char  *pErrorMessage)
 //	unsigned char hmm[128];
 //	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+}
+
+void Global_Error_handler(int error)
+{
+	printf("\n\nENCOUNTERRED AN ERROR!\n");
+	switch(error)
+	{
+	case FL_INIT_ERROR: 					printf("\nERROR:\tFL_INIT_ERROR\n"); break;
+	case FL_INVALID_FUNCTION_NO: 			printf("\nERROR:\tFL_INVALID_FUNCTION_NO\n");  break;
+	case FL_SWITCH_INVALID_FUNCTION_NO: 	printf("\nERROR:\tFL_SWITCH_INVALID_FUNCTION_NO\n");  break;
+	case FL_INVALID_ARGUMENTS: 				printf("\nERROR:\tFL_INVALID_ARGUMENTS\n");  break;
+	case FL_TOO_MANY_ARGS: 					printf("\nERROR:\tFL_TOO_MANY_ARGS\n");  break;
+	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
+	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
+	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
+	default: 								printf("\nERROR:\tNo Error\n"); break;
+	}
 }
 
 void Debug_Tx(char *pDebugMessage)
