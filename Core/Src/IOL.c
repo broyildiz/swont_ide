@@ -201,10 +201,10 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
 	//bron: http://www.brackeen.com/vga/bitmaps.html
 	const uint8_t *pbitmap;
-	uint8_t temp;
-	uint8_t bitmask;
-	uint8_t bit;
-	int color;
+//	uint8_t temp;
+//	uint8_t bitmask;
+//	uint8_t bit;
+//	int color;
 	int img_width, img_height;
 	int x, y;
 
@@ -287,13 +287,13 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
 
-	const uint8_t *pfont;
+	const uint8_t  *pfont;
 	const uint16_t *pdescript;
 	uint8_t font_temp;
 	uint8_t temp;
 	uint8_t bitmask;
 	uint8_t bit;
-	uint16_t symbol_width, symbol_width_pixels, symbol_height;
+	uint16_t symbol_width = 0, symbol_width_pixels, symbol_height;
 	int x, y;
 	int i = 0;
 	uint16_t symbol_nr; // used for searching the descriptor
@@ -319,7 +319,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	 *
 	 */
 
-	printf("");
+
 
 	while((isalpha(*(font+i)) == False) && (i != MAX_LEN_FONTNAME)) /* determines where the first letter in the buffer is*/
 	{
@@ -354,13 +354,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 					if (font_size == SMALL_FONT)
 					{
 						pfont         = arial_8ptBitmaps;		/* font bitmap pointer */
-						pdescript 	  = arial_8ptDescriptors; 	/* font descriptor pointer */
+						pdescript 	  = arial_8ptDescriptors[0]; 	/* font descriptor pointer */
 						symbol_height = ARIAL_SMALL_HEIGHT; 	/* font height in pixels */
 					}
 					else if(font_size == LARGE_FONT)
 					{
 						pfont         = arial_11ptBitmaps;	   	/* font bitmap pointer */
-						pdescript 	  = arial_11ptDescriptors; 	/* font descriptor pointer */
+						pdescript 	  = arial_11ptDescriptors[0]; 	/* font descriptor pointer */
 						symbol_height = ARIAL_LARGE_HEIGHT;    	/* font height in pixels */
 					}
 					break;
@@ -369,13 +369,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 					if (font_size == SMALL_FONT)
 					{
 						pfont         = arial_italic_8ptBitmaps;	 /* font bitmap pointer */
-						pdescript 	  = arial_italic_8ptDescriptors; /* font descriptor pointer */
+						pdescript 	  = arial_italic_8ptDescriptors[0]; /* font descriptor pointer */
 						symbol_height = ARIAL_SMALL_ITALIC_HEIGHT;   /* font height in pixels */
 					}
 					else if(font_size == LARGE_FONT)
 					{
 						pfont         = arial_italic_11ptBitmaps;	  /* font bitmap pointer */
-						pdescript 	  = arial_italic_11ptDescriptors; /* font descriptor pointer */
+						pdescript 	  = arial_italic_11ptDescriptors[0]; /* font descriptor pointer */
 						symbol_height = ARIAL_LARGE_ITALIC_HEIGHT;    /* font height in pixels */
 					}
 					break;
@@ -384,13 +384,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 					if (font_size == SMALL_FONT)
 					{
 						pfont         = arial_bold_8ptBitmaps;	   	/* font bitmap pointer */
-						pdescript 	  = arial_bold_8ptDescriptors; 	/* font descriptor pointer */
+						pdescript 	  = arial_bold_8ptDescriptors[0]; 	/* font descriptor pointer */
 						symbol_height = ARIAL_SMALL_BOLD_HEIGHT; 	/* font height in pixels */
 					}
 					else if(font_size == LARGE_FONT)
 					{
 						pfont         = arial_bold_11ptBitmaps;		/* font bitmap pointer */
-						pdescript 	  = arial_bold_11ptDescriptors; /* font descriptor pointer */
+						pdescript 	  = arial_bold_11ptDescriptors[0]; /* font descriptor pointer */
 						symbol_height = ARIAL_LARGE_BOLD_HEIGHT; 	/* font height in pixels */
 					}
 					break;
@@ -407,13 +407,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 				if (font_size == SMALL_FONT)
 				{
 					pfont         = consolas_8ptBitmaps;		/* font bitmap pointer */
-					pdescript 	  = consolas_8ptDescriptors; 	/* font descriptor pointer */
+					pdescript 	  = consolas_8ptDescriptors[0]; 	/* font descriptor pointer */
 					symbol_height = CONSOLAS_SMALL_HEIGHT; 	/* font height in pixels */
 				}
 				else if(font_size == LARGE_FONT)
 				{
 					pfont         = consolas_11ptBitmaps;	   	/* font bitmap pointer */
-					pdescript 	  = consolas_11ptDescriptors; 	/* font descriptor pointer */
+					pdescript 	  = consolas_11ptDescriptors[0]; 	/* font descriptor pointer */
 					symbol_height = CONSOLAS_LARGE_HEIGHT;    	/* font height in pixels */
 				}
 				break;
@@ -422,13 +422,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 				if (font_size == SMALL_FONT)
 				{
 					pfont         = consolas_italic_8ptBitmaps;	 /* font bitmap pointer */
-					pdescript 	  = consolas_italic_8ptDescriptors; /* font descriptor pointer */
+					pdescript 	  = consolas_italic_8ptDescriptors[0]; /* font descriptor pointer */
 					symbol_height = CONSOLAS_SMALL_ITALIC_HEIGHT;   /* font height in pixels */
 				}
 				else if(font_size == LARGE_FONT)
 				{
 					pfont         = consolas_italic_11ptBitmaps;	  /* font bitmap pointer */
-					pdescript 	  = consolas_italic_11ptDescriptors; /* font descriptor pointer */
+					pdescript 	  = consolas_italic_11ptDescriptors[0]; /* font descriptor pointer */
 					symbol_height = CONSOLAS_LARGE_ITALIC_HEIGHT;    /* font height in pixels */
 				}
 				break;
@@ -437,13 +437,13 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 				if (font_size == SMALL_FONT)
 				{
 					pfont         = consolas_bold_8ptBitmaps;	   	/* font bitmap pointer */
-					pdescript 	  = consolas_bold_8ptDescriptors; 	/* font descriptor pointer */
+					pdescript 	  = consolas_bold_8ptDescriptors[0]; 	/* font descriptor pointer */
 					symbol_height = CONSOLAS_SMALL_BOLD_HEIGHT; 	/* font height in pixels */
 				}
 				else if(font_size == LARGE_FONT)
 				{
 					pfont         = consolas_bold_11ptBitmaps;		/* font bitmap pointer */
-					pdescript 	  = consolas_bold_11ptDescriptors; /* font descriptor pointer */
+					pdescript 	  = consolas_bold_11ptDescriptors[0]; /* font descriptor pointer */
 					symbol_height = CONSOLAS_LARGE_BOLD_HEIGHT; 	/* font height in pixels */
 				}
 				break;
@@ -462,31 +462,32 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 		//for loop -> while loop
 
 		/* loops through the message to display each character */
-		for(i=0;i<16;i++)
+
+
+		for(i=0;i<strlen(text);i++)
 		{
-
-
 			symbol_nr = (*(text+i)) - ASCII_OFFSET;/* determines which symbol from the font library should be selected */
 			// if statement voor als symbol_nr negatief
-			printf("symbol_nr = %d\n",symbol_nr);
-			printf("pdescript = %i, %i \n",pdescript, consolas_11ptDescriptors);
-			printf("symbol_nr * array dimension = %i\n",symbol_nr * ARRAY_DIMENSION);
-			printf("symbol_nr * array dimension = %i\n",*(pdescript + 168));
+//			printf("symbol_nr = %d\n",symbol_nr);
+//			printf("pdescript = %i, %i \n",pdescript, consolas_11ptDescriptors);
+//			printf("symbol_nr * array dimension = %i\n",symbol_nr * ARRAY_DIMENSION);
+//			printf("symbol_nr * array dimension = %i\n",*(pdescript + 168));
+
 
 			symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); /* retrieves the symbol width expressed in pixels */
 
-			printf("symbol_width_pixels = %d\n",symbol_width_pixels);
+//			printf("symbol_width_pixels = %d\n",symbol_width_pixels);
 			symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); /* retrieves the starting elecment in the font bitmap */
 
-			printf("symbol_width = %d\n",symbol_width);
+//			printf("symbol_width = %d\n",symbol_width);
 
 			/* determines how many bytes are used in width per character */
 			symbol_width =  symbol_width_pixels/BYTE_SIZE;
 			if (symbol_width_pixels % BYTE_SIZE != 0) //voor het aantal bytes
 				symbol_width++;
 
-			printf("text = %d, \n", *(text+i));
-			printf("symbol_width = %d\n",symbol_width);
+//			printf("text = %d, \n", *(text+i));
+//			printf("symbol_width = %d\n",symbol_width);
 
 //			printf("i =%d ", i);
 //			printf("|| symbol_nr = %d || ",symbol_nr*2);

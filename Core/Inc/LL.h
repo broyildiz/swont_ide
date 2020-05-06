@@ -6,7 +6,7 @@
 #include "main.h"
 
 
-void LL_exec(struct collection *commands);
+int LL_exec(struct collection * commands);
 
 
 // dit kan weg als alle layers er zijn

@@ -8,7 +8,7 @@
   *
   * @retval None
   */
-void LL_exec(struct collection *commands)
+int LL_exec(struct collection *commands)
 {
 	int error;
 
@@ -118,7 +118,7 @@ void LL_exec(struct collection *commands)
 	{
 
 	}
-
+	return 0;
 }
 
 
