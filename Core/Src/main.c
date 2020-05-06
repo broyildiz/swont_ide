@@ -86,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  unsigned char msg[] = {0x01};
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -97,18 +97,8 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   // Reset line_rx buffer
-  int i;
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
 
-  for(i = 0; i < 1024; i++)
-	  container[i] = 0;
-  temp = 0;
-
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = False;
+  FL_Init();
 
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -118,7 +108,6 @@ int main(void)
   UB_VGA_SetPixel(319,0,0x00);
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
-  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
 
   int diff = 0;
    global_debug = False;
@@ -192,7 +181,7 @@ int main(void)
 //		  FL_uart_decode();
 	  }
 
-	  //HELPHELP CHECK OF HET WERKT
+
 
     /* USER CODE END WHILE */
 
@@ -246,7 +235,9 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void Error_Tx(char *pErrorMessage)
 {
-	HAL_UART_Transmit(&huart2, pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+//	unsigned char hmm[128];
+//	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
 void Debug_Tx(char *pDebugMessage)
