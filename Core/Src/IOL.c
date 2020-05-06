@@ -42,13 +42,19 @@ void IOL()
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
 	int thickness = 1;
-	IO_draw_line(x1, y1, x2, y2, color, thickness);
-	IO_draw_line(x2, y2, x3, y3, color, thickness);
-	IO_draw_line(x3, y3, x4, y4, color, thickness);
-	IO_draw_line(x4, y4, x5, y5, color, thickness);
-	IO_draw_line(x5, y5, x1, y1, color, thickness);
+	int error = NO_ERROR;
+	error = IO_draw_line(x1, y1, x2, y2, color, thickness);
+	error = IO_draw_line(x2, y2, x3, y3, color, thickness);
+	error = IO_draw_line(x3, y3, x4, y4, color, thickness);
+	error = IO_draw_line(x4, y4, x5, y5, color, thickness);
+	error = IO_draw_line(x5, y5, x1, y1, color, thickness);
 
-	return 0;
+	if(error)
+	{
+		Error_Tx("Draw Figure Function: wrong argument passed to the Line function");
+		return error;
+	}
+	return error;
 }
 
 
@@ -61,6 +67,17 @@ int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	*/
 	  int dx,dy,sdx,sdy,px,py,dxabs,dyabs,i,j;
 	  float slope;
+	  int error = NO_ERROR;
+
+	  if((x1 < 0) || x1 > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
+	  if((y1 < 0) || y1 > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
+	  if((x2 < 0) || x2 > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
+	  if((y2 < 0) || y2 > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
+	  if(thickness < 0) error = IOL_LINE_INVALID_ARG_VALUE;
+	  if(error) {
+		  Error_Tx("Line function: Invalid argument(s)");
+		  return error;
+	  }
 
 	  dx=x2-x1;      /* the horizontal distance of the line */
 	  dy=y2-y1;      /* the vertical distance of the line */
@@ -99,11 +116,15 @@ int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
 	      UB_VGA_SetPixel(px,py,color);
 	    }
 	  }
-	  return 0;
+	  return error;
 }
 
 int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, int filled)
 {
+	int error = NO_ERROR;
+	if((x_lup < 0) || x_lup > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
+	if((y_lup < 0) || y_lup > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
+
 	int i;
 	int j;
 
@@ -120,6 +141,7 @@ int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, in
 
 	if(filled == 0)
 	{
+
 		for(i = y_lup; i<y_lup+height+1; i++)
 		{
 			if(i == y_lup || i == y_lup +height)
@@ -136,7 +158,7 @@ int IO_draw_rectangle(int x_lup, int y_lup, int width, int height, int color, in
 			}
 		}
 	}
-	return 0;
+	return error;
 }
 
 int IO_clearscreen(int color)
@@ -159,38 +181,51 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
 	UB_VGA_SetPixel(xc-y, yc+x, color);
 	UB_VGA_SetPixel(xc+y, yc-x, color);
 	UB_VGA_SetPixel(xc-y, yc-x, color);
-	return 0;
+
+	return NO_ERROR;
 }
 
 // Function for circle-generation
 // using Bresenham's algorithm
 int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
-	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
-    int x = 0, y = radius;
-    int d = 3 - 2 * radius;
-    drawCircle(xc, yc, x, y, color);
-    while (y >= x)
-    {
-        // for each pixel we will
-        // draw all eight pixels
+	int error = NO_ERROR;
+		//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
+	    int x = 0, y = radius;
+	    int d = 3 - 2 * radius;
+	    error = drawCircle(xc, yc, x, y, color);
+	    if(error) {
+	    	Error_Tx("Draw Circle function: Unexpected error");
+			return error;
+	    }
+	    while (y >= x)
+	    {
+	        // for each pixel we will
+	        // draw all eight pixels
 
-        x++;
+	        x++;
 
-        // check for decision parameter
-        // and correspondingly
-        // update d, x, y
-        if (d > 0)
-        {
-            y--;
-            d = d + 4 * (x - y) + 10;
-        }
-        else
-            d = d + 4 * x + 6;
-        drawCircle(xc, yc, x, y, color);
-//        delay(50);
-    }
-    return 0;
+	        // check for decision parameter
+	        // and correspondingly
+	        // update d, x, y
+	        if (d > 0)
+	        {
+	            y--;
+	            d = d + 4 * (x - y) + 10;
+	        }
+	        else
+	            d = d + 4 * x + 6;
+	        error = drawCircle(xc, yc, x, y, color);
+
+	//        delay(50);
+	    }
+
+	    if(error) {
+	    	Error_Tx("Draw Circle function: Unexpected error");
+			return error;
+	    }
+
+	    return error;
 }
 
 
@@ -199,7 +234,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
 
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
-	//bron: http://www.brackeen.com/vga/bitmaps.html
+//  bron: http://www.brackeen.com/vga/bitmaps.html
 	const uint8_t *pbitmap;
 //	uint8_t temp;
 //	uint8_t bitmask;
@@ -280,10 +315,6 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 }
 
 
-
-
-
-
 int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
 
@@ -305,21 +336,6 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	#ifdef DEBUG_IO
 	printf("within IO_draw_text \n");
 	#endif
-
-	// niet nodig
-	//Hoe lang is de string in font
-	//tel spaties niet mee
-
-	/* while font is not a case
-	 *  dont compare
-	 *
-	 *  when a case is found check input
-	 *  if c then consolas
-	 *  if a then arial
-	 *
-	 */
-
-
 
 	while((isalpha(*(font+i)) == False) && (i != MAX_LEN_FONTNAME)) /* determines where the first letter in the buffer is*/
 	{
@@ -456,6 +472,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 		printf("text parameters selected \n");
 
 		printf("%s\n",text);
+		printf("color: %d",color);
 		//teller
 		//hoe weet ik hoe lang het bericht is?
 		//character aan het eind plaatsen
@@ -534,7 +551,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 //							}
 	//						printf("x=%d ,y= %d ",xlup+bit,ylup+y);
 
-							UB_VGA_SetPixel(xlup + bit + x*BYTE_SIZE , ylup + y, 255);
+							UB_VGA_SetPixel(xlup + bit + x*BYTE_SIZE , ylup + y, color);
 						}
 						else
 						{
@@ -570,105 +587,10 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 
 
 		printf("finished text \n");
-		return 0;
+		return error;
 }
 
 
-//for(x=0; x<symbol_width;x++)
-//				{
-//					temp = 	*(pfont + symbol_start + y*symbol_width);
-//
-//					bitmask = 0x80;// B1000 0000
-//					for(bit = 0; bit<8; bit++)
-//					{
-//
-//						if((temp & bitmask)!=0)
-//						{
-////							printf("1");
-//							UB_VGA_SetPixel(xlup + x, ylup + y, color);
-//
-//						}
-//						else
-//						{
-////							printf("0");
-//						}
-//
-//						bitmask = bitmask >> 1;
-//					}
-//				}
-
-
-
-
-
-
-
-//	for(y=0; y<symbol_height;y++)
-//		{
-////			printf("height %d: ",y);
-//			for(x=0; x<symbol_width;x++)
-//			{
-//
-//
-//				temp = *(pbitmap + (3*y) + x);
-//
-//				bitmask = 0x80;// B1000 0000
-//				for(bit = 0; bit<8; bit++)
-//				{
-//
-//					if((temp & bitmask)!=0)
-//					{
-//	//				    printf("%d ", 0);
-//
-//					}
-//					else
-//					{
-//						UB_VGA_SetPixel(xlup + bit + (x*8), ylup+y,color);
-//	//					printf("x = %d, y = %d ",xlup + bit + (x*8),ylup+y);
-//	//					printf("%d ", 1);
-//					}
-//
-//					bitmask = bitmask >> 1;
-//				}
-//
-//			}
-//			printf("\n");
-//		}
-//		printf("x = %d, y =%d\n",x,y);
-
-
-
-
-//for(y=0; y<img_height;y++)
-//		{
-//			printf("height %d: ",y);
-//			for(x=0; x<img_width;x++)
-//			{
-//				temp = *(pbitmap + (3*y) + x);//dit kan beter voor tekst gebruikt worden
-//
-//				bitmask = 0x80;// B1000 0000
-//				for(bit = 0; bit<8; bit++)
-//				{
-//
-//					if((temp & bitmask)!=0)
-//					{
-//	//				    printf("%d ", 0);
-//
-//					}
-//					else
-//					{
-//						UB_VGA_SetPixel(xlup + bit + (x*8), ylup+y,color);
-//	//					printf("x = %d, y = %d ",xlup + bit + (x*8),ylup+y);
-//	//					printf("%d ", 1);
-//					}
-//
-//					bitmask = bitmask >> 1;
-//				}
-//
-//			}
-//			printf("\n");
-//		}
-//		printf("x = %d, y =%d\n",x,y);
 
 
 

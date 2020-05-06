@@ -49,6 +49,10 @@ enum BITMAPS
 	MEGAMAN
 };
 
+#define NORMAL 0
+#define ITALIC 1
+#define BOLD 2
+
 #define ARIAL         0
 #define ARIAL_NORMAL  0
 #define ARIAL_ITALIC  1
