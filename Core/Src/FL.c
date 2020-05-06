@@ -21,7 +21,7 @@ int FL_uart_decode()
 	{
 		Error_Tx("Did not recognize function number, line 22\n");
 		error = FL_INVALID_FUNCTION_NO;
-		Debug_INT(error);
+//		Debug_INT(error);
 //		printf("Error code:\t%d\n",error);
 		return error;
 	}

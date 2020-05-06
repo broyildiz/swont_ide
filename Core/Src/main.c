@@ -132,21 +132,21 @@ int main(void)
   {
 	  if(input.command_execute_flag == True)
 	  {
-//		  global_debug_check();
-		  global_debug = 1;
+		  global_debug_check();
+//		  global_debug = 1;
 //		  Debug_Tx("HMM");
 //		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
 		  input.command_execute_flag = False;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 		  error = FL_uart_decode();
 		  memset(&command,0,sizeof(command));
-		  Debug_Tx("hmm\0\n");
+//		  Debug_Tx("hmm\0\n");
 		  if(error)
 		  {
-			  Debug_INT(error);
+			  Debug_INT(13);
 			  Global_Error_handler(error);
 		  }
-		  printf("Error code:\t%d\n",error);
+//		  printf("Error code:\t%d\n",error);
 //		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
 	  }
 
@@ -229,19 +229,16 @@ void Error_Tx(char  *pErrorMessage)
 
 void Debug_Tx( char *pDebugMessage)
 {
-//	if(global_debug)
-//	{
-//		for(int i = 0; i <= strlen(pDebugMessage); i++)
-//			printf("%c", pDebugMessage[i]);
-//	}
-
-	HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+	if(global_debug)
+		HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 
 void Debug_INT(int num)
 {
+//	num = 36;
 //	if(global_debug)
-//		printf("%d",num);
+	printf("%d\n",num);
+
 }
 
 
