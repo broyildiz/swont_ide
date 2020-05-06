@@ -1,5 +1,6 @@
 #include "LL.h"
 #include "string.h"
+//#include "FL.h"
 /**
   * @brief  Determines which API function should be called based on input.
   * 		Calls error handler in case of error.
@@ -16,7 +17,7 @@
 //  }
 //}
 
-void LL_exec(struct collection *commands)
+void LL_exec(struct collection *command)
 {
 	Debug_Tx("Enterred the LL\n");
 	int error;
@@ -26,7 +27,7 @@ void LL_exec(struct collection *commands)
 
 	printf("Entering LL_exec command switch\n");
 
-	switch(commands->function_number)
+	switch(command->function_number)
 	{
 
 		case FUNCTION_NO_RESET:
@@ -34,90 +35,101 @@ void LL_exec(struct collection *commands)
 			break; //nieuwe functie?
 
 		case BITMAP_FUNCTION_NO:
-			printf("case bitmap\n");
-			error = IO_draw_bitmap(commands->bitmap.xlup,
-			 					   commands->bitmap.ylup,
-								   commands->bitmap.nr);
+			{
+				printf("case bitmap\n");
+				error = IO_draw_bitmap(command->bitmap.xlup,
+									   command->bitmap.ylup,
+									   command->bitmap.nr);
+			}
 			break;
 
-		}break;
-
 		case CIRKEL_FUNCTION_NO:
-			printf("case circle\n");
-			error = IO_draw_circle(commands->cirkel.x,
-									commands->cirkel.y,
-									commands->cirkel.radius,
-									commands->cirkel.kleur);
-		}break;
+			{
+				printf("case circle\n");
+				error = IO_draw_circle(command->cirkel.x,
+										command->cirkel.y,
+										command->cirkel.radius,
+										command->cirkel.kleur);
+			}
+		break;
 
 		case CLEARSCHERM_FUNCTION_NO:
-			printf("case clearscreen\n");
-			error = IO_clearscreen(commands->clearscherm.kleur);
-		}break;
+			{
+				printf("case clearscreen\n");
+				error = IO_clearscreen(command->clearscherm.kleur);
+			}
+		break;
 
 //		case EXECUTE_FUNCTION_NO:
-//			error = IO_execute(commands->execute.null);
+//			error = IO_execute(command->execute.null);
 //			break;
 
 		case FIGUUR_FUNCTION_NO:
-			printf("case figure\n");
-			error = IO_draw_figure(commands->figuur.x1,
-												commands->figuur.y1,
-												commands->figuur.x2,
-												commands->figuur.y2,
-												commands->figuur.x3,
-												commands->figuur.y3,
-												commands->figuur.x4,
-												commands->figuur.y4,
-												commands->figuur.x5,
-												commands->figuur.y5,
-												commands->figuur.kleur);
-		}break;
+			{
+				printf("case figure\n");
+				error = IO_draw_figure(command->figuur.x1,
+													command->figuur.y1,
+													command->figuur.x2,
+													command->figuur.y2,
+													command->figuur.x3,
+													command->figuur.y3,
+													command->figuur.x4,
+													command->figuur.y4,
+													command->figuur.x5,
+													command->figuur.y5,
+													command->figuur.kleur);
+			}
+		break;
 
 		case HERHAAL_FUNCTION_NO :
 		{
 			Debug_Tx("Going to execute HERHAAL_FUNCTION_NO\n");
-			error = IO_repeat_commands(commands->herhaal.aantal,
-										commands->herhaal.hoevaak);
+			error = IO_repeat_commands(command->herhaal.aantal,
+										command->herhaal.hoevaak);
 		}break;
 
 		case LIJN_FUNCTION_NO :
-			printf("case line\n");
-			error = IO_draw_line(commands->lijn.x1,
-								  commands->lijn.y1,
-								  commands->lijn.x2,
-								  commands->lijn.y2,
-								  commands->lijn.kleur,
-								  commands->lijn.dikte);
-		}break;
+			{
+				printf("case line\n");
+				error = IO_draw_line(command->lijn.x1,
+									  command->lijn.y1,
+									  command->lijn.x2,
+									  command->lijn.y2,
+									  command->lijn.kleur,
+									  command->lijn.dikte);
+			}
+		break;
 
 		case RECHTHOEK_FUNCTION_NO :
+		{
 			printf("case rectangle\n");
-			error = IO_draw_rectangle(commands->rechthoek.xlup,
-									   commands->rechthoek.ylup,
-									   commands->rechthoek.breedte,
-									   commands->rechthoek.hoogte,
-									   commands->rechthoek.kleur,
-									   commands->rechthoek.gevuld);
+			error = IO_draw_rectangle(command->rechthoek.xlup,
+									   command->rechthoek.ylup,
+									   command->rechthoek.breedte,
+									   command->rechthoek.hoogte,
+									   command->rechthoek.kleur,
+									   command->rechthoek.gevuld);
 		}break;
 
 		case TEKST_FUNCTION_NO :
-			printf("case text\n");
-			error = IO_draw_text(commands->tekst.xlup,
-								  commands->tekst.ylup,
-								  commands->tekst.kleur,
-								  commands->tekst.tekst,
-								  commands->tekst.fontnaam,
-								  commands->tekst.fontgrootte,
-								  commands->tekst.fontstijl);
+			{
+				printf("case text\n");
+				error = IO_draw_text(command->tekst.xlup,
+									  command->tekst.ylup,
+									  command->tekst.kleur,
+									  command->tekst.tekst,
+									  command->tekst.fontnaam,
+									  command->tekst.fontgrootte,
+									  command->tekst.fontstijl);
+			}
 			break;
 //
 //		case TOREN_FUNCTION_NO:
-//			error = IO_draw_tower(commands->toren.x1,
-//								   commands->toren.y1,
-//								   commands->toren.grootte,
-//								   commands->toren.kleur1,
-//								   commands->toren.kleur2);
+//			error = IO_draw_tower(command->toren.x1,
+//								   command->toren.y1,
+//								   command->toren.grootte,
+//								   command->toren.kleur1,
+//								   command->toren.kleur2);
 //			break; //nieuw functie
 //
 		case WACHT_FUNCTION_NO:
@@ -128,8 +140,8 @@ void LL_exec(struct collection *commands)
 //			while(i--);
 //			Debug_Tx("\n\nDone with a while delay\n\n");
 			waitCheck = True;
-			HAL_Delay(command.wacht.msecs);
-//			error = IO_wait(commands->wacht.msecs);
+			HAL_Delay(command->wacht.msecs);
+//			error = IO_wait(command->wacht.msecs);
 		}break;
 
 		default: break;

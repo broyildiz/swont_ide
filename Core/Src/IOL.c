@@ -138,7 +138,7 @@ int IO_clearscreen(int color)
 	printf("clearing screen\n");
 	UB_VGA_FillScreen(color);
 
-	IOL_error_handler("Did not recognise function number, line 34");
+//	IOL_error_handler("Did not recognise function number, line 34");
 }
 
 int drawCircle(int xc, int yc, int x, int y, byte color)
@@ -548,6 +548,8 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 
 		printf("finished text \n");
 		return 0;
+}
+
 int IO_repeat_commands(int aantal, int hoevaak)
 {
 	for(int i = 0; i < hoevaak; i++)
@@ -563,7 +565,7 @@ int IO_repeat_commands(int aantal, int hoevaak)
 	return 0;
 }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 void IOL_error_handler(char *pErrorString)
 {
 	while(1);

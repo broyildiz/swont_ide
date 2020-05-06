@@ -233,14 +233,14 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Error_Tx(uint8_t  *pErrorMessage)
+void Error_Tx(char  *pErrorMessage)
 {
 //	unsigned char hmm[128];
 //	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
-void Debug_Tx(uint8_t *pDebugMessage)
+void Debug_Tx(char *pDebugMessage)
 {
 	if(global_debug)
 //		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));

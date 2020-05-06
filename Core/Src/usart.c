@@ -35,19 +35,6 @@ USART_PRINTF
 	return ch;												//Return the character
 }
 
-//Replacement of __io_putchar() or fputc() with PUTCHAR_PROTOTYPE macro
-#ifdef __GNUC__
-	#define USART_PRINTF int __io_putchar(int ch)		//With GCC/RAISONANCE printf calls __io_putchar()
-#else
-	#define USART_PRINTF int fputc(int ch, FILE *f)		//With other compiler printf calls fputc()
-#endif /* __GNUC__ */
-
-//Retargets the C library printf function to the USART
-USART_PRINTF
-{
-	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);	//Write character to UART2
-	return ch;												//Return the character
-}
 
 /* USER CODE END 0 */
 
