@@ -40,8 +40,8 @@ int FillScreen(uint8_t color);
 
 enum BITMAPS
 {
-	SAD_SMILEY = 0,
-	HAPPY_SMILEY,
+	SMILEY_HAPPY = 0,
+	SMILEY_SAD,
 	ARROW_UP,
 	ARROW_RIGHT,
 	ARROW_DOWN,
@@ -51,13 +51,14 @@ enum BITMAPS
 
 #define ARIAL         0
 #define ARIAL_NORMAL  0
-#define ARIAL_BOLD    1
-#define ARIAL_ITALIC  2
+#define ARIAL_ITALIC  1
+#define ARIAL_BOLD    2
 
 #define CONSOLAS  		 1
 #define CONSOLAS_NORMAL  0
-#define CONSOLAS_BOLD  	 1
-#define CONSOLAS_ITALIC  2
+#define CONSOLAS_ITALIC  1
+#define CONSOLAS_BOLD  	 2
+
 
 #define LARGE_FONT	2
 #define SMALL_FONT  1
@@ -67,6 +68,12 @@ enum BITMAPS
 #define BITMASK 128
 #define ARRAY_DIMENSION 2
 #define CHAR_START_OFFSET 1
+
+
+#define CASE_OFFSET	     32
+#define ERROR_FONTNAME   1
+#define ERROR_FONTNAME_UNKNOWN 2
+
 
 
 //void initButton(void);

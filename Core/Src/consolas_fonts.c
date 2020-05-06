@@ -1259,7 +1259,7 @@ const uint8_t consolas_8ptBitmaps[] =
 
 /* Character descriptors for Consolas 8pt */
 /* { [Char width in bits], [Offset into consolas_8ptCharBitmaps in bytes] } */
-const uint8_t consolas_8ptDescriptors[] =
+const uint16_t consolas_8ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{1, 11}, 		/* ! */
@@ -2605,7 +2605,7 @@ const uint8_t consolas_italic_8ptBitmaps[] =
 
 /* Character descriptors for Consolas 8pt italic */
 /* { [Char width in bits], [Offset into consolas_italic_8ptCharBitmaps in bytes] } */
-const uint8_t consolas_italic_8ptDescriptors[] =
+const uint16_t consolas_italic_8ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{3, 11}, 		/* ! */
@@ -3951,7 +3951,7 @@ const uint8_t consolas_bold_8ptBitmaps[] =
 
 /* Character descriptors for Consolas 8pt bold */
 /* { [Char width in bits], [Offset into consolas_bold_8ptCharBitmaps in bytes] } */
-const uint8_t consolas_bold_8ptDescriptors[] =
+const uint16_t consolas_bold_8ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{2, 11}, 		/* ! */
@@ -5678,7 +5678,7 @@ const uint8_t consolas_11ptBitmaps[] =
 
 /* Character descriptors for Consolas 11pt */
 /* { [Char width in bits], [Offset into consolas_11ptCharBitmaps in bytes] } */
-const uint8_t consolas_11ptDescriptors[] =
+const uint16_t consolas_11ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{2, 15}, 		/* ! */
@@ -7404,7 +7404,7 @@ const uint8_t consolas_italic_11ptBitmaps[] =
 
 /* Character descriptors for Consolas 11pt italic */
 /* { [Char width in bits], [Offset into consolas_italic_11ptCharBitmaps in bytes] } */
-const uint8_t consolas_italic_11ptDescriptors[] =
+const uint16_t consolas_italic_11ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{3, 15}, 		/* ! */
@@ -9130,7 +9130,7 @@ const uint8_t consolas_bold_11ptBitmaps[] =
 
 /* Character descriptors for Consolas 11pt bold */
 /* { [Char width in bits], [Offset into consolas_bold_11ptCharBitmaps in bytes] } */
-const uint8_t consolas_11ptDescriptors[] =
+const uint16_t consolas_bold_11ptDescriptors[] =
 {
 	{2, 0}, 		/*   */
 	{2, 15}, 		/* ! */

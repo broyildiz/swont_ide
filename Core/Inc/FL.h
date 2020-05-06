@@ -20,6 +20,7 @@ uint8_t FL_find_color(char color[]);
 #define MAX_LEN_TEKST_STRING 128
 #define MAX_LEN_FONTNAME 30
 
+#define LETTERA 'a'
 #define LETTERB 'b'
 #define LETTERC 'c'
 #define LETTERE 'e'

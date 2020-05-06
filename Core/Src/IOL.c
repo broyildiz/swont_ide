@@ -253,33 +253,47 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 	switch(bmpnr)
 	{
-		case SAD_SMILEY:
-
+		case SMILEY_HAPPY:
+			pbitmap    = smiley_happy;
+			img_width  = SMILEY_WIDTH;
+			img_height = SMILEY_HEIGHT;
 			break;
 
-		case HAPPY_SMILEY:
-
+		case SMILEY_SAD:
+			pbitmap    = smiley_sad;
+			img_width  = SMILEY_WIDTH;
+			img_height = SMILEY_HEIGHT;
 			break;
 
 		case ARROW_UP:
-
+			pbitmap    = arrow_up;
+			img_width  = ARROW_UP_WIDTH;
+			img_height = ARROW_UP_HEIGHT;
 			break;
 
 		case ARROW_RIGHT:
-
+			pbitmap    = arrow_right;
+			img_width  = ARROW_RIGHT_WIDTH;
+			img_height = ARROW_RIGHT_HEIGHT;
 			break;
 
 		case ARROW_DOWN:
+			pbitmap    = arrow_down;
+			img_width  = ARROW_DOWN_WIDTH;
+			img_height = ARROW_DOWN_HEIGHT;
 
 			break;
 
 		case ARROW_LEFT:
+			pbitmap    = arrow_left;
+			img_width  = ARROW_LEFT_WIDTH;
+			img_height = ARROW_LEFT_HEIGHT;
 
 			break;
 
 		case MEGAMAN:
-			pbitmap = megaman_2;
-			img_width = MEGAMAN_WIDTH;
+			pbitmap	   = megaman_2;
+			img_width  = MEGAMAN_WIDTH;
 			img_height = MEGAMAN_HEIGHT;
 			break;
 
@@ -301,7 +315,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 	}
 	printf("bitmap done \n");
 
-
+	return 0;
 }
 
 
@@ -309,7 +323,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 
 
-int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, int font_size, int font_style)
+int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
 
 	const uint8_t *pfont;
@@ -320,103 +334,150 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, 
 	uint8_t bit;
 	uint16_t symbol_width, symbol_width_pixels, symbol_height;
 	int x, y;
-	int i;
-	uint16_t symbol_nr;// used for searching the descriptor
+	int i = 0;
+	uint16_t symbol_nr; // used for searching the descriptor
 	uint16_t symbol_start;
 
-	 //arial_11ptBitmaps[] 1 dimensie
-	//arial_11ptDescriptors 2 dimensies width en waar is start
-	// ARIAL_11_HEIGHT 15
-
+	#ifdef DEBUG_IO
 	printf("within IO_draw_text \n");
+	#endif
+
+	// niet nodig
+	//Hoe lang is de string in font
+	//tel spaties niet mee
+
+	/* while font is not a case
+	 *  dont compare
+	 *
+	 *  when a case is found check input
+	 *  if c then consolas
+	 *  if a then arial
+	 *
+	 */
+	while((isalpha(*(font+i)) == False) && (i != MAX_LEN_FONTNAME)) /* determines where the first letter in the buffer is*/
+	{
+		i++;
+	}
+
+	if(i == MAX_LEN_FONTNAME) /* no fontname in buffer found */
+	{
+		return ERROR_FONTNAME;
+	}
+	else if((*(font+i) == LETTERA) || (*(font+i) == LETTERA - CASE_OFFSET)) /* check for arial font */
+	{
+		font_temp = 0;
+	}
+	else if((*(font+i) == LETTERC) || (*(font+i) == LETTERC - CASE_OFFSET)) /* check for consolas font */
+	{
+		font_temp = 1;
+	}
+	else
+		return ERROR_FONTNAME_UNKNOWN; /* no fontname in buffer found or fontname invalid*/
 
 
-
-	font_temp = 0;
-
-		switch(font_temp)//deze switch case is superlelijk
+		switch(font_temp)/* picks font */
 		{
 			case ARIAL:
-				switch(font_style) //3 options
+				switch(font_style)
 				{
 					case ARIAL_NORMAL:
-						if (font_size == LARGE_FONT)
+						if (font_size == SMALL_FONT)
 						{
-
+							pfont         = arial_8ptBitmaps;		/* font bitmap pointer */
+							pdescript 	  = arial_8ptDescriptors; 	/* font descriptor pointer */
+							symbol_height = ARIAL_SMALL_HEIGHT; 	/* font height in pixels */
 						}
-						else if(font_size == SMALL_FONT)
+						else if(font_size == LARGE_FONT)
 						{
-							pfont = arial_11ptBitmaps;
-							pdescript = arial_11ptDescriptors;
-							symbol_height = ARIAL_LARGE_HEIGHT;
-						}
-						break;
-					case ARIAL_BOLD:
-						if (font_size == LARGE_FONT)
-						{
-
-						}
-						else if(font_size == SMALL_FONT)
-						{
-							pfont = arial_11ptBitmaps;
+							pfont         = arial_11ptBitmaps;	   	/* font bitmap pointer */
+							pdescript 	  = arial_11ptDescriptors; 	/* font descriptor pointer */
+							symbol_height = ARIAL_LARGE_HEIGHT;    	/* font height in pixels */
 						}
 						break;
+
 					case ARIAL_ITALIC:
-						if (font_size == LARGE_FONT)
+						if (font_size == SMALL_FONT)
 						{
-
+							pfont         = arial_italic_8ptBitmaps;	 /* font bitmap pointer */
+							pdescript 	  = arial_italic_8ptDescriptors; /* font descriptor pointer */
+							symbol_height = ARIAL_SMALL_ITALIC_HEIGHT;   /* font height in pixels */
 						}
-						else if(font_size == SMALL_FONT)
+						else if(font_size == LARGE_FONT)
 						{
-							pfont = arial_11ptBitmaps;
+							pfont         = arial_italic_11ptBitmaps;	  /* font bitmap pointer */
+							pdescript 	  = arial_italic_11ptDescriptors; /* font descriptor pointer */
+							symbol_height = ARIAL_LARGE_ITALIC_HEIGHT;    /* font height in pixels */
 						}
 						break;
 
+					case ARIAL_BOLD:
+						if (font_size == SMALL_FONT)
+						{
+							pfont         = arial_bold_8ptBitmaps;	   	/* font bitmap pointer */
+							pdescript 	  = arial_bold_8ptDescriptors; 	/* font descriptor pointer */
+							symbol_height = ARIAL_SMALL_BOLD_HEIGHT; 	/* font height in pixels */
+						}
+						else if(font_size == LARGE_FONT)
+						{
+							pfont         = arial_bold_11ptBitmaps;		/* font bitmap pointer */
+							pdescript 	  = arial_bold_11ptDescriptors; /* font descriptor pointer */
+							symbol_height = ARIAL_LARGE_BOLD_HEIGHT; 	/* font height in pixels */
+						}
+						break;
 				}
-
 				break;
 
 			case CONSOLAS:
 				switch(font_style) //3 options
 				{
-					case CONSOLAS_NORMAL:
-						if (font_size == LARGE_FONT)
-						{
+				case CONSOLAS_NORMAL:
+					if (font_size == SMALL_FONT)
+					{
+						pfont         = consolas_8ptBitmaps;		/* font bitmap pointer */
+						pdescript 	  = consolas_8ptDescriptors; 	/* font descriptor pointer */
+						symbol_height = CONSOLAS_SMALL_HEIGHT; 	/* font height in pixels */
+					}
+					else if(font_size == LARGE_FONT)
+					{
+						pfont         = consolas_11ptBitmaps;	   	/* font bitmap pointer */
+						pdescript 	  = consolas_11ptDescriptors; 	/* font descriptor pointer */
+						symbol_height = CONSOLAS_LARGE_HEIGHT;    	/* font height in pixels */
+					}
+					break;
 
-						}
-						else if(font_size == SMALL_FONT)
-						{
-							pfont = arial_11ptBitmaps;
-						}
-						break;
-					case CONSOLAS_BOLD:
-						if (font_size == LARGE_FONT)
-						{
+				case CONSOLAS_ITALIC:
+					if (font_size == SMALL_FONT)
+					{
+						pfont         = consolas_italic_8ptBitmaps;	 /* font bitmap pointer */
+						pdescript 	  = consolas_italic_8ptDescriptors; /* font descriptor pointer */
+						symbol_height = CONSOLAS_SMALL_ITALIC_HEIGHT;   /* font height in pixels */
+					}
+					else if(font_size == LARGE_FONT)
+					{
+						pfont         = consolas_italic_11ptBitmaps;	  /* font bitmap pointer */
+						pdescript 	  = consolas_italic_11ptDescriptors; /* font descriptor pointer */
+						symbol_height = CONSOLAS_LARGE_ITALIC_HEIGHT;    /* font height in pixels */
+					}
+					break;
 
-						}
-						else if(font_size == SMALL_FONT)
-						{
-							pfont = arial_11ptBitmaps;
-						}
-						break;
-					case CONSOLAS_ITALIC:
-						if (font_size == LARGE_FONT)
-						{
+				case CONSOLAS_BOLD:
+					if (font_size == SMALL_FONT)
+					{
+						pfont         = consolas_bold_8ptBitmaps;	   	/* font bitmap pointer */
+						pdescript 	  = consolas_bold_8ptDescriptors; 	/* font descriptor pointer */
+						symbol_height = CONSOLAS_SMALL_BOLD_HEIGHT; 	/* font height in pixels */
+					}
+					else if(font_size == LARGE_FONT)
+					{
+						pfont         = consolas_bold_11ptBitmaps;		/* font bitmap pointer */
+						pdescript 	  = consolas_bold_11ptDescriptors; /* font descriptor pointer */
+						symbol_height = CONSOLAS_LARGE_BOLD_HEIGHT; 	/* font height in pixels */
+					}
+					break;
+			}
+			break;
 
-						}
-						else if(font_size == SMALL_FONT)
-						{
-							pfont = arial_11ptBitmaps;
-
-						}
-						break;
-
-				}
-
-
-				break;
-
-			default: break;
+		default: break;
 		}
 
 		printf("text parameters selected \n");
@@ -424,15 +485,21 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, 
 		printf("%s\n",text);
 		//teller
 		//hoe weet ik hoe lang het bericht is?
+		//character aan het eind plaatsen
+		//for loop -> while loop
+
+		/* loops through the message to display each character */
 		for(i=0;i<16;i++)
 		{
 
-			symbol_nr = (*(text+i)) - ASCII_OFFSET;//determines which symbol from the font library should be selected
-			symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); // retrieves the symbol width
-			symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); // retrieves the starting elecment in the font bitmap
+
+			symbol_nr = (*(text+i)) - ASCII_OFFSET;/* determines which symbol from the font library should be selected */
+			symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); /* retrieves the symbol width expressed in pixels */
+			symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); /* retrieves the starting elecment in the font bitmap */
 
 
-			symbol_width =  symbol_width_pixels/BYTE_SIZE;//defines vervangen 8
+			/* determines how many bytes are used in width per character */
+			symbol_width =  symbol_width_pixels/BYTE_SIZE;
 			if (symbol_width_pixels % BYTE_SIZE != 0) //voor het aantal bytes
 				symbol_width++;
 
@@ -451,6 +518,10 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, 
 //
 //			}
 
+			/*
+			 *  Hier moet een if statement die zegt dat hij naar de volgende regel mag
+			 */
+
 			for(y=0; y<symbol_height;y++)//puttting symbol on screen
 			{
 	//
@@ -459,6 +530,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, 
 //					printf("height %d: ",y);
 
 					temp = 	*(pfont + symbol_start + y*symbol_width + x);
+
 //					if(symbol_width==2)
 //					{
 //						printf("x=%d ,y= %d ",xlup + bit + x*8 , ylup + y);
@@ -498,7 +570,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, int font, 
 //							}
 						}
 
-						bitmask = bitmask >> 1;
+						bitmask = bitmask >> 1; //define ipv 1 ??
 					}
 //					if(symbol_width==2)
 //					{

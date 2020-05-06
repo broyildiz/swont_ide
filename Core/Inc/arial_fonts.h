@@ -22,11 +22,12 @@
 #define ARIAL_SMALL_BOLD_HEIGHT   11
 
 extern const uint8_t arial_8ptBitmaps[];
-extern const uint8_t arial_8ptDescriptors[];
 extern const uint8_t arial_italic_8ptBitmaps[];
-extern const uint8_t arial_italic_8ptDescriptors[];
 extern const uint8_t arial_bold_8ptBitmaps[];
-extern const uint8_t arial_bold_8ptDescriptors[];
+
+extern const uint16_t arial_8ptDescriptors[];
+extern const uint16_t arial_italic_8ptDescriptors[];
+extern const uint16_t arial_bold_8ptDescriptors[];
 
 /* Large arial fonts */
 
@@ -35,11 +36,12 @@ extern const uint8_t arial_bold_8ptDescriptors[];
 #define ARIAL_LARGE_BOLD_HEIGHT 	16
 
 extern const uint8_t arial_11ptBitmaps[];
-extern const uint8_t arial_11ptDescriptors[];
 extern const uint8_t arial_italic_11ptBitmaps[];
-extern const uint8_t arial_italic_11ptDescriptors[];
 extern const uint8_t arial_bold_11ptBitmaps[];
-extern const uint8_t arial_bold_11ptDescriptors[];
+
+extern const uint16_t arial_11ptDescriptors[];
+extern const uint16_t arial_italic_11ptDescriptors[];
+extern const uint16_t arial_bold_11ptDescriptors[];
 
 
 

@@ -16,11 +16,12 @@
 #define CONSOLAS_SMALL_BOLD_HEIGHT 11
 
 extern const uint8_t consolas_8ptBitmaps[];
-extern const uint8_t consolas_8ptDescriptors[];
 extern const uint8_t consolas_italic_8ptBitmaps[];
-extern const uint8_t consolas_italic_8ptDescriptors[];
 extern const uint8_t consolas_bold_8ptBitmaps[];
-extern const uint8_t consolas_bold_8ptDescriptors[];
+
+extern const uint16_t consolas_8ptDescriptors[];
+extern const uint16_t consolas_italic_8ptDescriptors[];
+extern const uint16_t consolas_bold_8ptDescriptors[];
 
 
 /* Large consolas fonts */
@@ -30,11 +31,12 @@ extern const uint8_t consolas_bold_8ptDescriptors[];
 #define CONSOLAS_LARGE_BOLD_HEIGHT 15
 
 extern const uint8_t consolas_11ptBitmaps[];
-extern const uint8_t consolas_11ptDescriptors[];
 extern const uint8_t consolas_italic_11ptBitmaps[];
-extern const uint8_t consolas_italic_11ptDescriptors[];
 extern const uint8_t consolas_bold_11ptBitmaps[];
-extern const uint8_t consolas_bold_11ptDescriptors[];
+
+extern const uint16_t consolas_11ptDescriptors[];
+extern const uint16_t consolas_italic_11ptDescriptors[];
+extern const uint16_t consolas_bold_11ptDescriptors[];
 
 
 

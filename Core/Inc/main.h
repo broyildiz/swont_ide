@@ -37,6 +37,7 @@ extern "C" {
 #include "stdlib.h"
 #include "stdio.h"
 #include "usart.h"
+#include "ctype.h"
 
 #include "FL.h"
 #include "LL.h"
@@ -100,6 +101,8 @@ void Error_Handler(void);
 
 #define False 	0x00
 #define True 	0xFF
+
+#define DEBUG_IO
 
 typedef struct
 {
