@@ -26,6 +26,7 @@ void FL_Init()
 //	int i;
 //	for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
 	memset(rb, 0, sizeof(rb)); // Set all the bits to 0, reset the whole array
+	memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
 	Debug_Tx("Done with FL Init\n");
 }
 
@@ -194,6 +195,12 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 {
 	Debug_Tx("Entered the FL_find_args function\n");
 
+	/*
+	 * Keep track of how many arguments are found.
+	 * If num_args_counter exceeds num_args throw an error
+	 */
+	char num_args_counter = 0;
+
 	char string_container[MAX_ARG_LEN]; // Container for the raw string characters
 
 	int k;
@@ -222,6 +229,7 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 					Debug_Tx(string_container);
 					Debug_Tx("\n");
 					FL_convert_args(string_container, ++argcounter);
+					num_args_counter++;
 					Debug_Tx("Done with the converting, back in the FL_find_args function\n");
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
@@ -247,6 +255,8 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 		Debug_Tx("The last argument to be processed:\t");
 		Debug_Tx(string_container);Debug_Tx("\n");
 		FL_convert_args(string_container, ++argcounter);
+		num_args_counter++;
+		if(num_args_counter > num_args) Error_Tx("Too many arguments");
 		Debug_Tx("Done with converting, exiting FL_find_args\n");
 
 
@@ -268,6 +278,8 @@ void FL_find_args(int function_number, int num_args, int len_function_name, uint
 					Debug_Tx("The argument:\t");
 					Debug_Tx(string_container);
 					Debug_Tx("\n");
+//					if(stored_args == 4)
+//						string_container[++arg_character_counter] = ',';
 					FL_convert_args(string_container, ++argcounter);
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;

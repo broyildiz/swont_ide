@@ -154,6 +154,14 @@ void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen);
 int global_debug;
 void global_debug_check();
 
+//enum ERROR_CODES
+//{
+//	FL_INIT_ERROR = 0,
+//	FL_INVALID_FUNCTION_NO,
+//	FL_INVALID ARGUMENTS, //FL_find_args function: missing, wrong or too many arguments
+//
+//};
+
 //void LL_exec(struct collection *command);
 
 /* USER CODE END Private defines */

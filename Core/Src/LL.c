@@ -114,6 +114,7 @@ void LL_exec(struct collection *command)
 		case TEKST_FUNCTION_NO :
 			{
 				printf("case text\n");
+				/*
 				error = IO_draw_text(command->tekst.xlup,
 									  command->tekst.ylup,
 									  command->tekst.kleur,
@@ -121,6 +122,7 @@ void LL_exec(struct collection *command)
 									  command->tekst.fontnaam,
 									  command->tekst.fontgrootte,
 									  command->tekst.fontstijl);
+				*/
 			}
 			break;
 //

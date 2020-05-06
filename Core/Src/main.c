@@ -154,6 +154,7 @@ int main(void)
 
 				Debug_Tx("Going to Decode...\n");
 				FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+				memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
 				Debug_Tx("Done decoding, back in main.c\n");
 				printf("Done decoding\n");
 				rb_vars.read_counter++;
@@ -167,6 +168,7 @@ int main(void)
 			Debug_Tx("Diff == 1\n");
 			Debug_Tx("Going to Decode...\n");
 			FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+			memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
 			rb_vars.read_counter++;
 			Debug_Tx("Done decoding, back in main.c\n");
 			printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
