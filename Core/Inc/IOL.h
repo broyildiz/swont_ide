@@ -13,6 +13,7 @@ void screen(void);
 #include "stdlib.h"
 #include "main.h"
 #include "bitmaps.h"
+#include "FL.h"
 //#include "screen.c"
 //#include "images.h"
 
@@ -34,6 +35,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color);
 int drawCircle(int xc, int yc, int x, int y, byte color);
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color);
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr);
+int IO_repeat_commands(int aantal, int hoevaak);
 
 int FillScreen(uint8_t color);
 

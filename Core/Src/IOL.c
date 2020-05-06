@@ -320,6 +320,21 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 		 }
 
 	  }
+	return 0;
+}
 
+int IO_repeat_commands(int aantal, int hoevaak)
+{
+	for(int i = 0; i < hoevaak; i++)
+	{
+		for(int k = (rb_vars.read_counter - aantal); k < rb_vars.read_counter; k++)
+		{
+			FL_uart_decode(rb[k].line_rx_buffer, rb[k].msglen);
+			printf("k:\t%d\n", k);
+		}
+
+	}
+
+	return 0;
 }
 
