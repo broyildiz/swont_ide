@@ -35,9 +35,10 @@ extern "C" {
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
+#include "stdio.h"
 #include "string.h"
 #include "FL.h"
-//#include "LL.h"
+#include "LL.h"
 //#include "IOL.h"
 /* USER CODE END Includes */
 
@@ -132,8 +133,20 @@ rx_cmd rb[RING_BUFFER_SIZE];
 char container[1024];
 int temp;
 
+//struct debug
+//{
+//	char buffer[1024];
+//	int len;
+//};
+//typedef struct debug_t debugdebug;
+//debugdebug ERROR[10];
+//int ERRORC_counter;
+
+char waitCheck;
+
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
+void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen);
 
 int global_debug;
 void global_debug_check();

@@ -17,6 +17,7 @@ void FL_Init()
 {
 	input.char_counter = 0;
 	input.command_execute_flag = False;
+	waitCheck = False;
 
 	rb_vars.write_counter = 0;
 	rb_vars.read_counter = 0;
@@ -100,8 +101,12 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 	 * It should not be called if there was an error in the previous switch case
 	 */
 	Debug_Tx("Back in the FL_uart_decode function\n");
+
+	Debug_Tx("Going into Logic layer\n");
+	LL_exec(&command);
+
+	Debug_Tx("Back in the FL_uart_decode function\n");
 	Debug_Tx("Exiting FL_uart_decode\n");
-//	LL_exec(&command);
 	return 0;
 }
 
@@ -112,31 +117,63 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
   */
 int FL_decode_func_no(uint8_t buffer[])
 {
-	if(buffer[0] == LETTERB) return BITMAP_FUNCTION_NO;
+	if(buffer[0] == LETTERB) {
+		Error_Tx("\n\t BITMAP_FUNCTION\n\n");
+		return BITMAP_FUNCTION_NO;}
 
 	if(buffer[0] == LETTERC)
 	{
-		if(buffer[1] == LETTERL) return CLEARSCHERM_FUNCTION_NO;
-		else return CIRKEL_FUNCTION_NO;
+		if(buffer[1] == LETTERL) {
+			Error_Tx("\n\t CLEARSCHERM_FUNCTION\n\n");
+			return CLEARSCHERM_FUNCTION_NO;
+		}
+		else {
+			Error_Tx("\n\t CIRKEL_FUNCTION\n\n");
+			return CIRKEL_FUNCTION_NO;
+		}
 	}
 
-	if(buffer[0] == LETTERE) return EXECUTE_FUNCTION_NO;
+	if(buffer[0] == LETTERE) {
+		Error_Tx("\n\t EXECUTE_FUNCTION\n\n");
+		return EXECUTE_FUNCTION_NO;
+	}
 
-	if(buffer[0] == LETTERF) return FIGUUR_FUNCTION_NO;
+	if(buffer[0] == LETTERF) {
+		Error_Tx("\n\t FIGUUR_FUNCTION\n\n");
+		return FIGUUR_FUNCTION_NO;
+	}
 
-	if(buffer[0] == LETTERH) return HERHAAL_FUNCTION_NO;
+	if(buffer[0] == LETTERH) {
+		Error_Tx("\n\t HERHAAL_FUNCTION\n\n");
+		return HERHAAL_FUNCTION_NO;
+	}
 
-	if(buffer[0] == LETTERL) return LIJN_FUNCTION_NO;
+	if(buffer[0] == LETTERL) {
+		Error_Tx("\n\t LIJN_FUNCTION\n\n");
+		return LIJN_FUNCTION_NO;
+	}
 
-	if(buffer[0] == LETTERR) return RECHTHOEK_FUNCTION_NO;
+	if(buffer[0] == LETTERR) {
+		Error_Tx("\n\t RECHTHOEK_FUNCTION\n\n");
+		return RECHTHOEK_FUNCTION_NO;
+	}
 
 	if(buffer[0] == LETTERT)
 	{
-		if(buffer[1] == LETTERE) return TEKST_FUNCTION_NO;
-		else return TOREN_FUNCTION_NO;
+		if(buffer[1] == LETTERE) {
+			Error_Tx("\n\t TEKST_FUNCTION\n\n");
+			return TEKST_FUNCTION_NO;
+		}
+		else {
+			Error_Tx("\n\t TOREN_FUNCTION\n\n");
+			return TOREN_FUNCTION_NO;
+		}
 	}
 
-	if(buffer[0] == LETTERW) return WACHT_FUNCTION_NO;
+	if(buffer[0] == LETTERW) {
+		Error_Tx("\n\t WACHT_FUNCTION\n\n");
+		return WACHT_FUNCTION_NO;
+	}
 
 	return FUNCTION_NO_RESET;
 

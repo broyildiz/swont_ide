@@ -188,7 +188,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+  HAL_SYSTICK_IRQHandler();
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -257,7 +257,7 @@ void USART2_IRQHandler(void)
   if(uart_char != LINE_FEED)
   {
 	 //Check for CR and LF characters
-	 if(uart_char == CARRIAGE_RETURN)
+	 if((uart_char == CARRIAGE_RETURN) || uart_char == '.')
 	 {
 		input.command_execute_flag = True;
 

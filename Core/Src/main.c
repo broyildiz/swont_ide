@@ -109,14 +109,7 @@ int main(void)
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
-
-
-//  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
-
-//  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/4, VGA_COL_BLACK);
-   int diff = 0;
-//   int diffContainer[30] = {0};
-//   int tmp = 0;
+  int diff = 0;
    global_debug = False;
   /* USER CODE END 2 */
 
@@ -124,28 +117,51 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == True)
+	  // Check if a Command was received or if there are still function to be decoded
+	  if((input.command_execute_flag == True) || (waitCheck == True))
 	  {
+		// Check if Debug is to be toggled
 		global_debug_check();
-		Debug_Tx("Going to decode, main.c line 123\n");
+
+		Debug_Tx("Going to decode, main.c line 130\n");
+
+		// Debug information, Print the whole received command
+		Debug_String_tx(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
 
 		diff = rb_vars.write_counter - rb_vars.read_counter;
-//		diffContainer[tmp++]pDebugMessage = diff;
-//		Error_Tx("Write counter:\t"); Error_Tx((char)rb_vars.write_counter);Error_Tx("\n");
-//		Error_Tx("Read counter:\t"); Error_Tx((char)rb_vars.read_counter);Error_Tx("\n");
-//		Error_Tx("Diff:\t"); Error_Tx((char)diff);Error_Tx("\n");
 
+		printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
+		printf("read_counter:\t%d\n", rb_vars.read_counter);
+		printf("diff:\t%d\n\n", diff);
+
+		// There are functions that were buffered and need to be processed
 		if(diff != 1)
 		{
-			Debug_Tx("Diff != 0\n");
+			Debug_Tx("Diff != 1\n");
 			Debug_Tx("Entering the while loop...\n");
-			while(rb_vars.read_counter < diff)
+
+			/*
+			 * -1 because there is no command at write_counter.
+			 * The next command will be written to write_counter in the next interrupt
+			 */
+			while(rb_vars.read_counter <= rb_vars.write_counter-1)
 			{
+				printf("Going to makeup the difference\n");
+				printf("Line to be decoded:\n");
+				printf("\t");
+				Debug_String_tx(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
+				printf("\n\n");
+
 				Debug_Tx("Going to Decode...\n");
 				FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
 				Debug_Tx("Done decoding, back in main.c\n");
+				printf("Done decoding\n");
 				rb_vars.read_counter++;
 			}
+			printf("\n\nMade up the difference\n\n");
+			// There are no more functions to be decoded
+			waitCheck = False;
+
 		}
 		else {
 			Debug_Tx("Diff == 1\n");
@@ -153,13 +169,16 @@ int main(void)
 			FL_uart_decode(rb[rb_vars.read_counter].line_rx_buffer, rb[rb_vars.read_counter].msglen);
 			rb_vars.read_counter++;
 			Debug_Tx("Done decoding, back in main.c\n");
+			printf("\n\nWrite counter:\t%d\n", rb_vars.write_counter);
+			printf("read_counter:\t%d\n", rb_vars.read_counter);
+			printf("diff:\t%d\n\n", diff);
 		}
 		Debug_Tx("Resetting the execute flag\n");
 		input.command_execute_flag = False;
 
+
 		UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 //		  FL_uart_decode();
-//		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
 	  }
 
 
@@ -224,19 +243,30 @@ void Error_Tx(char *pErrorMessage)
 void Debug_Tx(char *pDebugMessage)
 {
 	if(global_debug)
+//		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));
+//		printf("%s\n", pDebugMessage);
 		HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+}
+
+void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen)
+{
+//	for(int i = 0; i <= strlen(pDebugMessage); i++)
+	for(int i = 0; i <= msglen; i++)
+		printf("%c", pDebugMessage[i]);
+	printf("\n");
 }
 
 void global_debug_check()
 {
-	if(	(rb[rb_vars.read_counter].line_rx_buffer[0] == 'g') &&
-		(rb[rb_vars.read_counter].line_rx_buffer[1] == 'l') &&
-		(rb[rb_vars.read_counter].line_rx_buffer[2] == 'o'))
+	if(	(rb[rb_vars.read_counter].line_rx_buffer[0] == 'd') &&
+		(rb[rb_vars.read_counter].line_rx_buffer[1] == 'e') &&
+		(rb[rb_vars.read_counter].line_rx_buffer[2] == 'b'))
 	{
 		global_debug = !global_debug;
 		Debug_Tx("Toggling Debugging\n");
 	}
 }
+
 /* USER CODE END 4 */
 
 /**

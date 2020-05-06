@@ -1,12 +1,12 @@
 
 
-//#ifndef INC_LL_H_
-//#define INC_LL_H_
-//
-//#include "main.h"
+#ifndef INC_LL_H_
+#define INC_LL_H_
+
+#include "main.h"
 
 
-//void LL_exec(struct collection *commands);
+void LL_exec(struct collection *commands);
 
 
 // dit kan weg als alle layers er zijn
@@ -44,4 +44,4 @@
 //};
 
 
-//#endif /* INC_LL_H_ */
+#endif /* INC_LL_H_ */
