@@ -469,125 +469,48 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	default: break;
 	}
 
-		printf("text parameters selected \n");
+	printf("text parameters selected \n");
 
-		printf("%s\n",text);
-		printf("color: %d",color);
-		//teller
-		//hoe weet ik hoe lang het bericht is?
-		//character aan het eind plaatsen
-		//for loop -> while loop
+	for(i=0;i<strlen(text);i++)/* loop to print each charcter from the text buffer */
+	{
+		symbol_nr = (*(text+i)) - ASCII_OFFSET;/* determines which symbol from the font library should be selected */
+		symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); /* retrieves the symbol width expressed in pixels */
+		symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); /* retrieves the starting elecment in the font bitmap */
 
-		/* loops through the message to display each character */
+		/* determines how many bytes are used in width per character */
+		symbol_width =  symbol_width_pixels/BYTE_SIZE;
+		if (symbol_width_pixels % BYTE_SIZE != 0) //voor het aantal bytes
+			symbol_width++;
 
+		/*
+		 *  Hier moet een if statement die zegt dat hij naar de volgende regel mag
+		 */
 
-		for(i=0;i<strlen(text);i++)
+		for(y=0; y<symbol_height;y++)//puttting symbol on screen
 		{
-			symbol_nr = (*(text+i)) - ASCII_OFFSET;/* determines which symbol from the font library should be selected */
-			// if statement voor als symbol_nr negatief
-//			printf("symbol_nr = %d\n",symbol_nr);
-//			printf("pdescript = %i, %i \n",pdescript, consolas_11ptDescriptors);
-//			printf("symbol_nr * array dimension = %i\n",symbol_nr * ARRAY_DIMENSION);
-//			printf("symbol_nr * array dimension = %i\n",*(pdescript + 168));
-
-
-			symbol_width_pixels = *(pdescript + symbol_nr * ARRAY_DIMENSION); /* retrieves the symbol width expressed in pixels */
-
-//			printf("symbol_width_pixels = %d\n",symbol_width_pixels);
-			symbol_start = *(pdescript + symbol_nr * ARRAY_DIMENSION + CHAR_START_OFFSET); /* retrieves the starting elecment in the font bitmap */
-
-//			printf("symbol_width = %d\n",symbol_width);
-
-			/* determines how many bytes are used in width per character */
-			symbol_width =  symbol_width_pixels/BYTE_SIZE;
-			if (symbol_width_pixels % BYTE_SIZE != 0) //voor het aantal bytes
-				symbol_width++;
-
-//			printf("text = %d, \n", *(text+i));
-//			printf("symbol_width = %d\n",symbol_width);
-
-//			printf("i =%d ", i);
-//			printf("|| symbol_nr = %d || ",symbol_nr*2);
-//			printf("symbol_start = %d\n",symbol_start);
-//			printf("\n");
-
-//			if(symbol_width==2)
-//			{
-//				printf("symbol_nr = %d\n",symbol_nr);
-//				printf("symbol_start = %d\n",symbol_start);
-//
-//			}
-
-			/*
-			 *  Hier moet een if statement die zegt dat hij naar de volgende regel mag
-			 */
-
-			for(y=0; y<symbol_height;y++)//puttting symbol on screen
+			for(x=0; x<symbol_width;x++)//puttting symbol on screen
 			{
-				for(x=0; x<symbol_width;x++)//puttting symbol on screen
+
+				temp = 	*(pfont + symbol_start + y*symbol_width + x); /* retrieves byte from character bitmap */
+
+				bitmask = BITMASK ;// B1000 0000
+				for(bit = 0; bit<BYTE_SIZE; bit++) //check per byte
 				{
-//					printf("height %d: ",y);
-
-					temp = 	*(pfont + symbol_start + y*symbol_width + x);
-
-//					if(symbol_width==2)
-//					{
-//						printf("x=%d ,y= %d ",xlup + bit + x*8 , ylup + y);
-//						printf("temp = 0x%X ",temp);
-//						printf("pfont = %d \t",symbol_start + y + x);
-//					}
-
-					bitmask = BITMASK ;// B1000 0000
-					for(bit = 0; bit<BYTE_SIZE; bit++) //check per byte
+					if((temp & bitmask)!=0)
 					{
-
-						if((temp & bitmask)!=0)
-						{
-	//						printf("1");
-//							if(symbol_width==2)
-//							{
-////								printf("x=%d ,y= %d ",xlup + bit + x*8 , ylup + y);
-//								printf("1");
-//							}
-	//						printf("x=%d ,y= %d ",xlup+bit,ylup+y);
-
-							UB_VGA_SetPixel(xlup + bit + x*BYTE_SIZE , ylup + y, color);
-						}
-						else
-						{
-	//						printf("0");
-//							if(symbol_width==2)
-//							{
-//								printf("0");
-//							}
-						}
-
-						bitmask = bitmask >> 1; //define ipv 1 ??
+						UB_VGA_SetPixel(xlup + bit + x*BYTE_SIZE , ylup + y, color); /* sets pixel*/
 					}
-//					if(symbol_width==2)
-//					{
-//						printf("\t");
-//					}
+					bitmask = bitmask >> 1; //define ipv 1 ??
 				}
-//				if(symbol_width==2)
-//				{
-//					printf("\n");
-//				}
-//				printf("\n");
 			}
-//			printf("new character\n");
-			xlup = xlup + symbol_width_pixels + 1;// 1 pixel offset for spacing between symbols
-			//check voor out of bounds
 		}
 
-//		for(i=0;i<190;i++)
-//		{
-//			printf("i = %d, pdescript = %d\n",i ,*(pdescript + i));
-//		}
+		xlup = xlup + symbol_width_pixels + 1;// 1 pixel offset for spacing between symbols
+		//check voor out of bounds
+	}
 
-
-		printf("finished text \n");
-		return 0;
+	printf("finished text \n");
+	return 0;
 }
 
 
