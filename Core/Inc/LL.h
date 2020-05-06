@@ -6,6 +6,7 @@
 #include "main.h"
 
 
+struct collection;
 int LL_exec(struct collection * commands);
 
 

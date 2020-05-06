@@ -16,6 +16,7 @@ int FL_find_args(int function_number, int num_args,  int len_function_name);
 int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
 //void FL_error_handler(char *pErrorString);
+int FL_find_font_style(char arg_array[]);
 
 #define MAX_LEN_TEKST_STRING 128
 #define MAX_LEN_FONTNAME 30
@@ -29,9 +30,11 @@ uint8_t FL_find_color(char color[]);
 #define LETTERH 'h'
 #define LETTERI 'i'
 #define LETTERL 'l'
+#define LETTERN 'n'
 #define LETTERM 'm'
 #define LETTERR 'r'
 #define LETTERT 't'
+#define LETTERV 'v'
 #define LETTERW 'w'
 #define LETTERZ 'z'
 

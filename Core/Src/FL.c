@@ -21,6 +21,8 @@ int FL_uart_decode()
 	{
 		Error_Tx("Did not recognize function number, line 22\n");
 		error = FL_INVALID_FUNCTION_NO;
+		Debug_INT(error);
+//		printf("Error code:\t%d\n",error);
 		return error;
 	}
 
@@ -365,11 +367,11 @@ int FL_convert_args(char arg_array[], int argcounter)
 			{
 			case 1: command.tekst.xlup = atoi(arg_array); break;
 			case 2: command.tekst.ylup = atoi(arg_array); break;
-			case 3: command.tekst.kleur = atoi(arg_array); break;
+			case 3: command.tekst.kleur = FL_find_color(arg_array); break;
 			case 4: strcpy(command.tekst.tekst, arg_array); break;
 			case 5: strcpy(command.tekst.fontnaam, arg_array); break;
 			case 6: command.tekst.fontgrootte = atoi(arg_array); break;
-			case 7: command.tekst.fontstijl = atoi(arg_array); break;
+			case 7: command.tekst.fontstijl = FL_find_font_style(arg_array); break;
 			}
 		}break;
 		case TOREN_FUNCTION_NO:
@@ -445,6 +447,15 @@ uint8_t FL_find_color(char color[])
 	}
 
 return ret_val;
+}
+
+int FL_find_font_style(char arg_array[])
+{
+	int retval;
+	if(arg_array[0] == LETTERN) retval =  NORMAL;
+	if(arg_array[1] == LETTERC) retval = ITALIC;
+	if(arg_array[2] == LETTERV) retval = BOLD;
+	return retval;
 }
 
 
