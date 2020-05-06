@@ -10,10 +10,10 @@
 #include "main.h"
 
 
-void FL_uart_decode(void);
+int FL_uart_decode(void);
 int FL_find_decode_nr();
-void FL_find_args(int function_number, int num_args,  int len_function_name);
-void FL_convert_args(char arg_array[], int argcounter);
+int FL_find_args(int function_number, int num_args,  int len_function_name);
+int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
 //void FL_error_handler(char *pErrorString);
 
@@ -206,6 +206,10 @@ struct collection
 	toren_func toren;
 	wacht_func wacht;
 }command; //dit is een global?
+
+
+
+
 
 //void LL_exec(struct collection *commands);
 

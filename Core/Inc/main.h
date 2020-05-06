@@ -123,6 +123,25 @@ int global_debug;
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
 void global_debug_check();
+void Global_Error_handler(int error);
+
+enum ERROR_CODES
+{
+	NO_ERROR = 0,
+	FL_INIT_ERROR,
+	FL_INVALID_FUNCTION_NO,
+	FL_SWITCH_INVALID_FUNCTION_NO,
+	FL_CONVERT_ARGS_INVALID_FUNCTION_NO,
+	FL_INVALID_ARGUMENTS,
+	FL_TOO_MANY_ARGS, //FL_find_args function: missing, wrong or too many arguments
+	FL_EMPTY_ARGUMENT,
+
+	LL_NOT_A_SUPPORTED_FUNCTION,
+
+	IOL_LINE_INVALID_ARG_VALUE
+
+};
+
 
 enum ERROR_CODES
 {

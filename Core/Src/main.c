@@ -119,6 +119,7 @@ int main(void)
 
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
+  int error = NO_ERROR;
 
 //  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/3, VGA_COL_BLACK);
 
@@ -131,11 +132,13 @@ int main(void)
 	  if(input.command_execute_flag == True)
 	  {
 		  global_debug_check();
-		  Debug_Tx("HMM");
+//		  Debug_Tx("HMM");
 		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
 		  input.command_execute_flag = False;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  FL_uart_decode();
+		  error = FL_uart_decode();
+		  if(error)
+			  Global_Error_handler(error);
 //		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
 	  }
 
@@ -191,21 +194,36 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void Global_Error_handler(int error)
+{
+	printf("\n\nENCOUNTERRED AN ERROR!\n");
+	switch(error)
+	{
+	case FL_INIT_ERROR: 					printf("\nERROR:\tFL_INIT_ERROR\n"); break;
+	case FL_INVALID_FUNCTION_NO: 			printf("\nERROR:\tFL_INVALID_FUNCTION_NO\n");  break;
+	case FL_SWITCH_INVALID_FUNCTION_NO: 	printf("\nERROR:\tFL_SWITCH_INVALID_FUNCTION_NO\n");  break;
+	case FL_INVALID_ARGUMENTS: 				printf("\nERROR:\tFL_INVALID_ARGUMENTS\n");  break;
+	case FL_TOO_MANY_ARGS: 					printf("\nERROR:\tFL_TOO_MANY_ARGS\n");  break;
+	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
+	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
+	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
+	default: 								printf("\nERROR:\tNo Error\n"); break;
+	}
+}
+
 void Error_Tx(char  *pErrorMessage)
 {
 	for(int i = 0; i <= strlen(pErrorMessage); i++)
 				printf("%c", pErrorMessage[i]);
-//	HAL_UART_Transmit(&huart2, pErrorMessage, 20, HAL_MAX_DELAY);
 }
 
 void Debug_Tx(char *pDebugMessage)
 {
 	if(global_debug)
-//		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));
-//		printf("%s\n", pDebugMessage);
+
 		for(int i = 0; i <= strlen(pDebugMessage); i++)
 			printf("%c", pDebugMessage[i]);
-//		HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 
 void Debug_INT(int num)
