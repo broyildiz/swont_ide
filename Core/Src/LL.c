@@ -8,82 +8,106 @@
   *
   * @retval None
   */
+
+//void Delay(__IO uint32_t nCount)
+//{
+//  while(nCount--)
+//  {
+//  }
+//}
+
 void LL_exec(struct collection *commands)
 {
+	Debug_Tx("Enterred the LL\n");
 	int error;
 	switch(commands->function_number)
 	{
 
-		case FUNCTION_NO_RESET:
-			 break; //nieuwe functie?
-
 		case BITMAP_FUNCTION_NO:
-			error = IO_draw_bitmap(commands->bitmap.xlup,
-			 					   commands->bitmap.ylup,
-								   commands->bitmap.nr);
-			break;
+		{
+			Debug_Tx("Going to execute BITMAP_FUNCTION_NO\n");
+			//Het crashed in deze functie
+//			error = IO_draw_bitmap(commands->bitmap.xlup,
+//						 					   commands->bitmap.ylup,
+//											   commands->bitmap.nr);
+
+		}break;
 
 		case CIRKEL_FUNCTION_NO:
+		{
+			Debug_Tx("Going to execute CIRKEL_FUNCTION_NO\n");
 			error = IO_draw_circle(commands->cirkel.x,
 									commands->cirkel.y,
 									commands->cirkel.radius,
 									commands->cirkel.kleur);
-			break;
+		}break;
 
 		case CLEARSCHERM_FUNCTION_NO:
+		{
+			Debug_Tx("Going to execute CLEARSCHERM_FUNCTION_NO\n");
 			error = IO_clearscreen(commands->clearscherm.kleur);
-			break;
+		}break;
 
 //		case EXECUTE_FUNCTION_NO:
 //			error = IO_execute(commands->execute.null);
 //			break;
 
 		case FIGUUR_FUNCTION_NO:
+		{
+			Debug_Tx("Going to execute FIGUUR_FUNCTION_NO\n");
 			error = IO_draw_figure(commands->figuur.x1,
-									commands->figuur.y1,
-									commands->figuur.x2,
-									commands->figuur.y2,
-									commands->figuur.x3,
-									commands->figuur.y3,
-									commands->figuur.x4,
-									commands->figuur.y4,
-									commands->figuur.x5,
-									commands->figuur.y5,
-									commands->figuur.kleur);
-			break;
+												commands->figuur.y1,
+												commands->figuur.x2,
+												commands->figuur.y2,
+												commands->figuur.x3,
+												commands->figuur.y3,
+												commands->figuur.x4,
+												commands->figuur.y4,
+												commands->figuur.x5,
+												commands->figuur.y5,
+												commands->figuur.kleur);
+		}break;
 
-//		case HERHAAL_FUNCTION_NO :
-//			error = IO_repeat_commands(commands->herhaal.aantal,
-//										commands->herhaal.hoevaak);
-//			break;
+		case HERHAAL_FUNCTION_NO :
+		{
+			Debug_Tx("Going to execute HERHAAL_FUNCTION_NO\n");
+			error = IO_repeat_commands(commands->herhaal.aantal,
+										commands->herhaal.hoevaak);
+		}break;
 
 		case LIJN_FUNCTION_NO :
+		{
+			Debug_Tx("Going to execute LIJN_FUNCTION_NO\n");
 			error = IO_draw_line(commands->lijn.x1,
 								  commands->lijn.y1,
 								  commands->lijn.x2,
 								  commands->lijn.y2,
 								  commands->lijn.kleur,
 								  commands->lijn.dikte);
-			break;
+		}break;
 
 		case RECHTHOEK_FUNCTION_NO :
+		{
+			Debug_Tx("Going to execute RECHTHOEK_FUNCTION_NO\n");
 			error = IO_draw_rectangle(commands->rechthoek.xlup,
 									   commands->rechthoek.ylup,
 									   commands->rechthoek.breedte,
 									   commands->rechthoek.hoogte,
 									   commands->rechthoek.kleur,
 									   commands->rechthoek.gevuld);
-			break;
+		}break;
 
 		case TEKST_FUNCTION_NO :
-//			error = IO_draw_text(commands->tekst.xlup,
-//								  commands->tekst.ylup,
-//								  commands->tekst.kleur,
-//								  commands->tekst.tekst,
-//								  commands->tekst.fontnaam,
-//								  commands->tekst.fontgrootte,
-//								  commands->tekst.fontstijl);
-			break;
+		{
+			Debug_Tx("Going to execute TEKST_FUNCTION_NO\n");
+			//			error = IO_draw_text(commands->tekst.xlup,
+			//								  commands->tekst.ylup,
+			//								  commands->tekst.kleur,
+			//								  commands->tekst.tekst,
+			//								  commands->tekst.fontnaam,
+			//								  commands->tekst.fontgrootte,
+			//								  commands->tekst.fontstijl);
+		}break;
 //
 //		case TOREN_FUNCTION_NO:
 //			error = IO_draw_tower(commands->toren.x1,
@@ -93,9 +117,17 @@ void LL_exec(struct collection *commands)
 //								   commands->toren.kleur2);
 //			break; //nieuw functie
 //
-//		case WACHT_FUNCTION_NO:
+		case WACHT_FUNCTION_NO:
+		{
+			Debug_Tx("Going to execute WACHT_FUNCTION_NO\n");
+
+//			uint32_t i = 100000000;
+//			while(i--);
+//			Debug_Tx("\n\nDone with a while delay\n\n");
+			waitCheck = True;
+			HAL_Delay(command.wacht.msecs);
 //			error = IO_wait(commands->wacht.msecs);
-//			break;
+		}break;
 
 		default: break;
 	}
@@ -104,7 +136,9 @@ void LL_exec(struct collection *commands)
 	{
 
 	}
-
+	Debug_Tx("back in LL.c\n");
+	Debug_Tx("Going back to FL.c\n");
+//
 }
 
 

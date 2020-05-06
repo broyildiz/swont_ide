@@ -9,6 +9,28 @@
 #include "string.h"
 
 /**
+  * @brief  Resets all the variables
+  * @param  None
+  * @retval None
+  */
+void FL_Init()
+{
+	input.char_counter = 0;
+	input.command_execute_flag = False;
+	waitCheck = False;
+
+	rb_vars.write_counter = 0;
+	rb_vars.read_counter = 0;
+	rb_vars.buffer_lengt = 0;
+
+//	int i;
+//	for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
+	memset(rb, 0, sizeof(rb)); // Set all the bits to 0, reset the whole array
+	Debug_Tx("Done with FL Init\n");
+}
+
+
+/**
   * @brief  Decodes the received USART2 buffer.
   * @param  None
   * @retval None
@@ -63,9 +85,14 @@ void FL_uart_decode()
 	 * Let the Logic Layer know that it can start to execute the command
 	 * It should not be called if there was an error in the previous switch case
 	 */
-	Error_Tx("hmm");
+	Debug_Tx("Back in the FL_uart_decode function\n");
+
+	Debug_Tx("Going into Logic layer\n");
 	LL_exec(&command);
 
+	Debug_Tx("Back in the FL_uart_decode function\n");
+	Debug_Tx("Exiting FL_uart_decode\n");
+	return 0;
 }
 
 /**
@@ -75,31 +102,63 @@ void FL_uart_decode()
   */
 int FL_find_decode_nr()
 {
-	if(input.line_rx_buffer[0] == LETTERB) return BITMAP_FUNCTION_NO;
+	if(buffer[0] == LETTERB) {
+		Error_Tx("\n\t BITMAP_FUNCTION\n\n");
+		return BITMAP_FUNCTION_NO;}
 
 	if(input.line_rx_buffer[0] == LETTERC)
 	{
-		if(input.line_rx_buffer[1] == LETTERL) return CLEARSCHERM_FUNCTION_NO;
-		else return CIRKEL_FUNCTION_NO;
+		if(buffer[1] == LETTERL) {
+			Error_Tx("\n\t CLEARSCHERM_FUNCTION\n\n");
+			return CLEARSCHERM_FUNCTION_NO;
+		}
+		else {
+			Error_Tx("\n\t CIRKEL_FUNCTION\n\n");
+			return CIRKEL_FUNCTION_NO;
+		}
 	}
 
-	if(input.line_rx_buffer[0] == LETTERE) return EXECUTE_FUNCTION_NO;
+	if(buffer[0] == LETTERE) {
+		Error_Tx("\n\t EXECUTE_FUNCTION\n\n");
+		return EXECUTE_FUNCTION_NO;
+	}
 
-	if(input.line_rx_buffer[0] == LETTERF) return FIGUUR_FUNCTION_NO;
+	if(buffer[0] == LETTERF) {
+		Error_Tx("\n\t FIGUUR_FUNCTION\n\n");
+		return FIGUUR_FUNCTION_NO;
+	}
 
-	if(input.line_rx_buffer[0] == LETTERH) return HERHAAL_FUNCTION_NO;
+	if(buffer[0] == LETTERH) {
+		Error_Tx("\n\t HERHAAL_FUNCTION\n\n");
+		return HERHAAL_FUNCTION_NO;
+	}
 
-	if(input.line_rx_buffer[0] == LETTERL) return LIJN_FUNCTION_NO;
+	if(buffer[0] == LETTERL) {
+		Error_Tx("\n\t LIJN_FUNCTION\n\n");
+		return LIJN_FUNCTION_NO;
+	}
 
-	if(input.line_rx_buffer[0] == LETTERR) return RECHTHOEK_FUNCTION_NO;
+	if(buffer[0] == LETTERR) {
+		Error_Tx("\n\t RECHTHOEK_FUNCTION\n\n");
+		return RECHTHOEK_FUNCTION_NO;
+	}
 
 	if(input.line_rx_buffer[0] == LETTERT)
 	{
-		if(input.line_rx_buffer[1] == LETTERE) return TEKST_FUNCTION_NO;
-		else return TOREN_FUNCTION_NO;
+		if(buffer[1] == LETTERE) {
+			Error_Tx("\n\t TEKST_FUNCTION\n\n");
+			return TEKST_FUNCTION_NO;
+		}
+		else {
+			Error_Tx("\n\t TOREN_FUNCTION\n\n");
+			return TOREN_FUNCTION_NO;
+		}
 	}
 
-	if(input.line_rx_buffer[0] == LETTERW) return WACHT_FUNCTION_NO;
+	if(buffer[0] == LETTERW) {
+		Error_Tx("\n\t WACHT_FUNCTION\n\n");
+		return WACHT_FUNCTION_NO;
+	}
 
 	return FUNCTION_NO_RESET;
 

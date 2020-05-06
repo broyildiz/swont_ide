@@ -35,10 +35,11 @@ extern "C" {
 #include "stdint.h"
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
-
+#include "stdio.h"
+#include "string.h"
 #include "FL.h"
 #include "LL.h"
-#include "IOL.h"
+//#include "IOL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -109,8 +110,44 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
+
+// Struct that groups the ring buffer indexes, counters, variables
+typedef struct
+{
+	volatile unsigned int write_counter; 	// Keeps track of position to write into the rb (ring buffer) Used in it.c
+	unsigned int read_counter;				// Keeps track of newest element written into the rb. Used throughout the FL
+	volatile unsigned int buffer_lengt;		// Keeps track of the number of stored commands
+}rb_t;
+rb_t rb_vars;
+
+
+
+// Struct to make the ringbuffer out of
+struct input_t
+{
+	uint8_t line_rx_buffer[LINE_BUFLEN];	// Buffer to hold all the bytes from rx USART2
+	uint16_t msglen;
+};
+typedef struct input_t rx_cmd;
+rx_cmd rb[RING_BUFFER_SIZE];
+
+char container[1024];
+int temp;
+
+//struct debug
+//{
+//	char buffer[1024];
+//	int len;
+//};
+//typedef struct debug_t debugdebug;
+//debugdebug ERROR[10];
+//int ERRORC_counter;
+
+char waitCheck;
+
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
+void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen);
 
 //void LL_exec(struct collection *command);
 
