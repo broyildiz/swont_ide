@@ -587,7 +587,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 
 
 		printf("finished text \n");
-		return error;
+		return 0;
 }
 
 
