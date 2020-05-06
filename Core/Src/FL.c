@@ -34,9 +34,9 @@ void FL_Init()
   */
 int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 {
-	Debug_Tx("Entering FL_uart_decode\n");
-	strcpy(container, line_rx_buffer);
-	Debug_Tx(container); Debug_Tx("\n");
+//	Debug_Tx("Entering FL_uart_decode\n");
+//	strcpy(container, line_rx_buffer);
+//	Debug_Tx(container); Debug_Tx("\n");
 
 	int error = NO_ERROR;
 
@@ -44,15 +44,15 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 	if(function_number == FUNCTION_NO_RESET) // If no function is recognized
 	{
 		error = FL_INVALID_FUNCTION_NO;
-		Debug_Tx("Did not recognize function number, line 52\n");
+//		Debug_Tx("Did not recognize function number, line 52\n");
 		return error;
 
 	}
 
-	Debug_Tx("Found and storing function number\n");
+//	Debug_Tx("Found and storing function number\n");
 	command.function_number = function_number; // Store the function number in the struct
 
-	Debug_Tx("Entering the function number switch case\n");
+//	Debug_Tx("Entering the function number switch case\n");
 
 	//This switch passes the right arguments to the FL_find_args function based on the function number
 	printf("function = %d\n",function_number);

@@ -60,8 +60,8 @@ int LL_exec(struct collection *command)
 	case HERHAAL_FUNCTION_NO :
 	{
 		Debug_Tx("Going to execute HERHAAL_FUNCTION_NO\n");
-		error = IO_repeat_commands(command->herhaal.aantal,
-									command->herhaal.hoevaak);
+//		error = IO_repeat_commands(command->herhaal.aantal,
+//									command->herhaal.hoevaak);
 	}break;
 
 	case LIJN_FUNCTION_NO :

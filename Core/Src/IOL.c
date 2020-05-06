@@ -610,25 +610,25 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 		return 0;
 }
 
-int IO_repeat_commands(int aantal, int hoevaak)
-{
-	int error = NO_ERROR;
-
-	for(int i = 0; i < hoevaak; i++)
-	{
-		for(int k = (rb_vars.read_counter - aantal); k < rb_vars.read_counter; k++)
-		{
-			error = FL_uart_decode(rb[k].line_rx_buffer, rb[k].msglen);
-			if(error) Global_Error_handler(error);
-			memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
-
-			printf("k:\t%d\n", k);
-		}
-
-	}
-
-	return error;
-}
+//int IO_repeat_commands(int aantal, int hoevaak)
+//{
+//	int error = NO_ERROR;
+//
+//	for(int i = 0; i < hoevaak; i++)
+//	{
+//		for(int k = (rb_vars.read_counter - aantal); k < rb_vars.read_counter; k++)
+//		{
+//			error = FL_uart_decode(rb[k].line_rx_buffer, rb[k].msglen);
+//			if(error) Global_Error_handler(error);
+//			memset(command.tekst.tekst, 0, sizeof(command.tekst.tekst));
+//
+//			printf("k:\t%d\n", k);
+//		}
+//
+//	}
+//
+//	return error;
+//}
 
 void IOL_error_handler(char *pErrorString)
 {

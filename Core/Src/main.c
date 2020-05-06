@@ -132,28 +132,27 @@ int main(void)
 	  // Check if a Command was received or if there are still function to be decoded
 	  if((input.command_execute_flag == True) || (waitCheck == True))
 	  {
-		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
-		global_debug_check();
+		HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
+//		global_debug_check();
 
-		Debug_Tx("Going to decode, main.c line 130\n");
+//		Debug_Tx("Going to decode, main.c line 130\n");
 
 		// Debug information, Print the whole received command
+//			Debug_Tx("Resetting the execute flag\n");
+			input.command_execute_flag = False;
+			FL_uart_decode(input.line_rx_buffer, input.msglen);
 
+//			UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 
 		}
-		Debug_Tx("Resetting the execute flag\n");
-		input.command_execute_flag = False;
 
-
-		UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-
-	  }
+  }
 
 	  //HELPHELP CHECK OF HET WERKT
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+
   /* USER CODE END 3 */
 }
 
@@ -223,7 +222,7 @@ void Global_Error_handler(int error)
 	}
 }
 
-void Debug_Tx(uint8_t *pDebugMessage)
+void Debug_Tx(char *pDebugMessage)
 {
 	if(global_debug)
 //		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));
