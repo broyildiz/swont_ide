@@ -118,8 +118,11 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 
-void Error_Tx(uint8_t *pErrorMessage);
-void Debug_Tx(uint8_t *pDebugMessage);
+int global_debug;
+
+void Error_Tx(char *pErrorMessage);
+void Debug_Tx(char *pDebugMessage);
+void global_debug_check();
 
 //void LL_exec(struct collection *command);
 

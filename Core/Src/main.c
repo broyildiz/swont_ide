@@ -130,6 +130,8 @@ int main(void)
   {
 	  if(input.command_execute_flag == True)
 	  {
+		  global_debug_check();
+		  Debug_Tx("HMM");
 		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
 		  input.command_execute_flag = False;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
@@ -189,19 +191,39 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Error_Tx(uint8_t  *pErrorMessage)
+void Error_Tx(char  *pErrorMessage)
 {
-	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+	for(int i = 0; i <= strlen(pErrorMessage); i++)
+				printf("%c", pErrorMessage[i]);
 //	HAL_UART_Transmit(&huart2, pErrorMessage, 20, HAL_MAX_DELAY);
 }
 
-void Debug_Tx(uint8_t *pDebugMessage)
+void Debug_Tx(char *pDebugMessage)
 {
-	/*
-	 * ifdef DEBUG
-	 * uart TX
-	 */
-	HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+	if(global_debug)
+//		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));
+//		printf("%s\n", pDebugMessage);
+		for(int i = 0; i <= strlen(pDebugMessage); i++)
+			printf("%c", pDebugMessage[i]);
+//		HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+}
+
+void Debug_INT(int num)
+{
+	if(global_debug)
+		printf("%d",num);
+}
+
+
+void global_debug_check()
+{
+	if(	(input.line_rx_buffer[0] == 'd') &&
+		(input.line_rx_buffer[1] == 'e') &&
+		(input.line_rx_buffer[2] == 'b'))
+	{
+		global_debug = !global_debug;
+		Debug_Tx("Toggling Debugging\n");
+	}
 }
 /* USER CODE END 4 */
 
