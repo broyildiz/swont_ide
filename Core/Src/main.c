@@ -120,25 +120,36 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
 
-//  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/3, VGA_COL_BLACK);
-
+  int diff = 0;
+  global_debug = False;
+  int error = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == True)
+	  // Check if a Command was received or if there are still function to be decoded
+	  if((input.command_execute_flag == True) || (waitCheck == True))
 	  {
 		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
-		  input.command_execute_flag = False;
-		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  FL_uart_decode();
-//		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
+		global_debug_check();
+
+		Debug_Tx("Going to decode, main.c line 130\n");
+
+		// Debug information, Print the whole received command
+
+
+		}
+		Debug_Tx("Resetting the execute flag\n");
+		input.command_execute_flag = False;
+
+
+		UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
+
 	  }
 
 	  //HELPHELP CHECK OF HET WERKT
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -189,20 +200,53 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Error_Tx(uint8_t  *pErrorMessage)
+void Error_Tx(char  *pErrorMessage)
 {
+//	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
-//	HAL_UART_Transmit(&huart2, pErrorMessage, 20, HAL_MAX_DELAY);
+}
+
+void Global_Error_handler(int error)
+{
+	printf("\n\nENCOUNTERRED AN ERROR!\n");
+	switch(error)
+	{
+	case FL_INIT_ERROR: 					printf("\nERROR:\tFL_INIT_ERROR\n"); break;
+	case FL_INVALID_FUNCTION_NO: 			printf("\nERROR:\tFL_INVALID_FUNCTION_NO\n");  break;
+	case FL_SWITCH_INVALID_FUNCTION_NO: 	printf("\nERROR:\tFL_SWITCH_INVALID_FUNCTION_NO\n");  break;
+	case FL_INVALID_ARGUMENTS: 				printf("\nERROR:\tFL_INVALID_ARGUMENTS\n");  break;
+	case FL_TOO_MANY_ARGS: 					printf("\nERROR:\tFL_TOO_MANY_ARGS\n");  break;
+	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
+	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
+	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
+	default: 								printf("\nERROR:\tNo Error\n"); break;
+	}
 }
 
 void Debug_Tx(uint8_t *pDebugMessage)
 {
-	/*
-	 * ifdef DEBUG
-	 * uart TX
-	 */
-	HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+	if(global_debug)
+//		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));
+//		printf("%s\n", pDebugMessage);
+		HAL_UART_Transmit(&huart2, pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
+
+void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen)
+{
+//	for(int i = 0; i <= strlen(pDebugMessage); i++)
+	for(int i = 0; i <= msglen; i++)
+		printf("%c", pDebugMessage[i]);
+	printf("\n");
+}
+
+void global_debug_check()
+{
+	{
+		global_debug = !global_debug;
+		Debug_Tx("Toggling Debugging\n");
+	}
+}
+
 /* USER CODE END 4 */
 
 /**

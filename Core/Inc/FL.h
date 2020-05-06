@@ -9,12 +9,13 @@
 #define INC_FL_H_
 #include "main.h"
 
-
-void FL_uart_decode(void);
-int FL_find_decode_nr();
-void FL_find_args(int function_number, int num_args,  int len_function_name);
-void FL_convert_args(char arg_array[], int argcounter);
+void FL_Init();
+int FL_uart_decode(uint8_t line_rx_buffer[], int msglen);
+int FL_decode_func_no(uint8_t buffer[]);
+int FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen);
+int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
+int FL_find_font_style(char arg_array[]);
 //void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
@@ -30,8 +31,10 @@ uint8_t FL_find_color(char color[]);
 #define LETTERI 'i'
 #define LETTERL 'l'
 #define LETTERM 'm'
+#define LETTERN 'n'
 #define LETTERR 'r'
 #define LETTERT 't'
+#define LETTERV 'v'
 #define LETTERW 'w'
 #define LETTERZ 'z'
 
@@ -209,7 +212,8 @@ struct collection
 
 //void LL_exec(struct collection *commands);
 
-
+char fl_container[30];
+int fl_counter;
 
 
 #endif /* INC_FL_H_ */

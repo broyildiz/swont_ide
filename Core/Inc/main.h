@@ -36,16 +36,12 @@ extern "C" {
 #include "stm32_ub_vga_screen.h"
 #include "stdlib.h"
 #include "stdio.h"
-#include "usart.h"
+#include "string.h"
 #include "ctype.h"
-
+#include "usart.h"
 #include "FL.h"
 #include "LL.h"
-#include "IOL.h"
-
-#include "bitmaps.h"
-#include "arial_fonts.h"
-#include "consolas_fonts.h"
+//#include "IOL.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -95,7 +91,7 @@ void Error_Handler(void);
 #define TIMING_GPIO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define BYTE_BUFLEN 1
-#define LINE_BUFLEN 1024
+#define LINE_BUFLEN 128
 #define CARRIAGE_RETURN 13 // carriage return char \r
 #define LINE_FEED 		10 // linefeed char \n
 
@@ -104,22 +100,61 @@ void Error_Handler(void);
 
 #define DEBUG_IO
 
+// Struct to group together the USART2 IRQ variables
+#define DEBUG_IO
 typedef struct
 {
 	uint8_t byte_buffer_rx[BYTE_BUFLEN];	// Store the rx byte from the USART2
-	uint8_t line_rx_buffer[LINE_BUFLEN];	// Buffer to hold all the bytes from rx USART2
-	int msglen;
 	volatile int char_counter;				// Counter for line_rx_buffer
 	char command_execute_flag;				/* Set = whole function is received, ready for processing \
 											   Reset = still receiving*/
 }input_vars;
 input_vars input;
 
-volatile char container[1024];
-volatile int temp;
 
-void Error_Tx(uint8_t *pErrorMessage);
-void Debug_Tx(uint8_t *pDebugMessage);
+
+
+
+
+
+char container[1024];
+int temp;
+
+//struct debug
+//{
+//	char buffer[1024];
+//	int len;
+//};
+//typedef struct debug_t debugdebug;
+//debugdebug ERROR[10];
+//int ERRORC_counter;
+
+char waitCheck;
+
+void Error_Tx(char *pErrorMessage);
+void Global_Error_handler(int error);
+void Debug_Tx(char *pDebugMessage);
+void Debug_String_tx(uint8_t pDebugMessage[], uint16_t msglen);
+
+int global_debug;
+void global_debug_check();
+
+enum ERROR_CODES
+{
+	NO_ERROR = 0,
+	FL_INIT_ERROR,
+	FL_INVALID_FUNCTION_NO,
+	FL_SWITCH_INVALID_FUNCTION_NO,
+	FL_CONVERT_ARGS_INVALID_FUNCTION_NO,
+	FL_INVALID_ARGUMENTS,
+	FL_TOO_MANY_ARGS, //FL_find_args function: missing, wrong or too many arguments
+	FL_EMPTY_ARGUMENT,
+
+	LL_NOT_A_SUPPORTED_FUNCTION,
+
+	IOL_LINE_INVALID_ARG_VALUE
+
+};
 
 //void LL_exec(struct collection *command);
 

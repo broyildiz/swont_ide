@@ -21,7 +21,6 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-
 //Replacement of __io_putchar() or fputc() with PUTCHAR_PROTOTYPE macro
 #ifdef __GNUC__
 	#define USART_PRINTF int __io_putchar(int ch)		//With GCC/RAISONANCE printf calls __io_putchar()
@@ -35,6 +34,7 @@ USART_PRINTF
 	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);	//Write character to UART2
 	return ch;												//Return the character
 }
+
 
 /* USER CODE END 0 */
 

@@ -188,7 +188,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+  HAL_SYSTICK_IRQHandler();
   /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -253,12 +253,11 @@ void USART2_IRQHandler(void)
   // Get the recieved character from the USART2 Data Register
   char uart_char = USART2->DR;
 
-
   //This way we ignore the '\n' character
   if(uart_char != LINE_FEED)
   {
 	 //Check for CR and LF characters
-	 if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
+	 if((uart_char == CARRIAGE_RETURN) || uart_char == '.')
 	 {
 		input.command_execute_flag = True;
 		// Store the message length for processing
@@ -272,6 +271,8 @@ void USART2_IRQHandler(void)
 		input.command_execute_flag = False;
 		input.line_rx_buffer[input.char_counter] = uart_char;
 //		container[temp++] = uart_char;
+
+		// Could also be worked into the previous command as a post increment
 		input.char_counter++;
 	 }
   }
