@@ -10,10 +10,10 @@
 
 void screen(void);
 
-#include "stdlib.h"
 #include "main.h"
-#include "bitmaps.h"
 #include "FL.h"
+
+#include "bitmaps.h"
 //#include "screen.c"
 //#include "images.h"
 
@@ -36,21 +36,47 @@ int drawCircle(int xc, int yc, int x, int y, byte color);
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color);
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr);
 int IO_repeat_commands(int aantal, int hoevaak);
+int IO_draw_text(uint16_t x, uint16_t y, int color, char* text, char *font, int font_size, int font_style);
 
 int FillScreen(uint8_t color);
 
 
-
 enum BITMAPS
 {
-	SAD_SMILEY = 0,
-	HAPPY_SMILEY,
+	SMILEY_HAPPY = 0,
+	SMILEY_SAD,
 	ARROW_UP,
 	ARROW_RIGHT,
 	ARROW_DOWN,
 	ARROW_LEFT,
 	MEGAMAN
 };
+
+#define ARIAL         0
+#define ARIAL_NORMAL  0
+#define ARIAL_ITALIC  1
+#define ARIAL_BOLD    2
+
+#define CONSOLAS  		 1
+#define CONSOLAS_NORMAL  0
+#define CONSOLAS_ITALIC  1
+#define CONSOLAS_BOLD  	 2
+
+
+#define LARGE_FONT	2
+#define SMALL_FONT  1
+#define ASCII_OFFSET 32
+
+#define BYTE_SIZE 8
+#define BITMASK 128
+#define ARRAY_DIMENSION 2
+#define CHAR_START_OFFSET 1
+
+
+#define CASE_OFFSET	     32
+#define ERROR_FONTNAME   1
+#define ERROR_FONTNAME_UNKNOWN 2
+
 
 
 //void initButton(void);

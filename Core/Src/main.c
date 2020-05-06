@@ -86,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  uint8_t msg[] = "Starting VGA...\n";
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -233,14 +233,14 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Error_Tx(char *pErrorMessage)
+void Error_Tx(uint8_t  *pErrorMessage)
 {
 //	unsigned char hmm[128];
 //	HAL_UART_Transmit(&huart2, (uint8_t *)pErrorMessage, sizeof(pErrorMessage), HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
-void Debug_Tx(char *pDebugMessage)
+void Debug_Tx(uint8_t *pDebugMessage)
 {
 	if(global_debug)
 //		Debug_String_tx(pDebugMessage, strlen(*pDebugMessage));

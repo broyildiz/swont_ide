@@ -52,6 +52,8 @@ int FL_uart_decode(uint8_t line_rx_buffer[], int msglen)
 	/*
 	 * This switch passes the right arguments to the FL_find_args function based on the function number
 	 */
+//	Debug_Tx("functie:%d",function_number);
+	printf("function = %d\n",function_number);
 	switch(function_number)
 	{
 		case BITMAP_FUNCTION_NO: FL_find_args(function_number, BITMAP_ARGS, BITMAP_FUNCTION_NAME_LEN,

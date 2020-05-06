@@ -37,6 +37,8 @@ extern "C" {
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
+#include "ctype.h"
+#include "usart.h"
 #include "FL.h"
 #include "LL.h"
 //#include "IOL.h"
@@ -99,6 +101,7 @@ void Error_Handler(void);
 #define RING_BUFFER_SIZE 32
 
 // Struct to group together the USART2 IRQ variables
+#define DEBUG_IO
 typedef struct
 {
 	uint8_t byte_buffer_rx[BYTE_BUFLEN];	// Store the rx byte from the USART2

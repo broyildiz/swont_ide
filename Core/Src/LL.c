@@ -1,5 +1,5 @@
 #include "LL.h"
-
+#include "string.h"
 /**
   * @brief  Determines which API function should be called based on input.
   * 		Calls error handler in case of error.
@@ -20,22 +20,30 @@ void LL_exec(struct collection *commands)
 {
 	Debug_Tx("Enterred the LL\n");
 	int error;
+
+//	char msg[] = "kom ik hier?\n";
+//	Error_Tx(msg);
+
+	printf("Entering LL_exec command switch\n");
+
 	switch(commands->function_number)
 	{
 
+		case FUNCTION_NO_RESET:
+			printf("case reset\n");
+			break; //nieuwe functie?
+
 		case BITMAP_FUNCTION_NO:
-		{
-			Debug_Tx("Going to execute BITMAP_FUNCTION_NO\n");
-			//Het crashed in deze functie
-//			error = IO_draw_bitmap(commands->bitmap.xlup,
-//						 					   commands->bitmap.ylup,
-//											   commands->bitmap.nr);
+			printf("case bitmap\n");
+			error = IO_draw_bitmap(commands->bitmap.xlup,
+			 					   commands->bitmap.ylup,
+								   commands->bitmap.nr);
+			break;
 
 		}break;
 
 		case CIRKEL_FUNCTION_NO:
-		{
-			Debug_Tx("Going to execute CIRKEL_FUNCTION_NO\n");
+			printf("case circle\n");
 			error = IO_draw_circle(commands->cirkel.x,
 									commands->cirkel.y,
 									commands->cirkel.radius,
@@ -43,8 +51,7 @@ void LL_exec(struct collection *commands)
 		}break;
 
 		case CLEARSCHERM_FUNCTION_NO:
-		{
-			Debug_Tx("Going to execute CLEARSCHERM_FUNCTION_NO\n");
+			printf("case clearscreen\n");
 			error = IO_clearscreen(commands->clearscherm.kleur);
 		}break;
 
@@ -53,8 +60,7 @@ void LL_exec(struct collection *commands)
 //			break;
 
 		case FIGUUR_FUNCTION_NO:
-		{
-			Debug_Tx("Going to execute FIGUUR_FUNCTION_NO\n");
+			printf("case figure\n");
 			error = IO_draw_figure(commands->figuur.x1,
 												commands->figuur.y1,
 												commands->figuur.x2,
@@ -76,8 +82,7 @@ void LL_exec(struct collection *commands)
 		}break;
 
 		case LIJN_FUNCTION_NO :
-		{
-			Debug_Tx("Going to execute LIJN_FUNCTION_NO\n");
+			printf("case line\n");
 			error = IO_draw_line(commands->lijn.x1,
 								  commands->lijn.y1,
 								  commands->lijn.x2,
@@ -87,8 +92,7 @@ void LL_exec(struct collection *commands)
 		}break;
 
 		case RECHTHOEK_FUNCTION_NO :
-		{
-			Debug_Tx("Going to execute RECHTHOEK_FUNCTION_NO\n");
+			printf("case rectangle\n");
 			error = IO_draw_rectangle(commands->rechthoek.xlup,
 									   commands->rechthoek.ylup,
 									   commands->rechthoek.breedte,
@@ -98,16 +102,15 @@ void LL_exec(struct collection *commands)
 		}break;
 
 		case TEKST_FUNCTION_NO :
-		{
-			Debug_Tx("Going to execute TEKST_FUNCTION_NO\n");
-			//			error = IO_draw_text(commands->tekst.xlup,
-			//								  commands->tekst.ylup,
-			//								  commands->tekst.kleur,
-			//								  commands->tekst.tekst,
-			//								  commands->tekst.fontnaam,
-			//								  commands->tekst.fontgrootte,
-			//								  commands->tekst.fontstijl);
-		}break;
+			printf("case text\n");
+			error = IO_draw_text(commands->tekst.xlup,
+								  commands->tekst.ylup,
+								  commands->tekst.kleur,
+								  commands->tekst.tekst,
+								  commands->tekst.fontnaam,
+								  commands->tekst.fontgrootte,
+								  commands->tekst.fontstijl);
+			break;
 //
 //		case TOREN_FUNCTION_NO:
 //			error = IO_draw_tower(commands->toren.x1,
