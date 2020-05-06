@@ -30,13 +30,17 @@ void LL_exec(struct collection *commands)
 									commands->cirkel.kleur);
 			break;
 
-		case CLEARSCHERM_FUNCTION_NO:
-			error = IO_clearscreen(commands->clearscherm.kleur);
-			break;
+//		case CLEARSCHERM_FUNCTION_NO:
+//			error = IO_clearscreen(commands->clearscherm.kleur);
+//			break;
 
 //		case EXECUTE_FUNCTION_NO:
 //			error = IO_execute(commands->execute.null);
 //			break;
+
+		case MONDRIAAN_FUNCTION_NO:
+			error = IO_draw_mondriaan();
+			break;
 
 		case FIGUUR_FUNCTION_NO:
 			error = IO_draw_figure(commands->figuur.x1,
@@ -84,14 +88,7 @@ void LL_exec(struct collection *commands)
 //								  commands->tekst.fontgrootte,
 //								  commands->tekst.fontstijl);
 			break;
-//
-//		case TOREN_FUNCTION_NO:
-//			error = IO_draw_tower(commands->toren.x1,
-//								   commands->toren.y1,
-//								   commands->toren.grootte,
-//								   commands->toren.kleur1,
-//								   commands->toren.kleur2);
-//			break; //nieuw functie
+
 //
 //		case WACHT_FUNCTION_NO:
 //			error = IO_wait(commands->wacht.msecs);

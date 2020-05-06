@@ -58,12 +58,16 @@ void IOL()
 }
 
 /**
-  * @brief  This function is for drawing a figure
+  * @brief  Function for drawing a figure
+  * @param  x1...x5, x-coordinate of the line
+  * @param	y1...y5, y-coordinate of the line
+  * @param 	color is the color of the figure
   * @retval None
   */
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
 	int thickness = 1;
+	//Drawing all lines seperate
 	IO_draw_line(x1, y1, x2, y2, color, thickness);
 	IO_draw_line(x2, y2, x3, y3, color, thickness);
 	IO_draw_line(x3, y3, x4, y4, color, thickness);
@@ -71,6 +75,14 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
 	IO_draw_line(x5, y5, x1, y1, color, thickness);
 }
 
+/**
+  * @brief  Function for drawing a line
+  * @param  x1 & x2, x-coordinate of the line
+  * @param	y1 & y2, y-coordinate of the line
+  * @param 	color is the color of the figure
+  * @param  thickness is the thickness of the line
+  * @retval None
+  */
 int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color, int thickness)
 {
 	/*
@@ -87,7 +99,6 @@ int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color,
 	  dyabs=abs(dy);
 	  sdx=sgn(dx);
 	  sdy=sgn(dy);
-//	  FL_DEBUG_FUNC("gekke string");
 
 	  if (dxabs>=dyabs) /* the line is more horizontal than vertical */
 	  {
@@ -120,12 +131,54 @@ int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color,
 	  }
 }
 
+/**
+  * @brief  Function for drawing a Mondriaan painting
+  * @param  None
+  * @retval None
+  */
+int IO_draw_mondriaan()
+{
+	int filled = 1;
+
+		UB_VGA_FillScreen(VGA_COL_BLACK); //filling the background black
+		//Drawing all the rectangles seperate
+		IO_draw_rectangle(0,0,50,80,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(55,0,60,80,VGA_COL_YELLOW,filled);
+		IO_draw_rectangle(120,0,80,80,VGA_COL_BLUE,filled);
+		IO_draw_rectangle(205,0,100,80,VGA_COL_RED,filled);
+		IO_draw_rectangle(310,0,10,80,VGA_COL_YELLOW,filled);
+		IO_draw_rectangle(0,85,50,80,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(55,85,60,80,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(120,85,80,80,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(205,85,30,80,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(240,85,65,80,VGA_COL_BLUE,filled);
+		IO_draw_rectangle(310,85,10,80,VGA_COL_RED,filled);
+		IO_draw_rectangle(0,170,50,70,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(55,170,60,30,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(55,205,60,35,VGA_COL_BLUE,filled);
+		IO_draw_rectangle(120,170,115,30,VGA_COL_RED,filled);
+		IO_draw_rectangle(120,205,115,35,VGA_COL_YELLOW,filled);
+		IO_draw_rectangle(240,170,65,30,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(240,205,80,35,VGA_COL_WHITE,filled);
+		IO_draw_rectangle(310,170,10,30,VGA_COL_YELLOW,filled);
+}
+
+/**
+  * @brief  Function for drawing a rectangle
+  * @param  x_lup x-coordinate of the line
+  * @param	y_lup y-coordinate of the line
+  * @param  Width of the rectangle
+  * @param  Height of the rectangle
+  * @param 	color is the color of the figure
+  * @param  Filled indicates whether the rectangle is filled
+  * @retval None
+  */
 int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int color, int filled)
 {
 	int i;
 	int j;
 
-	if(filled == 1)
+	if(filled == 1) //Checks whether the rectangle should be filled
 	{
 		for(i = y_lup; i<y_lup+height; i++)
 		{
@@ -157,13 +210,25 @@ int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int
 	}
 }
 
+/**
+  * @brief  Clearing the whole screen
+  * @param 	Color is the color of the screen
+  * @retval None
+  */
 int IO_clearscreen(int color)
 {
 	UB_VGA_FillScreen(color);
-
-	IOL_error_handler("Did not recognise function number, line 34");
 }
 
+/**
+  * @brief  Function for drawing a circle
+  * @param  xc is the middle x-coordinate of the circle
+  * @param	yc is the middle y-coordinate of the circle
+  * @param  x
+  * @param  y
+  * @param 	color is the color of the circle
+  * @retval None
+  */
 int drawCircle(int xc, int yc, int x, int y, byte color)
 {
 	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
@@ -177,11 +242,18 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
 	UB_VGA_SetPixel(xc-y, yc-x, color);
 }
 
-// Function for circle-generation
-// using Bresenham's algorithm
+/**
+  * @brief  Function for drawing a circle
+  * 		Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
+  * @param  xc is the middle x-coordinate of the circle
+  * @param	yc is the middle y-coordinate of the circle
+  * @param 	color is the color of the figure
+  * @param  Filled indicates whether the rectangle is filled
+  * @retval None
+  */
 int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
-	//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
+
     int x = 0, y = radius;
     int d = 3 - 2 * radius;
     drawCircle(xc, yc, x, y, color);
@@ -203,7 +275,6 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
         else
             d = d + 4 * x + 6;
         drawCircle(xc, yc, x, y, color);
-//        delay(50);
     }
 }
 
@@ -275,17 +346,3 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 }
 
-<<<<<<< HEAD
-void IOL_error_handler(char *pErrorString)
-{
-	while(1);
-}
-
-
-
-
-
-
-
-=======
->>>>>>> master
