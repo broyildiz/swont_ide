@@ -545,7 +545,8 @@ void FL_debug_tx( char *pDebugMessage)
   */
 void FL_debug_int(int num)
 {
-	printf("%d\n",num);
+	if(global_debug)
+		printf("%d\n",num);
 }
 
 /**
