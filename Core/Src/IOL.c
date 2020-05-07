@@ -320,10 +320,10 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 	int error = 0;
 	int x, y;
 
-	if((xlup < 0) || x1 > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
-	if((ylup < 0) || y1 > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
+	if((xlup < 0) || xlup > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
+	if((ylup < 0) || ylup > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
 
-	DebugTx("within IO_draw_bitmap\n");
+	Debug_Tx("within IO_draw_bitmap\n");
 	Debug_INT(bmpnr);
 
 	switch(bmpnr)
@@ -423,8 +423,8 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	int i = 0;
 	int error = 0;
 
-	if((xlup < 0) || x1 > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
-	if((ylup < 0) || y1 > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
+	if((xlup < 0) || xlup > VGA_DISPLAY_X) error = IOL_LINE_INVALID_ARG_VALUE;
+	if((ylup < 0) || ylup > VGA_DISPLAY_Y) error = IOL_LINE_INVALID_ARG_VALUE;
 
 	Debug_Tx("Enterred the IO_draw_text\n");
 
