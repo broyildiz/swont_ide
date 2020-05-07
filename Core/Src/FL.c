@@ -63,6 +63,8 @@ int FL_uart_decode()
 		case WACHT_FUNCTION_NO: error = FL_find_args(function_number, WACHT_ARGS, WACHT_FUNCTION_NAME_LEN);
 		break;
 
+		case MONDRIAAN_FUNCTION_NO: break; // No arguments
+
 		default : {
 			Error_Tx("Did not recognise function number, line 67\n");
 			error = FL_SWITCH_INVALID_FUNCTION_NO;
@@ -394,6 +396,8 @@ int FL_convert_args(char arg_array[], int argcounter)
 		}break;
 
 		case WACHT_FUNCTION_NO: command.wacht.msecs = atoi(arg_array); break;
+
+//		case MONDRIAAN_FUNCTION_NO: //No Arguments
 
 		default : {
 			Error_Tx("Did not recognise function number in the convert args function");
