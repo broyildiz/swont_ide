@@ -372,7 +372,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 
 
 		default:
-			return ERROR_BITMAP_NON_EXISTENT;
+			return IOL_BITMAP_NON_EXISTENT;
 			break;
 	}
 

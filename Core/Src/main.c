@@ -222,6 +222,7 @@ void Global_Error_handler(int error)
 	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
 	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
 	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
+	case IOL_BITMAP_NON_EXISTENT: 			printf("\nERROR:\tIOL_BITMAP_NON_EXISTENT\n");  break;
 	default: 								printf("\nERROR:\tNo Error\n"); break;
 	}
 }
