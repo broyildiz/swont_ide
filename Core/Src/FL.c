@@ -28,10 +28,8 @@ int FL_uart_decode()
 
 	command.function_number = function_number; // Store the function number in the struct
 
-	/*
-	 * This switch passes the right arguments to the FL_find_args function based on the function number
-	 */
-//	Debug_Tx("functie:%d",function_number);
+
+	//This switch passes the right arguments to the FL_find_args function based on the function number
 	printf("function = %d\n",function_number);
 	switch(function_number)
 	{
@@ -141,7 +139,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 	for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0; // Reset the container
 
 	int arg_character_counter = 0;
-	char stored_args = 0; // Counts how many arguments are stored. is incremented after successfully storing an arg
+	char stored_args = 0; // Counts how many arguments are stored. Is incremented after successfully storing an arg
 	int argcounter = 0;
 	int i = len_function_name; // Start at the first comma
 
@@ -152,8 +150,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 		{
 			if(input.line_rx_buffer[i] == ',')
 			{
-
-				if(stored_args != 0) // Dit is niet de eerste komma dus
+				if(stored_args != 0) // When it is not the first argument
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
@@ -163,21 +160,23 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 					arg_character_counter = 0;
 					stored_args++;
 				}
-				else stored_args++;
+				else stored_args++;	// This else is only reached after the while loop
 
-				i++;
+				i++; // Go to the next character in the rx_buffer
 			}
 			if(input.line_rx_buffer[i] == ' ')
-				i++;
+				i++;	// Ignore the spaces
 			else
 			{
 				if(input.line_rx_buffer[i] == ','){
+					// If there is a comma after a comma, then there is no argument given.
 					Error_Tx("Argument not filled, line 191");
 					error = FL_EMPTY_ARGUMENT;
 					return error;
 				}
 				else
 				{
+					// Save the character into the string container
 					string_container[arg_character_counter++] = input.line_rx_buffer[i++];
 				}
 			}
@@ -211,7 +210,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 			if(input.line_rx_buffer[i] == ',')
 			{
 
-				if(stored_args != 0) // Dit is niet de eerste komma dus
+				if(stored_args != 0) // This else is only reached after the while loop
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
@@ -221,37 +220,58 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 					arg_character_counter = 0;
 					stored_args++;
 				}
-				else stored_args++;
+				else stored_args++; // This else is only reached after the while loop
 
-				i++;
+				i++;// Go to the next character in the rx_buffer
 			}
 
 			if(stored_args == 4)
 			{
+				/*
+				 * The fourth argument of the text function is the text to be displayed on the screen
+				 * This text contains spaces and they must not be ignored.
+				 */
 				if(input.line_rx_buffer[i] == ','){
+					// If there is a comma after a comma, then there is no argument given.
 					Error_Tx("Argument not filled, line 191");
 					error = FL_EMPTY_ARGUMENT;
 					return error;
 				}
-				else string_container[arg_character_counter++] = input.line_rx_buffer[i++];
+				else {
+					// Save the character into the string container
+					string_container[arg_character_counter++] = input.line_rx_buffer[i++];
+				}
 
 			}
 			else
 			{
-				if(input.line_rx_buffer[i] == ' ') i++;
+				if(input.line_rx_buffer[i] == ' ') i++; // Ignore the spaces
 				else
 				{
 					if(input.line_rx_buffer[i] == ','){
+						// If there is a comma after a comma, then there is no argument given.
 						Error_Tx("Argument not filled, line 191");
 						error = FL_EMPTY_ARGUMENT;
 						return error;
 					}
-					else string_container[arg_character_counter++] = input.line_rx_buffer[i++];
+					else {
+						// Save the character into the string container
+						string_container[arg_character_counter++] = input.line_rx_buffer[i++];
+					}
 				}
 			}
 
 		}
+		// If there was a break just now
+		if(error)
+		{
+			Error_Tx("There was an error during conversion\n");
+			return error;
+		}
+
+		// In case there was no break
 		error = FL_convert_args(string_container, ++argcounter);
+
 		if(error)
 		{
 			Error_Tx("There was an error during conversion\n");
@@ -277,13 +297,10 @@ int FL_convert_args(char arg_array[], int argcounter)
 		{
 			switch(argcounter)
 			{
-				case 1:	command.bitmap.nr = atoi(arg_array); break;
-
-				case 2: command.bitmap.xlup = atoi(arg_array); break;
-
-				case 3: command.bitmap.ylup = atoi(arg_array); break;
-
-//				default: Error_Tx("Illegal stored_args value, line 209");//Error_Handler();
+			case 1:	command.bitmap.nr = atoi(arg_array); break;
+			case 2: command.bitmap.xlup = atoi(arg_array); break;
+			case 3: command.bitmap.ylup = atoi(arg_array); break;
+//			default: Error_Tx("Illegal stored_args value, line 209");//Error_Handler();
 			}
 		}break;
 
@@ -301,10 +318,11 @@ int FL_convert_args(char arg_array[], int argcounter)
 
 		case CLEARSCHERM_FUNCTION_NO: command.clearscherm.kleur = FL_find_color(arg_array); break;
 
-//		case EXECUTE_FUNCTION_NO: // Hoort er misschien niet in
+//		case EXECUTE_FUNCTION_NO: // Not implemented, should perhaps be removed
 //		{
 //
 //		}break;
+
 		case FIGUUR_FUNCTION_NO:
 		{
 			switch(argcounter)
@@ -361,8 +379,8 @@ int FL_convert_args(char arg_array[], int argcounter)
 			}
 		}break;
 
-		case TEKST_FUNCTION_NO:	//Moet ik op terukomen. Je kan niet zomaar arg array meegeven aan de tekst functie want die is
-		{	 					//kleiner dan de max aantal karakters in 1 zin
+		case TEKST_FUNCTION_NO:
+		{
 			switch(argcounter)
 			{
 			case 1: command.tekst.xlup = atoi(arg_array); break;
@@ -385,6 +403,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 	}
 	return error;
 }
+
 /**
   * @brief  Determines the color from a string passed to it
   * 		If the string is "white" this returns 0xFF
@@ -437,10 +456,15 @@ uint8_t FL_find_color(char color[])
 return ret_val;
 }
 
+/**
+  * @brief  Determines the font style of the text function
+  * @param  Array with the string containing the font style
+  * @retval predefined integer value of the font style
+  */
 int FL_find_font_style(char arg_array[])
 {
 	int retval;
-	if(arg_array[0] == LETTERN) retval =  NORMAL;
+	if(arg_array[0] == LETTERN) retval = NORMAL;
 	if(arg_array[1] == LETTERC) retval = ITALIC;
 	if(arg_array[2] == LETTERV) retval = BOLD;
 	return retval;
