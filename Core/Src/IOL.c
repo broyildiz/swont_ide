@@ -38,7 +38,7 @@ void IOL()
   * @param  x1...x5, x-coordinate of the line
   * @param	y1...y5, y-coordinate of the line
   * @param 	color is the color of the figure
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
@@ -65,7 +65,7 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
   * @param	y1 & y2, y-coordinate of the line
   * @param 	color is the color of the figure
   * @param  thickness is the thickness of the line
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color, int thickness)
 {
@@ -134,7 +134,7 @@ int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color,
   * @param  Height of the rectangle
   * @param 	color is the color of the figure
   * @param  Filled indicates whether the rectangle is filled
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int color, int filled)
 {
@@ -182,7 +182,7 @@ int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int
 /**
   * @brief  Function for drawing a Mondriaan painting
   * @param  None
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_mondriaan()
 {
@@ -217,7 +217,7 @@ int IO_draw_mondriaan()
 /**
   * @brief  Clearing the whole screen
   * @param 	Color is the color of the screen
-  * @retval None
+  * @retval Error code
   */
 int IO_clearscreen(int color)
 {
@@ -235,7 +235,7 @@ int IO_clearscreen(int color)
   * @param  x
   * @param  y
   * @param 	color is the color of the circle
-  * @retval None
+  * @retval Error code
   */
 int drawCircle(int xc, int yc, int x, int y, byte color)
 {
@@ -259,7 +259,7 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
   * @param	yc is the middle y-coordinate of the circle
   * @param 	color is the color of the figure
   * @param  Filled indicates whether the rectangle is filled
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
@@ -310,7 +310,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
   * @param  ylup is the starting x-coordinate on screen
   * @param  bmpnr determines which of the stored bitmaps
   * 			  is retrieved
-  * @retval None
+  * @retval Error code
   */
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
@@ -428,7 +428,7 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	printf("within IO_draw_text \n");
 	#endif
 
-	while((isalpha(*(font+i)) == False) && (i != MAX_LEN_FONTNAME)) /* determines where the first letter in the buffer is*/
+	while((isalpha(*(font+i)) == FALSE) && (i != MAX_LEN_FONTNAME)) /* determines where the first letter in the buffer is*/
 	{
 		i++;
 	}
