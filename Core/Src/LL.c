@@ -59,6 +59,7 @@ int LL_exec(struct collection *commands)
 							   commands->figuur.y5,
 							   commands->figuur.kleur);
 	}break;
+		
 
 	case HERHAAL_FUNCTION_NO :
 	{
@@ -100,14 +101,11 @@ int LL_exec(struct collection *commands)
 							 commands->tekst.fontgrootte,
 							 commands->tekst.fontstijl);
 	}break;
-//
-//		case TOREN_FUNCTION_NO:
-//			error = IO_draw_tower(command->toren.x1,
-//								   command->toren.y1,
-//								   command->toren.grootte,
-//								   command->toren.kleur1,
-//								   command->toren.kleur2);
-//			break; //nieuw functie
+    
+    case MONDRIAAN_FUNCTION_NO:
+    {
+	    error = IO_draw_mondriaan();
+    }break;
 //
 	case WACHT_FUNCTION_NO:
 	{

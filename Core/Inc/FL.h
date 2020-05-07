@@ -48,7 +48,7 @@ int FL_find_font_style(char arg_array[]);
 #define LIJN_FUNCTION_NO 		7
 #define RECHTHOEK_FUNCTION_NO 	8
 #define TEKST_FUNCTION_NO 		9
-#define TOREN_FUNCTION_NO 		10
+#define MONDRIAAN_FUNCTION_NO 	10
 #define WACHT_FUNCTION_NO 		11
 
 #define MAX_NUM_RGS				10
@@ -63,7 +63,7 @@ int FL_find_font_style(char arg_array[]);
 #define LIJN_ARGS 				6
 #define RECHTHOEK_ARGS 			6
 #define TEKST_ARGS 				6
-#define TOREN_ARGS 				5
+#define MONDRIAAN_ARGS			0
 #define WACHT_ARGS 				1
 
 #define BITMAP_FUNCTION_NAME_LEN 		6
@@ -75,7 +75,7 @@ int FL_find_font_style(char arg_array[]);
 #define LIJN_FUNCTION_NAME_LEN 			4
 #define RECHTHOEK_FUNCTION_NAME_LEN 	9
 #define TEKST_FUNCTION_NAME_LEN 		5
-#define TOREN_FUNCTION_NAME_LEN 		5
+#define MONDRIAAN_FUNCTION_NAME_LEN 	9
 #define WACHT_FUNCTION_NAME_LEN 		5
 
 #define	VGA_COL_BROWN 0x01
@@ -121,6 +121,11 @@ typedef struct //misschien moet deze struct gewoon weg
 {
 	int null;
 }execute_func;
+
+typedef struct //misschien moet deze struct gewoon weg
+{
+	int null;
+}mondriaan_func;
 
 typedef struct
 {
@@ -178,15 +183,6 @@ typedef struct
 
 }tekst_func;
 
-typedef struct
-{
-	uint16_t x1;
-	uint16_t y1;
-	int grootte;
-	int kleur1;
-	int kleur2;
-
-}toren_func;
 
 typedef struct
 {
@@ -206,7 +202,7 @@ struct collection
 	lijn_func lijn;
 	rechthoek_func rechthoek;
 	tekst_func tekst;
-	toren_func toren;
+	mondriaan_func mondriaan;
 	wacht_func wacht;
 }command; //dit is een global?
 

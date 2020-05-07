@@ -112,12 +112,12 @@ int FL_find_decode_nr()
 	if(input.line_rx_buffer[0] == LETTERR) return RECHTHOEK_FUNCTION_NO;
 
 	if(input.line_rx_buffer[0] == LETTERT)
-	{
-		if(input.line_rx_buffer[1] == LETTERE) return TEKST_FUNCTION_NO;
-		else return TOREN_FUNCTION_NO;
-	}
+
+	if(input.line_rx_buffer[0] == LETTERT) return TEKST_FUNCTION_NO;
 
 	if(input.line_rx_buffer[0] == LETTERW) return WACHT_FUNCTION_NO;
+
+	if(input.line_rx_buffer[0] == LETTERM) return MONDRIAAN_FUNCTION_NO;
 
 	return FUNCTION_NO_RESET;
 
@@ -372,18 +372,6 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 5: strcpy(command.tekst.fontnaam, arg_array); break;
 			case 6: command.tekst.fontgrootte = atoi(arg_array); break;
 			case 7: command.tekst.fontstijl = FL_find_font_style(arg_array); break;
-			}
-		}break;
-		case TOREN_FUNCTION_NO:
-		{
-			switch(argcounter)
-			{
-			case 1: command.toren.x1 = atoi(arg_array); break;
-			case 2: command.toren.y1 = atoi(arg_array); break;
-			case 3: command.toren.grootte = atoi(arg_array); break;
-			case 4: command.toren.kleur1 = FL_find_color(arg_array); break;
-			case 5: command.toren.kleur2 = FL_find_color(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 306");
 			}
 		}break;
 
