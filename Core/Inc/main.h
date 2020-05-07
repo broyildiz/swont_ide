@@ -38,6 +38,7 @@ extern "C" {
 #include "stdio.h"
 #include "usart.h"
 #include "ctype.h"
+#include "string.h"
 
 #include "FL.h"
 #include "LL.h"
@@ -142,7 +143,13 @@ enum ERROR_CODES
 	LL_NOT_A_SUPPORTED_FUNCTION,
 
 	IOL_LINE_INVALID_ARG_VALUE,
-	IOL_BITMAP_NON_EXISTENT
+
+	IOL_BITMAP_NON_EXISTENT,
+	IOL_ERROR_FONTNAME,
+	IOL_ERROR_FONTNAME_UNKNOWN,
+	IOL_ARIAL_FONT_ERROR,
+	IOL_CONSOLAS_FONT_ERROR,
+	IOL_FONT_ERROR
 
 };
 

@@ -7,6 +7,7 @@
 #include "main.h"
 #include "IOL.h"
 #include "stm32_ub_vga_screen.h"
+#include "string.h"
 
 void move_piece(char  , unsigned char *);
 void line_clear();
@@ -16,7 +17,7 @@ unsigned char collision_check(unsigned char, unsigned char);
 unsigned char rotate_piece(unsigned char, unsigned char, unsigned char *, char);
 unsigned char random_shape(void);
 unsigned char gravity(unsigned char, unsigned char*);
-void Tetris(void);
+
 void Display();
 
 //#define DEBUG
@@ -57,7 +58,7 @@ unsigned char starting_points[7][8] =  {{3, 20, 4, 20, 5, 20, 6, 20}, //starting
  return value (output):
 	RS232 protocol message
 *****************************************************************************/
-void Tetris(void)
+void IO_tetris(void)
 {
 	tetris_toggle = TRUE;
 /***initialization*******************************************************/

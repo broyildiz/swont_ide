@@ -15,16 +15,16 @@
 int LL_exec(struct collection *commands)
 {
 
-	Debug_Tx("Enterred the LL\n");
+	FL_debug_tx("Enterred the LL\n");
 	int error = NO_ERROR;
 
-	Debug_Tx("Entering LL_exec command switch\n");
+	FL_debug_tx("Entering LL_exec command switch\n");
 
 	switch(commands->function_number)
 	{
 	case BITMAP_FUNCTION_NO:
 	{
-		Debug_Tx("case bitmap\n");
+		FL_debug_tx("case bitmap\n");
 		error = IO_draw_bitmap(commands->bitmap.xlup,
 							   commands->bitmap.ylup,
 							   commands->bitmap.nr);
@@ -32,7 +32,7 @@ int LL_exec(struct collection *commands)
 
 	case CIRKEL_FUNCTION_NO:
 	{
-		Debug_Tx("case circle\n");
+		FL_debug_tx("case circle\n");
 		error = IO_draw_circle(commands->cirkel.x,
 							   commands->cirkel.y,
 							   commands->cirkel.radius,
@@ -41,13 +41,13 @@ int LL_exec(struct collection *commands)
 
 	case CLEARSCHERM_FUNCTION_NO:
 	{
-		Debug_Tx("case clearscreen\n");
+		FL_debug_tx("case clearscreen\n");
 		error = IO_clearscreen(commands->clearscherm.kleur);
 	}break;
 
 	case FIGUUR_FUNCTION_NO:
 	{
-		Debug_Tx("case figure\n");
+		FL_debug_tx("case figure\n");
 		error = IO_draw_figure(commands->figuur.x1,
 							   commands->figuur.y1,
 							   commands->figuur.x2,
@@ -64,14 +64,14 @@ int LL_exec(struct collection *commands)
 
 	case HERHAAL_FUNCTION_NO :
 	{
-//		Debug_Tx("Going to execute HERHAAL_FUNCTION_NO\n");
+//		FL_debug_tx("Going to execute HERHAAL_FUNCTION_NO\n");
 //		error = IO_repeat_commands(commands->herhaal.aantal,
 //								   commands->herhaal.hoevaak);
 	}break;
 
 	case LIJN_FUNCTION_NO :
 	{
-		Debug_Tx("case line\n");
+		FL_debug_tx("case line\n");
 		error = IO_draw_line(commands->lijn.x1,
 							 commands->lijn.y1,
 							 commands->lijn.x2,
@@ -82,7 +82,7 @@ int LL_exec(struct collection *commands)
 
 	case RECHTHOEK_FUNCTION_NO :
 	{
-		Debug_Tx("case rectangle\n");
+		FL_debug_tx("case rectangle\n");
 		error = IO_draw_rectangle(commands->rechthoek.xlup,
 								  commands->rechthoek.ylup,
 								  commands->rechthoek.breedte,
@@ -93,7 +93,7 @@ int LL_exec(struct collection *commands)
 
 	case TEKST_FUNCTION_NO :
 	{
-		Debug_Tx("case text\n");
+		FL_debug_tx("case text\n");
 		error = IO_draw_text(commands->tekst.xlup,
 							 commands->tekst.ylup,
 							 commands->tekst.kleur,
@@ -110,7 +110,7 @@ int LL_exec(struct collection *commands)
 //
 	case WACHT_FUNCTION_NO:
 	{
-//		Debug_Tx("Going to execute WACHT_FUNCTION_NO\n");
+//		FL_debug_tx("Going to execute WACHT_FUNCTION_NO\n");
 //		waitCheck = True;
 ////		HAL_Delay(command->wacht.msecs);
 //		error = IO_wait(command->wacht.msecs);
@@ -118,7 +118,7 @@ int LL_exec(struct collection *commands)
 
 	default:
 	{
-		Debug_Tx("LL Switch Not a supported function\n");
+		FL_debug_tx("LL Switch Not a supported function\n");
 		error = LL_NOT_A_SUPPORTED_FUNCTION;
 		return error;
 
@@ -127,13 +127,24 @@ int LL_exec(struct collection *commands)
 
 	if(error)
 	{
-		Debug_Tx("Some IO function threw an Error!\n");
+		FL_debug_tx("Some IO function threw an Error!\n");
 		return error;
 	}
-	Debug_Tx("back in LL.c\n");
-	Debug_Tx("Going back to FL.c\n");
+	FL_debug_tx("back in LL.c\n");
+	FL_debug_tx("Going back to FL.c\n");
 	return error;
 
 }
 
-
+void LL_tetris_check()
+{
+	if(	(input.line_rx_buffer[0] == 't') &&
+		(input.line_rx_buffer[1] == 'e') &&
+		(input.line_rx_buffer[2] == 't') &&
+		(input.line_rx_buffer[3] == 'r') &&
+		(input.line_rx_buffer[4] == 'i') &&
+		(input.line_rx_buffer[5] == 's'))
+	{
+		IO_tetris();
+	}
+}

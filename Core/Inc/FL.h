@@ -15,8 +15,14 @@ int FL_find_decode_nr();
 int FL_find_args(int function_number, int num_args,  int len_function_name);
 int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
-//void FL_error_handler(char *pErrorString);
 int FL_find_font_style(char arg_array[]);
+
+void FL_error_handler(int error);
+void FL_global_debug_check();
+void FL_debug_int(int num);
+void FL_debug_tx( char *pDebugMessage);
+void FL_error_tx(char  *pErrorMessage);
+void FL_global_error_handler(int error);
 
 #define MAX_LEN_TEKST_STRING 128
 #define MAX_LEN_FONTNAME 30
@@ -50,6 +56,7 @@ int FL_find_font_style(char arg_array[]);
 #define TEKST_FUNCTION_NO 		9
 #define MONDRIAAN_FUNCTION_NO 	10
 #define WACHT_FUNCTION_NO 		11
+#define TETRIS_FUNCTION_NO		12
 
 #define MAX_NUM_RGS				10
 #define MAX_ARG_LEN				128 // was eerst 10
@@ -65,6 +72,7 @@ int FL_find_font_style(char arg_array[]);
 #define TEKST_ARGS 				6
 #define MONDRIAAN_ARGS			0
 #define WACHT_ARGS 				1
+#define TETRIS_ARGS				0
 
 #define BITMAP_FUNCTION_NAME_LEN 		6
 #define CIRKEL_FUNCTION_NAME_LEN 		6

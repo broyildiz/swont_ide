@@ -30,6 +30,7 @@
 #include "stm32f4xx_hal.h"
 //#include "FL.h"
 #include "Tetris.h"
+//#include "LL.c"
 
 /* USER CODE END Includes */
 
@@ -132,26 +133,19 @@ int main(void)
   {
 	  if(input.command_execute_flag == TRUE)
 	  {
-		  global_debug_check();
-//		  Tetris();
-//		  global_debug = 1;
-//		  Debug_Tx("HMM");
-//		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
-		  input.command_execute_flag = FALSE;
-		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
-		  error = FL_uart_decode();
-		  memset(&command,0,sizeof(command));
-//		  Debug_Tx("hmm\0\n");
-		  if(error)
-		  {
-			  Debug_INT(13);
-			  Global_Error_handler(error);
-		  }
-//		  printf("Error code:\t%d\n",error);
-//		  HAL_UART_Transmit(&huart2, msg, sizeof(msg), HAL_MAX_DELAY);
-	  }
+		  FL_global_debug_check(); // Check if debugging is to be enabled
+		  LL_tetris_check(); // Check if Tetris is to be played
 
-	  //HELPHELP CHECK OF HET WERKT
+		  input.command_execute_flag = FALSE;
+		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN); // Visual clue that something is happening
+
+		  error = FL_uart_decode();
+		  memset(&command,0,sizeof(command)); // Reset the whole struct for the next round
+
+		  if(error)
+			  FL_global_error_handler(error);
+
+	  }
 
     /* USER CODE END WHILE */
 
@@ -204,80 +198,6 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-/**
-  * @brief  When an error has occured, this function informs the user via USARt2 debugging
-  * @param  The error code
-  * @retval none
-  */
-void Global_Error_handler(int error)
-{
-	printf("\n\nENCOUNTERRED AN ERROR!\n");
-	printf("Error code:\t%d\n",error);
-	switch(error)
-	{
-	case FL_INIT_ERROR: 					printf("\nERROR:\tFL_INIT_ERROR\n"); break;
-	case FL_INVALID_FUNCTION_NO: 			printf("\nERROR:\tFL_INVALID_FUNCTION_NO\n");  break;
-	case FL_SWITCH_INVALID_FUNCTION_NO: 	printf("\nERROR:\tFL_SWITCH_INVALID_FUNCTION_NO\n");  break;
-	case FL_INVALID_ARGUMENTS: 				printf("\nERROR:\tFL_INVALID_ARGUMENTS\n");  break;
-	case FL_TOO_MANY_ARGS: 					printf("\nERROR:\tFL_TOO_MANY_ARGS\n");  break;
-	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
-	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
-	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
-	case IOL_BITMAP_NON_EXISTENT: 			printf("\nERROR:\tIOL_BITMAP_NON_EXISTENT\n");  break;
-	default: 								printf("\nERROR:\tNo Error\n"); break;
-	}
-}
-
-/**
-  * @brief  When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled
-  * @param  The error message string
-  * @retval None
-  */
-void Error_Tx(char  *pErrorMessage)
-{
-	HAL_UART_Transmit(&huart2, (uint8_t*)pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
-}
-
-/**
-  * @brief  When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled
-  * @param  The debug message string
-  * @retval None
-  */
-void Debug_Tx( char *pDebugMessage)
-{
-	if(global_debug)
-		HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
-}
-
-/**
-  * @brief  When an integer needs to be sent to the UART, this function is used
-  * @param  The integer number to be sent
-  * @retval None
-  */
-void Debug_INT(int num)
-{
-	printf("%d\n",num);
-}
-
-/**
-  * @brief  This function checks if the debugging needs to be toggled
-  * @param  None
-  * @retval None
-  */
-void global_debug_check()
-{
-	Debug_Tx("Toggling Debugging\n");
-	if(	(input.line_rx_buffer[0] == 'd') && (input.line_rx_buffer[1] == 'e') && (input.line_rx_buffer[2] == 'b'))
-	{
-
-//		global_debug = True;
-
-		global_debug = !global_debug;
-
-
-	}
-
-}
 /* USER CODE END 4 */
 
 /**

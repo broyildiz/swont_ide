@@ -19,7 +19,7 @@ int FL_uart_decode()
 	int function_number = FL_find_decode_nr(); // Get the function number
 	if(function_number == FUNCTION_NO_RESET) // If no function is recognized
 	{
-		Error_Tx("Did not recognize function number, line 22\n");
+		FL_error_tx("Did not recognize function number, line 22\n");
 		error = FL_INVALID_FUNCTION_NO;
 //		Debug_INT(error);
 //		printf("Error code:\t%d\n",error);
@@ -66,14 +66,14 @@ int FL_uart_decode()
 		case MONDRIAAN_FUNCTION_NO: break; // No arguments
 
 		default : {
-			Error_Tx("Did not recognise function number, line 67\n");
+			FL_error_tx("Did not recognise function number, line 67\n");
 			error = FL_SWITCH_INVALID_FUNCTION_NO;
 			return error;
 		}
 	}
 	if(error)
 	{
-		Error_Tx("A FL_find_args function returned an error\n");
+		FL_error_tx("A FL_find_args function returned an error\n");
 		return error;
 	}
 
@@ -140,15 +140,16 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 	 * Keep track of how many arguments are found.
 	 * If num_args_counter exceeds num_args throw an error
 	 */
-	char num_args_counter = 0;
+//	char num_args_counter = 0;
 
 	char string_container[MAX_ARG_LEN]; // Container for the raw string characters
 	int k;
 	for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0; // Reset the container
 
 	int arg_character_counter = 0;
-	char stored_args = 0; // Counts how many arguments are stored. Is incremented after successfully storing an arg
-	int argcounter = 0;
+//	char stored_args = 0;
+	int skip_first_comma = FALSE;
+	int argcounter = 0;// Counts how many arguments are stored. Is incremented after successfully storing an arg
 	int i = len_function_name; // Start at the first comma
 
 	//The Text function needs to be decoded differently
@@ -158,18 +159,17 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 		{
 			if(input.line_rx_buffer[i] == ',')
 			{
-				if(stored_args != 0) // When it is not the first argument
+				if(skip_first_comma) // When it is not the first argument
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
-					num_args_counter++;
+
 					if(error) break;
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 					arg_character_counter = 0;
-					stored_args++;
 				}
-				else stored_args++;	// This else is only reached after the while loop
+				else skip_first_comma = TRUE;	// This else is only reached after the while loop
 
 				i++; // Go to the next character in the rx_buffer
 			}
@@ -179,7 +179,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 			{
 				if(input.line_rx_buffer[i] == ','){
 					// If there is a comma after a comma, then there is no argument given.
-					Error_Tx("Argument not filled, line 191");
+					FL_error_tx("Argument not filled, line 191");
 					error = FL_EMPTY_ARGUMENT;
 					return error;
 				}
@@ -193,7 +193,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 		// If there was a break just now
 		if(error)
 		{
-			Error_Tx("There was an error during conversion\n");
+			FL_error_tx("There was an error during conversion\n");
 			return error;
 		}
 
@@ -202,14 +202,14 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 
 		if(error)
 		{
-			Error_Tx("There was an error during conversion\n");
+			FL_error_tx("There was an error during conversion\n");
 			return error;
 		}
-//		num_args_counter++;
-		if(num_args != stored_args) {
-			error = FL_TOO_MANY_ARGS;
-			return error;
-		}
+//		if(stored_args != (num_args - 1)) {
+//			error = FL_TOO_MANY_ARGS;
+//			return error;
+//		}
+
 		return NO_ERROR;
 
 
@@ -223,23 +223,21 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 			if(input.line_rx_buffer[i] == ',')
 			{
 
-				if(stored_args != 0) // This else is only reached after the while loop
+				if(skip_first_comma) // This else is only reached after the while loop
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
-					num_args_counter++;
 					if(error) break;
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
 					arg_character_counter = 0;
-					stored_args++;
 				}
-				else stored_args++; // This else is only reached after the while loop
+				else skip_first_comma = TRUE; // This else is only reached after the while loop
 
 				i++;// Go to the next character in the rx_buffer
 			}
 
-			if(stored_args == 4)
+			if(argcounter == 3)
 			{
 				/*
 				 * The fourth argument of the text function is the text to be displayed on the screen
@@ -247,7 +245,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 				 */
 				if(input.line_rx_buffer[i] == ','){
 					// If there is a comma after a comma, then there is no argument given.
-					Error_Tx("Argument not filled, line 191");
+					FL_error_tx("Argument not filled, line 191");
 					error = FL_EMPTY_ARGUMENT;
 					return error;
 				}
@@ -264,7 +262,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 				{
 					if(input.line_rx_buffer[i] == ','){
 						// If there is a comma after a comma, then there is no argument given.
-						Error_Tx("Argument not filled, line 191");
+						FL_error_tx("Argument not filled, line 191");
 						error = FL_EMPTY_ARGUMENT;
 						return error;
 					}
@@ -279,7 +277,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 		// If there was a break just now
 		if(error)
 		{
-			Error_Tx("There was an error during conversion\n");
+			FL_error_tx("There was an error during conversion\n");
 			return error;
 		}
 
@@ -288,14 +286,13 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 
 		if(error)
 		{
-			Error_Tx("There was an error during conversion\n");
+			FL_error_tx("There was an error during conversion\n");
 			return error;
 		}
-		num_args_counter++;
-		if(num_args_counter > num_args) {
-			error = FL_TOO_MANY_ARGS;
-			return error;
-		}
+//		if(stored_args != (num_args - 1)) {
+//			error = FL_TOO_MANY_ARGS;
+//			return error;
+//		}
 
 		return NO_ERROR;
 	}
@@ -319,7 +316,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 1:	command.bitmap.nr = atoi(arg_array); break;
 			case 2: command.bitmap.xlup = atoi(arg_array); break;
 			case 3: command.bitmap.ylup = atoi(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 209");//Error_Handler();
+//			default: FL_error_tx("Illegal stored_args value, line 209");//Error_Handler();
 			}
 		}break;
 
@@ -331,7 +328,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 2: command.cirkel.y = atoi(arg_array); break;
 			case 3: command.cirkel.radius = atoi(arg_array); break;
 			case 4: command.cirkel.kleur = FL_find_color(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 221");//Error_Handler();
+//			default: FL_error_tx("Illegal stored_args value, line 221");//Error_Handler();
 			}
 		}break;
 
@@ -357,7 +354,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 9: command.figuur.x5 = atoi(arg_array); break;
 			case 10: command.figuur.y5 = atoi(arg_array); break;
 			case 11: command.figuur.kleur = FL_find_color(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 247");
+//			default: FL_error_tx("Illegal stored_args value, line 247");
 			}
 		}break;
 
@@ -367,7 +364,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			{
 			case 1: command.herhaal.aantal = atoi(arg_array); break;
 			case 2: command.herhaal.hoevaak = atoi(arg_array); break;
-//			default: Error_Handler();//Error_Tx("Illegal stored_args value, line 257");
+//			default: Error_Handler();//FL_error_tx("Illegal stored_args value, line 257");
 			}
 		}break;
 
@@ -381,7 +378,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 4: command.lijn.y2 = atoi(arg_array); break;
 			case 5: command.lijn.kleur = FL_find_color(arg_array); break;
 			case 6: command.lijn.dikte = atoi(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 271");
+//			default: FL_error_tx("Illegal stored_args value, line 271");
 			}
 		}break;
 		case RECHTHOEK_FUNCTION_NO:
@@ -394,7 +391,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 			case 4: command.rechthoek.hoogte = atoi(arg_array); break;
 			case 5: command.rechthoek.kleur = FL_find_color(arg_array); break;
 			case 6: command.rechthoek.gevuld = atoi(arg_array); break;
-//			default: Error_Tx("Illegal stored_args value, line 284");
+//			default: FL_error_tx("Illegal stored_args value, line 284");
 			}
 		}break;
 
@@ -417,7 +414,7 @@ int FL_convert_args(char arg_array[], int argcounter)
 //		case MONDRIAAN_FUNCTION_NO: //No Arguments
 
 		default : {
-			Error_Tx("Did not recognise function number in the convert args function");
+			FL_error_tx("Did not recognise function number in the convert args function");
 			error = FL_CONVERT_ARGS_INVALID_FUNCTION_NO;
 			return error;
 		}
@@ -489,6 +486,88 @@ int FL_find_font_style(char arg_array[])
 	if(arg_array[1] == LETTERC) retval = ITALIC;
 	if(arg_array[2] == LETTERV) retval = BOLD;
 	return retval;
+}
+
+/**
+  * @brief  When an error has occured, this function informs the user via USARt2 debugging
+  * @param  The error code
+  * @retval none
+  */
+void FL_global_error_handler(int error)
+{
+	printf("\n\nENCOUNTERRED AN ERROR!\n");
+	printf("Error code:\t%d\n",error);
+	switch(error)
+	{
+	case FL_INIT_ERROR: 					printf("\nERROR:\tFL_INIT_ERROR\n"); break;
+	case FL_INVALID_FUNCTION_NO: 			printf("\nERROR:\tFL_INVALID_FUNCTION_NO\n");  break;
+	case FL_SWITCH_INVALID_FUNCTION_NO: 	printf("\nERROR:\tFL_SWITCH_INVALID_FUNCTION_NO\n");  break;
+	case FL_INVALID_ARGUMENTS: 				printf("\nERROR:\tFL_INVALID_ARGUMENTS\n");  break;
+	case FL_TOO_MANY_ARGS: 					printf("\nERROR:\tFL_TOO_MANY_ARGS\n");  break;
+	case FL_EMPTY_ARGUMENT: 				printf("\nERROR:\tFL_EMPTY_ARGUMENT\n");  break;
+	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
+	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
+	case IOL_BITMAP_NON_EXISTENT: 			printf("\nERROR:\tIOL_BITMAP_NON_EXISTENT\n");  break;
+	case IOL_ERROR_FONTNAME: 				printf("\nERROR:\tIOL_ERROR_FONTNAME\n");  break;
+	case IOL_ERROR_FONTNAME_UNKNOWN: 		printf("\nERROR:\tIOL_ERROR_FONTNAME_UNKNOWN\n");  break;
+	case IOL_ARIAL_FONT_ERROR: 				printf("\nERROR:\tIOL_ARIAL_FONT_ERROR\n");  break;
+	case IOL_CONSOLAS_FONT_ERROR: 			printf("\nERROR:\tIOL_CONSOLAS_FONT_ERROR\n");  break;
+	case IOL_FONT_ERROR: 					printf("\nERROR:\tIOL_FONT_ERROR\n");  break;
+	default: 								printf("\nERROR:\tNo Error\n"); break;
+	}
+}
+
+/**
+  * @brief  When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled
+  * @param  The error message string
+  * @retval None
+  */
+void FL_error_tx(char  *pErrorMessage)
+{
+	HAL_UART_Transmit(&huart2, (uint8_t*)pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
+}
+
+/**
+  * @brief  When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled
+  * @param  The debug message string
+  * @retval None
+  */
+void FL_debug_tx( char *pDebugMessage)
+{
+	if(global_debug)
+		HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
+}
+
+/**
+  * @brief  When an integer needs to be sent to the UART, this function is used
+  * @param  The integer number to be sent
+  * @retval None
+  */
+void FL_debug_int(int num)
+{
+	printf("%d\n",num);
+}
+
+/**
+  * @brief  This function checks if the debugging needs to be toggled
+  * @param  None
+  * @retval None
+  */
+void FL_global_debug_check()
+{
+	FL_debug_tx("Toggling Debugging\n");
+	if(	(input.line_rx_buffer[0] == 'd') &&
+		(input.line_rx_buffer[1] == 'e') &&
+		(input.line_rx_buffer[2] == 'b'))
+	{
+
+//		global_debug = True;
+
+		global_debug = !global_debug;
+
+
+	}
+
 }
 
 
