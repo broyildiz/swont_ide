@@ -221,9 +221,15 @@ void Global_Error_handler(int error)
 	case LL_NOT_A_SUPPORTED_FUNCTION: 		printf("\nERROR:\tLL_NOT_A_SUPPORTED_FUNCTION\n");  break;
 	case IOL_LINE_INVALID_ARG_VALUE: 		printf("\nERROR:\tIOL_LINE_INVALID_ARG_VALUE\n");  break;
 	case IOL_BITMAP_NON_EXISTENT: 			printf("\nERROR:\tIOL_BITMAP_NON_EXISTENT\n");  break;
+	case IOL_ERROR_FONTNAME: 				printf("\nERROR:\tIOL_ERROR_FONTNAME\n");  break;
+	case IOL_ERROR_FONTNAME_UNKNOWN: 		printf("\nERROR:\tIOL_ERROR_FONTNAME_UNKNOWN\n");  break;
+	case IOL_ARIAL_FONT_ERROR: 				printf("\nERROR:\tIOL_ARIAL_FONT_ERROR\n");  break;
+	case IOL_CONSOLAS_FONT_ERROR: 			printf("\nERROR:\tIOL_CONSOLAS_FONT_ERROR\n");  break;
+	case IOL_FONT_ERROR: 					printf("\nERROR:\tIOL_FONT_ERROR\n");  break;
 	default: 								printf("\nERROR:\tNo Error\n"); break;
 	}
 }
+
 
 /**
   * @brief  When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled

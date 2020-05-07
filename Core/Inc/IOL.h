@@ -23,6 +23,38 @@ void screen(void);
 
 #define sgn(x) ((x<0)?-1:((x>0)?1:0)) /* macro to return the sign of a
                                          number */
+
+#define NORMAL 0
+#define ITALIC 1
+#define BOLD 2
+
+#define ARIAL         0
+#define ARIAL_NORMAL  0
+#define ARIAL_ITALIC  1
+#define ARIAL_BOLD    2
+
+#define CONSOLAS  		 1
+#define CONSOLAS_NORMAL  0
+#define CONSOLAS_ITALIC  1
+#define CONSOLAS_BOLD  	 2
+
+#define LARGE_FONT	2
+#define SMALL_FONT  1
+#define ASCII_OFFSET 32
+
+#define BYTE_SIZE 8
+#define BITMASK 128
+#define ARRAY_DIMENSION 2
+#define CHAR_START_OFFSET 1
+
+
+#define CASE_OFFSET	     32
+#define ERROR_FONTNAME   1
+#define ERROR_FONTNAME_UNKNOWN 2
+
+#define ASCII_DEL 127
+
+
 typedef unsigned char  byte;
 typedef unsigned short word;
 
@@ -49,36 +81,6 @@ enum BITMAPS
 	ARROW_LEFT,
 	MEGAMAN
 };
-
-#define NORMAL 0
-#define ITALIC 1
-#define BOLD 2
-
-#define ARIAL         0
-#define ARIAL_NORMAL  0
-#define ARIAL_ITALIC  1
-#define ARIAL_BOLD    2
-
-#define CONSOLAS  		 1
-#define CONSOLAS_NORMAL  0
-#define CONSOLAS_ITALIC  1
-#define CONSOLAS_BOLD  	 2
-
-
-#define LARGE_FONT	2
-#define SMALL_FONT  1
-#define ASCII_OFFSET 32
-
-#define BYTE_SIZE 8
-#define BITMASK 128
-#define ARRAY_DIMENSION 2
-#define CHAR_START_OFFSET 1
-
-
-#define CASE_OFFSET	     32
-#define ERROR_FONTNAME   1
-#define ERROR_FONTNAME_UNKNOWN 2
-
 
 
 //void initButton(void);
