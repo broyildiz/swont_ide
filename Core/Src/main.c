@@ -203,6 +203,11 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+/**
+  * @brief  When an error has occured, this function informs the user via USARt2 debugging
+  * @param  The error code
+  * @retval none
+  */
 void Global_Error_handler(int error)
 {
 	printf("\n\nENCOUNTERRED AN ERROR!\n");
@@ -221,40 +226,54 @@ void Global_Error_handler(int error)
 	}
 }
 
+/**
+  * @brief  When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled
+  * @param  The error message string
+  * @retval None
+  */
 void Error_Tx(char  *pErrorMessage)
 {
-//	for(int i = 0; i <= strlen(pErrorMessage); i++)
-//				printf("%c", pErrorMessage[i]);
+	HAL_UART_Transmit(&huart2, (uint8_t*)pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
+/**
+  * @brief  When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled
+  * @param  The debug message string
+  * @retval None
+  */
 void Debug_Tx( char *pDebugMessage)
 {
 	if(global_debug)
 		HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 
+/**
+  * @brief  When an integer needs to be sent to the UART, this function is used
+  * @param  The integer number to be sent
+  * @retval None
+  */
 void Debug_INT(int num)
 {
-//	num = 36;
-//	if(global_debug)
 	printf("%d\n",num);
-
 }
 
-
+/**
+  * @brief  This function checks if the debugging needs to be toggled
+  * @param  None
+  * @retval None
+  */
 void global_debug_check()
 {
-//	Debug_Tx("Toggling Debugging\n");
-//	if(	(input.line_rx_buffer[0] == 'd') && (input.line_rx_buffer[1] == 'e') && (input.line_rx_buffer[2] == 'b'))
-//	{
-//		printf("Global debug voor: %d\n", global_debug);
+	Debug_Tx("Toggling Debugging\n");
+	if(	(input.line_rx_buffer[0] == 'd') && (input.line_rx_buffer[1] == 'e') && (input.line_rx_buffer[2] == 'b'))
+	{
+
 //		global_debug = True;
-//		printf("Global debug na: %d\n", global_debug);
-////		global_debug = !global_debug;
-//
-////		global_debug = True
-//
-//	}
+
+		global_debug = !global_debug;
+
+
+	}
 
 }
 /* USER CODE END 4 */
