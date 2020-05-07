@@ -99,8 +99,8 @@ void Error_Handler(void);
 #define CARRIAGE_RETURN 13 // carriage return char \r
 #define LINE_FEED 		10 // linefeed char \n
 
-#define False 	0x00
-#define True 	0xFF
+#define FALSE 	0x00
+#define TRUE 	0xFF
 
 #define DEBUG_IO
 

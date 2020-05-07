@@ -260,7 +260,7 @@ void USART2_IRQHandler(void)
 	 //Check for CR and LF characters
 	 if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
 	 {
-		input.command_execute_flag = True;
+		input.command_execute_flag = TRUE;
 		// Store the message length for processing
 		input.msglen = input.char_counter;
 		// Reset the counter for the next line
@@ -269,7 +269,7 @@ void USART2_IRQHandler(void)
 	 }
 	 else
 	 {
-		input.command_execute_flag = False;
+		input.command_execute_flag = FALSE;
 		input.line_rx_buffer[input.char_counter] = uart_char;
 //		container[temp++] = uart_char;
 		input.char_counter++;

@@ -108,7 +108,7 @@ int main(void)
   // Reset some stuff
   input.byte_buffer_rx[0] = 0;
   input.char_counter = 0;
-  input.command_execute_flag = False;
+  input.command_execute_flag = FALSE;
 
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -120,7 +120,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 //  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
   int error = NO_ERROR;
-  global_debug = False;
+  global_debug = FALSE;
 
 //  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/3, VGA_COL_BLACK);
 
@@ -130,13 +130,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == True)
+	  if(input.command_execute_flag == TRUE)
 	  {
 		  global_debug_check();
 //		  global_debug = 1;
 //		  Debug_Tx("HMM");
 //		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
-		  input.command_execute_flag = False;
+		  input.command_execute_flag = FALSE;
 		  UB_VGA_SetPixel(10,10,VGA_COL_GREEN);
 		  error = FL_uart_decode();
 		  memset(&command,0,sizeof(command));
