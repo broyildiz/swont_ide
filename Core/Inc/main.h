@@ -46,6 +46,8 @@ extern "C" {
 #include "bitmaps.h"
 #include "arial_fonts.h"
 #include "consolas_fonts.h"
+
+#include "Tetris.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -145,7 +147,12 @@ enum ERROR_CODES
 };
 
 
-
+int tetris_toggle;
+volatile int key;
+#define MOVE_LEFT   			  1
+#define MOVE_RIGHT 	  			  3
+#define ROTATE_COUNTERCLOCKWISE   5
+#define ROTATE_CLOCKWISE  		  2
 
 //void LL_exec(struct collection *command);
 

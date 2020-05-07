@@ -205,8 +205,8 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 			Error_Tx("There was an error during conversion\n");
 			return error;
 		}
-		num_args_counter++;
-		if(num_args_counter > num_args) {
+//		num_args_counter++;
+		if(num_args != stored_args) {
 			error = FL_TOO_MANY_ARGS;
 			return error;
 		}

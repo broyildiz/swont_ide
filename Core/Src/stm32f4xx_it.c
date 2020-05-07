@@ -207,7 +207,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 0 */
 
   /* USER CODE END TIM2_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim2);
+//  HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
   __HAL_TIM_CLEAR_IT(&htim2, TIM_IT_CC3); // uncomment HAL_TIM_IRQHandler(&htim2); ^^
 
@@ -253,28 +253,43 @@ void USART2_IRQHandler(void)
   // Get the recieved character from the USART2 Data Register
   char uart_char = USART2->DR;
 
-
-  //This way we ignore the '\n' character
-  if(uart_char != LINE_FEED)
+  if(tetris_toggle)
   {
-	 //Check for CR and LF characters
-	 if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
-	 {
-		input.command_execute_flag = TRUE;
-		// Store the message length for processing
-		input.msglen = input.char_counter;
-		// Reset the counter for the next line
-		input.char_counter = 0;
-		//Gently exit interrupt
-	 }
-	 else
-	 {
-		input.command_execute_flag = FALSE;
-		input.line_rx_buffer[input.char_counter] = uart_char;
-//		container[temp++] = uart_char;
-		input.char_counter++;
-	 }
+	  switch(uart_char)
+	  {
+	  case 'l': key = MOVE_LEFT; break;
+	  case 'r': key = MOVE_RIGHT; break;
+	  case 'u': key = ROTATE_COUNTERCLOCKWISE; break;
+	  case 'd': key = ROTATE_CLOCKWISE; break;
+	  }
   }
+  else
+  {
+	  //This way we ignore the '\n' character
+	  if(uart_char != LINE_FEED)
+	  {
+		 //Check for CR and LF characters
+		 if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
+		 {
+			input.command_execute_flag = TRUE;
+			// Store the message length for processing
+			input.msglen = input.char_counter;
+			// Reset the counter for the next line
+			input.char_counter = 0;
+			//Gently exit interrupt
+		 }
+		 else
+		 {
+			input.command_execute_flag = FALSE;
+			input.line_rx_buffer[input.char_counter] = uart_char;
+	//		container[temp++] = uart_char;
+			input.char_counter++;
+		 }
+	  }
+  }
+
+
+
 
 
   /* USER CODE END USART2_IRQn 0 */

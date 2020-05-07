@@ -29,6 +29,7 @@
 /* USER CODE BEGIN Includes */
 #include "stm32f4xx_hal.h"
 //#include "FL.h"
+#include "Tetris.h"
 
 /* USER CODE END Includes */
 
@@ -121,6 +122,7 @@ int main(void)
 //  HAL_UART_Transmit(&huart2, msg, (uint16_t)sizeof(msg), HAL_MAX_DELAY);
   int error = NO_ERROR;
   global_debug = FALSE;
+  tetris_toggle = FALSE;
 
   /* USER CODE END 2 */
 
@@ -131,6 +133,7 @@ int main(void)
 	  if(input.command_execute_flag == TRUE)
 	  {
 		  global_debug_check();
+//		  Tetris();
 //		  global_debug = 1;
 //		  Debug_Tx("HMM");
 //		  HAL_GPIO_WritePin(GPIOB, TIMING_GPIO_Pin, GPIO_PIN_RESET);
