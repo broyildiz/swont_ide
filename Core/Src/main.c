@@ -122,8 +122,6 @@ int main(void)
   int error = NO_ERROR;
   global_debug = FALSE;
 
-//  IO_draw_circle(VGA_DISPLAY_X/2, VGA_DISPLAY_Y/2, VGA_DISPLAY_X/3, VGA_COL_BLACK);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */

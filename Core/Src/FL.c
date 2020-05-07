@@ -136,6 +136,12 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 {
 	int error = NO_ERROR;
 
+	/*
+	 * Keep track of how many arguments are found.
+	 * If num_args_counter exceeds num_args throw an error
+	 */
+	char num_args_counter = 0;
+
 	char string_container[MAX_ARG_LEN]; // Container for the raw string characters
 	int k;
 	for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0; // Reset the container
@@ -156,6 +162,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
+					num_args_counter++;
 					if(error) break;
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
@@ -198,7 +205,11 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 			Error_Tx("There was an error during conversion\n");
 			return error;
 		}
-
+		num_args_counter++;
+		if(num_args_counter > num_args) {
+			error = FL_TOO_MANY_ARGS;
+			return error;
+		}
 		return NO_ERROR;
 
 
@@ -216,6 +227,7 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 				{
 					// convert the stored string()
 					error = FL_convert_args(string_container, ++argcounter);
+					num_args_counter++;
 					if(error) break;
 					// reset string container
 					for(k = 0; k < MAX_ARG_LEN; k++) string_container[k] = 0;
@@ -277,6 +289,11 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 		if(error)
 		{
 			Error_Tx("There was an error during conversion\n");
+			return error;
+		}
+		num_args_counter++;
+		if(num_args_counter > num_args) {
+			error = FL_TOO_MANY_ARGS;
 			return error;
 		}
 
