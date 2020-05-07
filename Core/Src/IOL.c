@@ -67,7 +67,7 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
   * @param  thickness is the thickness of the line
   * @retval None
   */
-int IO_draw_line(int x1, int y1, int x2, int y2, byte color, int thickness)
+int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color, int thickness)
 {
 	/*
 	* Bron: 	 	http://www.brackeen.com/vga/source/djgpp20/lines.c.html
@@ -209,6 +209,7 @@ int IO_draw_mondriaan()
 		IO_draw_rectangle(240,170,65,30,VGA_COL_WHITE,filled);
 		IO_draw_rectangle(240,205,80,35,VGA_COL_WHITE,filled);
 		IO_draw_rectangle(310,170,10,30,VGA_COL_YELLOW,filled);
+		return 0;
 }
 
 
@@ -262,7 +263,7 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
   */
 int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
-	int error = NO_ERROR;
+		int error = NO_ERROR;
 		//Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
 	    int x = 0, y = radius;
 	    int d = 3 - 2 * radius;
@@ -289,7 +290,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
 	        else
 	            d = d + 4 * x + 6;
 	        error = drawCircle(xc, yc, x, y, color);
-
+	    }
 	    if(error) {
 	    	Error_Tx("Draw Circle function: Unexpected error");
 			return error;
@@ -297,7 +298,6 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
 
 	    return error;
 }
-
 
 
 
@@ -533,8 +533,8 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 					symbol_height = CONSOLAS_LARGE_BOLD_HEIGHT; 	/* font height in pixels */
 				}
 				break;
-		}
-		break;
+			}
+			break;
 
 	default: break;
 	}
