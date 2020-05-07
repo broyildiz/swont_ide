@@ -1,3 +1,6 @@
+
+
+
 #include "LL.h"
 #include "string.h"
 
@@ -7,7 +10,7 @@
   *
   * @param  Command : Contains parsed data from UART for every API command.
   *
-  * @retval None
+  * @retval Error:	returns errors from called IO functions
   */
 int LL_exec(struct collection *commands)
 {

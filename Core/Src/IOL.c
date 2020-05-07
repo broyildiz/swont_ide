@@ -301,15 +301,22 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
 
 
 
-
+/**
+  * @brief  Draws one of the stored bitmaps.
+  * 		Starts drawing in the top left corner.
+  *
+  *
+  * @param  xlup is the starting x-coordinate on screen
+  * @param  ylup is the starting x-coordinate on screen
+  * @param  bmpnr determines which of the stored bitmaps
+  * 			  is retrieved
+  * @retval None
+  */
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
 //  bron: http://www.brackeen.com/vga/bitmaps.html
 	const uint8_t *pbitmap;
-//	uint8_t temp;
-//	uint8_t bitmask;
-//	uint8_t bit;
-//	int color;
+
 	int img_width, img_height;
 	int x, y;
 
@@ -364,7 +371,9 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 			break;
 
 
-		default: break;
+		default:
+			return ERROR_BITMAP_NON_EXISTENT;
+			break;
 	}
 
 	printf("bitmap parameters selected \n");
@@ -384,7 +393,19 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 	return 0;
 }
 
-
+/**
+  * @brief  Draws text on screen.
+  *
+  * @param  xlup 		is the starting x-coordinate on screen
+  * @param  ylup 		is the starting x-coordinate on screen
+  * @param  color 		determines the color of the text
+  * @param  *text 		pointer to buffer with the to be printed text
+  * @param  *font 		determines the color of the text
+  * @param  font_size 	Determines text size
+  * @param  font_style 	Determines the style: Normal, Italic or Bold
+  *
+  * @retval Error 		Various error codes
+  */
 int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
 
