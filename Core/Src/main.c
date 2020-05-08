@@ -133,6 +133,18 @@ int main(void)
   {
 	  if(input.command_execute_flag == TRUE)
 	  {
+//		  int i = 0;
+//		  for(i = 0; i <= 255; i++)
+//		  {
+//			  IO_clearscreen(i);
+//			  printf("The current color value:\n");
+//			  printf("\t HEX:\t%02x\n",i);
+//			  printf("\t DEC:\t%d\n",i);
+//			  HAL_Delay(1000);
+//		  }
+
+
+
 		  FL_global_debug_check(); // Check if debugging is to be enabled
 		  LL_tetris_check(); // Check if Tetris is to be played
 

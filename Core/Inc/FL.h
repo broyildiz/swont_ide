@@ -86,13 +86,13 @@ void FL_global_error_handler(int error);
 #define MONDRIAAN_FUNCTION_NAME_LEN 	9
 #define WACHT_FUNCTION_NAME_LEN 		5
 
-#define	VGA_COL_BROWN 0x3F
-#define	VGA_COL_GREY 0x02
-#define	VGA_COL_LITE_BLUE 0x03
-#define	VGA_COL_LITE_CYAN 0x04
-#define	VGA_COL_LITE_GREEN 0x05
-#define	VGA_COL_LITE_MAGENTA 0x06
-#define	VGA_COL_LITE_RED 0x07
+#define	VGA_COL_BROWN 0x68
+#define	VGA_COL_GREY 0x92
+#define	VGA_COL_LITE_BLUE 0x17
+#define	VGA_COL_LITE_CYAN 0x15
+#define	VGA_COL_LITE_GREEN 0x9F
+#define	VGA_COL_LITE_MAGENTA 0xF7
+#define	VGA_COL_LITE_RED 0x4F
 
 //#define	VGA_COL_GREEN
 //#define	VGA_COL_CYAAN
