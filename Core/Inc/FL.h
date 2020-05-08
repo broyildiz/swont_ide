@@ -36,8 +36,8 @@ void FL_global_error_handler(int error);
 #define LETTERH 'h'
 #define LETTERI 'i'
 #define LETTERL 'l'
-#define LETTERN 'n'
-#define LETTERM 'm'
+#define LETTERN 'm'
+#define LETTERM 'n'
 #define LETTERR 'r'
 #define LETTERT 't'
 #define LETTERV 'v'
@@ -59,8 +59,7 @@ void FL_global_error_handler(int error);
 #define TETRIS_FUNCTION_NO		12
 
 #define MAX_NUM_RGS				10
-#define MAX_ARG_LEN				128 // was eerst 10
-//#define MAX_TEXT_LEN			64
+#define MAX_ARG_LEN				128
 #define BITMAP_ARGS				3
 #define CIRKEL_ARGS 			4
 #define CLEARSCHERM_ARGS 		1
@@ -94,16 +93,6 @@ void FL_global_error_handler(int error);
 #define	VGA_COL_LITE_MAGENTA 0xF7
 #define	VGA_COL_LITE_RED 0x4F
 
-//#define	VGA_COL_GREEN
-//#define	VGA_COL_CYAAN
-//#define	VGA_COL_YELLOW
-//#define	VGA_COL_BLUE
-//#define	VGA_COL_MAGENTA 0xE3
-//#define	VGA_COL_RED 0xE0
-//#define	VGA_COL_WHITE 0xFF
-//#define	VGA_COL_BLACK 0x00
-
-
 
 typedef struct
 {
@@ -124,16 +113,6 @@ typedef struct
 {
 	int kleur;
 }clearscherm_func;
-
-typedef struct //misschien moet deze struct gewoon weg
-{
-	int null;
-}execute_func;
-
-typedef struct //misschien moet deze struct gewoon weg
-{
-	int null;
-}mondriaan_func;
 
 typedef struct
 {
@@ -204,22 +183,13 @@ struct collection
 	bitmap_func bitmap;
 	cirkel_func cirkel;
 	clearscherm_func clearscherm;
-	execute_func execute;
 	figuur_func figuur;
 	herhaal_func herhaal;
 	lijn_func lijn;
 	rechthoek_func rechthoek;
 	tekst_func tekst;
-	mondriaan_func mondriaan;
 	wacht_func wacht;
-}command; //dit is een global?
-
-
-
-
-
-//void LL_exec(struct collection *commands);
-
+}command;
 
 
 

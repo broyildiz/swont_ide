@@ -8,7 +8,7 @@
   * @brief  Determines which API function should be called based on input.
   * 		Calls error handler in case of error.
   *
-  * @param  Command : Contains parsed data from UART for every API command.
+  * @param  Commands : Contains parsed data from UART for every API command.
   *
   * @retval Error:	returns errors from called IO functions
   */
@@ -61,14 +61,6 @@ int LL_exec(struct collection *commands)
 							   commands->figuur.kleur);
 	}break;
 		
-
-	case HERHAAL_FUNCTION_NO :
-	{
-//		FL_debug_tx("Going to execute HERHAAL_FUNCTION_NO\n");
-//		error = IO_repeat_commands(commands->herhaal.aantal,
-//								   commands->herhaal.hoevaak);
-	}break;
-
 	case LIJN_FUNCTION_NO :
 	{
 		FL_debug_tx("case line\n");
@@ -107,14 +99,6 @@ int LL_exec(struct collection *commands)
     {
 	    error = IO_draw_mondriaan();
     }break;
-//
-	case WACHT_FUNCTION_NO:
-	{
-//		FL_debug_tx("Going to execute WACHT_FUNCTION_NO\n");
-//		waitCheck = True;
-////		HAL_Delay(command->wacht.msecs);
-//		error = IO_wait(command->wacht.msecs);
-	}break;
 
 	default:
 	{
@@ -135,6 +119,13 @@ int LL_exec(struct collection *commands)
 	return error;
 
 }
+
+/*
+ * @brief Tetris function checking the string
+ *
+ * @retval None
+ *
+ */
 
 void LL_tetris_check()
 {

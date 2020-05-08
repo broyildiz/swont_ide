@@ -28,9 +28,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f4xx_hal.h"
-//#include "FL.h"
 #include "Tetris.h"
-//#include "LL.c"
+
 
 /* USER CODE END Includes */
 
