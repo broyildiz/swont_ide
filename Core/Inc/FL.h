@@ -9,20 +9,14 @@
 #define INC_FL_H_
 #include "main.h"
 
-
-int FL_uart_decode(void);
-int FL_find_decode_nr();
-int FL_find_args(int function_number, int num_args,  int len_function_name);
+void FL_Init();
+int FL_uart_decode(uint8_t line_rx_buffer[], int msglen);
+int FL_decode_func_no(uint8_t buffer[]);
+int FL_find_args(int function_number, int num_args, int len_function_name, uint8_t line_rx_buffer[], int msglen);
 int FL_convert_args(char arg_array[], int argcounter);
 uint8_t FL_find_color(char color[]);
 int FL_find_font_style(char arg_array[]);
-
-void FL_error_handler(int error);
-void FL_global_debug_check();
-void FL_debug_int(int num);
-void FL_debug_tx( char *pDebugMessage);
-void FL_error_tx(char  *pErrorMessage);
-void FL_global_error_handler(int error);
+//void FL_error_handler(char *pErrorString);
 
 #define MAX_LEN_TEKST_STRING 128
 #define MAX_LEN_FONTNAME 30
@@ -36,8 +30,8 @@ void FL_global_error_handler(int error);
 #define LETTERH 'h'
 #define LETTERI 'i'
 #define LETTERL 'l'
-#define LETTERN 'n'
 #define LETTERM 'm'
+#define LETTERN 'n'
 #define LETTERR 'r'
 #define LETTERT 't'
 #define LETTERV 'v'
@@ -54,9 +48,8 @@ void FL_global_error_handler(int error);
 #define LIJN_FUNCTION_NO 		7
 #define RECHTHOEK_FUNCTION_NO 	8
 #define TEKST_FUNCTION_NO 		9
-#define MONDRIAAN_FUNCTION_NO 	10
+#define TOREN_FUNCTION_NO 		10
 #define WACHT_FUNCTION_NO 		11
-#define TETRIS_FUNCTION_NO		12
 
 #define MAX_NUM_RGS				10
 #define MAX_ARG_LEN				128 // was eerst 10
@@ -70,9 +63,8 @@ void FL_global_error_handler(int error);
 #define LIJN_ARGS 				6
 #define RECHTHOEK_ARGS 			6
 #define TEKST_ARGS 				6
-#define MONDRIAAN_ARGS			0
+#define TOREN_ARGS 				5
 #define WACHT_ARGS 				1
-#define TETRIS_ARGS				0
 
 #define BITMAP_FUNCTION_NAME_LEN 		6
 #define CIRKEL_FUNCTION_NAME_LEN 		6
@@ -83,7 +75,7 @@ void FL_global_error_handler(int error);
 #define LIJN_FUNCTION_NAME_LEN 			4
 #define RECHTHOEK_FUNCTION_NAME_LEN 	9
 #define TEKST_FUNCTION_NAME_LEN 		5
-#define MONDRIAAN_FUNCTION_NAME_LEN 	9
+#define TOREN_FUNCTION_NAME_LEN 		5
 #define WACHT_FUNCTION_NAME_LEN 		5
 
 #define	VGA_COL_BROWN 0x68
@@ -93,6 +85,8 @@ void FL_global_error_handler(int error);
 #define	VGA_COL_LITE_GREEN 0x9F
 #define	VGA_COL_LITE_MAGENTA 0xF7
 #define	VGA_COL_LITE_RED 0x4F
+
+#define CONSOLAS_ITALIC
 
 //#define	VGA_COL_GREEN
 //#define	VGA_COL_CYAAN
@@ -130,11 +124,6 @@ typedef struct //misschien moet deze struct gewoon weg
 	int null;
 }execute_func;
 
-typedef struct //misschien moet deze struct gewoon weg
-{
-	int null;
-}mondriaan_func;
-
 typedef struct
 {
 	uint16_t x1;
@@ -165,7 +154,6 @@ typedef struct
 	uint16_t y2;
 	int kleur;
 	int dikte;
-
 }lijn_func;
 
 typedef struct
@@ -191,6 +179,15 @@ typedef struct
 
 }tekst_func;
 
+typedef struct
+{
+	uint16_t x1;
+	uint16_t y1;
+	int grootte;
+	int kleur1;
+	int kleur2;
+
+}toren_func;
 
 typedef struct
 {
@@ -210,17 +207,14 @@ struct collection
 	lijn_func lijn;
 	rechthoek_func rechthoek;
 	tekst_func tekst;
-	mondriaan_func mondriaan;
+	toren_func toren;
 	wacht_func wacht;
 }command; //dit is een global?
 
-
-
-
-
 //void LL_exec(struct collection *commands);
 
-
+char fl_container[30];
+int fl_counter;
 
 
 #endif /* INC_FL_H_ */

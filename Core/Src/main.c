@@ -28,9 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f4xx_hal.h"
-//#include "FL.h"
 #include "Tetris.h"
-//#include "LL.c"
 
 /* USER CODE END Includes */
 
@@ -67,7 +65,7 @@ void SystemClock_Config(void);
 
 /**
   * @brief  The application entry point.
-  * @retval int
+  * @retval
   */
 int main(void)
 {
