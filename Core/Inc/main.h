@@ -96,17 +96,22 @@ void Error_Handler(void);
 #define VGA_VSYNC_GPIO_Port GPIOB
 #define TIMING_GPIO_Pin GPIO_PIN_15
 #define TIMING_GPIO_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
-#define BYTE_BUFLEN 1
-#define LINE_BUFLEN 1024
-#define CARRIAGE_RETURN 13 // carriage return char \r
-#define LINE_FEED 		10 // linefeed char \n
+#define BYTE_BUFLEN 	 1
+#define LINE_BUFLEN 	 1024
+#define CARRIAGE_RETURN  13 /* carriage return char \r */
+#define LINE_FEED 		 10 /* linefeed char \n		   */
 
 #define FALSE 	0x00
 #define TRUE 	0xFF
 
-#define DEBUG_IO
+#define MOVE_LEFT   			  1
+#define MOVE_RIGHT 	  			  3
+#define ROTATE_COUNTERCLOCKWISE   5
+#define ROTATE_CLOCKWISE  		  2
 
+/* Struct's ------------------------------------------------------------------*/
 typedef struct
 {
 	uint8_t byte_buffer_rx[BYTE_BUFLEN];	// Store the rx byte from the USART2
@@ -118,17 +123,22 @@ typedef struct
 }input_vars;
 input_vars input;
 
+/* Globals -------------------------------------------------------------------*/
 volatile char container[1024];
 volatile int temp;
+volatile int key;
 
+int tetris_toggle;
 int global_debug;
 
+/* Prototypes ----------------------------------------------------------------*/
 void Error_Tx(char *pErrorMessage);
 void Debug_Tx(char *pDebugMessage);
 void Debug_INT(int num);
 void global_debug_check();
 void Global_Error_handler(int error);
 
+/* Enum's --------------------------------------------------------------------*/
 enum ERROR_CODES
 {
 	NO_ERROR = 0,
@@ -143,25 +153,13 @@ enum ERROR_CODES
 	LL_NOT_A_SUPPORTED_FUNCTION,
 
 	IOL_LINE_INVALID_ARG_VALUE,
-
 	IOL_BITMAP_NON_EXISTENT,
 	IOL_ERROR_FONTNAME,
 	IOL_ERROR_FONTNAME_UNKNOWN,
 	IOL_ARIAL_FONT_ERROR,
 	IOL_CONSOLAS_FONT_ERROR,
 	IOL_FONT_ERROR
-
 };
-
-
-int tetris_toggle;
-volatile int key;
-#define MOVE_LEFT   			  1
-#define MOVE_RIGHT 	  			  3
-#define ROTATE_COUNTERCLOCKWISE   5
-#define ROTATE_CLOCKWISE  		  2
-
-//void LL_exec(struct collection *command);
 
 /* USER CODE END Private defines */
 
