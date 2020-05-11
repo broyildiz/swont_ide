@@ -1,0 +1,32 @@
+\hypertarget{_i_o_l_8c}{}\doxysection{I\+O\+L.\+c File Reference}
+\label{_i_o_l_8c}\index{IOL.c@{IOL.c}}
+{\ttfamily \#include \char`\"{}I\+O\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+Include dependency graph for I\+O\+L.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_o_l_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group___i_o___layer_ga8b55e6a819cdb2ce524731bcc506b2aa}{I\+O\+\_\+draw\+\_\+figure}} (uint16\+\_\+t x1, uint16\+\_\+t y1, uint16\+\_\+t x2, uint16\+\_\+t y2, uint16\+\_\+t x3, uint16\+\_\+t y3, uint16\+\_\+t x4, uint16\+\_\+t y4, uint16\+\_\+t x5, uint16\+\_\+t y5, \mbox{\hyperlink{group___i_o___layer_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}} color)
+\begin{DoxyCompactList}\small\item\em Function for drawing a figure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gafa8e6495d4075afd2321f853998254f9}{I\+O\+\_\+draw\+\_\+line}} (uint16\+\_\+t x1, uint16\+\_\+t y1, uint16\+\_\+t x2, uint16\+\_\+t y2, \mbox{\hyperlink{group___i_o___layer_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}} color, int thickness)
+\begin{DoxyCompactList}\small\item\em Function for drawing a line. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gaff975f5b9e9238d286b9d342d957519c}{I\+O\+\_\+draw\+\_\+rectangle}} (uint16\+\_\+t x\+\_\+lup, uint16\+\_\+t y\+\_\+lup, int width, int height, int color, int filled)
+\begin{DoxyCompactList}\small\item\em Function for drawing a rectangle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gad71908b8512490176d55537ea418ec95}{I\+O\+\_\+draw\+\_\+mondriaan}} ()
+\begin{DoxyCompactList}\small\item\em Function for drawing a Mondriaan painting. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gaeb9a96cecb2f5c540d9255f8c47cfc35}{I\+O\+\_\+clearscreen}} (int color)
+\begin{DoxyCompactList}\small\item\em Clearing the whole screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_ga69cc9a8d86bf671be0daa7e30c3f35d8}{draw\+Circle}} (int xc, int yc, int x, int y, \mbox{\hyperlink{group___i_o___layer_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}} color)
+\begin{DoxyCompactList}\small\item\em Function for drawing a circle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_ga84d08cfc4723d5777b70ca1763062f48}{I\+O\+\_\+draw\+\_\+circle}} (int xc, int yc, int radius, \mbox{\hyperlink{group___i_o___layer_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}} color)
+\begin{DoxyCompactList}\small\item\em Function for drawing a circle Source\+: \href{https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/bresenhams-\/circle-\/drawing-\/algorithm/}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gaf2d18065dd24b19ecb8982701e1f41a9}{I\+O\+\_\+draw\+\_\+bitmap}} (int xlup, int ylup, int bmpnr)
+\begin{DoxyCompactList}\small\item\em Draws one of the stored bitmaps. Starts drawing in the top left corner. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___i_o___layer_gac5ef85825922129a526ac5478967e7b1}{I\+O\+\_\+draw\+\_\+text}} (uint16\+\_\+t xlup, uint16\+\_\+t ylup, int color, char $\ast$text, char $\ast$font, int font\+\_\+size, int font\+\_\+style)
+\begin{DoxyCompactList}\small\item\em Draws text on screen. \end{DoxyCompactList}\end{DoxyCompactItemize}

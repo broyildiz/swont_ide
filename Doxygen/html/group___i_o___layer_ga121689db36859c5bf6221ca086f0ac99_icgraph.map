@@ -1,0 +1,5 @@
+<map id="IO_tetris" name="IO_tetris">
+<area shape="rect" id="node1" title=" " alt="" coords="267,5,337,32"/>
+<area shape="rect" id="node2" href="$group___logic___layer.html#ga5cd42c35ec314f52d0b0b18eb2e1b0f7" title="Tetris function checking the string." alt="" coords="104,5,219,32"/>
+<area shape="rect" id="node3" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,56,32"/>
+</map>

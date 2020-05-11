@@ -1,0 +1,4 @@
+<map id="FL_global_error_handler" name="FL_global_error_handler">
+<area shape="rect" id="node1" title="When an error has occured, this function informs the user via USARt2 debugging." alt="" coords="104,5,264,32"/>
+<area shape="rect" id="node2" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,56,32"/>
+</map>

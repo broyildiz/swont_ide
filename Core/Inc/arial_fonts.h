@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup IO_Layer
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef INC_ARIAL_FONTS_H_
 #define INC_ARIAL_FONTS_H_
@@ -53,9 +61,12 @@ extern const uint16_t arial_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 extern const uint16_t arial_italic_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 extern const uint16_t arial_bold_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS];
 
-
-
-
-
-
 #endif /* INC_ARIAL_FONTS_H_ */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

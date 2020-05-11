@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup IO_Layer
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef INC_SCREEN_H_
 #define INC_SCREEN_H_
@@ -74,6 +82,12 @@ int IO_draw_mondriaan();
 void IO_tetris(void);
 void screen(void);
 
-
-
 #endif /* INC_SCREEN_H_ */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

@@ -1,0 +1,7 @@
+<map id="FL_find_font_style" name="FL_find_font_style">
+<area shape="rect" id="node1" title="Determines the font style of the text function." alt="" coords="576,5,703,32"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#ga778fe5c25df3b5e63f453fadd6545c5e" title="Converts the arguments to the right types and stores them in the command struct." alt="" coords="411,5,528,32"/>
+<area shape="rect" id="node3" href="$group___front___layer.html#ga6f386a5e1e00941d8b79c10d2b475b25" title="Finds the arguments of the function by looping through the buffer and storing and converting the char..." alt="" coords="267,5,363,32"/>
+<area shape="rect" id="node4" href="$group___front___layer.html#ga832282f54ccec814f4ccc7eb37ef4c07" title="Decodes the received USART2 buffer." alt="" coords="104,5,219,32"/>
+<area shape="rect" id="node5" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,56,32"/>
+</map>

@@ -1,0 +1,25 @@
+var _tetris_8c =
+[
+    [ "COLUMNS", "_tetris_8c.html#a06c6c391fc11d106e9909f0401b255b1", null ],
+    [ "DFTSIZE", "_tetris_8c.html#ad7906f61dffc17f15f434a6a59a2c0b5", null ],
+    [ "I_SHAPE", "_tetris_8c.html#a45008bcc69fc2bb1ff1bc9ae4ab90faf", null ],
+    [ "J_SHAPE", "_tetris_8c.html#a30cef6f36c6d2e5dbcea3b173ead2dc6", null ],
+    [ "L_SHAPE", "_tetris_8c.html#a9e094b03d90f39dddb02a12ed241c025", null ],
+    [ "O_SHAPE", "_tetris_8c.html#a98dc55d35e55c2f48f86eb6d02d0e2af", null ],
+    [ "ROWS", "_tetris_8c.html#a3cfd3aa62338d12609f6d65bce97e9cd", null ],
+    [ "S_SHAPE", "_tetris_8c.html#a6afe50b89d33d424d59b69b2ef19df82", null ],
+    [ "T_SHAPE", "_tetris_8c.html#a3840143429d8b6317c4e7d9ebd6cfcfe", null ],
+    [ "Z_SHAPE", "_tetris_8c.html#ab761c28b869755389fdae1f248d58a9f", null ],
+    [ "collision_check", "_tetris_8c.html#a3422065f3541d9892c4d8a9c887c393d", null ],
+    [ "Display", "_tetris_8c.html#a5d3fb9b91b5c167b70a1a0557e67f271", null ],
+    [ "gravity", "_tetris_8c.html#a8597c0a0a2f98579ef7e1ab967ff8cd6", null ],
+    [ "initialize_piece", "_tetris_8c.html#a3486474f5471fc07a2a8000630aca0d4", null ],
+    [ "IO_tetris", "group___i_o___layer.html#ga121689db36859c5bf6221ca086f0ac99", null ],
+    [ "line_clear", "_tetris_8c.html#ad3456806ba2bdfc1871770fef6220083", null ],
+    [ "move_piece", "_tetris_8c.html#a14d23fead2d36e05c84ac845d75ece34", null ],
+    [ "move_row_down", "_tetris_8c.html#a128757c8ae128ebb443b1c5dcfc23af8", null ],
+    [ "random_shape", "_tetris_8c.html#a7e0d872aa959f338a6ce96d36b651402", null ],
+    [ "rotate_piece", "_tetris_8c.html#a70ab715f1e3d747e13f9aba3c137fcf6", null ],
+    [ "field", "_tetris_8c.html#a600cef683b4097ac96debd675799c6c6", null ],
+    [ "starting_points", "_tetris_8c.html#a32dd995a1844b1f9b7e62917a8015994", null ]
+];

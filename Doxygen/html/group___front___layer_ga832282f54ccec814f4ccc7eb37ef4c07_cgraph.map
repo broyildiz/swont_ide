@@ -1,0 +1,23 @@
+<map id="FL_uart_decode" name="FL_uart_decode">
+<area shape="rect" id="node1" title="Decodes the received USART2 buffer." alt="" coords="5,259,120,285"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#ga549b8bd5aa5525731f0598b7c4bf6452" title="When an error message needs to be sent, this function does it. It is not dependent on if debug is ena..." alt="" coords="740,157,828,184"/>
+<area shape="rect" id="node3" href="$group___front___layer.html#ga6f386a5e1e00941d8b79c10d2b475b25" title="Finds the arguments of the function by looping through the buffer and storing and converting the char..." alt="" coords="367,81,463,108"/>
+<area shape="rect" id="node7" href="$group___front___layer.html#gaec472e4decf64bad0b25da1beda8b91c" title="Finds the function number based on the name of the function." alt="" coords="168,436,299,463"/>
+<area shape="rect" id="node8" href="$group___logic___layer.html#ga7e9d8776a763f1ee9facae929cb73235" title="Determines which API function should be called based on input. Calls error handler in case of error." alt="" coords="198,385,269,412"/>
+<area shape="rect" id="node4" href="$group___front___layer.html#ga778fe5c25df3b5e63f453fadd6545c5e" title="Converts the arguments to the right types and stores them in the command struct." alt="" coords="542,31,659,57"/>
+<area shape="rect" id="node5" href="$group___front___layer.html#gaa18376205eaf6c25fec637561fd0210e" title="Determines the color from a string passed to it If the string is &quot;white&quot; this returns 0xFF." alt="" coords="735,5,833,32"/>
+<area shape="rect" id="node6" href="$group___front___layer.html#ga3df3c50e54cfeef9d5f01f6b309c6e5b" title="Determines the font style of the text function." alt="" coords="721,56,847,83"/>
+<area shape="rect" id="node9" href="$group___front___layer.html#gaba99eeadbf462a4547d1070ae746000c" title="When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled." alt="" coords="552,537,649,564"/>
+<area shape="rect" id="node10" href="$group___i_o___layer.html#gaeb9a96cecb2f5c540d9255f8c47cfc35" title="Clearing the whole screen." alt="" coords="360,537,469,564"/>
+<area shape="rect" id="node13" href="$group___i_o___layer.html#gaf2d18065dd24b19ecb8982701e1f41a9" title="Draws one of the stored bitmaps. Starts drawing in the top left corner." alt="" coords="357,436,472,463"/>
+<area shape="rect" id="node15" href="$group___i_o___layer.html#ga84d08cfc4723d5777b70ca1763062f48" title="Function for drawing a circle Source: https://www.geeksforgeeks.org/bresenhams&#45;circle&#45;drawing&#45;algorit..." alt="" coords="361,335,468,361"/>
+<area shape="rect" id="node17" href="$group___i_o___layer.html#ga8b55e6a819cdb2ce524731bcc506b2aa" title="Function for drawing a figure." alt="" coords="361,233,468,260"/>
+<area shape="rect" id="node18" href="$group___i_o___layer.html#gafa8e6495d4075afd2321f853998254f9" title="Function for drawing a line." alt="" coords="553,233,649,260"/>
+<area shape="rect" id="node19" href="$group___i_o___layer.html#gad71908b8512490176d55537ea418ec95" title="Function for drawing a Mondriaan painting." alt="" coords="347,588,483,615"/>
+<area shape="rect" id="node20" href="$group___i_o___layer.html#gaff975f5b9e9238d286b9d342d957519c" title="Function for drawing a rectangle." alt="" coords="536,639,665,665"/>
+<area shape="rect" id="node21" href="$group___i_o___layer.html#gac5ef85825922129a526ac5478967e7b1" title="Draws text on screen." alt="" coords="365,385,464,412"/>
+<area shape="rect" id="node11" href="$stm32__ub__vga__screen_8c.html#a8afc87fd0f1737d58c7ee92629be9c92" title=" " alt="" coords="531,588,671,615"/>
+<area shape="rect" id="node12" href="$stm32__ub__vga__screen_8c.html#a1fd52b52c87572b4bfad9637ec34e621" title=" " alt="" coords="719,436,849,463"/>
+<area shape="rect" id="node14" href="$group___front___layer.html#ga09e9b1de38bfc6058255e913682cf94c" title="When an integer needs to be sent to the UART, this function is used." alt="" coords="551,436,651,463"/>
+<area shape="rect" id="node16" href="$group___i_o___layer.html#ga69cc9a8d86bf671be0daa7e30c3f35d8" title="Function for drawing a circle." alt="" coords="559,335,642,361"/>
+</map>

@@ -7,12 +7,20 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup IO_Layer
+  * @{
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "IOL.h"
 #include "string.h"
 
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a figure
   *
   * @param  x1    : 1st x-coordinate of the figure
@@ -27,7 +35,7 @@
   * @param	y5    : 5th y-coordinate of the figure
   * @param 	color : is the color of the figure
   * @retval error : Error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,uint16_t y3,uint16_t x4,uint16_t y4,uint16_t x5,uint16_t y5, byte color)
 {
 	int thickness = 1;
@@ -47,7 +55,7 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
 	return error;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a line
   *
   * @param  x1        : 1st x-coordinate of the figure
@@ -57,7 +65,7 @@ int IO_draw_figure(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t x3,u
   * @param 	color 	  : is the color of the figure
   * @param  thickness : is the thickness of the line
   * @retval error 	  : error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color, int thickness)
 {
 	/*
@@ -118,7 +126,7 @@ int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color,
 	  return error;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a rectangle
   *
   * @param  x_lup  : x-coordinate of the line
@@ -128,7 +136,7 @@ int IO_draw_line(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, byte color,
   * @param 	color  : is the color of the figure
   * @param  filled : Filled indicates whether the rectangle is filled
   * @retval error  : error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int color, int filled)
 {
 	int error = NO_ERROR;
@@ -172,12 +180,12 @@ int IO_draw_rectangle(uint16_t x_lup, uint16_t y_lup, int width, int height, int
 }
 
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a Mondriaan painting
   *
   * @param  None
   * @retval error : error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_mondriaan()
 {
 	int filled = 1;
@@ -208,11 +216,11 @@ int IO_draw_mondriaan()
 
 
 
-/********************************************************************************************************
+/**
   * @brief  Clearing the whole screen
   * @param 	color : Color is the color of the screen
   * @retval error : error codes
-  *******************************************************************************************************/
+  */
 int IO_clearscreen(int color)
 {
 	//color too large check?
@@ -222,7 +230,7 @@ int IO_clearscreen(int color)
 	return 0;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a circle
   *
   * @param  xc    : is the middle x-coordinate of the circle
@@ -231,7 +239,7 @@ int IO_clearscreen(int color)
   * @param  y 	  : starting pixel y-coordinate on screen
   * @param 	color : is the color of the circle
   * @retval error : error codes
-  *******************************************************************************************************/
+  */
 int drawCircle(int xc, int yc, int x, int y, byte color)
 {
 	/* Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/ */
@@ -247,7 +255,7 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
 	return NO_ERROR;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Function for drawing a circle
   * 		Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
   *
@@ -256,7 +264,7 @@ int drawCircle(int xc, int yc, int x, int y, byte color)
   * @param 	color  : is the color of the figure
   * @param  filled : indicates whether the rectangle is filled
   * @retval error  : error codess
-  *******************************************************************************************************/
+  */
 int IO_draw_circle(int xc, int yc, int radius, byte color)
 {
 		int error = NO_ERROR;
@@ -297,7 +305,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
 }
 
 
-/********************************************************************************************************
+/**
   * @brief  Draws one of the stored bitmaps.
   * 		Starts drawing in the top left corner.
   *
@@ -305,7 +313,7 @@ int IO_draw_circle(int xc, int yc, int radius, byte color)
   * @param  ylup  : Is the starting x-coordinate on screen
   * @param  bmpnr : Determines which of the stored bitmaps is retrieved
   * @retval error : Error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 {
 	/* bron: http://www.brackeen.com/vga/bitmaps.html */
@@ -388,7 +396,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
 	return error;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Draws text on screen.
   *
   * @param  xlup 	   : Is the starting x-coordinate on screen
@@ -399,7 +407,7 @@ int IO_draw_bitmap(int xlup, int ylup, int bmpnr)
   * @param  font_size  : Determines text size
   * @param  font_style : Determines the style: Normal, Italic or Bold
   * @retval Error 	   : Various error codes
-  *******************************************************************************************************/
+  */
 int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font, int font_size, int font_style)
 {
 
@@ -608,3 +616,11 @@ int IO_draw_text(uint16_t xlup, uint16_t ylup, int color, char* text, char* font
 	FL_debug_tx("finished text \n");
 	return error;
 }
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

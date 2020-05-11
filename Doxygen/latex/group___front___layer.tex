@@ -1,0 +1,926 @@
+\hypertarget{group___front___layer}{}\doxysection{Front\+\_\+\+Layer}
+\label{group___front___layer}\index{Front\_Layer@{Front\_Layer}}
+Collaboration diagram for Front\+\_\+\+Layer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{group___front___layer}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbitmap__func}{bitmap\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structcirkel__func}{cirkel\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structclearscherm__func}{clearscherm\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structfiguur__func}{figuur\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structherhaal__func}{herhaal\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structlijn__func}{lijn\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structrechthoek__func}{rechthoek\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structtekst__func}{tekst\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structwacht__func}{wacht\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structcollection}{collection}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gae5778101dfd93ace5ca9f33f2a32e514}{M\+A\+X\+\_\+\+L\+E\+N\+\_\+\+T\+E\+K\+S\+T\+\_\+\+S\+T\+R\+I\+NG}}~128
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga9b2a238218ad561603f82f52ffcac187}{M\+A\+X\+\_\+\+L\+E\+N\+\_\+\+F\+O\+N\+T\+N\+A\+ME}}~30
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga7656c6433af1f07e8ad05c2a33021d1f}{L\+E\+T\+T\+E\+RA}}~\textquotesingle{}a\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga0e70d0ec3c986e2ccb8366384dd5c2a5}{L\+E\+T\+T\+E\+RB}}~\textquotesingle{}b\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga78debcf1a4e04fd17829ac0308a5f0df}{L\+E\+T\+T\+E\+RC}}~\textquotesingle{}c\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gac8e7b0bf108b8f0d844c42f183e6f99b}{L\+E\+T\+T\+E\+RE}}~\textquotesingle{}e\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaab39e8456b1afbcdc3718c09ced0d868}{L\+E\+T\+T\+E\+RF}}~\textquotesingle{}f\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga016032462466267db8d76a4249b6ec07}{L\+E\+T\+T\+E\+RG}}~\textquotesingle{}g\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga1d42feea22eb78a51025d21c8c2221eb}{L\+E\+T\+T\+E\+RH}}~\textquotesingle{}h\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gac763a8d72ef6e9572ca3c847c457ca07}{L\+E\+T\+T\+E\+RI}}~\textquotesingle{}i\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga6d26bc1e6dbd2b289928b30bf28520a3}{L\+E\+T\+T\+E\+RL}}~\textquotesingle{}l\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga888581a6dcf16baed80ceabd1b6d1536}{L\+E\+T\+T\+E\+RN}}~\textquotesingle{}m\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga5a22205274b10e6c6b7ca1d083d64ebb}{L\+E\+T\+T\+E\+RM}}~\textquotesingle{}n\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga6b8fdfd7d622d8089172c1ed10018652}{L\+E\+T\+T\+E\+RR}}~\textquotesingle{}r\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga7a14ab84e21926774ff2fcf9b8b77601}{L\+E\+T\+T\+E\+RT}}~\textquotesingle{}t\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga07c38d73c80d770e881eaba2f2d4d524}{L\+E\+T\+T\+E\+RV}}~\textquotesingle{}v\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga4cf1377dd72ca468a90ca22b07f0a623}{L\+E\+T\+T\+E\+RW}}~\textquotesingle{}w\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga0b06bc33b2db05eec85c1e424d6fc8af}{L\+E\+T\+T\+E\+RZ}}~\textquotesingle{}z\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga3d3b7cca34cc4e5fbc1e653e65ab74e2}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET}}~0
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaed35a1923a18b08aec70753d07e67998}{B\+I\+T\+M\+A\+P\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~1
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaf39f7789dd66b7a9cfb526683bae18ef}{C\+I\+R\+K\+E\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~2
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaac38f9017e385b6af9fa1d59067a927d}{C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~3
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gafe5574550a954acdfdc71a19933ec4f7}{E\+X\+E\+C\+U\+T\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~4
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga662a8fcce328a48b940e5c851adfcb21}{F\+I\+G\+U\+U\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~5
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaa58fa9879f7faa802e31188a7d5caa85}{H\+E\+R\+H\+A\+A\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga1cb010c805443e6dfa8118e9a617fd9a}{L\+I\+J\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~7
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga70ea45d76578375208d2714e5698e30f}{R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~8
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gae23ed11ea0ed0d4d8e14611a3cafffbd}{T\+E\+K\+S\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~9
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gaa9da9caa0911869b9e09daa809f1b6f5}{M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~10
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga6b7d988559990fdf4a45bac73fa76907}{W\+A\+C\+H\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~11
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga90fcdc3e88e3b567c26ac2cfe78c2382}{T\+E\+T\+R\+I\+S\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO}}~12
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga034351ca8ea44ed1d77a64c65578359a}{M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+R\+GS}}~10
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gadcb675d62d3d40872dcbc03dc948c6af}{M\+A\+X\+\_\+\+A\+R\+G\+\_\+\+L\+EN}}~128
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga3e0f31a245ce49887822c9bb1d697c6c}{B\+I\+T\+M\+A\+P\+\_\+\+A\+R\+GS}}~3
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga77cb94a68764cfb1cbee53d21e601417}{C\+I\+R\+K\+E\+L\+\_\+\+A\+R\+GS}}~4
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gafd75125792605601b024eee01d42627b}{C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+A\+R\+GS}}~1
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gafa1093175c58e0fe2cd161cdeea414bb}{E\+X\+E\+C\+U\+T\+E\+\_\+\+A\+R\+GS}}~0
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga6d911e4e2d4d3e385481f861aaa8d34d}{F\+I\+G\+U\+U\+R\+\_\+\+A\+R\+GS}}~9
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gae9e8157ffefd1780c9b240753e90baca}{H\+E\+R\+H\+A\+A\+L\+\_\+\+A\+R\+GS}}~2
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gac593da02187711fa270f982608d22061}{L\+I\+J\+N\+\_\+\+A\+R\+GS}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga576c11dd4898adfcf8a3f751a6b34611}{R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+A\+R\+GS}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga611a26b02151d3bd73d9a9c5ca8114cd}{T\+E\+K\+S\+T\+\_\+\+A\+R\+GS}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gae5a7a36ac66860bbb6607db08b1c72f3}{M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+A\+R\+GS}}~0
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga131d49ae3ee69f0b2fdf4ce2e1d416e8}{W\+A\+C\+H\+T\+\_\+\+A\+R\+GS}}~1
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga76466bc7f7b8a7cbb08528bba380d7dd}{T\+E\+T\+R\+I\+S\+\_\+\+A\+R\+GS}}~0
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga4a249f370c2ff04af59398b36c12ce90}{B\+I\+T\+M\+A\+P\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gad49ba9acf85041bcfd70eae4fae0cd93}{C\+I\+R\+K\+E\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga12f87a74568d1897fa4ef75118f2ab7f}{C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~11
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gae054a46b99d327aed96b09c488eda9f7}{E\+X\+E\+C\+U\+T\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~7
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga7190f4a0a8d14f42a2fa0a4ef0210a5d}{F\+I\+G\+U\+U\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~6
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga7b4f28353eb12e48b6d94a5e741f0314}{H\+E\+R\+H\+A\+A\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~7
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga862bb3288440a5a5a1214552f9d262ab}{L\+I\+J\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~4
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga4e99cd6b39139b55ed3aa1d42f78d38c}{R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~9
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga861e0421c425c050e968d1e7d78ae1c7}{T\+E\+K\+S\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~5
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga81588d0687619da9d7d07aaea63ed1bc}{M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~9
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga6795ece59f7ebd101ef73595b9423a4e}{W\+A\+C\+H\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}~5
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga5c55e697abe70bd280e9ce5059ff6370}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+B\+R\+O\+WN}}~0x68
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga72937c60344a81980136265c045a6fd3}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+G\+R\+EY}}~0x92
+\item 
+\#define \mbox{\hyperlink{group___front___layer_gad3515b34390f6f0437bd2be7a3975f37}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+B\+L\+UE}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga5adf991757cf17b17bcbde1366ff4b17}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+C\+Y\+AN}}~0x15
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga8777268cd593f554c246d1899bf70132}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+G\+R\+E\+EN}}~0x9F
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga30defafe7883b0836bf7ee4c941686d9}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+M\+A\+G\+E\+N\+TA}}~0x\+F7
+\item 
+\#define \mbox{\hyperlink{group___front___layer_ga25cf26f16deb3127148f4c3ace18cc5b}{V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+R\+ED}}~0x4F
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07}{F\+L\+\_\+uart\+\_\+decode}} ()
+\begin{DoxyCompactList}\small\item\em Decodes the received U\+S\+A\+R\+T2 buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_gaec472e4decf64bad0b25da1beda8b91c}{F\+L\+\_\+find\+\_\+decode\+\_\+nr}} ()
+\begin{DoxyCompactList}\small\item\em Finds the function number based on the name of the function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25}{F\+L\+\_\+find\+\_\+args}} (int function\+\_\+number, int num\+\_\+args, int len\+\_\+function\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Finds the arguments of the function by looping through the buffer and storing and converting the characters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e}{F\+L\+\_\+convert\+\_\+args}} (char arg\+\_\+array\mbox{[}$\,$\mbox{]}, int argcounter)
+\begin{DoxyCompactList}\small\item\em Converts the arguments to the right types and stores them in the command struct. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___front___layer_gaa18376205eaf6c25fec637561fd0210e}{F\+L\+\_\+find\+\_\+color}} (char color\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Determines the color from a string passed to it If the string is \char`\"{}white\char`\"{} this returns 0x\+FF. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga3df3c50e54cfeef9d5f01f6b309c6e5b}{F\+L\+\_\+find\+\_\+font\+\_\+style}} (char arg\+\_\+array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Determines the font style of the text function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_ga8aa40d728762c209ff2bcc551f1f4225}{F\+L\+\_\+error\+\_\+handler}} (int error)
+\item 
+void \mbox{\hyperlink{group___front___layer_gabdb5736737781250df965633c43ab6d7}{F\+L\+\_\+global\+\_\+debug\+\_\+check}} ()
+\begin{DoxyCompactList}\small\item\em This function checks if the debugging needs to be toggled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_ga09e9b1de38bfc6058255e913682cf94c}{F\+L\+\_\+debug\+\_\+int}} (int num)
+\begin{DoxyCompactList}\small\item\em When an integer needs to be sent to the U\+A\+RT, this function is used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_gaba99eeadbf462a4547d1070ae746000c}{F\+L\+\_\+debug\+\_\+tx}} (char $\ast$p\+Debug\+Message)
+\begin{DoxyCompactList}\small\item\em When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_ga549b8bd5aa5525731f0598b7c4bf6452}{F\+L\+\_\+error\+\_\+tx}} (char $\ast$p\+Error\+Message)
+\begin{DoxyCompactList}\small\item\em When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_gafc197584a80225d81d386d947e5f07b8}{F\+L\+\_\+global\+\_\+error\+\_\+handler}} (int error)
+\begin{DoxyCompactList}\small\item\em When an error has occured, this function informs the user via U\+S\+A\+Rt2 debugging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcollection}{collection}} \mbox{\hyperlink{group___front___layer_gad8cbcc4883d24e0b015b804b56bd47ca}{command}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___front___layer_ga3e0f31a245ce49887822c9bb1d697c6c}\label{group___front___layer_ga3e0f31a245ce49887822c9bb1d697c6c}} 
+\index{Front\_Layer@{Front\_Layer}!BITMAP\_ARGS@{BITMAP\_ARGS}}
+\index{BITMAP\_ARGS@{BITMAP\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{BITMAP\_ARGS}{BITMAP\_ARGS}}
+{\footnotesize\ttfamily \#define B\+I\+T\+M\+A\+P\+\_\+\+A\+R\+GS~3}
+
+\mbox{\Hypertarget{group___front___layer_ga4a249f370c2ff04af59398b36c12ce90}\label{group___front___layer_ga4a249f370c2ff04af59398b36c12ce90}} 
+\index{Front\_Layer@{Front\_Layer}!BITMAP\_FUNCTION\_NAME\_LEN@{BITMAP\_FUNCTION\_NAME\_LEN}}
+\index{BITMAP\_FUNCTION\_NAME\_LEN@{BITMAP\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{BITMAP\_FUNCTION\_NAME\_LEN}{BITMAP\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define B\+I\+T\+M\+A\+P\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~6}
+
+\mbox{\Hypertarget{group___front___layer_gaed35a1923a18b08aec70753d07e67998}\label{group___front___layer_gaed35a1923a18b08aec70753d07e67998}} 
+\index{Front\_Layer@{Front\_Layer}!BITMAP\_FUNCTION\_NO@{BITMAP\_FUNCTION\_NO}}
+\index{BITMAP\_FUNCTION\_NO@{BITMAP\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{BITMAP\_FUNCTION\_NO}{BITMAP\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define B\+I\+T\+M\+A\+P\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~1}
+
+\mbox{\Hypertarget{group___front___layer_ga77cb94a68764cfb1cbee53d21e601417}\label{group___front___layer_ga77cb94a68764cfb1cbee53d21e601417}} 
+\index{Front\_Layer@{Front\_Layer}!CIRKEL\_ARGS@{CIRKEL\_ARGS}}
+\index{CIRKEL\_ARGS@{CIRKEL\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CIRKEL\_ARGS}{CIRKEL\_ARGS}}
+{\footnotesize\ttfamily \#define C\+I\+R\+K\+E\+L\+\_\+\+A\+R\+GS~4}
+
+\mbox{\Hypertarget{group___front___layer_gad49ba9acf85041bcfd70eae4fae0cd93}\label{group___front___layer_gad49ba9acf85041bcfd70eae4fae0cd93}} 
+\index{Front\_Layer@{Front\_Layer}!CIRKEL\_FUNCTION\_NAME\_LEN@{CIRKEL\_FUNCTION\_NAME\_LEN}}
+\index{CIRKEL\_FUNCTION\_NAME\_LEN@{CIRKEL\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CIRKEL\_FUNCTION\_NAME\_LEN}{CIRKEL\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define C\+I\+R\+K\+E\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~6}
+
+\mbox{\Hypertarget{group___front___layer_gaf39f7789dd66b7a9cfb526683bae18ef}\label{group___front___layer_gaf39f7789dd66b7a9cfb526683bae18ef}} 
+\index{Front\_Layer@{Front\_Layer}!CIRKEL\_FUNCTION\_NO@{CIRKEL\_FUNCTION\_NO}}
+\index{CIRKEL\_FUNCTION\_NO@{CIRKEL\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CIRKEL\_FUNCTION\_NO}{CIRKEL\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define C\+I\+R\+K\+E\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~2}
+
+\mbox{\Hypertarget{group___front___layer_gafd75125792605601b024eee01d42627b}\label{group___front___layer_gafd75125792605601b024eee01d42627b}} 
+\index{Front\_Layer@{Front\_Layer}!CLEARSCHERM\_ARGS@{CLEARSCHERM\_ARGS}}
+\index{CLEARSCHERM\_ARGS@{CLEARSCHERM\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CLEARSCHERM\_ARGS}{CLEARSCHERM\_ARGS}}
+{\footnotesize\ttfamily \#define C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+A\+R\+GS~1}
+
+\mbox{\Hypertarget{group___front___layer_ga12f87a74568d1897fa4ef75118f2ab7f}\label{group___front___layer_ga12f87a74568d1897fa4ef75118f2ab7f}} 
+\index{Front\_Layer@{Front\_Layer}!CLEARSCHERM\_FUNCTION\_NAME\_LEN@{CLEARSCHERM\_FUNCTION\_NAME\_LEN}}
+\index{CLEARSCHERM\_FUNCTION\_NAME\_LEN@{CLEARSCHERM\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CLEARSCHERM\_FUNCTION\_NAME\_LEN}{CLEARSCHERM\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~11}
+
+\mbox{\Hypertarget{group___front___layer_gaac38f9017e385b6af9fa1d59067a927d}\label{group___front___layer_gaac38f9017e385b6af9fa1d59067a927d}} 
+\index{Front\_Layer@{Front\_Layer}!CLEARSCHERM\_FUNCTION\_NO@{CLEARSCHERM\_FUNCTION\_NO}}
+\index{CLEARSCHERM\_FUNCTION\_NO@{CLEARSCHERM\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{CLEARSCHERM\_FUNCTION\_NO}{CLEARSCHERM\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define C\+L\+E\+A\+R\+S\+C\+H\+E\+R\+M\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~3}
+
+\mbox{\Hypertarget{group___front___layer_gafa1093175c58e0fe2cd161cdeea414bb}\label{group___front___layer_gafa1093175c58e0fe2cd161cdeea414bb}} 
+\index{Front\_Layer@{Front\_Layer}!EXECUTE\_ARGS@{EXECUTE\_ARGS}}
+\index{EXECUTE\_ARGS@{EXECUTE\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{EXECUTE\_ARGS}{EXECUTE\_ARGS}}
+{\footnotesize\ttfamily \#define E\+X\+E\+C\+U\+T\+E\+\_\+\+A\+R\+GS~0}
+
+\mbox{\Hypertarget{group___front___layer_gae054a46b99d327aed96b09c488eda9f7}\label{group___front___layer_gae054a46b99d327aed96b09c488eda9f7}} 
+\index{Front\_Layer@{Front\_Layer}!EXECUTE\_FUNCTION\_NAME\_LEN@{EXECUTE\_FUNCTION\_NAME\_LEN}}
+\index{EXECUTE\_FUNCTION\_NAME\_LEN@{EXECUTE\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{EXECUTE\_FUNCTION\_NAME\_LEN}{EXECUTE\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define E\+X\+E\+C\+U\+T\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~7}
+
+\mbox{\Hypertarget{group___front___layer_gafe5574550a954acdfdc71a19933ec4f7}\label{group___front___layer_gafe5574550a954acdfdc71a19933ec4f7}} 
+\index{Front\_Layer@{Front\_Layer}!EXECUTE\_FUNCTION\_NO@{EXECUTE\_FUNCTION\_NO}}
+\index{EXECUTE\_FUNCTION\_NO@{EXECUTE\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{EXECUTE\_FUNCTION\_NO}{EXECUTE\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define E\+X\+E\+C\+U\+T\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~4}
+
+\mbox{\Hypertarget{group___front___layer_ga6d911e4e2d4d3e385481f861aaa8d34d}\label{group___front___layer_ga6d911e4e2d4d3e385481f861aaa8d34d}} 
+\index{Front\_Layer@{Front\_Layer}!FIGUUR\_ARGS@{FIGUUR\_ARGS}}
+\index{FIGUUR\_ARGS@{FIGUUR\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FIGUUR\_ARGS}{FIGUUR\_ARGS}}
+{\footnotesize\ttfamily \#define F\+I\+G\+U\+U\+R\+\_\+\+A\+R\+GS~9}
+
+\mbox{\Hypertarget{group___front___layer_ga7190f4a0a8d14f42a2fa0a4ef0210a5d}\label{group___front___layer_ga7190f4a0a8d14f42a2fa0a4ef0210a5d}} 
+\index{Front\_Layer@{Front\_Layer}!FIGUUR\_FUNCTION\_NAME\_LEN@{FIGUUR\_FUNCTION\_NAME\_LEN}}
+\index{FIGUUR\_FUNCTION\_NAME\_LEN@{FIGUUR\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FIGUUR\_FUNCTION\_NAME\_LEN}{FIGUUR\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define F\+I\+G\+U\+U\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~6}
+
+\mbox{\Hypertarget{group___front___layer_ga662a8fcce328a48b940e5c851adfcb21}\label{group___front___layer_ga662a8fcce328a48b940e5c851adfcb21}} 
+\index{Front\_Layer@{Front\_Layer}!FIGUUR\_FUNCTION\_NO@{FIGUUR\_FUNCTION\_NO}}
+\index{FIGUUR\_FUNCTION\_NO@{FIGUUR\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FIGUUR\_FUNCTION\_NO}{FIGUUR\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define F\+I\+G\+U\+U\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~5}
+
+\mbox{\Hypertarget{group___front___layer_ga3d3b7cca34cc4e5fbc1e653e65ab74e2}\label{group___front___layer_ga3d3b7cca34cc4e5fbc1e653e65ab74e2}} 
+\index{Front\_Layer@{Front\_Layer}!FUNCTION\_NO\_RESET@{FUNCTION\_NO\_RESET}}
+\index{FUNCTION\_NO\_RESET@{FUNCTION\_NO\_RESET}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FUNCTION\_NO\_RESET}{FUNCTION\_NO\_RESET}}
+{\footnotesize\ttfamily \#define F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET~0}
+
+\mbox{\Hypertarget{group___front___layer_gae9e8157ffefd1780c9b240753e90baca}\label{group___front___layer_gae9e8157ffefd1780c9b240753e90baca}} 
+\index{Front\_Layer@{Front\_Layer}!HERHAAL\_ARGS@{HERHAAL\_ARGS}}
+\index{HERHAAL\_ARGS@{HERHAAL\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{HERHAAL\_ARGS}{HERHAAL\_ARGS}}
+{\footnotesize\ttfamily \#define H\+E\+R\+H\+A\+A\+L\+\_\+\+A\+R\+GS~2}
+
+\mbox{\Hypertarget{group___front___layer_ga7b4f28353eb12e48b6d94a5e741f0314}\label{group___front___layer_ga7b4f28353eb12e48b6d94a5e741f0314}} 
+\index{Front\_Layer@{Front\_Layer}!HERHAAL\_FUNCTION\_NAME\_LEN@{HERHAAL\_FUNCTION\_NAME\_LEN}}
+\index{HERHAAL\_FUNCTION\_NAME\_LEN@{HERHAAL\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{HERHAAL\_FUNCTION\_NAME\_LEN}{HERHAAL\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define H\+E\+R\+H\+A\+A\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~7}
+
+\mbox{\Hypertarget{group___front___layer_gaa58fa9879f7faa802e31188a7d5caa85}\label{group___front___layer_gaa58fa9879f7faa802e31188a7d5caa85}} 
+\index{Front\_Layer@{Front\_Layer}!HERHAAL\_FUNCTION\_NO@{HERHAAL\_FUNCTION\_NO}}
+\index{HERHAAL\_FUNCTION\_NO@{HERHAAL\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{HERHAAL\_FUNCTION\_NO}{HERHAAL\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define H\+E\+R\+H\+A\+A\+L\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~6}
+
+\mbox{\Hypertarget{group___front___layer_ga7656c6433af1f07e8ad05c2a33021d1f}\label{group___front___layer_ga7656c6433af1f07e8ad05c2a33021d1f}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERA@{LETTERA}}
+\index{LETTERA@{LETTERA}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERA}{LETTERA}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RA~\textquotesingle{}a\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga0e70d0ec3c986e2ccb8366384dd5c2a5}\label{group___front___layer_ga0e70d0ec3c986e2ccb8366384dd5c2a5}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERB@{LETTERB}}
+\index{LETTERB@{LETTERB}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERB}{LETTERB}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RB~\textquotesingle{}b\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga78debcf1a4e04fd17829ac0308a5f0df}\label{group___front___layer_ga78debcf1a4e04fd17829ac0308a5f0df}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERC@{LETTERC}}
+\index{LETTERC@{LETTERC}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERC}{LETTERC}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RC~\textquotesingle{}c\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_gac8e7b0bf108b8f0d844c42f183e6f99b}\label{group___front___layer_gac8e7b0bf108b8f0d844c42f183e6f99b}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERE@{LETTERE}}
+\index{LETTERE@{LETTERE}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERE}{LETTERE}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RE~\textquotesingle{}e\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_gaab39e8456b1afbcdc3718c09ced0d868}\label{group___front___layer_gaab39e8456b1afbcdc3718c09ced0d868}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERF@{LETTERF}}
+\index{LETTERF@{LETTERF}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERF}{LETTERF}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RF~\textquotesingle{}f\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga016032462466267db8d76a4249b6ec07}\label{group___front___layer_ga016032462466267db8d76a4249b6ec07}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERG@{LETTERG}}
+\index{LETTERG@{LETTERG}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERG}{LETTERG}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RG~\textquotesingle{}g\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga1d42feea22eb78a51025d21c8c2221eb}\label{group___front___layer_ga1d42feea22eb78a51025d21c8c2221eb}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERH@{LETTERH}}
+\index{LETTERH@{LETTERH}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERH}{LETTERH}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RH~\textquotesingle{}h\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_gac763a8d72ef6e9572ca3c847c457ca07}\label{group___front___layer_gac763a8d72ef6e9572ca3c847c457ca07}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERI@{LETTERI}}
+\index{LETTERI@{LETTERI}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERI}{LETTERI}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RI~\textquotesingle{}i\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga6d26bc1e6dbd2b289928b30bf28520a3}\label{group___front___layer_ga6d26bc1e6dbd2b289928b30bf28520a3}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERL@{LETTERL}}
+\index{LETTERL@{LETTERL}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERL}{LETTERL}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RL~\textquotesingle{}l\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga5a22205274b10e6c6b7ca1d083d64ebb}\label{group___front___layer_ga5a22205274b10e6c6b7ca1d083d64ebb}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERM@{LETTERM}}
+\index{LETTERM@{LETTERM}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERM}{LETTERM}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RM~\textquotesingle{}n\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga888581a6dcf16baed80ceabd1b6d1536}\label{group___front___layer_ga888581a6dcf16baed80ceabd1b6d1536}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERN@{LETTERN}}
+\index{LETTERN@{LETTERN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERN}{LETTERN}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RN~\textquotesingle{}m\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga6b8fdfd7d622d8089172c1ed10018652}\label{group___front___layer_ga6b8fdfd7d622d8089172c1ed10018652}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERR@{LETTERR}}
+\index{LETTERR@{LETTERR}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERR}{LETTERR}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RR~\textquotesingle{}r\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga7a14ab84e21926774ff2fcf9b8b77601}\label{group___front___layer_ga7a14ab84e21926774ff2fcf9b8b77601}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERT@{LETTERT}}
+\index{LETTERT@{LETTERT}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERT}{LETTERT}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RT~\textquotesingle{}t\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga07c38d73c80d770e881eaba2f2d4d524}\label{group___front___layer_ga07c38d73c80d770e881eaba2f2d4d524}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERV@{LETTERV}}
+\index{LETTERV@{LETTERV}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERV}{LETTERV}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RV~\textquotesingle{}v\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga4cf1377dd72ca468a90ca22b07f0a623}\label{group___front___layer_ga4cf1377dd72ca468a90ca22b07f0a623}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERW@{LETTERW}}
+\index{LETTERW@{LETTERW}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERW}{LETTERW}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RW~\textquotesingle{}w\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_ga0b06bc33b2db05eec85c1e424d6fc8af}\label{group___front___layer_ga0b06bc33b2db05eec85c1e424d6fc8af}} 
+\index{Front\_Layer@{Front\_Layer}!LETTERZ@{LETTERZ}}
+\index{LETTERZ@{LETTERZ}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LETTERZ}{LETTERZ}}
+{\footnotesize\ttfamily \#define L\+E\+T\+T\+E\+RZ~\textquotesingle{}z\textquotesingle{}}
+
+\mbox{\Hypertarget{group___front___layer_gac593da02187711fa270f982608d22061}\label{group___front___layer_gac593da02187711fa270f982608d22061}} 
+\index{Front\_Layer@{Front\_Layer}!LIJN\_ARGS@{LIJN\_ARGS}}
+\index{LIJN\_ARGS@{LIJN\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LIJN\_ARGS}{LIJN\_ARGS}}
+{\footnotesize\ttfamily \#define L\+I\+J\+N\+\_\+\+A\+R\+GS~6}
+
+\mbox{\Hypertarget{group___front___layer_ga862bb3288440a5a5a1214552f9d262ab}\label{group___front___layer_ga862bb3288440a5a5a1214552f9d262ab}} 
+\index{Front\_Layer@{Front\_Layer}!LIJN\_FUNCTION\_NAME\_LEN@{LIJN\_FUNCTION\_NAME\_LEN}}
+\index{LIJN\_FUNCTION\_NAME\_LEN@{LIJN\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LIJN\_FUNCTION\_NAME\_LEN}{LIJN\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define L\+I\+J\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~4}
+
+\mbox{\Hypertarget{group___front___layer_ga1cb010c805443e6dfa8118e9a617fd9a}\label{group___front___layer_ga1cb010c805443e6dfa8118e9a617fd9a}} 
+\index{Front\_Layer@{Front\_Layer}!LIJN\_FUNCTION\_NO@{LIJN\_FUNCTION\_NO}}
+\index{LIJN\_FUNCTION\_NO@{LIJN\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{LIJN\_FUNCTION\_NO}{LIJN\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define L\+I\+J\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~7}
+
+\mbox{\Hypertarget{group___front___layer_gadcb675d62d3d40872dcbc03dc948c6af}\label{group___front___layer_gadcb675d62d3d40872dcbc03dc948c6af}} 
+\index{Front\_Layer@{Front\_Layer}!MAX\_ARG\_LEN@{MAX\_ARG\_LEN}}
+\index{MAX\_ARG\_LEN@{MAX\_ARG\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MAX\_ARG\_LEN}{MAX\_ARG\_LEN}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+A\+R\+G\+\_\+\+L\+EN~128}
+
+\mbox{\Hypertarget{group___front___layer_ga9b2a238218ad561603f82f52ffcac187}\label{group___front___layer_ga9b2a238218ad561603f82f52ffcac187}} 
+\index{Front\_Layer@{Front\_Layer}!MAX\_LEN\_FONTNAME@{MAX\_LEN\_FONTNAME}}
+\index{MAX\_LEN\_FONTNAME@{MAX\_LEN\_FONTNAME}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MAX\_LEN\_FONTNAME}{MAX\_LEN\_FONTNAME}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+L\+E\+N\+\_\+\+F\+O\+N\+T\+N\+A\+ME~30}
+
+\mbox{\Hypertarget{group___front___layer_gae5778101dfd93ace5ca9f33f2a32e514}\label{group___front___layer_gae5778101dfd93ace5ca9f33f2a32e514}} 
+\index{Front\_Layer@{Front\_Layer}!MAX\_LEN\_TEKST\_STRING@{MAX\_LEN\_TEKST\_STRING}}
+\index{MAX\_LEN\_TEKST\_STRING@{MAX\_LEN\_TEKST\_STRING}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MAX\_LEN\_TEKST\_STRING}{MAX\_LEN\_TEKST\_STRING}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+L\+E\+N\+\_\+\+T\+E\+K\+S\+T\+\_\+\+S\+T\+R\+I\+NG~128}
+
+\mbox{\Hypertarget{group___front___layer_ga034351ca8ea44ed1d77a64c65578359a}\label{group___front___layer_ga034351ca8ea44ed1d77a64c65578359a}} 
+\index{Front\_Layer@{Front\_Layer}!MAX\_NUM\_RGS@{MAX\_NUM\_RGS}}
+\index{MAX\_NUM\_RGS@{MAX\_NUM\_RGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MAX\_NUM\_RGS}{MAX\_NUM\_RGS}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+R\+GS~10}
+
+\mbox{\Hypertarget{group___front___layer_gae5a7a36ac66860bbb6607db08b1c72f3}\label{group___front___layer_gae5a7a36ac66860bbb6607db08b1c72f3}} 
+\index{Front\_Layer@{Front\_Layer}!MONDRIAAN\_ARGS@{MONDRIAAN\_ARGS}}
+\index{MONDRIAAN\_ARGS@{MONDRIAAN\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MONDRIAAN\_ARGS}{MONDRIAAN\_ARGS}}
+{\footnotesize\ttfamily \#define M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+A\+R\+GS~0}
+
+\mbox{\Hypertarget{group___front___layer_ga81588d0687619da9d7d07aaea63ed1bc}\label{group___front___layer_ga81588d0687619da9d7d07aaea63ed1bc}} 
+\index{Front\_Layer@{Front\_Layer}!MONDRIAAN\_FUNCTION\_NAME\_LEN@{MONDRIAAN\_FUNCTION\_NAME\_LEN}}
+\index{MONDRIAAN\_FUNCTION\_NAME\_LEN@{MONDRIAAN\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MONDRIAAN\_FUNCTION\_NAME\_LEN}{MONDRIAAN\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~9}
+
+\mbox{\Hypertarget{group___front___layer_gaa9da9caa0911869b9e09daa809f1b6f5}\label{group___front___layer_gaa9da9caa0911869b9e09daa809f1b6f5}} 
+\index{Front\_Layer@{Front\_Layer}!MONDRIAAN\_FUNCTION\_NO@{MONDRIAAN\_FUNCTION\_NO}}
+\index{MONDRIAAN\_FUNCTION\_NO@{MONDRIAAN\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{MONDRIAAN\_FUNCTION\_NO}{MONDRIAAN\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define M\+O\+N\+D\+R\+I\+A\+A\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~10}
+
+\mbox{\Hypertarget{group___front___layer_ga576c11dd4898adfcf8a3f751a6b34611}\label{group___front___layer_ga576c11dd4898adfcf8a3f751a6b34611}} 
+\index{Front\_Layer@{Front\_Layer}!RECHTHOEK\_ARGS@{RECHTHOEK\_ARGS}}
+\index{RECHTHOEK\_ARGS@{RECHTHOEK\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{RECHTHOEK\_ARGS}{RECHTHOEK\_ARGS}}
+{\footnotesize\ttfamily \#define R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+A\+R\+GS~6}
+
+\mbox{\Hypertarget{group___front___layer_ga4e99cd6b39139b55ed3aa1d42f78d38c}\label{group___front___layer_ga4e99cd6b39139b55ed3aa1d42f78d38c}} 
+\index{Front\_Layer@{Front\_Layer}!RECHTHOEK\_FUNCTION\_NAME\_LEN@{RECHTHOEK\_FUNCTION\_NAME\_LEN}}
+\index{RECHTHOEK\_FUNCTION\_NAME\_LEN@{RECHTHOEK\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{RECHTHOEK\_FUNCTION\_NAME\_LEN}{RECHTHOEK\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~9}
+
+\mbox{\Hypertarget{group___front___layer_ga70ea45d76578375208d2714e5698e30f}\label{group___front___layer_ga70ea45d76578375208d2714e5698e30f}} 
+\index{Front\_Layer@{Front\_Layer}!RECHTHOEK\_FUNCTION\_NO@{RECHTHOEK\_FUNCTION\_NO}}
+\index{RECHTHOEK\_FUNCTION\_NO@{RECHTHOEK\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{RECHTHOEK\_FUNCTION\_NO}{RECHTHOEK\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define R\+E\+C\+H\+T\+H\+O\+E\+K\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~8}
+
+\mbox{\Hypertarget{group___front___layer_ga611a26b02151d3bd73d9a9c5ca8114cd}\label{group___front___layer_ga611a26b02151d3bd73d9a9c5ca8114cd}} 
+\index{Front\_Layer@{Front\_Layer}!TEKST\_ARGS@{TEKST\_ARGS}}
+\index{TEKST\_ARGS@{TEKST\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{TEKST\_ARGS}{TEKST\_ARGS}}
+{\footnotesize\ttfamily \#define T\+E\+K\+S\+T\+\_\+\+A\+R\+GS~6}
+
+\mbox{\Hypertarget{group___front___layer_ga861e0421c425c050e968d1e7d78ae1c7}\label{group___front___layer_ga861e0421c425c050e968d1e7d78ae1c7}} 
+\index{Front\_Layer@{Front\_Layer}!TEKST\_FUNCTION\_NAME\_LEN@{TEKST\_FUNCTION\_NAME\_LEN}}
+\index{TEKST\_FUNCTION\_NAME\_LEN@{TEKST\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{TEKST\_FUNCTION\_NAME\_LEN}{TEKST\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define T\+E\+K\+S\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~5}
+
+\mbox{\Hypertarget{group___front___layer_gae23ed11ea0ed0d4d8e14611a3cafffbd}\label{group___front___layer_gae23ed11ea0ed0d4d8e14611a3cafffbd}} 
+\index{Front\_Layer@{Front\_Layer}!TEKST\_FUNCTION\_NO@{TEKST\_FUNCTION\_NO}}
+\index{TEKST\_FUNCTION\_NO@{TEKST\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{TEKST\_FUNCTION\_NO}{TEKST\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define T\+E\+K\+S\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~9}
+
+\mbox{\Hypertarget{group___front___layer_ga76466bc7f7b8a7cbb08528bba380d7dd}\label{group___front___layer_ga76466bc7f7b8a7cbb08528bba380d7dd}} 
+\index{Front\_Layer@{Front\_Layer}!TETRIS\_ARGS@{TETRIS\_ARGS}}
+\index{TETRIS\_ARGS@{TETRIS\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{TETRIS\_ARGS}{TETRIS\_ARGS}}
+{\footnotesize\ttfamily \#define T\+E\+T\+R\+I\+S\+\_\+\+A\+R\+GS~0}
+
+\mbox{\Hypertarget{group___front___layer_ga90fcdc3e88e3b567c26ac2cfe78c2382}\label{group___front___layer_ga90fcdc3e88e3b567c26ac2cfe78c2382}} 
+\index{Front\_Layer@{Front\_Layer}!TETRIS\_FUNCTION\_NO@{TETRIS\_FUNCTION\_NO}}
+\index{TETRIS\_FUNCTION\_NO@{TETRIS\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{TETRIS\_FUNCTION\_NO}{TETRIS\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define T\+E\+T\+R\+I\+S\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~12}
+
+\mbox{\Hypertarget{group___front___layer_ga5c55e697abe70bd280e9ce5059ff6370}\label{group___front___layer_ga5c55e697abe70bd280e9ce5059ff6370}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_BROWN@{VGA\_COL\_BROWN}}
+\index{VGA\_COL\_BROWN@{VGA\_COL\_BROWN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_BROWN}{VGA\_COL\_BROWN}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+B\+R\+O\+WN~0x68}
+
+\mbox{\Hypertarget{group___front___layer_ga72937c60344a81980136265c045a6fd3}\label{group___front___layer_ga72937c60344a81980136265c045a6fd3}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_GREY@{VGA\_COL\_GREY}}
+\index{VGA\_COL\_GREY@{VGA\_COL\_GREY}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_GREY}{VGA\_COL\_GREY}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+G\+R\+EY~0x92}
+
+\mbox{\Hypertarget{group___front___layer_gad3515b34390f6f0437bd2be7a3975f37}\label{group___front___layer_gad3515b34390f6f0437bd2be7a3975f37}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_LITE\_BLUE@{VGA\_COL\_LITE\_BLUE}}
+\index{VGA\_COL\_LITE\_BLUE@{VGA\_COL\_LITE\_BLUE}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_LITE\_BLUE}{VGA\_COL\_LITE\_BLUE}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+B\+L\+UE~0x17}
+
+\mbox{\Hypertarget{group___front___layer_ga5adf991757cf17b17bcbde1366ff4b17}\label{group___front___layer_ga5adf991757cf17b17bcbde1366ff4b17}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_LITE\_CYAN@{VGA\_COL\_LITE\_CYAN}}
+\index{VGA\_COL\_LITE\_CYAN@{VGA\_COL\_LITE\_CYAN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_LITE\_CYAN}{VGA\_COL\_LITE\_CYAN}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+C\+Y\+AN~0x15}
+
+\mbox{\Hypertarget{group___front___layer_ga8777268cd593f554c246d1899bf70132}\label{group___front___layer_ga8777268cd593f554c246d1899bf70132}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_LITE\_GREEN@{VGA\_COL\_LITE\_GREEN}}
+\index{VGA\_COL\_LITE\_GREEN@{VGA\_COL\_LITE\_GREEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_LITE\_GREEN}{VGA\_COL\_LITE\_GREEN}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+G\+R\+E\+EN~0x9F}
+
+\mbox{\Hypertarget{group___front___layer_ga30defafe7883b0836bf7ee4c941686d9}\label{group___front___layer_ga30defafe7883b0836bf7ee4c941686d9}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_LITE\_MAGENTA@{VGA\_COL\_LITE\_MAGENTA}}
+\index{VGA\_COL\_LITE\_MAGENTA@{VGA\_COL\_LITE\_MAGENTA}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_LITE\_MAGENTA}{VGA\_COL\_LITE\_MAGENTA}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+M\+A\+G\+E\+N\+TA~0x\+F7}
+
+\mbox{\Hypertarget{group___front___layer_ga25cf26f16deb3127148f4c3ace18cc5b}\label{group___front___layer_ga25cf26f16deb3127148f4c3ace18cc5b}} 
+\index{Front\_Layer@{Front\_Layer}!VGA\_COL\_LITE\_RED@{VGA\_COL\_LITE\_RED}}
+\index{VGA\_COL\_LITE\_RED@{VGA\_COL\_LITE\_RED}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{VGA\_COL\_LITE\_RED}{VGA\_COL\_LITE\_RED}}
+{\footnotesize\ttfamily \#define V\+G\+A\+\_\+\+C\+O\+L\+\_\+\+L\+I\+T\+E\+\_\+\+R\+ED~0x4F}
+
+\mbox{\Hypertarget{group___front___layer_ga131d49ae3ee69f0b2fdf4ce2e1d416e8}\label{group___front___layer_ga131d49ae3ee69f0b2fdf4ce2e1d416e8}} 
+\index{Front\_Layer@{Front\_Layer}!WACHT\_ARGS@{WACHT\_ARGS}}
+\index{WACHT\_ARGS@{WACHT\_ARGS}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{WACHT\_ARGS}{WACHT\_ARGS}}
+{\footnotesize\ttfamily \#define W\+A\+C\+H\+T\+\_\+\+A\+R\+GS~1}
+
+\mbox{\Hypertarget{group___front___layer_ga6795ece59f7ebd101ef73595b9423a4e}\label{group___front___layer_ga6795ece59f7ebd101ef73595b9423a4e}} 
+\index{Front\_Layer@{Front\_Layer}!WACHT\_FUNCTION\_NAME\_LEN@{WACHT\_FUNCTION\_NAME\_LEN}}
+\index{WACHT\_FUNCTION\_NAME\_LEN@{WACHT\_FUNCTION\_NAME\_LEN}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{WACHT\_FUNCTION\_NAME\_LEN}{WACHT\_FUNCTION\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define W\+A\+C\+H\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~5}
+
+\mbox{\Hypertarget{group___front___layer_ga6b7d988559990fdf4a45bac73fa76907}\label{group___front___layer_ga6b7d988559990fdf4a45bac73fa76907}} 
+\index{Front\_Layer@{Front\_Layer}!WACHT\_FUNCTION\_NO@{WACHT\_FUNCTION\_NO}}
+\index{WACHT\_FUNCTION\_NO@{WACHT\_FUNCTION\_NO}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{WACHT\_FUNCTION\_NO}{WACHT\_FUNCTION\_NO}}
+{\footnotesize\ttfamily \#define W\+A\+C\+H\+T\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+NO~11}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e}\label{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_convert\_args@{FL\_convert\_args}}
+\index{FL\_convert\_args@{FL\_convert\_args}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_convert\_args()}{FL\_convert\_args()}}
+{\footnotesize\ttfamily int F\+L\+\_\+convert\+\_\+args (\begin{DoxyParamCaption}\item[{char}]{arg\+\_\+array\mbox{[}$\,$\mbox{]},  }\item[{int}]{argcounter }\end{DoxyParamCaption})}
+
+
+
+Converts the arguments to the right types and stores them in the command struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg\+\_\+array} & \+: Array with the to be processed string \\
+\hline
+{\em argcounter} & \+: Counter that keeps track of which argument of the function is to be processed \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_ga09e9b1de38bfc6058255e913682cf94c}\label{group___front___layer_ga09e9b1de38bfc6058255e913682cf94c}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_debug\_int@{FL\_debug\_int}}
+\index{FL\_debug\_int@{FL\_debug\_int}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_debug\_int()}{FL\_debug\_int()}}
+{\footnotesize\ttfamily void F\+L\+\_\+debug\+\_\+int (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+When an integer needs to be sent to the U\+A\+RT, this function is used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The integer number to be sent \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga09e9b1de38bfc6058255e913682cf94c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_gaba99eeadbf462a4547d1070ae746000c}\label{group___front___layer_gaba99eeadbf462a4547d1070ae746000c}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_debug\_tx@{FL\_debug\_tx}}
+\index{FL\_debug\_tx@{FL\_debug\_tx}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_debug\_tx()}{FL\_debug\_tx()}}
+{\footnotesize\ttfamily void F\+L\+\_\+debug\+\_\+tx (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Debug\+Message }\end{DoxyParamCaption})}
+
+
+
+When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Debugmessage} & The debug message string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_gaba99eeadbf462a4547d1070ae746000c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_ga8aa40d728762c209ff2bcc551f1f4225}\label{group___front___layer_ga8aa40d728762c209ff2bcc551f1f4225}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_error\_handler@{FL\_error\_handler}}
+\index{FL\_error\_handler@{FL\_error\_handler}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_error\_handler()}{FL\_error\_handler()}}
+{\footnotesize\ttfamily void F\+L\+\_\+error\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___front___layer_ga549b8bd5aa5525731f0598b7c4bf6452}\label{group___front___layer_ga549b8bd5aa5525731f0598b7c4bf6452}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_error\_tx@{FL\_error\_tx}}
+\index{FL\_error\_tx@{FL\_error\_tx}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_error\_tx()}{FL\_error\_tx()}}
+{\footnotesize\ttfamily void F\+L\+\_\+error\+\_\+tx (\begin{DoxyParamCaption}\item[{char $\ast$}]{p\+Error\+Message }\end{DoxyParamCaption})}
+
+
+
+When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Debugmessage} & The error message string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga549b8bd5aa5525731f0598b7c4bf6452_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25}\label{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_find\_args@{FL\_find\_args}}
+\index{FL\_find\_args@{FL\_find\_args}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_find\_args()}{FL\_find\_args()}}
+{\footnotesize\ttfamily int F\+L\+\_\+find\+\_\+args (\begin{DoxyParamCaption}\item[{int}]{function\+\_\+number,  }\item[{int}]{num\+\_\+args,  }\item[{int}]{len\+\_\+function\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Finds the arguments of the function by looping through the buffer and storing and converting the characters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Function} & number \+: The function numbers are defined/enumerated in \mbox{\hyperlink{_f_l_8h}{F\+L.\+h}} \\
+\hline
+{\em num\+\_\+args} & \+: Number of funcion arguments \\
+\hline
+{\em len\+\_\+function\+\_\+name} & \+: Number of characters in the function name (This determines the starting point of the parser) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_gaa18376205eaf6c25fec637561fd0210e}\label{group___front___layer_gaa18376205eaf6c25fec637561fd0210e}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_find\_color@{FL\_find\_color}}
+\index{FL\_find\_color@{FL\_find\_color}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_find\_color()}{FL\_find\_color()}}
+{\footnotesize\ttfamily uint8\+\_\+t F\+L\+\_\+find\+\_\+color (\begin{DoxyParamCaption}\item[{char}]{color\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Determines the color from a string passed to it If the string is \char`\"{}white\char`\"{} this returns 0x\+FF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Array with the string containing the color \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 8} & bit color value \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_gaa18376205eaf6c25fec637561fd0210e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_gaec472e4decf64bad0b25da1beda8b91c}\label{group___front___layer_gaec472e4decf64bad0b25da1beda8b91c}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_find\_decode\_nr@{FL\_find\_decode\_nr}}
+\index{FL\_find\_decode\_nr@{FL\_find\_decode\_nr}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_find\_decode\_nr()}{FL\_find\_decode\_nr()}}
+{\footnotesize\ttfamily int F\+L\+\_\+find\+\_\+decode\+\_\+nr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the function number based on the name of the function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Function} & number \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_gaec472e4decf64bad0b25da1beda8b91c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_ga3df3c50e54cfeef9d5f01f6b309c6e5b}\label{group___front___layer_ga3df3c50e54cfeef9d5f01f6b309c6e5b}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_find\_font\_style@{FL\_find\_font\_style}}
+\index{FL\_find\_font\_style@{FL\_find\_font\_style}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_find\_font\_style()}{FL\_find\_font\_style()}}
+{\footnotesize\ttfamily int F\+L\+\_\+find\+\_\+font\+\_\+style (\begin{DoxyParamCaption}\item[{char}]{arg\+\_\+array\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Determines the font style of the text function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg\+\_\+array} & Array with the string containing the font style \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em predefined} & integer value of the font style \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga3df3c50e54cfeef9d5f01f6b309c6e5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_gabdb5736737781250df965633c43ab6d7}\label{group___front___layer_gabdb5736737781250df965633c43ab6d7}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_global\_debug\_check@{FL\_global\_debug\_check}}
+\index{FL\_global\_debug\_check@{FL\_global\_debug\_check}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_global\_debug\_check()}{FL\_global\_debug\_check()}}
+{\footnotesize\ttfamily void F\+L\+\_\+global\+\_\+debug\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function checks if the debugging needs to be toggled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{group___front___layer_gabdb5736737781250df965633c43ab6d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{group___front___layer_gabdb5736737781250df965633c43ab6d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_gafc197584a80225d81d386d947e5f07b8}\label{group___front___layer_gafc197584a80225d81d386d947e5f07b8}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_global\_error\_handler@{FL\_global\_error\_handler}}
+\index{FL\_global\_error\_handler@{FL\_global\_error\_handler}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_global\_error\_handler()}{FL\_global\_error\_handler()}}
+{\footnotesize\ttfamily void F\+L\+\_\+global\+\_\+error\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{error }\end{DoxyParamCaption})}
+
+
+
+When an error has occured, this function informs the user via U\+S\+A\+Rt2 debugging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & The error code \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{group___front___layer_gafc197584a80225d81d386d947e5f07b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07}\label{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07}} 
+\index{Front\_Layer@{Front\_Layer}!FL\_uart\_decode@{FL\_uart\_decode}}
+\index{FL\_uart\_decode@{FL\_uart\_decode}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{FL\_uart\_decode()}{FL\_uart\_decode()}}
+{\footnotesize\ttfamily int F\+L\+\_\+uart\+\_\+decode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Decodes the received U\+S\+A\+R\+T2 buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group___front___layer_gad8cbcc4883d24e0b015b804b56bd47ca}\label{group___front___layer_gad8cbcc4883d24e0b015b804b56bd47ca}} 
+\index{Front\_Layer@{Front\_Layer}!command@{command}}
+\index{command@{command}!Front\_Layer@{Front\_Layer}}
+\doxysubsubsection{\texorpdfstring{command}{command}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structcollection}{collection}} command}
+

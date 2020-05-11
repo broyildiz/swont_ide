@@ -1,0 +1,105 @@
+\hypertarget{stm32__ub__vga__screen_8c}{}\doxysection{stm32\+\_\+ub\+\_\+vga\+\_\+screen.\+c File Reference}
+\label{stm32__ub__vga__screen_8c}\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+{\ttfamily \#include \char`\"{}stm32\+\_\+ub\+\_\+vga\+\_\+screen.\+h\char`\"{}}\newline
+Include dependency graph for stm32\+\_\+ub\+\_\+vga\+\_\+screen.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stm32__ub__vga__screen_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{stm32__ub__vga__screen_8c_aa63128722f952ece5176141e8a99b6c1}{U\+B\+\_\+\+V\+G\+A\+\_\+\+Screen\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{stm32__ub__vga__screen_8c_a8afc87fd0f1737d58c7ee92629be9c92}{U\+B\+\_\+\+V\+G\+A\+\_\+\+Fill\+Screen}} (uint8\+\_\+t color)
+\item 
+void \mbox{\hyperlink{stm32__ub__vga__screen_8c_a1fd52b52c87572b4bfad9637ec34e621}{U\+B\+\_\+\+V\+G\+A\+\_\+\+Set\+Pixel}} (uint16\+\_\+t xp, uint16\+\_\+t yp, uint8\+\_\+t color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+T\+I\+M\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32__ub__vga__screen_8c_a25fc663547539bc49fecc0011bd76ab5}{htim1}}
+\item 
+T\+I\+M\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32__ub__vga__screen_8c_a2c80fd5510e2990a59a5c90d745c716c}{htim2}}
+\item 
+D\+M\+A\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32__ub__vga__screen_8c_a66e79e362967e621b35e4adc5a9239c1}{hdma\+\_\+tim1\+\_\+up}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stm32__ub__vga__screen_8c_a8afc87fd0f1737d58c7ee92629be9c92}\label{stm32__ub__vga__screen_8c_a8afc87fd0f1737d58c7ee92629be9c92}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!UB\_VGA\_FillScreen@{UB\_VGA\_FillScreen}}
+\index{UB\_VGA\_FillScreen@{UB\_VGA\_FillScreen}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{UB\_VGA\_FillScreen()}{UB\_VGA\_FillScreen()}}
+{\footnotesize\ttfamily void U\+B\+\_\+\+V\+G\+A\+\_\+\+Fill\+Screen (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{stm32__ub__vga__screen_8c_a8afc87fd0f1737d58c7ee92629be9c92_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stm32__ub__vga__screen_8c_a8afc87fd0f1737d58c7ee92629be9c92_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{stm32__ub__vga__screen_8c_aa63128722f952ece5176141e8a99b6c1}\label{stm32__ub__vga__screen_8c_aa63128722f952ece5176141e8a99b6c1}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!UB\_VGA\_Screen\_Init@{UB\_VGA\_Screen\_Init}}
+\index{UB\_VGA\_Screen\_Init@{UB\_VGA\_Screen\_Init}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{UB\_VGA\_Screen\_Init()}{UB\_VGA\_Screen\_Init()}}
+{\footnotesize\ttfamily void U\+B\+\_\+\+V\+G\+A\+\_\+\+Screen\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{stm32__ub__vga__screen_8c_aa63128722f952ece5176141e8a99b6c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{stm32__ub__vga__screen_8c_a1fd52b52c87572b4bfad9637ec34e621}\label{stm32__ub__vga__screen_8c_a1fd52b52c87572b4bfad9637ec34e621}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!UB\_VGA\_SetPixel@{UB\_VGA\_SetPixel}}
+\index{UB\_VGA\_SetPixel@{UB\_VGA\_SetPixel}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{UB\_VGA\_SetPixel()}{UB\_VGA\_SetPixel()}}
+{\footnotesize\ttfamily void U\+B\+\_\+\+V\+G\+A\+\_\+\+Set\+Pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{xp,  }\item[{uint16\+\_\+t}]{yp,  }\item[{uint8\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stm32__ub__vga__screen_8c_a1fd52b52c87572b4bfad9637ec34e621_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{stm32__ub__vga__screen_8c_a66e79e362967e621b35e4adc5a9239c1}\label{stm32__ub__vga__screen_8c_a66e79e362967e621b35e4adc5a9239c1}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!hdma\_tim1\_up@{hdma\_tim1\_up}}
+\index{hdma\_tim1\_up@{hdma\_tim1\_up}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{hdma\_tim1\_up}{hdma\_tim1\_up}}
+{\footnotesize\ttfamily D\+M\+A\+\_\+\+Handle\+Type\+Def hdma\+\_\+tim1\+\_\+up}
+
+\mbox{\Hypertarget{stm32__ub__vga__screen_8c_a25fc663547539bc49fecc0011bd76ab5}\label{stm32__ub__vga__screen_8c_a25fc663547539bc49fecc0011bd76ab5}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!htim1@{htim1}}
+\index{htim1@{htim1}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{htim1}{htim1}}
+{\footnotesize\ttfamily T\+I\+M\+\_\+\+Handle\+Type\+Def htim1}
+
+File Name \+: T\+I\+M.\+c Description \+: This file provides code for the configuration of the T\+IM instances.
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2020 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause \mbox{\Hypertarget{stm32__ub__vga__screen_8c_a2c80fd5510e2990a59a5c90d745c716c}\label{stm32__ub__vga__screen_8c_a2c80fd5510e2990a59a5c90d745c716c}} 
+\index{stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}!htim2@{htim2}}
+\index{htim2@{htim2}!stm32\_ub\_vga\_screen.c@{stm32\_ub\_vga\_screen.c}}
+\doxysubsubsection{\texorpdfstring{htim2}{htim2}}
+{\footnotesize\ttfamily T\+I\+M\+\_\+\+Handle\+Type\+Def htim2}
+

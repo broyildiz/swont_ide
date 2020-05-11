@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup IO_Layer
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef INC_BITMAPS_H_
 #define INC_BITMAPS_H_
@@ -45,3 +53,11 @@ extern const uint8_t arrow_right[ARROW_RIGHT_WIDTH * ARROW_RIGHT_HEIGHT];
 
 
 #endif /* INC_BITMAPS_H_ */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

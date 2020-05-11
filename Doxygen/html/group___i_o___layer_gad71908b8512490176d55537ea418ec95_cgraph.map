@@ -1,0 +1,6 @@
+<map id="IO_draw_mondriaan" name="IO_draw_mondriaan">
+<area shape="rect" id="node1" title="Function for drawing a Mondriaan painting." alt="" coords="5,31,141,57"/>
+<area shape="rect" id="node2" href="$group___i_o___layer.html#gaff975f5b9e9238d286b9d342d957519c" title="Function for drawing a rectangle." alt="" coords="195,5,324,32"/>
+<area shape="rect" id="node4" href="$stm32__ub__vga__screen_8c.html#a8afc87fd0f1737d58c7ee92629be9c92" title=" " alt="" coords="189,56,329,83"/>
+<area shape="rect" id="node3" href="$stm32__ub__vga__screen_8c.html#a1fd52b52c87572b4bfad9637ec34e621" title=" " alt="" coords="377,31,508,57"/>
+</map>

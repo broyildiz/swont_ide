@@ -1,0 +1,54 @@
+\hypertarget{_f_l_8c}{}\doxysection{F\+L.\+c File Reference}
+\label{_f_l_8c}\index{FL.c@{FL.c}}
+
+
+\+: This file contains the logic layer code  
+
+
+{\ttfamily \#include \char`\"{}F\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+Include dependency graph for F\+L.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_f_l_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group___front___layer_ga832282f54ccec814f4ccc7eb37ef4c07}{F\+L\+\_\+uart\+\_\+decode}} ()
+\begin{DoxyCompactList}\small\item\em Decodes the received U\+S\+A\+R\+T2 buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_gaec472e4decf64bad0b25da1beda8b91c}{F\+L\+\_\+find\+\_\+decode\+\_\+nr}} ()
+\begin{DoxyCompactList}\small\item\em Finds the function number based on the name of the function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga6f386a5e1e00941d8b79c10d2b475b25}{F\+L\+\_\+find\+\_\+args}} (int function\+\_\+number, int num\+\_\+args, int len\+\_\+function\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Finds the arguments of the function by looping through the buffer and storing and converting the characters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga778fe5c25df3b5e63f453fadd6545c5e}{F\+L\+\_\+convert\+\_\+args}} (char arg\+\_\+array\mbox{[}$\,$\mbox{]}, int argcounter)
+\begin{DoxyCompactList}\small\item\em Converts the arguments to the right types and stores them in the command struct. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___front___layer_gaa18376205eaf6c25fec637561fd0210e}{F\+L\+\_\+find\+\_\+color}} (char color\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Determines the color from a string passed to it If the string is \char`\"{}white\char`\"{} this returns 0x\+FF. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___front___layer_ga3df3c50e54cfeef9d5f01f6b309c6e5b}{F\+L\+\_\+find\+\_\+font\+\_\+style}} (char arg\+\_\+array\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Determines the font style of the text function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_gafc197584a80225d81d386d947e5f07b8}{F\+L\+\_\+global\+\_\+error\+\_\+handler}} (int error)
+\begin{DoxyCompactList}\small\item\em When an error has occured, this function informs the user via U\+S\+A\+Rt2 debugging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_ga549b8bd5aa5525731f0598b7c4bf6452}{F\+L\+\_\+error\+\_\+tx}} (char $\ast$p\+Error\+Message)
+\begin{DoxyCompactList}\small\item\em When an error message needs to be sent, this function does it. It is not dependent on if debug is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_gaba99eeadbf462a4547d1070ae746000c}{F\+L\+\_\+debug\+\_\+tx}} (char $\ast$p\+Debug\+Message)
+\begin{DoxyCompactList}\small\item\em When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_ga09e9b1de38bfc6058255e913682cf94c}{F\+L\+\_\+debug\+\_\+int}} (int num)
+\begin{DoxyCompactList}\small\item\em When an integer needs to be sent to the U\+A\+RT, this function is used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___front___layer_gabdb5736737781250df965633c43ab6d7}{F\+L\+\_\+global\+\_\+debug\+\_\+check}} ()
+\begin{DoxyCompactList}\small\item\em This function checks if the debugging needs to be toggled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: This file contains the logic layer code 
+
+\+: This file contains the front layer
+
+\begin{DoxyAuthor}{Author}
+\+: Groep 8 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: 08-\/05-\/2020 
+\end{DoxyDate}

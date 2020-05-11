@@ -7,17 +7,25 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup Logic_Layer
+  * @{
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "LL.h"
 #include "string.h"
 
-/*******************************************************************************************************
+/**
   * @brief  Determines which API function should be called based on input.
   * 		Calls error handler in case of error.
   *
   * @param  Commands : Contains parsed data from UART for every API command.
   * @retval Error:	returns errors from called IO functions
- *******************************************************************************************************/
+  */
 int LL_exec(struct collection *commands)
 {
 
@@ -126,11 +134,11 @@ int LL_exec(struct collection *commands)
 
 }
 
-/*******************************************************************************************************
- * @brief Tetris function checking the string
- *
- * @retval None
- *******************************************************************************************************/
+/**
+  * @brief Tetris function checking the string
+  *
+  * @retval None
+  */
 
 void LL_tetris_check()
 {
@@ -144,3 +152,11 @@ void LL_tetris_check()
 		IO_tetris();
 	}
 }
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

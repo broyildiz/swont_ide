@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup Front_Layer
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef INC_FL_H_
 #define INC_FL_H_
@@ -197,6 +205,12 @@ struct collection
 	wacht_func wacht;
 }command;
 
-
-
 #endif /* INC_FL_H_ */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

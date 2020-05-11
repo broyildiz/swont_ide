@@ -1,0 +1,6 @@
+<map id="IO_draw_bitmap" name="IO_draw_bitmap">
+<area shape="rect" id="node1" title="Draws one of the stored bitmaps. Starts drawing in the top left corner." alt="" coords="5,56,120,83"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#ga09e9b1de38bfc6058255e913682cf94c" title="When an integer needs to be sent to the UART, this function is used." alt="" coords="183,5,283,32"/>
+<area shape="rect" id="node3" href="$group___front___layer.html#gaba99eeadbf462a4547d1070ae746000c" title="When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled." alt="" coords="185,56,282,83"/>
+<area shape="rect" id="node4" href="$stm32__ub__vga__screen_8c.html#a1fd52b52c87572b4bfad9637ec34e621" title=" " alt="" coords="168,107,299,133"/>
+</map>

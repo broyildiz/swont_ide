@@ -1,0 +1,4 @@
+<map id="FL_global_debug_check" name="FL_global_debug_check">
+<area shape="rect" id="node1" title="This function checks if the debugging needs to be toggled." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#gaba99eeadbf462a4547d1070ae746000c" title="When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled." alt="" coords="216,5,313,32"/>
+</map>

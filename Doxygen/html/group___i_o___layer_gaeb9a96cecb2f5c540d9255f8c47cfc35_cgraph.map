@@ -1,0 +1,6 @@
+<map id="IO_clearscreen" name="IO_clearscreen">
+<area shape="rect" id="node1" title="Clearing the whole screen." alt="" coords="5,31,115,57"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#gaba99eeadbf462a4547d1070ae746000c" title="When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled." alt="" coords="184,5,281,32"/>
+<area shape="rect" id="node3" href="$stm32__ub__vga__screen_8c.html#a8afc87fd0f1737d58c7ee92629be9c92" title=" " alt="" coords="163,56,303,83"/>
+<area shape="rect" id="node4" href="$stm32__ub__vga__screen_8c.html#a1fd52b52c87572b4bfad9637ec34e621" title=" " alt="" coords="351,56,481,83"/>
+</map>

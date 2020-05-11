@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup IO_Layer
+  * @{
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "consolas_fonts.h"
 
@@ -9236,9 +9244,10 @@ const uint16_t consolas_bold_11ptDescriptors[NR_OF_SYMBOLS][NR_OF_ELEMENTS] =
 	{8, 1425}, 		/* ~ */
 };
 
+/**
+  * @}
+  */
 
-
-
-
-
-
+/**
+  * @}
+  */

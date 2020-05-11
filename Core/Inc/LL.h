@@ -7,6 +7,14 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup Logic_Layer
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef INC_LL_H_
 #define INC_LL_H_
@@ -21,3 +29,11 @@ void LL_tetris_check();
 
 
 #endif /* INC_LL_H_ */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */

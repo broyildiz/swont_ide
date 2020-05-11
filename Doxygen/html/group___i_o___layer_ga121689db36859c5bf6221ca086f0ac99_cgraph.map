@@ -1,0 +1,13 @@
+<map id="IO_tetris" name="IO_tetris">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,76,159"/>
+<area shape="rect" id="node2" href="$_tetris_8c.html#a5d3fb9b91b5c167b70a1a0557e67f271" title=" " alt="" coords="145,5,210,32"/>
+<area shape="rect" id="node4" href="$_tetris_8c.html#a8597c0a0a2f98579ef7e1ab967ff8cd6" title=" " alt="" coords="148,56,207,83"/>
+<area shape="rect" id="node6" href="$_tetris_8c.html#a3486474f5471fc07a2a8000630aca0d4" title=" " alt="" coords="124,208,231,235"/>
+<area shape="rect" id="node8" href="$_tetris_8c.html#ad3456806ba2bdfc1871770fef6220083" title=" " alt="" coords="139,259,216,285"/>
+<area shape="rect" id="node10" href="$_tetris_8c.html#a14d23fead2d36e05c84ac845d75ece34" title=" " alt="" coords="132,107,223,133"/>
+<area shape="rect" id="node11" href="$_tetris_8c.html#a70ab715f1e3d747e13f9aba3c137fcf6" title=" " alt="" coords="131,157,224,184"/>
+<area shape="rect" id="node3" href="$stm32__ub__vga__screen_8c.html#a1fd52b52c87572b4bfad9637ec34e621" title=" " alt="" coords="279,5,409,32"/>
+<area shape="rect" id="node5" href="$_tetris_8c.html#a3422065f3541d9892c4d8a9c887c393d" title=" " alt="" coords="289,107,399,133"/>
+<area shape="rect" id="node7" href="$_tetris_8c.html#a7e0d872aa959f338a6ce96d36b651402" title=" " alt="" coords="291,208,397,235"/>
+<area shape="rect" id="node9" href="$_tetris_8c.html#a128757c8ae128ebb443b1c5dcfc23af8" title=" " alt="" coords="286,259,402,285"/>
+</map>

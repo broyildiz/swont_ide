@@ -1,0 +1,7 @@
+<map id="FL_find_args" name="FL_find_args">
+<area shape="rect" id="node1" title="Finds the arguments of the function by looping through the buffer and storing and converting the char..." alt="" coords="5,31,101,57"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#ga778fe5c25df3b5e63f453fadd6545c5e" title="Converts the arguments to the right types and stores them in the command struct." alt="" coords="149,56,267,83"/>
+<area shape="rect" id="node3" href="$group___front___layer.html#ga549b8bd5aa5525731f0598b7c4bf6452" title="When an error message needs to be sent, this function does it. It is not dependent on if debug is ena..." alt="" coords="334,5,422,32"/>
+<area shape="rect" id="node4" href="$group___front___layer.html#gaa18376205eaf6c25fec637561fd0210e" title="Determines the color from a string passed to it If the string is &quot;white&quot; this returns 0xFF." alt="" coords="329,56,427,83"/>
+<area shape="rect" id="node5" href="$group___front___layer.html#ga3df3c50e54cfeef9d5f01f6b309c6e5b" title="Determines the font style of the text function." alt="" coords="315,107,441,133"/>
+</map>

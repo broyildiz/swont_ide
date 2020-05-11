@@ -1,0 +1,8 @@
+<map id="FL_debug_int" name="FL_debug_int">
+<area shape="rect" id="node1" title="When an integer needs to be sent to the UART, this function is used." alt="" coords="548,31,648,57"/>
+<area shape="rect" id="node2" href="$group___i_o___layer.html#gaf2d18065dd24b19ecb8982701e1f41a9" title="Draws one of the stored bitmaps. Starts drawing in the top left corner." alt="" coords="385,5,500,32"/>
+<area shape="rect" id="node6" href="$group___i_o___layer.html#gac5ef85825922129a526ac5478967e7b1" title="Draws text on screen." alt="" coords="393,56,492,83"/>
+<area shape="rect" id="node3" href="$group___logic___layer.html#ga7e9d8776a763f1ee9facae929cb73235" title="Determines which API function should be called based on input. Calls error handler in case of error." alt="" coords="267,31,337,57"/>
+<area shape="rect" id="node4" href="$group___front___layer.html#ga832282f54ccec814f4ccc7eb37ef4c07" title="Decodes the received USART2 buffer." alt="" coords="104,31,219,57"/>
+<area shape="rect" id="node5" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,31,56,57"/>
+</map>

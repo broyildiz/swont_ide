@@ -1,0 +1,120 @@
+\hypertarget{usart_8c}{}\doxysection{usart.\+c File Reference}
+\label{usart_8c}\index{usart.c@{usart.c}}
+{\ttfamily \#include \char`\"{}usart.\+h\char`\"{}}\newline
+Include dependency graph for usart.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{usart_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{usart_8c_a6bac225908d39cd36055eb038aa79c0b}{U\+S\+A\+R\+T\+\_\+\+P\+R\+I\+N\+TF}}~int fputc(int \mbox{\hyperlink{usart_8c_a0523c05685d59544dca911cb6a3db77d}{ch}}, F\+I\+LE $\ast$f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usart_8c_a052088fe5bb3f807a4b2502e664fd4fd}{M\+X\+\_\+\+U\+S\+A\+R\+T2\+\_\+\+U\+A\+R\+T\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{usart_8c_a62a25476866998c7aadfb5c0864fa349}{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+Init}} (U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$uart\+Handle)
+\item 
+void \mbox{\hyperlink{usart_8c_a94cd2c58add4f2549895a03bf267622e}{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+De\+Init}} (U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$uart\+Handle)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{usart_8c_a1a7dab423912a84e2df34e6b03af3553}{U\+S\+A\+R\+T\+\_\+\+P\+R\+I\+N\+TF}}
+\item 
+return \mbox{\hyperlink{usart_8c_a0523c05685d59544dca911cb6a3db77d}{ch}}
+\item 
+U\+A\+R\+T\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{usart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{usart_8c_a6bac225908d39cd36055eb038aa79c0b}\label{usart_8c_a6bac225908d39cd36055eb038aa79c0b}} 
+\index{usart.c@{usart.c}!USART\_PRINTF@{USART\_PRINTF}}
+\index{USART\_PRINTF@{USART\_PRINTF}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{USART\_PRINTF}{USART\_PRINTF}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+P\+R\+I\+N\+TF~int fputc(int \mbox{\hyperlink{usart_8c_a0523c05685d59544dca911cb6a3db77d}{ch}}, F\+I\+LE $\ast$f)}
+
+File Name \+: U\+S\+A\+R\+T.\+c Description \+: This file provides code for the configuration of the U\+S\+A\+RT instances.
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2020 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{usart_8c_a94cd2c58add4f2549895a03bf267622e}\label{usart_8c_a94cd2c58add4f2549895a03bf267622e}} 
+\index{usart.c@{usart.c}!HAL\_UART\_MspDeInit@{HAL\_UART\_MspDeInit}}
+\index{HAL\_UART\_MspDeInit@{HAL\_UART\_MspDeInit}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_MspDeInit()}{HAL\_UART\_MspDeInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$}]{uart\+Handle }\end{DoxyParamCaption})}
+
+U\+S\+A\+R\+T2 G\+P\+IO Configuration ~\newline
+ P\+A2 -\/-\/-\/---$>$ U\+S\+A\+R\+T2\+\_\+\+TX P\+A3 -\/-\/-\/---$>$ U\+S\+A\+R\+T2\+\_\+\+RX\mbox{\Hypertarget{usart_8c_a62a25476866998c7aadfb5c0864fa349}\label{usart_8c_a62a25476866998c7aadfb5c0864fa349}} 
+\index{usart.c@{usart.c}!HAL\_UART\_MspInit@{HAL\_UART\_MspInit}}
+\index{HAL\_UART\_MspInit@{HAL\_UART\_MspInit}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_UART\_MspInit()}{HAL\_UART\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$}]{uart\+Handle }\end{DoxyParamCaption})}
+
+U\+S\+A\+R\+T2 G\+P\+IO Configuration ~\newline
+ P\+A2 -\/-\/-\/---$>$ U\+S\+A\+R\+T2\+\_\+\+TX P\+A3 -\/-\/-\/---$>$ U\+S\+A\+R\+T2\+\_\+\+RX\mbox{\Hypertarget{usart_8c_a052088fe5bb3f807a4b2502e664fd4fd}\label{usart_8c_a052088fe5bb3f807a4b2502e664fd4fd}} 
+\index{usart.c@{usart.c}!MX\_USART2\_UART\_Init@{MX\_USART2\_UART\_Init}}
+\index{MX\_USART2\_UART\_Init@{MX\_USART2\_UART\_Init}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{MX\_USART2\_UART\_Init()}{MX\_USART2\_UART\_Init()}}
+{\footnotesize\ttfamily void M\+X\+\_\+\+U\+S\+A\+R\+T2\+\_\+\+U\+A\+R\+T\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{usart_8c_a052088fe5bb3f807a4b2502e664fd4fd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{usart_8c_a052088fe5bb3f807a4b2502e664fd4fd_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{usart_8c_a0523c05685d59544dca911cb6a3db77d}\label{usart_8c_a0523c05685d59544dca911cb6a3db77d}} 
+\index{usart.c@{usart.c}!ch@{ch}}
+\index{ch@{ch}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{ch}{ch}}
+{\footnotesize\ttfamily return ch}
+
+\mbox{\Hypertarget{usart_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{usart_8c_aa9479c261d65eecedd3d9582f7f0f89c}} 
+\index{usart.c@{usart.c}!huart2@{huart2}}
+\index{huart2@{huart2}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{huart2}{huart2}}
+{\footnotesize\ttfamily U\+A\+R\+T\+\_\+\+Handle\+Type\+Def huart2}
+
+File Name \+: U\+S\+A\+R\+T.\+h Description \+: This file provides code for the configuration of the U\+S\+A\+RT instances.
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2020 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause \mbox{\Hypertarget{usart_8c_a1a7dab423912a84e2df34e6b03af3553}\label{usart_8c_a1a7dab423912a84e2df34e6b03af3553}} 
+\index{usart.c@{usart.c}!USART\_PRINTF@{USART\_PRINTF}}
+\index{USART\_PRINTF@{USART\_PRINTF}!usart.c@{usart.c}}
+\doxysubsubsection{\texorpdfstring{USART\_PRINTF}{USART\_PRINTF}}
+{\footnotesize\ttfamily U\+S\+A\+R\+T\+\_\+\+P\+R\+I\+N\+TF}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    HAL\_UART\_Transmit(\&\mbox{\hyperlink{usart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}}, (uint8\_t *)\&\mbox{\hyperlink{usart_8c_a0523c05685d59544dca911cb6a3db77d}{ch}}, 1, 0xFFFF)}
+
+\end{DoxyCode}

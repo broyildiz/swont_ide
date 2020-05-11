@@ -1,0 +1,11 @@
+<map id="FL_error_tx" name="FL_error_tx">
+<area shape="rect" id="node1" title="When an error message needs to be sent, this function does it. It is not dependent on if debug is ena..." alt="" coords="705,132,793,159"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#ga778fe5c25df3b5e63f453fadd6545c5e" title="Converts the arguments to the right types and stores them in the command struct." alt="" coords="540,5,657,32"/>
+<area shape="rect" id="node3" href="$group___front___layer.html#ga6f386a5e1e00941d8b79c10d2b475b25" title="Finds the arguments of the function by looping through the buffer and storing and converting the char..." alt="" coords="391,56,487,83"/>
+<area shape="rect" id="node4" href="$group___front___layer.html#ga832282f54ccec814f4ccc7eb37ef4c07" title="Decodes the received USART2 buffer." alt="" coords="104,107,219,133"/>
+<area shape="rect" id="node6" href="$group___i_o___layer.html#ga84d08cfc4723d5777b70ca1763062f48" title="Function for drawing a circle Source: https://www.geeksforgeeks.org/bresenhams&#45;circle&#45;drawing&#45;algorit..." alt="" coords="385,157,492,184"/>
+<area shape="rect" id="node8" href="$group___i_o___layer.html#ga8b55e6a819cdb2ce524731bcc506b2aa" title="Function for drawing a figure." alt="" coords="385,208,492,235"/>
+<area shape="rect" id="node9" href="$group___i_o___layer.html#gafa8e6495d4075afd2321f853998254f9" title="Function for drawing a line." alt="" coords="551,259,647,285"/>
+<area shape="rect" id="node5" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,107,56,133"/>
+<area shape="rect" id="node7" href="$group___logic___layer.html#ga7e9d8776a763f1ee9facae929cb73235" title="Determines which API function should be called based on input. Calls error handler in case of error." alt="" coords="267,183,337,209"/>
+</map>

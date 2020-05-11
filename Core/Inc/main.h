@@ -19,6 +19,14 @@
   */
 /* USER CODE END Header */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup MAIN
+  * @{
+  */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
 #define __MAIN_H
@@ -168,5 +176,13 @@ enum ERROR_CODES
 #endif
 
 #endif /* __MAIN_H */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

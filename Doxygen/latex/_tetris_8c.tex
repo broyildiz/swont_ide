@@ -1,0 +1,317 @@
+\hypertarget{_tetris_8c}{}\doxysection{Tetris.\+c File Reference}
+\label{_tetris_8c}\index{Tetris.c@{Tetris.c}}
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I\+O\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32\+\_\+ub\+\_\+vga\+\_\+screen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+Include dependency graph for Tetris.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_ad7906f61dffc17f15f434a6a59a2c0b5}{D\+F\+T\+S\+I\+ZE}}~100
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+WS}}~22
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}}~10
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a45008bcc69fc2bb1ff1bc9ae4ab90faf}{I\+\_\+\+S\+H\+A\+PE}}~1
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a30cef6f36c6d2e5dbcea3b173ead2dc6}{J\+\_\+\+S\+H\+A\+PE}}~2
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a9e094b03d90f39dddb02a12ed241c025}{L\+\_\+\+S\+H\+A\+PE}}~3
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a98dc55d35e55c2f48f86eb6d02d0e2af}{O\+\_\+\+S\+H\+A\+PE}}~4
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a6afe50b89d33d424d59b69b2ef19df82}{S\+\_\+\+S\+H\+A\+PE}}~5
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_a3840143429d8b6317c4e7d9ebd6cfcfe}{T\+\_\+\+S\+H\+A\+PE}}~6
+\item 
+\#define \mbox{\hyperlink{_tetris_8c_ab761c28b869755389fdae1f248d58a9f}{Z\+\_\+\+S\+H\+A\+PE}}~7
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_tetris_8c_a14d23fead2d36e05c84ac845d75ece34}{move\+\_\+piece}} (char, unsigned char $\ast$)
+\item 
+void \mbox{\hyperlink{_tetris_8c_ad3456806ba2bdfc1871770fef6220083}{line\+\_\+clear}} ()
+\item 
+void \mbox{\hyperlink{_tetris_8c_a128757c8ae128ebb443b1c5dcfc23af8}{move\+\_\+row\+\_\+down}} (unsigned char)
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a3486474f5471fc07a2a8000630aca0d4}{initialize\+\_\+piece}} (unsigned char $\ast$)
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a3422065f3541d9892c4d8a9c887c393d}{collision\+\_\+check}} (unsigned char, unsigned char)
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a70ab715f1e3d747e13f9aba3c137fcf6}{rotate\+\_\+piece}} (unsigned char, unsigned char, unsigned char $\ast$, char)
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a7e0d872aa959f338a6ce96d36b651402}{random\+\_\+shape}} (void)
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a8597c0a0a2f98579ef7e1ab967ff8cd6}{gravity}} (unsigned char, unsigned char $\ast$)
+\item 
+void \mbox{\hyperlink{_tetris_8c_a5d3fb9b91b5c167b70a1a0557e67f271}{Display}} ()
+\item 
+void \mbox{\hyperlink{group___i_o___layer_ga121689db36859c5bf6221ca086f0ac99}{I\+O\+\_\+tetris}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a600cef683b4097ac96debd675799c6c6}{field}} \mbox{[}\mbox{\hyperlink{_tetris_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+WS}}\mbox{]}\mbox{[}\mbox{\hyperlink{_tetris_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}}\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{_tetris_8c_a32dd995a1844b1f9b7e62917a8015994}{starting\+\_\+points}} \mbox{[}7\mbox{]}\mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_tetris_8c_a06c6c391fc11d106e9909f0401b255b1}\label{_tetris_8c_a06c6c391fc11d106e9909f0401b255b1}} 
+\index{Tetris.c@{Tetris.c}!COLUMNS@{COLUMNS}}
+\index{COLUMNS@{COLUMNS}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{COLUMNS}{COLUMNS}}
+{\footnotesize\ttfamily \#define C\+O\+L\+U\+M\+NS~10}
+
+\mbox{\Hypertarget{_tetris_8c_ad7906f61dffc17f15f434a6a59a2c0b5}\label{_tetris_8c_ad7906f61dffc17f15f434a6a59a2c0b5}} 
+\index{Tetris.c@{Tetris.c}!DFTSIZE@{DFTSIZE}}
+\index{DFTSIZE@{DFTSIZE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{DFTSIZE}{DFTSIZE}}
+{\footnotesize\ttfamily \#define D\+F\+T\+S\+I\+ZE~100}
+
+\mbox{\Hypertarget{_tetris_8c_a45008bcc69fc2bb1ff1bc9ae4ab90faf}\label{_tetris_8c_a45008bcc69fc2bb1ff1bc9ae4ab90faf}} 
+\index{Tetris.c@{Tetris.c}!I\_SHAPE@{I\_SHAPE}}
+\index{I\_SHAPE@{I\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{I\_SHAPE}{I\_SHAPE}}
+{\footnotesize\ttfamily \#define I\+\_\+\+S\+H\+A\+PE~1}
+
+\mbox{\Hypertarget{_tetris_8c_a30cef6f36c6d2e5dbcea3b173ead2dc6}\label{_tetris_8c_a30cef6f36c6d2e5dbcea3b173ead2dc6}} 
+\index{Tetris.c@{Tetris.c}!J\_SHAPE@{J\_SHAPE}}
+\index{J\_SHAPE@{J\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{J\_SHAPE}{J\_SHAPE}}
+{\footnotesize\ttfamily \#define J\+\_\+\+S\+H\+A\+PE~2}
+
+\mbox{\Hypertarget{_tetris_8c_a9e094b03d90f39dddb02a12ed241c025}\label{_tetris_8c_a9e094b03d90f39dddb02a12ed241c025}} 
+\index{Tetris.c@{Tetris.c}!L\_SHAPE@{L\_SHAPE}}
+\index{L\_SHAPE@{L\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{L\_SHAPE}{L\_SHAPE}}
+{\footnotesize\ttfamily \#define L\+\_\+\+S\+H\+A\+PE~3}
+
+\mbox{\Hypertarget{_tetris_8c_a98dc55d35e55c2f48f86eb6d02d0e2af}\label{_tetris_8c_a98dc55d35e55c2f48f86eb6d02d0e2af}} 
+\index{Tetris.c@{Tetris.c}!O\_SHAPE@{O\_SHAPE}}
+\index{O\_SHAPE@{O\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{O\_SHAPE}{O\_SHAPE}}
+{\footnotesize\ttfamily \#define O\+\_\+\+S\+H\+A\+PE~4}
+
+\mbox{\Hypertarget{_tetris_8c_a3cfd3aa62338d12609f6d65bce97e9cd}\label{_tetris_8c_a3cfd3aa62338d12609f6d65bce97e9cd}} 
+\index{Tetris.c@{Tetris.c}!ROWS@{ROWS}}
+\index{ROWS@{ROWS}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{ROWS}{ROWS}}
+{\footnotesize\ttfamily \#define R\+O\+WS~22}
+
+\mbox{\Hypertarget{_tetris_8c_a6afe50b89d33d424d59b69b2ef19df82}\label{_tetris_8c_a6afe50b89d33d424d59b69b2ef19df82}} 
+\index{Tetris.c@{Tetris.c}!S\_SHAPE@{S\_SHAPE}}
+\index{S\_SHAPE@{S\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{S\_SHAPE}{S\_SHAPE}}
+{\footnotesize\ttfamily \#define S\+\_\+\+S\+H\+A\+PE~5}
+
+\mbox{\Hypertarget{_tetris_8c_a3840143429d8b6317c4e7d9ebd6cfcfe}\label{_tetris_8c_a3840143429d8b6317c4e7d9ebd6cfcfe}} 
+\index{Tetris.c@{Tetris.c}!T\_SHAPE@{T\_SHAPE}}
+\index{T\_SHAPE@{T\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{T\_SHAPE}{T\_SHAPE}}
+{\footnotesize\ttfamily \#define T\+\_\+\+S\+H\+A\+PE~6}
+
+\mbox{\Hypertarget{_tetris_8c_ab761c28b869755389fdae1f248d58a9f}\label{_tetris_8c_ab761c28b869755389fdae1f248d58a9f}} 
+\index{Tetris.c@{Tetris.c}!Z\_SHAPE@{Z\_SHAPE}}
+\index{Z\_SHAPE@{Z\_SHAPE}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{Z\_SHAPE}{Z\_SHAPE}}
+{\footnotesize\ttfamily \#define Z\+\_\+\+S\+H\+A\+PE~7}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_tetris_8c_a3422065f3541d9892c4d8a9c887c393d}\label{_tetris_8c_a3422065f3541d9892c4d8a9c887c393d}} 
+\index{Tetris.c@{Tetris.c}!collision\_check@{collision\_check}}
+\index{collision\_check@{collision\_check}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{collision\_check()}{collision\_check()}}
+{\footnotesize\ttfamily unsigned char collision\+\_\+check (\begin{DoxyParamCaption}\item[{unsigned char}]{pos\+\_\+x,  }\item[{unsigned char}]{pos\+\_\+y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a3422065f3541d9892c4d8a9c887c393d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a5d3fb9b91b5c167b70a1a0557e67f271}\label{_tetris_8c_a5d3fb9b91b5c167b70a1a0557e67f271}} 
+\index{Tetris.c@{Tetris.c}!Display@{Display}}
+\index{Display@{Display}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{Display()}{Display()}}
+{\footnotesize\ttfamily void Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_tetris_8c_a5d3fb9b91b5c167b70a1a0557e67f271_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a5d3fb9b91b5c167b70a1a0557e67f271_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a8597c0a0a2f98579ef7e1ab967ff8cd6}\label{_tetris_8c_a8597c0a0a2f98579ef7e1ab967ff8cd6}} 
+\index{Tetris.c@{Tetris.c}!gravity@{gravity}}
+\index{gravity@{gravity}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{gravity()}{gravity()}}
+{\footnotesize\ttfamily unsigned char gravity (\begin{DoxyParamCaption}\item[{unsigned char}]{shape,  }\item[{unsigned char $\ast$}]{pplaypos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{_tetris_8c_a8597c0a0a2f98579ef7e1ab967ff8cd6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a8597c0a0a2f98579ef7e1ab967ff8cd6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a3486474f5471fc07a2a8000630aca0d4}\label{_tetris_8c_a3486474f5471fc07a2a8000630aca0d4}} 
+\index{Tetris.c@{Tetris.c}!initialize\_piece@{initialize\_piece}}
+\index{initialize\_piece@{initialize\_piece}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_piece()}{initialize\_piece()}}
+{\footnotesize\ttfamily unsigned char initialize\+\_\+piece (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{pplaypos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{_tetris_8c_a3486474f5471fc07a2a8000630aca0d4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a3486474f5471fc07a2a8000630aca0d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_ad3456806ba2bdfc1871770fef6220083}\label{_tetris_8c_ad3456806ba2bdfc1871770fef6220083}} 
+\index{Tetris.c@{Tetris.c}!line\_clear@{line\_clear}}
+\index{line\_clear@{line\_clear}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{line\_clear()}{line\_clear()}}
+{\footnotesize\ttfamily void line\+\_\+clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{_tetris_8c_ad3456806ba2bdfc1871770fef6220083_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_ad3456806ba2bdfc1871770fef6220083_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a14d23fead2d36e05c84ac845d75ece34}\label{_tetris_8c_a14d23fead2d36e05c84ac845d75ece34}} 
+\index{Tetris.c@{Tetris.c}!move\_piece@{move\_piece}}
+\index{move\_piece@{move\_piece}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{move\_piece()}{move\_piece()}}
+{\footnotesize\ttfamily void move\+\_\+piece (\begin{DoxyParamCaption}\item[{char}]{direction,  }\item[{unsigned char $\ast$}]{pplaypos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{_tetris_8c_a14d23fead2d36e05c84ac845d75ece34_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a14d23fead2d36e05c84ac845d75ece34_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a128757c8ae128ebb443b1c5dcfc23af8}\label{_tetris_8c_a128757c8ae128ebb443b1c5dcfc23af8}} 
+\index{Tetris.c@{Tetris.c}!move\_row\_down@{move\_row\_down}}
+\index{move\_row\_down@{move\_row\_down}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{move\_row\_down()}{move\_row\_down()}}
+{\footnotesize\ttfamily void move\+\_\+row\+\_\+down (\begin{DoxyParamCaption}\item[{unsigned char}]{row }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a128757c8ae128ebb443b1c5dcfc23af8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a7e0d872aa959f338a6ce96d36b651402}\label{_tetris_8c_a7e0d872aa959f338a6ce96d36b651402}} 
+\index{Tetris.c@{Tetris.c}!random\_shape@{random\_shape}}
+\index{random\_shape@{random\_shape}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{random\_shape()}{random\_shape()}}
+{\footnotesize\ttfamily unsigned char random\+\_\+shape (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a7e0d872aa959f338a6ce96d36b651402_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tetris_8c_a70ab715f1e3d747e13f9aba3c137fcf6}\label{_tetris_8c_a70ab715f1e3d747e13f9aba3c137fcf6}} 
+\index{Tetris.c@{Tetris.c}!rotate\_piece@{rotate\_piece}}
+\index{rotate\_piece@{rotate\_piece}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{rotate\_piece()}{rotate\_piece()}}
+{\footnotesize\ttfamily unsigned char rotate\+\_\+piece (\begin{DoxyParamCaption}\item[{unsigned char}]{shape,  }\item[{unsigned char}]{orientation,  }\item[{unsigned char $\ast$}]{pplaypos,  }\item[{char}]{rotation }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{_tetris_8c_a70ab715f1e3d747e13f9aba3c137fcf6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_tetris_8c_a70ab715f1e3d747e13f9aba3c137fcf6_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_tetris_8c_a600cef683b4097ac96debd675799c6c6}\label{_tetris_8c_a600cef683b4097ac96debd675799c6c6}} 
+\index{Tetris.c@{Tetris.c}!field@{field}}
+\index{field@{field}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{field}{field}}
+{\footnotesize\ttfamily unsigned char field\mbox{[}\mbox{\hyperlink{_tetris_8c_a3cfd3aa62338d12609f6d65bce97e9cd}{R\+O\+WS}}\mbox{]}\mbox{[}\mbox{\hyperlink{_tetris_8c_a06c6c391fc11d106e9909f0401b255b1}{C\+O\+L\+U\+M\+NS}}\mbox{]}}
+
+\mbox{\Hypertarget{_tetris_8c_a32dd995a1844b1f9b7e62917a8015994}\label{_tetris_8c_a32dd995a1844b1f9b7e62917a8015994}} 
+\index{Tetris.c@{Tetris.c}!starting\_points@{starting\_points}}
+\index{starting\_points@{starting\_points}!Tetris.c@{Tetris.c}}
+\doxysubsubsection{\texorpdfstring{starting\_points}{starting\_points}}
+{\footnotesize\ttfamily unsigned char starting\+\_\+points\mbox{[}7\mbox{]}\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=  \{\{3, 20, 4, 20, 5, 20, 6, 20\}, }
+\DoxyCodeLine{                                        \{4, 21, 5, 20, 4, 20, 6, 20\}, }
+\DoxyCodeLine{                                        \{4, 20, 5, 20, 6, 20, 6, 21\}, }
+\DoxyCodeLine{                                        \{4, 21, 4, 20, 5, 21, 5, 20\}, }
+\DoxyCodeLine{                                        \{4, 20, 5, 20, 6, 21, 7, 21\}, }
+\DoxyCodeLine{                                        \{4, 20, 5, 20, 5, 21, 6, 20\}, }
+\DoxyCodeLine{                                        \{4, 20, 5, 20, 5, 21, 6, 20\}\}}
+
+\end{DoxyCode}

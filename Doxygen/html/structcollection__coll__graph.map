@@ -1,0 +1,12 @@
+<map id="collection" name="collection">
+<area shape="rect" id="node1" title=" " alt="" coords="253,208,331,235"/>
+<area shape="rect" id="node2" href="$structtekst__func.html" title=" " alt="" coords="26,5,109,32"/>
+<area shape="rect" id="node3" href="$structlijn__func.html" title=" " alt="" coords="33,56,102,83"/>
+<area shape="rect" id="node4" href="$structbitmap__func.html" title=" " alt="" coords="21,107,113,133"/>
+<area shape="rect" id="node5" href="$structfiguur__func.html" title=" " alt="" coords="25,157,109,184"/>
+<area shape="rect" id="node6" href="$structrechthoek__func.html" title=" " alt="" coords="12,208,123,235"/>
+<area shape="rect" id="node7" href="$structcirkel__func.html" title=" " alt="" coords="25,259,109,285"/>
+<area shape="rect" id="node8" href="$structwacht__func.html" title=" " alt="" coords="24,309,111,336"/>
+<area shape="rect" id="node9" href="$structclearscherm__func.html" title=" " alt="" coords="5,360,129,387"/>
+<area shape="rect" id="node10" href="$structherhaal__func.html" title=" " alt="" coords="20,411,115,437"/>
+</map>

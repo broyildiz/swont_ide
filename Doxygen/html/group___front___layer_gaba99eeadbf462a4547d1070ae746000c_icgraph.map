@@ -1,0 +1,10 @@
+<map id="FL_debug_tx" name="FL_debug_tx">
+<area shape="rect" id="node1" title="When a debug message needs to be sent, this function does it. It is dependent on if debug is enabled." alt="" coords="640,100,737,127"/>
+<area shape="rect" id="node2" href="$group___front___layer.html#gabdb5736737781250df965633c43ab6d7" title="This function checks if the debugging needs to be toggled." alt="" coords="267,5,429,32"/>
+<area shape="rect" id="node4" href="$group___i_o___layer.html#gaeb9a96cecb2f5c540d9255f8c47cfc35" title="Clearing the whole screen." alt="" coords="480,49,589,76"/>
+<area shape="rect" id="node5" href="$group___logic___layer.html#ga7e9d8776a763f1ee9facae929cb73235" title="Determines which API function should be called based on input. Calls error handler in case of error." alt="" coords="313,100,383,127"/>
+<area shape="rect" id="node7" href="$group___i_o___layer.html#gaf2d18065dd24b19ecb8982701e1f41a9" title="Draws one of the stored bitmaps. Starts drawing in the top left corner." alt="" coords="477,151,592,177"/>
+<area shape="rect" id="node8" href="$group___i_o___layer.html#gac5ef85825922129a526ac5478967e7b1" title="Draws text on screen." alt="" coords="485,201,584,228"/>
+<area shape="rect" id="node3" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,63,56,89"/>
+<area shape="rect" id="node6" href="$group___front___layer.html#ga832282f54ccec814f4ccc7eb37ef4c07" title="Decodes the received USART2 buffer." alt="" coords="104,93,219,120"/>
+</map>

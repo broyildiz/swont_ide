@@ -7,16 +7,24 @@
   ******************************************************************************
   */
 
+/** @addtogroup SWONT
+  * @{
+  */
+
+/** @addtogroup Front_Layer
+  * @{
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "FL.h"
 #include "string.h"
 
-/********************************************************************************************************
+/**
   * @brief  Decodes the received USART2 buffer.
   *
   * @param  None
   * @retval None
-  *******************************************************************************************************/
+  */
 int FL_uart_decode()
 {
 	int error = NO_ERROR;
@@ -90,12 +98,12 @@ int FL_uart_decode()
 	return error;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Finds the function number based on the name of the function
   *
   * @param  None
   * @retval Function number
-  *******************************************************************************************************/
+  */
 int FL_find_decode_nr()
 {
 	if(input.line_rx_buffer[0] == LETTERB) return BITMAP_FUNCTION_NO;
@@ -128,7 +136,7 @@ int FL_find_decode_nr()
 
 }
 
-/********************************************************************************************************
+/**
   * @brief  Finds the arguments of the function by looping through the buffer and storing and converting
   * 		the characters
   *
@@ -137,7 +145,7 @@ int FL_find_decode_nr()
   * @param 	len_function_name : Number of characters in the function name
   * 							(This determines the starting point of the parser)
   * @retval None
-  *******************************************************************************************************/
+  */
 int FL_find_args(int function_number, int num_args, int len_function_name)
 {
 	char string_container[MAX_ARG_LEN]; /* Container for the raw string characters */
@@ -294,13 +302,13 @@ int FL_find_args(int function_number, int num_args, int len_function_name)
 	}
 }
 
-/********************************************************************************************************
+/**
   * @brief  Converts the arguments to the right types and stores them in the command struct
   *
   * @param  arg_array  : Array with the to be processed string
   * @param	argcounter : Counter that keeps track of which argument of the function is to be processed
   * @retval None
-  *******************************************************************************************************/
+  */
 int FL_convert_args(char arg_array[], int argcounter)
 {
 	int error = NO_ERROR;
@@ -416,13 +424,13 @@ int FL_convert_args(char arg_array[], int argcounter)
 	return error;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Determines the color from a string passed to it
   * 		If the string is "white" this returns 0xFF
   *
   * @param  color: Array with the string containing the color
   * @retval 8 bit color value
-  *******************************************************************************************************/
+  */
 uint8_t FL_find_color(char color[])
 {
 	int ret_val;
@@ -471,12 +479,12 @@ uint8_t FL_find_color(char color[])
 return ret_val;
 }
 
-/********************************************************************************************************
+/**
   * @brief  Determines the font style of the text function
   *
   * @param  arg_array: Array with the string containing the font style
   * @retval predefined integer value of the font style
-  *******************************************************************************************************/
+  */
 int FL_find_font_style(char arg_array[])
 {
 	int retval;
@@ -486,12 +494,12 @@ int FL_find_font_style(char arg_array[])
 	return retval;
 }
 
-/********************************************************************************************************
+/**
   * @brief  When an error has occured, this function informs the user via USARt2 debugging
   *
   * @param  error: The error code
   * @retval none
-  *******************************************************************************************************/
+  */
 void FL_global_error_handler(int error)
 {
 	printf("\n\nENCOUNTERRED AN ERROR!\n");
@@ -516,49 +524,49 @@ void FL_global_error_handler(int error)
 	}
 }
 
-/********************************************************************************************************
+/**
   * @brief  When an error message needs to be sent, this function does it. It is not dependent on if debug
   * 		is enabled
   *
   * @param  pDebugmessage: The error message string
   * @retval None
-  *******************************************************************************************************/
+  */
 void FL_error_tx(char  *pErrorMessage)
 {
 	HAL_UART_Transmit(&huart2, (uint8_t*)pErrorMessage, strlen(pErrorMessage), HAL_MAX_DELAY);
 }
 
-/********************************************************************************************************
+/**
   * @brief  When a debug message needs to be sent, this function does it. It is dependent on if debug
   * 		 is enabled
   *
   * @param  pDebugmessage: The debug message string
   * @retval None
-  *******************************************************************************************************/
+  */
 void FL_debug_tx( char *pDebugMessage)
 {
 	if(global_debug)
 		HAL_UART_Transmit(&huart2, (uint8_t*)pDebugMessage, strlen(pDebugMessage), HAL_MAX_DELAY);
 }
 
-/********************************************************************************************************
+/**
   * @brief  When an integer needs to be sent to the UART, this function is used
   *
   * @param  num: The integer number to be sent
   * @retval None
-  *******************************************************************************************************/
+  */
 void FL_debug_int(int num)
 {
 	if(global_debug)
 		printf("%d\n",num);
 }
 
-/********************************************************************************************************
+/**
   * @brief  This function checks if the debugging needs to be toggled
   *
   * @param  None
   * @retval None
-  *******************************************************************************************************/
+  */
 void FL_global_debug_check()
 {
 	FL_debug_tx("Toggling Debugging\n");
@@ -571,4 +579,11 @@ void FL_global_debug_check()
 	}
 }
 
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 

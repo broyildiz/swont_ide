@@ -1,0 +1,9 @@
+<map id="collision_check" name="collision_check">
+<area shape="rect" id="node1" title=" " alt="" coords="527,56,637,83"/>
+<area shape="rect" id="node2" href="$_tetris_8c.html#a8597c0a0a2f98579ef7e1ab967ff8cd6" title=" " alt="" coords="403,5,461,32"/>
+<area shape="rect" id="node6" href="$_tetris_8c.html#a14d23fead2d36e05c84ac845d75ece34" title=" " alt="" coords="387,56,477,83"/>
+<area shape="rect" id="node7" href="$_tetris_8c.html#a70ab715f1e3d747e13f9aba3c137fcf6" title=" " alt="" coords="385,107,479,133"/>
+<area shape="rect" id="node3" href="$group___i_o___layer.html#ga121689db36859c5bf6221ca086f0ac99" title=" " alt="" coords="267,56,337,83"/>
+<area shape="rect" id="node4" href="$group___logic___layer.html#ga5cd42c35ec314f52d0b0b18eb2e1b0f7" title="Tetris function checking the string." alt="" coords="104,56,219,83"/>
+<area shape="rect" id="node5" href="$group___m_a_i_n.html#ga840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,56,56,83"/>
+</map>
